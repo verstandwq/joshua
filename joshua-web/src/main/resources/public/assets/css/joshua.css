@@ -883,7 +883,7 @@ input::selection {
   pointer-events: none;
 }
 
-/* Basic Group With Disabled */
+/* Basic Project With Disabled */
 
 .ui.basic.buttons .ui.disabled.button {
   border-color: rgba(34, 36, 38, 0.5);
@@ -1043,7 +1043,7 @@ input::selection {
   text-shadow: none !important;
 }
 
-/* Group */
+/* Project */
 
 .ui.inverted.buttons .button {
   margin: 0px 0px 0px -2px;
@@ -1575,7 +1575,7 @@ input::selection {
   box-shadow: 0px 0px 0px 2px #ffffff inset !important;
 }
 
-/* Basic Group */
+/* Basic Project */
 
 .ui.basic.buttons .button {
   border-left: 1px solid rgba(34, 36, 38, 0.15);
@@ -4388,7 +4388,7 @@ input::selection {
   visibility: hidden;
 }
 
-/* Standard Group */
+/* Standard Project */
 
 .ui.buttons .button {
   -webkit-box-flex: 1;
@@ -11294,7 +11294,7 @@ a.ui.label {
 }
 
 /*-------------------
-       Group
+       Project
 --------------------*/
 
 .ui.labels > .label {
@@ -14695,7 +14695,7 @@ ol.ui.horizontal.list li:before,
   display: table;
 }
 
-/* Compact Group */
+/* Compact Project */
 
 .ui.compact.segments {
   display: -webkit-inline-box;
@@ -14738,7 +14738,7 @@ ol.ui.horizontal.list li:before,
             Groups
 *******************************/
 
-/* Group */
+/* Project */
 
 .ui.segments {
   -webkit-box-orient: vertical;
@@ -14794,7 +14794,7 @@ ol.ui.horizontal.list li:before,
   border-radius: 0em 0em 0.28571429rem 0.28571429rem;
 }
 
-/* Nested Group */
+/* Nested Project */
 
 .ui.segments > .ui.segments {
   border-top: 1px solid rgba(34, 36, 38, 0.15);
@@ -14809,7 +14809,7 @@ ol.ui.horizontal.list li:before,
   margin-top: 0em;
 }
 
-/* Horizontal Group */
+/* Horizontal Project */
 
 .ui.horizontal.segments {
   display: -webkit-box;
@@ -14831,7 +14831,7 @@ ol.ui.horizontal.list li:before,
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 
-/* Nested Horizontal Group */
+/* Nested Horizontal Project */
 
 .ui.segments > .horizontal.segments {
   margin: 0em;
@@ -26042,7 +26042,7 @@ a.ui.card:hover,
 }
 
 /*******************************
-            Group
+            Project
 *******************************/
 
 /* Grouped */
