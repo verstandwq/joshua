@@ -13,6 +13,7 @@
         <module>joshua-web</module>
         <module>joshua-resource</module>
         <module>joshua-model</module>
+        <module>joshua-security</module>
     </modules>
 
     <parent>
