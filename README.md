@@ -6,6 +6,9 @@
 # 项目开发流程
 [请参考这里](http://git.oschina.net/gosplelightchurch/joshua/wikis/项目开发流程)
 
+# 如果更新提交代码
+[请参考这里](http://git.oschina.net/gosplelightchurch/joshua/wikis/如何更新提交代码)
+
 # 项目开发基本说明
 
 ## 角色说明
