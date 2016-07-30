@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * 一级页面路由器
+ * 错误处理页面
  * Created by y27chen on 2016/7/12.
  */
 @RestController

@@ -25,6 +25,9 @@ public class User implements UserDetails {
     @Min(8)
     private String password;
 
+    @Min(8)
+    private String passwordConfirm;
+
     @NotEmpty
     private String nickname;
 
@@ -68,6 +71,14 @@ public class User implements UserDetails {
     public User(String account, String nickname) {
         this.account = account;
         this.nickname = nickname;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
     @Override
