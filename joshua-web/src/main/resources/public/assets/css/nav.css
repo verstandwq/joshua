@@ -2,7 +2,11 @@
 input.search{
     width: 120px;
 }
-
+/*搜索框中icon位置*/
+.ui.icon.input > i.circular.icon {
+    top: 0.25em;
+    right: 0.2em;
+}
 /*登录界面样式设置*/
 .overlay{
     position: absolute;

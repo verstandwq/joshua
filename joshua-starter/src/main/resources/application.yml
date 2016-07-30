@@ -2,7 +2,7 @@
 # spring configuration
 #
 server:
-  port: 8899
+  port: 80
 
 spring:
   application:
