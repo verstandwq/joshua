@@ -7,8 +7,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
- * Nokia ChengDu Engine Team
- * Created by y27chen on 2016/7/15.
+ * 安全配置
+ * Created by y27chen on 2016/7/12.
  */
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -27,11 +27,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/",
                         "/index",
+                        "/home",
+                        "/bible",
+                        "/believe",
+                        "/contact",
+                        "/financial",
+                        "/group",
+                        "/about",
+                        "/marriage",
+                        "/media",
+                        "/newcomer",
+                        "/pastor",
+                        "/preach",
+                        "/recommend",
+                        "/report",
+                        "/sunday",
+                        "/testimony",
+                        "/worship",
                         "/login",
                         "/logon",
                         "/assets/**",
                         "/images/**"
                 ).permitAll()
+                .anyRequest().authenticated();
 //                .and()
 //                .formLogin()
 //                .loginPage("/login")
@@ -39,8 +57,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .logout()
 //                .logoutSuccessUrl("/login?logout")
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403");
     }
 }

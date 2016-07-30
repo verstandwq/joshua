@@ -31,6 +31,11 @@ public class BasicErrorController implements ErrorController {
             modelAndView.setViewName("404");
             modelAndView.addObject("timestamp", errors.get("timestamp"));
             modelAndView.addObject("path", errors.get("path"));
+        } else if (errors.get("status").equals(403)) {
+            modelAndView.setViewName("403");
+            modelAndView.addObject("timestamp", errors.get("timestamp"));
+            modelAndView.addObject("message", errors.get("message"));
+            modelAndView.addObject("path", errors.get("path"));
         }
 
         return modelAndView;
