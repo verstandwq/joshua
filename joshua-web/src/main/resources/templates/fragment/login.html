@@ -6,14 +6,94 @@
 <head>
     <title>基督教光音堂</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.css"/>
+    <link rel="stylesheet" href="../../public/assets/css/nav.css"/>
 </head>
 
 <body>
 <!-- 用户登录组件 -->
 <div th:fragment="login">
-    <p>用户登录正在实现当中</p>
+        <div class="ui container">
+            <!--导航菜单栏-->
+            <div class="ui small menu">
+                <a class="active item">光音堂 </a>
+                <a class="item">聚会时间 </a>
+                <div class="ui dropdown item">教堂简介 <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item">基督信仰</a>
+                        <a class="item">财务报告</a>
+                        <a class="item">事工报告</a>
+                        <a class="item">联系我们</a>
+                    </div>
+                </div>
+                <div class="ui dropdown item">团契活动 <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item">青年团契</a>
+                        <a class="item">夫妻团契</a>
+                        <a class="item">未婚团契</a>
+                        <a class="item">蒙恩团契</a>
+                        <a class="item">长者团契</a>
+                    </div>
+                </div>
+                <a class="item">留言板 </a>
+                <!--导航栏搜索框-->
+                <div class="right menu">
+                    <div class="item">
+                        <div class="ui input focus icon">
+                            <input class="search" type="text" placeholder="Search..."/>
+                            <i class="circular search link icon"></i>
+                        </div>
+                    </div>
+                    <!--语言设置-->
+
+                    <div class="ui pointing dropdown link item">
+                        <span class="text">语言</span>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item">简体中文</div>
+                            <div class="item">繁體中文</div>
+                            <div class="item">English</div>
+                            <div class="item">한국어</div>
+                            <div class="item">日本語</div>
+                        </div>
+                    </div>
+                    <!--登陆按钮-->
+                    <div class="item">
+                        <div class="ui primary button" id="login">登录</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--登录框页面-->
+        <div class="overlay"></div>
+        <div class="login-content ">
+            <span id="close" class="close">x</span>
+            <h1 class="login-logo">LOGO</h1>
+            <div class="ui middle ">
+                <div class="ui form login-text">
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="text" placeholder="用户名/邮箱/手机"/>
+                            <i class="user icon"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <input type="password" placeholder="密码"/>
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="login-btn">
+                    <button class="ui primary button">登录 </button>
+                    <button class="ui button">注册 </button>
+                </div>
+            </div>
+    </div>
+
 </div>
 
 <script src="../../public/assets/js/joshua.js"></script>
+<script src="../../public/assets/js/nav.js" th:src="@{assets/js/nav.js}"></script>
 </body>
 </html>
