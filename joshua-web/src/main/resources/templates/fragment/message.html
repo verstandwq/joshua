@@ -1,18 +1,17 @@
 <!--
-HTML 页脚基本组件，用于每个页面的末尾引用
+留言消息基本组件，用于用户网站留言
 -->
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
     <title>基督教光音堂</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.css"/>
 </head>
 
 <body>
-<!-- 页脚组件，用于页面末尾的导航栏 -->
-<div th:fragment="footer">
-    <p>页脚正在实现中</p>
+<!-- 全局消息框基本组件，用于显示在每个页面导航栏下部，如果没有全局消息，或者全局消息已经过期，则不显示整个组件 -->
+<div th:fragment="primary">
+    <p>留言消息基本组件正在实现当中</p>
 </div>
 
 <script src="../../public/assets/js/joshua.js"></script>
