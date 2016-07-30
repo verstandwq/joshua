@@ -3,6 +3,9 @@
 #
 server:
   port: 80
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,application/javascript,text/html,text/xml,text/plain,text/css
 
 spring:
   application:
@@ -25,6 +28,12 @@ spring:
 
   messages:
     basename: i18n/messages
+  resources:
+    cache-period: 31536000
+    chain:
+      strategy:
+        content:
+          enabled: true
 
 #
 # loggin configuration
