@@ -22,10 +22,12 @@ input.search{
 .login-content{
     background-color: #fff;
     position: relative;
-    top:134px;
+    top: 50%;
+    left: 50%;
+    margin-top: 150px;
+    margin-left: -150px;
     width: 319px;
     height: 300px;
-    margin: auto;
     z-index: 99;
     display: none;
 }
