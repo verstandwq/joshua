@@ -1,13 +1,13 @@
 # 成都光音堂官方网站
 
 # 开发环境搭建
-[请参考这里](https://git.oschina.net/gosplelightchurch/joshua/wikis/home)
+[请参考这里](https://github.com/GospleLightChurch/joshua/wiki/光音堂官方网站建设开发环境搭建)
 
 # 项目开发流程
-[请参考这里](http://git.oschina.net/gosplelightchurch/joshua/wikis/项目开发流程)
+[请参考这里](https://github.com/GospleLightChurch/joshua/wiki/项目开发流程)
 
 # 如果更新提交代码
-[请参考这里](http://git.oschina.net/gosplelightchurch/joshua/wikis/如何更新提交代码)
+[请参考这里](https://github.com/GospleLightChurch/joshua/wiki/如何更新提交代码)
 
 # 项目开发基本说明
 
