@@ -8,5 +8,6 @@ $(document).ready(function () {
         $(".overlay").css({display: "none"});
         $(".login-content").css({display: "none"});
     });
-    $(".ui.dropdown").dropdown();
+
+    $("#menu").find(".ui.dropdown.item").dropdown({on: "hover"});
 });

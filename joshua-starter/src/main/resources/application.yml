@@ -27,7 +27,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
 
   messages:
-    basename: i18n/messages
+    basename: i18n/messages, i18n/navigation
   resources:
     cache-period: 31536000
     chain:
