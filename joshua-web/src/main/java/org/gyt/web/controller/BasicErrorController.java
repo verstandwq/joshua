@@ -25,7 +25,7 @@ public class BasicErrorController implements ErrorController {
     @RequestMapping
     public ModelAndView handleError(HttpServletRequest request) {
         Map<String, Object> errors = errorAttributes.getErrorAttributes(new ServletRequestAttributes(request), true);
-        ModelAndView modelAndView = new ModelAndView("404");
+        ModelAndView modelAndView = new ModelAndView("500");
 
         if (errors.get("status").equals(404)) {
             modelAndView.setViewName("404");

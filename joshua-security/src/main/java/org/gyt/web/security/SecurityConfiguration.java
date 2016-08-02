@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/financial",
                         "/group",
                         "/about",
-                        "/marriage",
+                        "/wedding",
                         "/media",
                         "/newcomer",
                         "/pastor",

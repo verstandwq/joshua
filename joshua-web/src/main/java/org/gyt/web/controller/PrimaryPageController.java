@@ -56,7 +56,7 @@ public class PrimaryPageController {
         return new ModelAndView("introductionPage");
     }
 
-    @RequestMapping("/marriage")
+    @RequestMapping("/wedding")
     public ModelAndView marriagePage() {
         return new ModelAndView("marriagePage");
     }
