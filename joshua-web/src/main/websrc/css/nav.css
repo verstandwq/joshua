@@ -10,7 +10,7 @@ input.search{
 /*登录界面样式设置*/
 /*背景*/
 .overlay{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -21,34 +21,29 @@ input.search{
     z-index: 0;
 }
 /*登录框*/
-.login-content{
+.login-content {
     background-color: #fff;
     position: relative;
-    top: 50%;
+    top: 100px;
     left: 50%;
-    margin-top: 150px;
     margin-left: -150px;
     width: 319px;
-    height: 360px;
+    /* height: 360px; */
+    /* border-radius: 10px; */
     z-index: 99;
     display: none;
 }
-/*输入框*/
-.login-text{
-    position: absolute;
-    top: 23px;
-    left: 10px;
-    width: 300px;
-}
+
 /*登录注册按钮*/
-.login-btn{
-    position: absolute;
-    top: 300px;
-    left: 90px;
+.login-btn {
+    position: relative;
+    top: 0;
+    left: 50px;
 }
 /*logo*/
 .login-logo{
     margin:auto;
+    width:250px;
 }
 .logo{
     width: 250px;
@@ -63,15 +58,21 @@ input.search{
     cursor: pointer;
 }
 /*忘记密码*/
-.fotpass{
+.fotpass {
     position: absolute;
-    right: 12px;
-    bottom: 70px;
+    right: 14px;
+    bottom: 60px;
     font-size: 10px;
 }
 /*下次自动登录*/
 .ui.checkbox {
-    bottom: -29px;
-    left: 10px;
+    bottom: 10px;
+    left: 0;
+}
+.ui.checkbox label{
     font-size: 10px;
+}
+/*侧导航*/
+.ui.vertical.menu {
+    width: 10rem;
 }
