@@ -97,7 +97,36 @@
 
 <!-- 次要导航栏，用于二级页面侧边导航栏 -->
 <div th:fragment="secondary">
+    <!-- 侧导航 -->
+    <div class="ui vertical menu">
+        <div class="item">
+            <div class="ui input focus icon">
+                <input class="search" type="text" placeholder="Search..."/>
+                <i class="circular search link icon"></i>
+            </div>
+        </div>
+        <a class="item">光音堂 </a>
+        <a class="item">聚会时间 </a>
+        <div class="item">教堂简介
+            <div class="menu">
+                <a class="active item">基督信仰</a>
+                <a class="item">财务报告</a>
+                <a class="item">事工报告</a>
+                <a class="item">联系我们</a>
+            </div>
+        </div>
+        <div class="item">团契活动
+            <div class="menu">
+                <a class="active item">青年团契</a>
+                <a class="item">夫妻团契</a>
+                <a class="item">未婚团契</a>
+                <a class="item">蒙恩团契</a>
+                <a class="item">长者团契</a>
+            </div>
+        </div>
+        <a class="item">留言板</a>
 
+    </div>
 </div>
 <script src="../../public/assets/js/joshua.min.js"></script>
 </body>
