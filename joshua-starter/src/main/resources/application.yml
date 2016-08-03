@@ -43,4 +43,4 @@ logging.level.org.springframework.web: ERROR
 logging.level.org.hibernate: ERROR
 logging.level.org.gyt.web: DEBUG
 logging:
-  file: /var/opt/log/gyt/web/joshua.log
+  file: /var/opt/log/joshua/joshua.log
