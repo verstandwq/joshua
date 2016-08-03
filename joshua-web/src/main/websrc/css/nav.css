@@ -1,11 +1,11 @@
 /*设置导航栏搜索框宽度*/
 input.search{
-    width: 120px;
+    width: 100px;
 }
 /*搜索框中icon位置*/
-.ui.icon.input > i.circular.icon {
-    top: 0.25em;
-    right: 0.2em;
+.ui.icon.input>i.circular.icon {
+    top: .2em; !important;
+    right: .3em;!important;
 }
 /*登录界面样式设置*/
 /*背景*/
