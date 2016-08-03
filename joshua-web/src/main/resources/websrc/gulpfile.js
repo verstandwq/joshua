@@ -21,7 +21,7 @@ gulp.task('minify-css', function () {
             console.log(details.name + ': ' + details.stats.originalSize);
             console.log(details.name + ': ' + details.stats.minifiedSize);
         }))
-        .pipe(gulp.dest('../resources/public/assets/css/'));
+        .pipe(gulp.dest('../public/assets/css/'));
 });
 
 gulp.task("minify-js", function () {
@@ -33,7 +33,7 @@ gulp.task("minify-js", function () {
             },
             noSource: true
         }))
-        .pipe(gulp.dest('../resources/public/assets/js/'))
+        .pipe(gulp.dest('../public/assets/js/'))
 });
 
 gulp.task("default", function () {
