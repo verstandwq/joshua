@@ -1,6 +1,6 @@
 /*设置导航栏搜索框宽度*/
 input.search{
-    width: 100px;
+    width: 150px;
 }
 /*搜索框中icon位置*/
 .ui.icon.input>i.circular.icon {
