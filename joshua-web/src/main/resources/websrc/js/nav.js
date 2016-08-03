@@ -28,7 +28,7 @@ $(document).ready(function() {
                 prompt: '请输入密码'
             }, {
                 type: 'length[6]',
-                prompt: '密码至少为6位'
+                prompt: '密码至少为 6 位'
             }]
         }
     }, {
