@@ -13,7 +13,31 @@ HTML 页脚基本组件，用于每个页面的末尾引用
 <body>
 <!-- 页脚组件，用于页面末尾的导航栏 -->
 <footer th:fragment="footer" class="ui black inverted vertical segment footer">
-    <p>页脚正在实现中</p>
+    <div class="ui center aligned container">
+        <div class="ui stackable inverted grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header" th:utext="#{nav.footer.links}">友情链接</h4>
+                <div class="ui inverted link list">
+                    <a class="item">项目1</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header" th:utext="#{nav.footer.contact}">联系我们</h4>
+                <div class="ui inverted link list">
+                    <div class="item">项目1</div>
+                </div>
+            </div>
+            <div class="seven wide right floated column">
+                <h4 class="ui inverted orange header" th:utext="#{nav.footer.wechat}">微信公众号</h4>
+                <img src="../../public/assets/images/SQCode.jpg" th:src="@{/assets/images/SQCode.gif}"
+                     style="width: 128px;height: 128px"/>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+            <a class="item" th:utext="#{title}">基督教光音堂</a>
+        </div>
+    </div>
 </footer>
 
 <script src="../../public/assets/js/joshua.min.js"></script>
