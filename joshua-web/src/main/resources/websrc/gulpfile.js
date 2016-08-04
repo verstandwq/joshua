@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/7/30.
- */
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
@@ -37,5 +34,5 @@ gulp.task("minify-js", function () {
 });
 
 gulp.task("default", function () {
-    gulp.run("lint", "minify-js", "minify-css");
+    gulp.run("minify-js", "minify-css");
 });
