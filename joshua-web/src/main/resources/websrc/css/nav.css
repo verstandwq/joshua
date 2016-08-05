@@ -4,8 +4,8 @@ input.search{
 }
 /*搜索框中icon位置*/
 .ui.icon.input>i.circular.icon {
-    top: .2em; !important;
-    right: .3em;!important;
+    top: .2em !important;
+    right: .3em !important;
 }
 /*登录界面样式设置*/
 /*背景*/
