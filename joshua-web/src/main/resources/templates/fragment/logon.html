@@ -22,19 +22,19 @@
         </div>
         <form class="ui fluid form segment">
             <div class="field">
-                <label>用户名</label>
+                <label th:utext="#{nav.username}">用户名</label>
                 <input type="text" />
             </div>
             <div class="field">
-                <label>E-mail</label>
+                <label th:utext="#{nav.email}">邮箱</label>
                 <input type="email" />
             </div>
             <div class="field">
-                <label>密码</label>
+                <label th:utext="#{nav.password}">密码</label>
                 <input type="password"/>
             </div>
             <div class="inline field login-btn">
-                <button class="ui blue submit button">注册 </button>
+                <button class="ui blue submit button" th:utext="#{nav.logon}">注册 </button>
             </div>
         </form>
     </div>
