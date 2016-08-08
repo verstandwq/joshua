@@ -12,8 +12,32 @@
 <body>
 
 <!-- 基本组件等待定义 -->
-<div th:fragment="component">
-    <p>联系我们组件正在实现中</p>
+<div th:fragment="component" class="ui stackable grid">
+    <div class="sixteen wide column">
+        <h1>联系我们</h1>
+    </div>
+    <div class="eight wide column">
+        <div class="ui grid">
+            <div class="row">
+                <label class="ui huge icon black label fluid">
+                    <i class="text telephone icon"></i> <span>028-85179217</span>
+                </label>
+            </div>
+            <div class="row">
+                <label class="ui huge icon black label fluid">
+                    <i class="mail icon"></i> <span>cdgyt2013@163.com</span>
+                </label>
+            </div>
+        </div>
+        <div class="ui horizontal hidden divider"></div>
+        <div class="ui horizontal divider">如果您有更好的建议，请在下面留言</div>
+        <div th:replace="fragment/message :: primary"></div>
+    </div>
+    <div class="eight wide center aligned column">
+        <h2>教堂地图</h2>
+        <img class="ui large rounded centered image" src="../../public/assets/images/meta/map.jpg"
+             th:src="@{/assets/images/meta/map.jpg}"/>
+    </div>
 </div>
 
 <script src="../../public/assets/js/joshua.min.js"></script>
