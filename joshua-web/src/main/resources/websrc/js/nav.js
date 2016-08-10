@@ -34,8 +34,8 @@ $(document).ready(function() {
     //checkbox init
     $('.ui.checkbox').checkbox();
 
-});
 
+});
 function submitForm() {
     alert('dd');
     var formData = $('.ui.form input').serializeArray(); //or .serialize();
