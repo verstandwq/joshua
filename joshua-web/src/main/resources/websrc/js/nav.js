@@ -2,7 +2,7 @@
 
 
 // 登录表单验证
-$(document).ready(function() {
+$(document).ready(function () {
 
     $('.ui.form').form({
         userName: {
@@ -28,13 +28,13 @@ $(document).ready(function() {
         onSuccess: submitForm
     });
 
-    $('.ui.form').submit(function(e) {
+    $('.ui.form').submit(function (e) {
         return false;
     });
     //checkbox init
     $('.ui.checkbox').checkbox();
 
-
+    $('.ui.dropdown').dropdown({on: 'hover'});
 });
 function submitForm() {
     alert('dd');
