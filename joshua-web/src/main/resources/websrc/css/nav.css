@@ -1,11 +1,11 @@
 /*设置导航栏搜索框宽度*/
 input.search{
-    width: 120px;
+    width: 150px;
 }
 /*搜索框中icon位置*/
-.ui.icon.input > i.circular.icon {
-    top: 0.25em;
-    right: 0.2em;
+.ui.icon.input>i.circular.icon {
+    top: .2em !important;
+    right: .3em !important;
 }
 /*登录界面样式设置*/
 /*背景*/
@@ -15,48 +15,42 @@ input.search{
     left: 0;
     width: 100%;
     height: 100%;
-    background: #525450;
-    opacity: 0.5;
-    display: none;
+    background: #bfec85;
+    opacity: 0.8;
+    display:block;
     z-index: 0;
 }
 /*登录框*/
+
 .login-content {
     background-color: #fff;
     position: relative;
-    top: 100px;
+    top: 20px;
     left: 50%;
     margin-left: -150px;
     width: 319px;
     /* height: 360px; */
     /* border-radius: 10px; */
     z-index: 99;
-    display: none;
+    display: block;
 }
 
 /*登录注册按钮*/
 .login-btn {
     position: relative;
     top: 0;
-    left: 50px;
+    left: 100px;
 }
 /*logo*/
 .login-logo{
     margin:auto;
-    width:250px;
+    width:300px;
 }
 .logo{
-    width: 250px;
-    height:150px;
+    width: 283px;
+    height:200px;
 }
-/*关闭按钮*/
-.close{
-    width: 16px;
-    height: 10px;
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-}
+
 /*忘记密码*/
 .fotpass {
     position: absolute;
