@@ -12,8 +12,23 @@
 <body>
 
 <!-- 基本组件等待定义 -->
-<div th:fragment="component">
-    <p>基督信仰组件正在实现中</p>
+<div th:fragment="component" class="ui grid">
+    <div class="twelve wide column">
+        <h1>基督信仰</h1>
+
+
+        <h2>信仰简介</h2>
+        <p>
+            11
+        </p>
+
+
+
+        <h2><a  href="#" >更多信息</a></h2>
+    </div>
+    <div class="four wide column">
+        <div th:replace="fragment/navigation :: secondary"></div>
+    </div>
 </div>
 
 <script src="../../public/assets/js/joshua.min.js"></script>
