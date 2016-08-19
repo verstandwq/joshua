@@ -15,39 +15,73 @@
 <!-- 用户登录组件 -->
 <div th:fragment="login">
     <!-- 登录页面设置 -->
-    <div class="overlay"></div>
-    <div class="login-content">
+    <div class="ui grid">
+        <div class="two column row">
+            <div class="column login-column">
+                    <h1 class="ui yellow header">光之教堂,天使之音</h1>
+                    <p class="ui olive header">神爱世人、甚至将他的独生子赐给他们、叫一切信他的、不至灭亡、反得永生。 约翰福音 3:16</p>
+                <div class="ui ">
+                    <img class="logo" src="../../public/assets/images/meta/psbe.jpg" alt="基督教光音堂" style="width:400px; height:300px"/>
+                </div>
 
-        <!--logo-->
-        <div class="login-logo">
-            <img class="logo" src="../../public/assets/images/logo.gif" alt="基督教光音堂" />
+            </div>
+            <div class="column login-column ">
+                <form id="login" class="ui fluid form segment ">
+                    <div class="ui  menu login-menu grid login-menu two column row ">
+                        <div class=" item column " id="loginIn">
+                            <a class="" >登录 </a>
+                        </div>
+                        <div class=" item column" id="logonIn">
+                            <a class="" >注册 </a>
+                        </div>
+                    </div>
+                    <div class="login">
+                        <div class="field">
+                            <label th:utext="#{nav.username}">用户名</label>
+                            <div class="ui left icon input">
+                                <input type="text" name="userName" placeholder="用户名/邮箱/手机" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label th:utext="#{nav.password}">密码</label>
+                            <div class="ui left icon input">
+                                <input type="password" name="password" placeholder="密码" />
+                                <i class="lock icon"></i>
+                            </div>
+                        </div>
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" name="terms" />
+                            <label>下次自动登录</label>
+                        </div>
+                        <a href="" class="fotpass" name="terms">忘记密码</a>
+                        <div class="inline field login-btn">
+                            <button class="ui blue submit button" th:utext="#{nav.login}">登录 </button>
+                        </div>
+                    </div>
+                    <div class="logon">
+                        <div class="field">
+                            <label th:utext="#{nav.username}" >用户名</label>
+                            <input type="text" placeholder="请设置用户名"/>
+                        </div>
+                        <div class="field">
+                            <label th:utext="#{nav.email}">邮箱</label>
+                            <input type="email" placeholder="可用于登录或找回" />
+                        </div>
+                        <div class="field">
+                            <label th:utext="#{nav.password}">密码</label>
+                            <input type="password" placeholder="请设置登录密码"/>
+                        </div>
+                        <div class="inline field login-btn">
+                            <button class="ui blue submit button" th:utext="#{nav.logon}">注册 </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <form id="login" class="ui fluid form segment">
-            <div class="field">
-                <label  th:utext="#{nav.username}">用户名</label>
-                <div class="ui left icon input">
-                    <input type="text" name="userName" placeholder="用户名/邮箱/手机"/>
-                    <i class="user icon"></i>
-                </div>
-            </div>
-            <div class="field">
-                <label  th:utext="#{nav.password}">密码</label>
-                <div class="ui left icon input">
-                    <input type="password" name="password" placeholder="密码"/>
-                    <i class="lock icon"></i>
-                </div>
-            </div>
-            <div class="ui checkbox">
-                <input type="checkbox" tabindex="0" name="terms" />
-                <label>下次自动登录</label>
-            </div>
-            <a href="" class="fotpass" name="terms" >忘记密码</a>
-            <div class="inline field login-btn">
-                <button class="ui blue submit button" th:utext="#{nav.login}">登录 </button>
-            </div>
-        </form>
     </div>
 </div>
+
 <script src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>
