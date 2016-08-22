@@ -5,7 +5,7 @@ server:
   port: 1013
   compression:
     enabled: true
-    mime-types: application/json,application/xml,application/javascript,text/html,text/xml,text/plain,text/css
+    mime-types: application/json,application/xml,application/javascript,text/html,text/xml,text/plain,text/css,image/gif,image/jpeg,image/png,image/bmp
 
 spring:
   application:

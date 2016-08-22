@@ -1,17 +1,30 @@
 // 登录页面的弹出和关闭
-$(document).ready(function () {
-    $("#login").click(function () {
-        $(".overlay").css({display: "block"});
-        $(".login-content").css({display: "block"});
-    });
-    $("#close").click(function () {
-        $(".overlay").css({display: "none"});
-        $(".login-content").css({display: "none"});
-    });
-    $("#menu").find(".ui.dropdown.item").dropdown({on: "hover"});
-});
+
+// 登录注册标签切换
+$(document).ready(function(){
+    // 开始状态
+    $(".logon").hide();
+    $(".login").show();
+    $("#loginIn").addClass("active");
+    // 点击注册状态
+    $("#logonIn").click(function(){
+        $("#logonIn").addClass("active");
+        $("#loginIn").removeClass("active");
+        $(".login").hide();
+        $(".logon").show();
+    })
+    // 点击登录
+    $("#loginIn").click(function(){
+        $("#loginIn").addClass("active");
+        $("#logonIn").removeClass("active");
+        $(".logon").hide();
+        $(".login").show();
+    })
+})
+
+
 // 登录表单验证
-$(document).ready(function() {
+$(document).ready(function () {
 
     $('.ui.form').form({
         userName: {
@@ -37,14 +50,14 @@ $(document).ready(function() {
         onSuccess: submitForm
     });
 
-    $('.ui.form').submit(function(e) {
+    $('.ui.form').submit(function (e) {
         return false;
     });
     //checkbox init
     $('.ui.checkbox').checkbox();
 
+    $('.ui.dropdown').dropdown({on: 'hover'});
 });
-
 function submitForm() {
     alert('dd');
     var formData = $('.ui.form input').serializeArray(); //or .serialize();
@@ -54,3 +67,4 @@ function submitForm() {
         data: formData
     });
 }
+// 注册表单验证

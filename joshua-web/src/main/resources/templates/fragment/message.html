@@ -4,14 +4,37 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="utf-8"/>
     <title>基督教光音堂</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+    <link rel="stylesheet" href="../../websrc/css/message.css"/>
 </head>
 
 <body>
 <!-- 全局消息框基本组件，用于显示在每个页面导航栏下部，如果没有全局消息，或者全局消息已经过期，则不显示整个组件 -->
 <div th:fragment="primary">
-    <p>留言消息基本组件正在实现当中</p>
+    <div class="ui comments">
+        <div class="content">
+            <form class="ui reply form">
+                <div class="ui mini form">
+                    <div class="two fields">
+                        <div class="field">
+                            <label>邮箱</label>
+                            <input placeholder="joe@schmoe.com" type="email"/>
+                        </div>
+                        <div class="field">
+                            <label>手机</label>
+                            <input placeholder="手机号" type="text"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea></textarea>
+                </div>
+                <div class="ui primary submit labeled icon button"><i class="icon edit" ></i> 留言 </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="../../public/assets/js/joshua.min.js"></script>
