@@ -12,7 +12,7 @@ $(document).ready(function(){
         $("#loginIn").removeClass("active");
         $(".login").hide();
         $(".logon").show();
-    })
+    });
     // 点击登录
     $("#loginIn").click(function(){
         $("#loginIn").addClass("active");
@@ -20,7 +20,7 @@ $(document).ready(function(){
         $(".logon").hide();
         $(".login").show();
     })
-})
+});
 
 
 // 登录表单验证
