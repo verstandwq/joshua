@@ -68,3 +68,12 @@ function submitForm() {
     });
 }
 // 注册表单验证
+
+
+
+// 后台管理页面导航，折叠菜单设置
+$('.ui.accordion').accordion('refresh');
+
+
+
+
