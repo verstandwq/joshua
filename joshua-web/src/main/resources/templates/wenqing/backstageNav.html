@@ -11,58 +11,65 @@
 </head>
 
 <body>
-<div class="ui black big launch right attached fixed button">
-    <i class="content icon"></i>
-    <span class="text">菜单</span>
-</div>
 
-<div class="ui vertical inverted sticky menu fixed top">
-    <div class="item">
-        <a href="" class="ui logo icon "></a>
-        <a href="/">
-            <i class="user icon big"></i>
-            <b>用户名</b>
-        </a>
-    </div>
+<div class="ui vertical inverted sticky menu segment">
+
     <div class="ui inverted accordion">
         <div class="item">
-            <div class="title header"><i class="dropdown icon"></i> 用户管理 </div>
-            <div class=" menu">
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
+            <i class="content icon"></i>
+            <span class="text header">菜单</span>
+        </div>
+        <div class="item">
+            <a href="" class="ui logo icon "></a>
+            <a href="/">
+                <i class="user icon big"></i>
+                <b>用户名</b>
+            </a>
+        </div>
+        <div class="item">
+            <div class="title header active"><i class="dropdown icon"></i> 用户 </div>
+            <div class="active content">
+                <a href="/" class="item">用户权限管理</a>
+                <a href="/" class="item">用户管理</a>
             </div>
         </div>
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 用户管理 </div>
-            <div class="menu">
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
+            <div class=" title header"><i class="dropdown icon"></i> 文章 </div>
+            <div class="content">
+                <a href="/" class="item">文章编辑器</a>
+                <a href="/" class="item">未审批文章列表</a>
+                <a href="/" class="item">已发布文章列表</a>
+                <a href="/" class="item">未通过文章列表</a>
             </div>
         </div>
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 用户管理 </div>
-            <div class="menu">
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
+            <div class=" title header"><i class="dropdown icon"></i> 团契 </div>
+            <div class="content">
+                <a href="/" class="item">青年团契</a>
+                <a href="/" class="item">赞美队</a>
+                <a href="/" class="item">福音大使</a>
             </div>
         </div>
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 用户管理 </div>
-            <div class="menu">
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
+            <div class=" title header"><i class="dropdown icon"></i> 留言 </div>
+            <div class="content">
+                <a href="/" class="item">建议</a>
+                <a href="/" class="item">咨询</a>
+                <a href="/" class="item">代祷</a>
             </div>
         </div>
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 用户管理 </div>
-            <div class="menu">
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
-                <a href="/" class="item">权限管理</a>
+            <div class=" title header"><i class="dropdown icon"></i> 导航 </div>
+            <div class="content">
+                <a href="/" class="item">增加</a>
+                <a href="/" class="item">修改</a>
+            </div>
+        </div>
+        <div class="item">
+            <div class=" title header"><i class="dropdown icon"></i> 图片 </div>
+            <div class="content">
+                <a href="/" class="item">图片库</a>
+                <a href="/" class="item">图片上传</a>
             </div>
         </div>
     </div>
@@ -70,7 +77,11 @@
 </div>
 
 
-
-<script src="../../public/assets/js/joshua.min.js"></script>
+<script src="../../websrc/js/jquery.js"></script>
+<script src="../../websrc/js/semantic.js"></script>
+    <script>
+//        折叠菜单
+    $('.ui.accordion').accordion('refresh');
+</script>
 </body>
 </html>
