@@ -12,7 +12,7 @@ $(document).ready(function(){
         $("#loginIn").removeClass("active");
         $(".login").hide();
         $(".logon").show();
-    })
+    });
     // 点击登录
     $("#loginIn").click(function(){
         $("#loginIn").addClass("active");
@@ -20,7 +20,7 @@ $(document).ready(function(){
         $(".logon").hide();
         $(".login").show();
     })
-})
+});
 
 
 // 登录表单验证
@@ -68,3 +68,12 @@ function submitForm() {
     });
 }
 // 注册表单验证
+
+
+
+// 后台管理页面导航，折叠菜单设置
+$('.ui.accordion').accordion('refresh');
+
+
+
+
