@@ -1,5 +1,6 @@
 package org.gyt.web.model;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,7 +18,8 @@ public class Role {
     @Id
     private String name;
 
-    private List<Authority> authorities = new ArrayList<>();
+    @ElementCollection
+    private List<String> authorities = new ArrayList<>();
 
     public Role() {
     }
@@ -30,11 +32,11 @@ public class Role {
         this.name = name;
     }
 
-    public List<Authority> getAuthorities() {
+    public List<String> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
+    public void setAuthorities(List<String> authorities) {
         this.authorities = authorities;
     }
 }

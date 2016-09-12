@@ -1,9 +1,6 @@
 package org.gyt.web;
 
-import org.gyt.web.model.user.User;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,8 +10,6 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManagerFactory;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
