@@ -10155,8 +10155,8 @@ i.icon.contao:before {
 }
 
 i.icon.\35 00px:before {
-               content: "\f26e";
-             }
+  content: "\f26e";
+}
 
 i.icon.amazon:before {
   content: "\f270";

@@ -1,15 +1,16 @@
-package org.gyt.web.model.user;
+package org.gyt.web.model;
 
-import org.gyt.web.model.project.Project;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 用户实体
@@ -24,9 +25,6 @@ public class User implements UserDetails {
 
     @Min(8)
     private String password;
-
-    @Min(8)
-    private String passwordConfirm;
 
     @NotEmpty
     private String nickname;
@@ -50,16 +48,8 @@ public class User implements UserDetails {
 
     private String address;
 
-    /**
-     * 用户管理的团契
-     */
-    @ManyToMany()
-    @JoinTable(
-            name = "user_project",
-            joinColumns = @JoinColumn(name = "user_account", referencedColumnName = "account"),
-            inverseJoinColumns = @JoinColumn(name = "project_name", referencedColumnName = "projectName")
-    )
-    private Set<Project> hostProjects = new HashSet<Project>();
+    @OneToMany
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
@@ -73,17 +63,13 @@ public class User implements UserDetails {
         this.nickname = nickname;
     }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+
+        roles.forEach(role -> role.getAuthorities().forEach(authority -> grantedAuthorityList.add(new SimpleGrantedAuthority(authority))));
+
+        return grantedAuthorityList;
     }
 
     @Override
@@ -176,11 +162,11 @@ public class User implements UserDetails {
         this.address = address;
     }
 
-    public Set<Project> getHostProjects() {
-        return hostProjects;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setHostProjects(Set<Project> hostProjects) {
-        this.hostProjects = hostProjects;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
