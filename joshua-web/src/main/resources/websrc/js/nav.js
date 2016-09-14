@@ -58,6 +58,7 @@ $(document).ready(function () {
 
     $('.ui.dropdown').dropdown({on: 'hover'});
 });
+
 function submitForm() {
     alert('dd');
     var formData = $('.ui.form input').serializeArray(); //or .serialize();
