@@ -15,6 +15,7 @@
         <module>joshua-model</module>
         <module>joshua-security</module>
         <module>joshua-admin</module>
+        <module>joshua-api</module>
     </modules>
 
     <parent>
