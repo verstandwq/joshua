@@ -2,7 +2,8 @@
 导航栏基本组件，用于每个页面
 -->
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title>基督教光音堂</title>
@@ -88,9 +89,20 @@
             </div>
         </div>
 
-        <!--/* 登陆注册 */-->
-        <div class="item">
+        <div sec:authorize="not isAuthenticated()" class="item">
             <a class="ui inverted blue button" th:href="@{/login}" th:utext="#{nav.login}">登录</a>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="item">
+            <div class="ui inverted blue icon button">
+                <i class="user icon"></i> <span sec:authentication="name"></span>
+            </div>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="item">
+            <form th:action="@{/logout}" method="post">
+                <button th:type="submit" class="ui inverted blue button">退出</button>
+            </form>
         </div>
     </div>
 </nav>

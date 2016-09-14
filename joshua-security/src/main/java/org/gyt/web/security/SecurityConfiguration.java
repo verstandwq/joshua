@@ -5,6 +5,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * 安全配置
@@ -14,8 +16,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
@@ -49,13 +54,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/assets/**",
                         "/images/**"
                 ).permitAll()
-                .anyRequest().authenticated();
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .failureUrl("/login?error")
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/login?logout")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .failureUrl("/login?error")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login?logout")
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/403");
     }
 }
