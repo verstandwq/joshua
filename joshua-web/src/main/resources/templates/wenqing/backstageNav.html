@@ -9,7 +9,16 @@
     <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
     <style>
         .ui.vertical.menu {
-            height: 100%;
+            height: 100% !important;
+            position: fixed;
+        }
+        i.content.icon {
+            position: relative;
+            right: -105px;
+        }
+        .ui.dropdown .menu {
+            left: 60px;
+            top: 21px;
         }
     </style>
 </head>
@@ -19,55 +28,71 @@
 <div class="ui vertical inverted sticky menu segment">
 
     <div class="ui inverted accordion">
+
         <div class="item">
-            <i class="content icon"></i>
             <span class="text header">用户名</span>
+            <div class="ui dropdown right">
+                <i class="content icon"></i>
+                <div class="menu">
+                    <div class="item">我的信息</div>
+                    <div class="item">更改密码</div>
+                    <div class="item">切换账户</div>
+                    <div class="item">退出</div>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="item">
-            <div class="title header active"><i class="dropdown icon"></i> 用户 </div>
-            <div class="active content">
-                <a href="/" class="item">用户权限管理</a>
+            <div class="title header "><i class="dropdown icon"></i> 用户 </div>
+            <div class=" content">
                 <a href="/" class="item">用户管理</a>
+                <a href="/" class="item">系统管理员</a>
+                <a href="/" class="item">团契所有者</a>
+                <a href="/" class="item">团契管理员</a>
             </div>
+        </div>
+        <div class="item">
+            <div class=" title header"><i class="dropdown icon"></i> 角色管理 </div>
+
         </div>
         <div class="item">
             <div class=" title header"><i class="dropdown icon"></i> 文章 </div>
             <div class="content">
-                <a href="/" class="item">文章编辑器</a>
-                <a href="/" class="item">未审批文章列表</a>
-                <a href="/" class="item">已发布文章列表</a>
-                <a href="/" class="item">未通过文章列表</a>
+                <a href="/" class="item">我的文章<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">待审核文章<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">已发布文章<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">被拒文章<span class="ui red circular label">2</span></a>
             </div>
         </div>
         <div class="item">
             <div class=" title header"><i class="dropdown icon"></i> 团契 </div>
             <div class="content">
-                <a href="/" class="item">青年团契</a>
-                <a href="/" class="item">赞美队</a>
-                <a href="/" class="item">福音大使</a>
+                <a href="/" class="item">团契管理</a>
+                <a href="/" class="item">我的团契</a>
             </div>
         </div>
         <div class="item">
             <div class=" title header"><i class="dropdown icon"></i> 留言 </div>
             <div class="content">
-                <a href="/" class="item">建议</a>
-                <a href="/" class="item">咨询</a>
-                <a href="/" class="item">代祷</a>
+                <a href="/" class="item">我的留言<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">待分类留言<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">建议<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">咨询<span class="ui red circular label">2</span></a>
+                <a href="/" class="item">代祷<span class="ui red circular label">2</span></a>
             </div>
         </div>
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 导航 </div>
+            <div class=" title header"><i class="dropdown icon"></i> 静态页面 </div>
             <div class="content">
-                <a href="/" class="item">增加</a>
-                <a href="/" class="item">修改</a>
-            </div>
-        </div>
-        <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 图片 </div>
-            <div class="content">
-                <a href="/" class="item">图片库</a>
-                <a href="/" class="item">图片上传</a>
+                <a href="/" class="item">首页图片</a>
+                <a href="/" class="item">教堂简介</a>
+                <a href="/" class="item">事工报告</a>
+                <a href="/" class="item">每周讲道</a>
+                <a href="/" class="item">财务报告</a>
+                <a href="/" class="item">教堂婚礼</a>
+                <a href="/" class="item">主任牧师</a>
             </div>
         </div>
     </div>
@@ -79,7 +104,11 @@
 <script src="../../websrc/js/semantic.js"></script>
     <script>
 //        折叠菜单
+$(document).ready(function () {
     $('.ui.accordion').accordion('refresh');
+    $('.ui.dropdown').dropdown();
+})
+
 </script>
 </body>
 </html>
