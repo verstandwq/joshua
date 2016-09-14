@@ -11,5 +11,12 @@
 
     <artifactId>joshua-security</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.gyt.web</groupId>
+            <artifactId>joshua-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

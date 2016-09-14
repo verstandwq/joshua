@@ -1,15 +1,10 @@
 package org.gyt.web.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.Min;
+import javax.persistence.*;
 import java.util.*;
 
 /**
@@ -21,16 +16,14 @@ import java.util.*;
 public class User implements UserDetails {
 
     @Id
-    private String account;
+    private String username;
 
     private boolean locked;
 
     private boolean disabled;
 
-    @Min(8)
     private String password;
 
-    @NotEmpty
     private String nickname;
 
     private String telephone;
@@ -52,19 +45,10 @@ public class User implements UserDetails {
 
     private String address;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
     public User() {
-    }
-
-    public User(String account) {
-        this.account = account;
-    }
-
-    public User(String account, String nickname) {
-        this.account = account;
-        this.nickname = nickname;
     }
 
     @Override
@@ -83,7 +67,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return account;
+        return username;
     }
 
     @Override
@@ -114,12 +98,8 @@ public class User implements UserDetails {
         this.disabled = disabled;
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
