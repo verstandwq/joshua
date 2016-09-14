@@ -2,66 +2,13 @@
 input.search{
     width: 150px;
 }
+
 /*搜索框中icon位置*/
 .ui.icon.input>i.circular.icon {
     top: .2em !important;
     right: .3em !important;
 }
-/*登录界面样式设置*/
-.login-column{
-    max-width: 350px;
-    padding-top: 50px;
-    margin-left: 200px;
-}
-.login-menu {
-    margin: -14px -14px 22px !important;
-    border-radius: 0rem !important;
-    box-shadow: 0 0 0 0 !important;
-}
-.login-menu a {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    width: 121px;
-    cursor: pointer;
-}
-/*登录框*/
 
-.login-content {
-    background-color: #fff;
-    position: relative;
-    top: 20px;
-    left: 50%;
-    margin-left: -150px;
-    width: 319px;
-    /* height: 360px; */
-    /* border-radius: 10px; */
-    z-index: 99;
-    display: block;
-}
-
-/*登录注册按钮*/
-.login-btn {
-    position: relative;
-    top: 0;
-    left: 100px;
-}
-
-/*忘记密码*/
-.fotpass {
-    position: absolute;
-    right: 14px;
-    bottom: 60px;
-    font-size: 10px;
-}
-/*下次自动登录*/
-.ui.checkbox {
-    bottom: 10px;
-    left: 0;
-}
-.ui.checkbox label{
-    font-size: 10px;
-}
 /*侧导航*/
 .ui.vertical.menu {
     width: 10rem;
