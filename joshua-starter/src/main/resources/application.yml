@@ -5,7 +5,7 @@ server:
   port: 1013
   compression:
     enabled: true
-    mime-types: application/json,application/xml,application/javascript,text/html,text/xml,text/plain,text/css,image/gif,image/jpeg,image/png,image/bmp
+    mime-types: application/json,application/xml,application/javascript,text/html,text/xml,text/plain,text/css
 
 spring:
   application:
@@ -16,6 +16,8 @@ spring:
     username: gyt
     password: gyt123
     driverClassName: com.mysql.jdbc.Driver
+    test-on-borrow: true
+    validation-query: select 1
 
   jpa:
     database: MYSQL
