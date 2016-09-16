@@ -1,8 +1,11 @@
+<!--
+后台留言管理页面
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>留言管理</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
 </head>
 <body>
@@ -55,6 +58,7 @@
 
     </tbody>
     </table>
+    <!--查看弹出框内容-->
     <div class="ui small modal look">
         <div class="header">留言信息</div>
         <div class="content">
@@ -64,6 +68,7 @@
         </div>
 
     </div>
+    <!--操作弹出框内容-->
     <div class="ui small modal ads">
         <div class="header">留言归类</div>
         <div class="ui form content">
@@ -94,6 +99,7 @@
             <div class="ui negative button">取消</div>
         </div>
     </div>
+    <!--分页栏-->
     <div class="ui borderless menu">
         <a class="item">1</a>
         <a class="item">2</a>
@@ -106,17 +112,21 @@
 <script src="../../websrc/js/jquery.js"></script>
 <script src="../../websrc/js/semantic.js"></script>
 <script>
-    //       弹出留言信息
-    $('.ui.button.look').click(function () {
-        $('.ui.modal.look')
-                .modal('show')
-        ;
-    });
-    $('.ui.button.primary').click(function () {
-        $('.ui.modal.ads')
-                .modal('show')
-        ;
+    //      查看 弹出留言信息
+    $(document).ready(function () {
+        $('.ui.button.look').click(function () {
+            $('.ui.modal.look')
+                    .modal('show')
+            ;
+        });
+        //      操作 弹出留言信息
+        $('.ui.button.primary').click(function () {
+            $('.ui.modal.ads')
+                    .modal('show')
+            ;
+        })
     })
+
 </script>
 </body>
 </html>
