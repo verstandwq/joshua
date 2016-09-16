@@ -1,9 +1,6 @@
 package org.gyt.web.model;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +15,9 @@ public class Role {
     @Id
     private String name;
 
-    @ElementCollection
+    private boolean enable = true;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> authorities = new ArrayList<>();
 
     public Role() {
@@ -30,6 +29,14 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 
     public List<String> getAuthorities() {

@@ -5,7 +5,7 @@ import org.gyt.web.model.User;
 import java.util.List;
 
 /**
- * 用户API，提供一下接口
+ * 用户API，提供以下接口
  * - 创建用户（仅限注册用户时使用）
  * - 用户查询
  * - 用户批量查询

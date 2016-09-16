@@ -8,7 +8,6 @@
     <meta charset="UTF-8"/>
     <title>基督教光音堂</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
-    <link rel="stylesheet" href="../../../websrc/css/nav.css"/>
 </head>
 <body>
 
@@ -95,7 +94,7 @@
 
         <div sec:authorize="isAuthenticated()" class="item">
             <div class="ui inverted blue icon button">
-                <i class="user icon"></i> <span sec:authentication="name"></span>
+                <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
             </div>
         </div>
 

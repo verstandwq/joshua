@@ -7,12 +7,25 @@ package org.gyt.web.model;
 public enum Authority {
 
     /**
+     * 后台登录权限
+     * - 可以登录到后台
+     */
+    ROLE_ADMIN_LOGIN,
+
+    /**
      * 管理系统管理员权限：
      * - 创建系统管理员
      * - 锁定、解锁系统管理员
      * - 禁用、激活系统管理员
      */
     ROLE_MANAGE_SYSTEM_ADMIN,
+
+    /**
+     * 管理角色权限
+     * - 添加角色
+     * - 禁用角色
+     */
+    ROLE_MANAGE_SYSTEM_ROLE,
 
     /**
      * 管理静态页面权限：
@@ -87,4 +100,5 @@ public enum Authority {
      * - 发布留言信息
      */
     ROLE_SEND_MESSAGE
+
 }
