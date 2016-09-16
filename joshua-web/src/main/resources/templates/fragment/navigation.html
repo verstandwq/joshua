@@ -95,7 +95,7 @@
 
         <div sec:authorize="isAuthenticated()" class="item">
             <div class="ui inverted blue icon button">
-                <i class="user icon"></i> <span sec:authentication="name"></span>
+                <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
             </div>
         </div>
 

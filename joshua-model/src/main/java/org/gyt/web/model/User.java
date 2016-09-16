@@ -161,4 +161,20 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", locked=" + locked +
+                ", disabled=" + disabled +
+                ", nickname='" + nickname + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", address='" + address + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }
