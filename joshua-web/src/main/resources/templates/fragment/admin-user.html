@@ -12,6 +12,7 @@
 <body>
 
 <table th:fragment="table (items)" class="ui celled table">
+    <form class="ui admin user form" th:action="@{/}" th:object="${items}" method="post" style="display: none"></form>
     <thead>
     <tr>
         <th>用户名</th>
@@ -32,17 +33,17 @@
         <td th:if="${!item.isEnabled()}"><label class="ui red label">禁用</label></td>
         <td>
             <a class="ui tiny button" th:href="@{'/admin/user/' + ${item.username}}" target="_blank">查看</a>
-            <button data-username="${item.username}" th:if="${item.isAccountNonLocked()}"
+            <button th:attr="data-username=${item.username}" th:if="${item.isAccountNonLocked()}"
                     class="ui admin user lock tiny red button">锁定
             </button>
-            <button data-username="${item.username}" th:if="${not item.isAccountNonLocked()}"
+            <button th:attr="data-username=${item.username}" th:if="${not item.isAccountNonLocked()}"
                     class="ui admin user unlock tiny green button">解锁
             </button>
-            <button data-username="${item.username}" th:if="${item.isEnabled()}"
+            <button th:attr="data-username=${item.username}" th:if="${item.isEnabled()}"
                     class="ui admin user disable tiny red button">禁用
             </button>
-            <button data-username="${item.username}" th:if="${not item.isEnabled()}"
-                    class="ui admin user enalbe tiny green button">激活
+            <button th:attr="data-username=${item.username}" th:if="${not item.isEnabled()}"
+                    class="ui admin user enable tiny green button">激活
             </button>
         </td>
     </tr>
@@ -138,7 +139,7 @@
     </div>
 </div>
 
-<script src="../../websrc/js/jquery.js"></script>
-<script src="../../websrc/js/semantic.js"></script>
+<script src="../../websrc/js/lib-001-jquery.js"></script>
+<script src="../../websrc/js/lib-002-semantic.js"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@ module.exports = {
 
   filenames: {
     concatenatedCSS            : 'semantic.css',
-    concatenatedJS             : 'semantic.js',
+    concatenatedJS             : 'lib-002-semantic.js',
     concatenatedMinifiedCSS    : 'semantic.min.css',
     concatenatedMinifiedJS     : 'semantic.min.js',
     concatenatedRTLCSS         : 'semantic.rtl.css',

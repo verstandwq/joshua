@@ -28,7 +28,7 @@ Package.onUse(function(api) {
 
     // release
     'semantic.css',
-    'semantic.js'
+    'lib-002-semantic.js'
   ], 'client');
 
 });
