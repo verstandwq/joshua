@@ -22,59 +22,46 @@
     </div>
 
     <!--/* 光音堂导航 */-->
-    <div class="ui dropdown item inverted green button">
-        <span th:utext="#{nav.gyt.title}">光音堂</span>
+    <div class="ui dropdown item">
+        <span>光音堂</span>
         <div class="menu">
-            <a class="item" th:href="@{/about}" th:utext="#{nav.gyt.intro}">教堂简介</a>
-            <a class="item" th:href="@{/believe}" th:utext="#{nav.gyt.christian}">基督信仰</a>
-            <a class="item" th:href="@{/pastor}" th:utext="#{nav.gyt.poster}">主任牧师</a>
-            <a class="item" th:href="@{/contact}" th:utext="#{nav.gyt.contact}">联系我们</a>
+            <a class="item" th:href="@{/about}">教堂简介</a>
+            <a class="item" th:href="@{/pastor}">主任牧师</a>
+            <a class="item" th:href="@{/contact}">联系我们</a>
         </div>
     </div>
 
     <!--/* 信仰生活导航 */-->
-    <div class="ui dropdown item inverted green button">
-        <span th:utext="#{nav.believe.title}">信仰生活</span>
+    <div class="ui dropdown item">
+        <span>信仰生活</span>
         <div class="menu">
-            <a class="item" th:href="@{/newcomer}" th:utext="#{nav.believe.newcommer}">新人</a>
-            <a class="item" th:href="@{/worship}" th:utext="#{nav.believe.worship}">主日崇拜</a>
-            <a class="item" th:href="@{/group}" th:utext="#{nav.believe.group}">团契生活</a>
-            <a class="item" th:href="@{/sunday}" th:utext="#{nav.believe.sundayschool}">主日学</a>
-        </div>
-    </div>
-
-    <!--/* 主内服侍导航 */-->
-    <div class="ui dropdown item inverted green button">
-        <span th:utext="#{nav.service.title}">主内服侍</span>
-        <div class="menu">
-            <a class="item" th:href="@{/}" th:utext="#{nav.service.chord}">唱诗班</a>
-            <a class="item" th:href="@{/}" th:utext="#{nav.service.firstlove}">初爱敬拜赞美</a>
-            <a class="item" th:href="@{/}" th:utext="#{nav.service.voice}">音控组</a>
-            <a class="item" th:href="@{/}" th:utext="#{nav.service.video}">摄像组</a>
-            <a class="item" th:href="@{/}" th:utext="#{nav.service.gosple}">福音大使</a>
-            <a class="item" th:href="@{/}" th:utext="#{nav.service.visit}">探访组</a>
+            <a class="item" th:href="@{/believe}">基督信仰</a>
+            <a class="item" th:href="@{/newcomer}">新人</a>
+            <a class="item" th:href="@{/worship}">主日崇拜</a>
+            <a class="item" th:href="@{/sunday}">主日学</a>
+            <a class="item" th:href="@{/fellowship}">团契生活</a>
+            <a class="item" th:href="@{/service}">主内服侍</a>
         </div>
     </div>
 
     <!--/* 认识基督导航 */-->
-    <div class="ui dropdown item inverted green button">
-        <span th:utext="#{nav.knowChrist.title}">认识基督</span>
+    <div class="ui dropdown item">
+        <span>认识基督</span>
         <div class="menu">
-            <a class="item" th:href="@{/testimony}" th:utext="#{nav.knowChrist.sharing}">见证奉献</a>
-            <a class="item" th:href="@{/recommend}" th:utext="#{nav.knowChrist.article}">好文推荐</a>
-            <a class="item" th:href="@{/media}" th:utext="#{nav.knowChrist.media}">媒体资源</a>
+            <a class="item" th:href="@{/testimony}">见证奉献</a>
+            <a class="item" th:href="@{/recommend}">好文推荐</a>
+            <a class="item" th:href="@{/media}">媒体资源</a>
+            <a class="item" th:href="@{/bible}">在线圣经</a>
         </div>
     </div>
 
     <!--/* 家事园地导航 */-->
-    <div class="ui dropdown item inverted green button">
-        <span th:utext="#{nav.home.title}">家事园地</span>
+    <div class="ui dropdown item">
+        <span>家事园地</span>
         <div class="menu">
-            <a class="item" th:href="@{/preach}" th:utext="#{nav.home.preach}">每周讲道</a>
-            <a class="item" th:href="@{/report}" th:utext="#{nav.home.report}">事工报告</a>
-            <a class="item" th:href="@{/bible}" th:utext="#{nav.home.bible}">在线圣经</a>
-            <a class="item" th:href="@{/financial}" th:utext="#{nav.home.financial}">财务报告</a>
-            <a class="item" th:href="@{/wedding}" th:utext="#{nav.home.wedding}">教堂婚礼</a>
+            <a class="item" th:href="@{/report}">事工报告</a>
+            <a class="item" th:href="@{/financial}">财务报告</a>
+            <a class="item" th:href="@{/wedding}">教堂婚礼</a>
         </div>
     </div>
 
@@ -83,13 +70,13 @@
         <!--/* 搜索 */-->
         <div class="item">
             <div class="ui input focus icon">
-                <input class="search" type="text" th:placeholder="#{nav.search}"/>
+                <input class="search" type="text" th:placeholder="搜索"/>
                 <i class="circular search link icon"></i>
             </div>
         </div>
 
         <div sec:authorize="not isAuthenticated()" class="item">
-            <a class="ui inverted blue button" th:href="@{/login}" th:utext="#{nav.login}">登录</a>
+            <a class="ui inverted blue button" th:href="@{/login}">登录</a>
         </div>
 
         <div sec:authorize="isAuthenticated()" class="item">
