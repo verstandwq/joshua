@@ -99,31 +99,46 @@
     <div class="ui vertical menu">
         <div class="item">
             <div class="ui input focus icon">
-                <input class="search" type="text" placeholder="Search..."/>
+                <input class="search" type="text" th:placeholder="搜索"/>
                 <i class="circular search link icon"></i>
             </div>
         </div>
-        <a class="item">光音堂 </a>
-        <a class="item">聚会时间 </a>
-        <div class="item">教堂简介
+        <div class="item">
+            <span>光音堂</span>
             <div class="menu">
-                <a class="active item">基督信仰</a>
-                <a class="item">财务报告</a>
-                <a class="item">事工报告</a>
-                <a class="item">联系我们</a>
+                <a class="item" th:href="@{/about}">教堂简介</a>
+                <a class="item" th:href="@{/pastor}">主任牧师</a>
+                <a class="item" th:href="@{/contact}">联系我们</a>
             </div>
         </div>
-        <div class="item">团契活动
+        <div class="item">
+            <span>信仰生活</span>
             <div class="menu">
-                <a class="active item">青年团契</a>
-                <a class="item">夫妻团契</a>
-                <a class="item">未婚团契</a>
-                <a class="item">蒙恩团契</a>
-                <a class="item">长者团契</a>
+                <a class="item" th:href="@{/believe}">基督信仰</a>
+                <a class="item" th:href="@{/newcomer}">新人</a>
+                <a class="item" th:href="@{/worship}">主日崇拜</a>
+                <a class="item" th:href="@{/sunday}">主日学</a>
+                <a class="item" th:href="@{/fellowship}">团契生活</a>
+                <a class="item" th:href="@{/service}">主内服侍</a>
             </div>
         </div>
-        <a class="item">留言板</a>
-
+        <div class="item">
+            <span>认识基督</span>
+            <div class="menu">
+                <a class="item" th:href="@{/testimony}">见证奉献</a>
+                <a class="item" th:href="@{/recommend}">好文推荐</a>
+                <a class="item" th:href="@{/media}">媒体资源</a>
+                <a class="item" th:href="@{/bible}">在线圣经</a>
+            </div>
+        </div>
+        <div class="item">
+            <span>家事园地</span>
+            <div class="menu">
+                <a class="item" th:href="@{/report}">事工报告</a>
+                <a class="item" th:href="@{/financial}">财务报告</a>
+                <a class="item" th:href="@{/wedding}">教堂婚礼</a>
+            </div>
+        </div>
     </div>
 </div>
 <script src="../../public/assets/js/joshua.min.js"></script>
