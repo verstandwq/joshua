@@ -45,6 +45,13 @@ public interface UserService {
     List<User> get(int pageNumber, int pageSize, String order, String... sort);
 
     /**
+     * 返回所有用户信息
+     *
+     * @return 所有用户信息
+     */
+    List<User> getAll();
+
+    /**
      * 返回当前用户总数量，用来计算分页参数
      *
      * @return 当前用户总数量

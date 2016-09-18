@@ -1,0 +1,24 @@
+<!--
+后台布局组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="utf-8"/>
+    <title>后台布局</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+
+<body>
+
+<!-- 标题组件 -->
+<div th:fragment="header (title)" class="ui admin layout header">
+    <h1 class="ui center aligned header" th:utext="${title}">布局标题</h1>
+    <div class="ui dividing header"></div>
+</div>
+
+<script src="../../websrc/js/jquery.js"></script>
+<script src="../../websrc/js/semantic.js"></script>
+</body>
+</html>

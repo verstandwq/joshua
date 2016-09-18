@@ -1,3 +1,8 @@
 .ui.layout.header .dividing.header {
     margin-top: 1rem;
 }
+
+.ui.admin.layout.root {
+    margin-left: 15rem;
+    padding: 1rem;
+}

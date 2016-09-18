@@ -6,8 +6,8 @@ $(document).ready(function () {
  * 后台导航栏所需
  */
 $(document).ready(function () {
-    $('.admin .ui.accordion').accordion('refresh');
-    $('.admin .ui.dropdown').dropdown();
+    $('.ui.admin.menu .ui.accordion').accordion('refresh');
+    $('.ui.admin.menu .ui.dropdown').dropdown();
 });
 
 
