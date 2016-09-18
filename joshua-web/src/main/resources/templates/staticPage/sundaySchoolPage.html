@@ -40,6 +40,6 @@
     </div>
 </div>
 <div th:replace="fragment/footer :: footer">页脚</div>
-<script src="../../public/assets/js/joshua.min.js" th:src="@{/assets/js/joshua.min.js}"></script>
+<script th:replace="fragment/header :: script" src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>
