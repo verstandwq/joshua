@@ -47,7 +47,7 @@ public class User implements UserDetails {
 
     private Date createdDate = new Date();
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
     public User() {

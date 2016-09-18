@@ -123,16 +123,16 @@ public class Application {
         RoleService roleService = applicationContext.getBean(RoleService.class);
 
         for (int i = 0; i < 100; i++) {
-            String username = String.format("testUser%3d", i);
+            String username = String.format("testUser%03d", i);
 
             if (null == userService.get(username)) {
                 User user = new User();
                 user.setUsername(username);
                 user.setPassword("12345678");
-                user.setNickname(String.format("测试用户昵称%3d", i));
-                user.setName(String.format("测试用户名字%3d", i));
-                user.setTelephone(String.format("13588880%d", i));
-                user.setEmail(String.format("testUser%d@gyt.com", i));
+                user.setNickname(String.format("测试用户昵称%03d", i));
+                user.setName(String.format("测试用户名字%03d", i));
+                user.setTelephone(String.format("13588880%03d", i));
+                user.setEmail(String.format("testUser%03d@gyt.com", i));
 
                 if (new Random().nextInt(100) <= 3) {
                     user.getRoles().add(roleService.get("SYSTEM_ADMIN"));
