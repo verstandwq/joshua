@@ -1,9 +1,6 @@
-<!--
-一级页面 - 新人页面基本组件
--->
+<!--/* 新人 */-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
-<!--/* 引用基本组件header中的header，head中的元素内容会被基本组件替换掉，这里面的内容仅用于本地测试 */-->
 <head th:replace="fragment/header :: head">
     <meta charset="UTF-8"/>
     <title>光音堂</title>
@@ -11,19 +8,12 @@
 </head>
 <body>
 <div class="ui container">
-    <!-- 引用主要导航栏组件，同样，元素里面的内容仅供内地调试使用，实际在服务器中会被主要导航栏组件替换掉，以下同理 -->
     <div th:replace="fragment/navigation :: primary">导航栏</div>
 
-    <!-- 基本组件等待定义 -->
-    <div th:fragment="component" class="ui grid">
+    <div class="ui grid">
         <div class="twelve wide column">
-            <h1>我是新人</h1>
-            <div class="ui rounded fluid image">
-                <img src="../../public/assets/images/meta/4.jpg" th:src="@{/assets/images/meta/4.jpg}"
-                     style="width: 640px; height: 230px"/>
-            </div>
-            <p>
-                关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍,关于新人噼里啪啦的一段介绍。</p>
+            <div th:replace="fragment/layout :: header (title='新人')"></div>
+            <div th:replace="fragment/layout :: picture (src='meta/4.jpg')"></div>
 
             <h2>我们的聚会</h2>
             <p>Our Sunday meetings start at 9.30 am and again at 11.30 am. King's Arms Later runs three out of four
@@ -74,7 +64,6 @@
         </div>
     </div>
 </div>
-<!--/* 引用页脚组件 */-->
 <div th:replace="fragment/footer :: footer">页脚</div>
 <script src="../../public/assets/js/joshua.min.js" th:src="@{/assets/js/joshua.min.js}"></script>
 </body>

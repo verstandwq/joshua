@@ -17,7 +17,6 @@ input.search{
 /*导航高度100%*/
 .ui.vertical.menu {
     height: 100% !important;
-    position: fixed;
 }
 /*我的信息标签位置*/
 i.content.icon {

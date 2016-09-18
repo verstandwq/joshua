@@ -1,9 +1,6 @@
-<!--
-一级页面 - 教堂婚礼
--->
+<!--/* 教堂婚礼 */-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
-<!--/* 引用基本组件header中的header，head中的元素内容会被基本组件替换掉，这里面的内容仅用于本地测试 */-->
 <head th:replace="fragment/header :: head">
     <meta charset="UTF-8"/>
     <title>光音堂</title>
@@ -11,17 +8,13 @@
 </head>
 <body>
 <div class="ui container">
-    <!-- 引用主要导航栏组件，同样，元素里面的内容仅供内地调试使用，实际在服务器中会被主要导航栏组件替换掉，以下同理 -->
     <div th:replace="fragment/navigation :: primary">导航栏</div>
 
     <div class="ui grid">
         <div class="twelve wide column">
-            <h1>教堂婚礼</h1>
-            <div class="ui rounded fluid image">
-                <img src="../../public/assets/images/meta/marry.jpg" th:src="@{/assets/images/meta/marry.jpg}"
-                     style="width:600px; height:400px"/>
-            </div>
-            <p></p>
+            <div th:replace="fragment/layout :: header (title='教堂婚礼')"></div>
+            <div th:replace="fragment/layout :: picture (src='meta/marry.jpg')"></div>
+
             <h2>关于主题</h2>
             <p>Children have their own activities during the morning service in our King’s Kids groups, which are
                 designed for children from 0 to 11 years old.
@@ -48,7 +41,6 @@
         </div>
     </div>
 </div>
-<!--/* 引用页脚组件 */-->
 <div th:replace="fragment/footer :: footer">页脚</div>
 <script src="../../public/assets/js/joshua.min.js" th:src="@{/assets/js/joshua.min.js}"></script>
 </body>

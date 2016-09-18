@@ -1,9 +1,6 @@
-<!--
-一级页面 - 好文推荐页面基本组件
--->
+<!--/* 好文推荐 */-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
-<!--/* 引用基本组件header中的header，head中的元素内容会被基本组件替换掉，这里面的内容仅用于本地测试 */-->
 <head th:replace="fragment/header :: head">
     <meta charset="UTF-8"/>
     <title>光音堂</title>
@@ -11,41 +8,17 @@
 </head>
 <body>
 <div class="ui container">
-    <!-- 引用主要导航栏组件，同样，元素里面的内容仅供内地调试使用，实际在服务器中会被主要导航栏组件替换掉，以下同理 -->
     <div th:replace="fragment/navigation :: primary">导航栏</div>
 
-    <div class="ui raised segment">
-        <h1>好文推荐</h1>
-        <div class="ui grid">
-            <div class="three wide column">
-                <div class="ui horizontal divider">深度好文</div>
-                <div class="ui list">
-                    <div class="item">
-                        <i class="orange plus icon"></i>
-                        <div class="content"><a href="http://sanwen8.cn/p/2503JT9.html">成为圣洁的基督徒</a></div>
-                    </div>
-                    <div class="item">
-                        <i class="orange plus icon"></i>
-                        <div class="content"><a href="http://www.wtoutiao.com/p/18c18vq.html">基督教带给世界的进步和贡献值得每个人去尊重!</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="orange plus icon"></i>
-                        <div class="content"><a
-                                href="http://www.360doc.com/content/15/0612/02/22259600_477522047.shtml">基督徒的悔改</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="orange plus icon"></i>
-                        <div class="content"><a href="http://blog.sina.com.cn/s/blog_6d87e5cc0100zc0i.html">科学事实与基督教信仰：二者如何并存？【说说关于进化的问题】</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header (title='好文推荐')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
         </div>
     </div>
 </div>
-<!--/* 引用页脚组件 */-->
 <div th:replace="fragment/footer :: footer">页脚</div>
 <script src="../../public/assets/js/joshua.min.js" th:src="@{/assets/js/joshua.min.js}"></script>
 </body>
