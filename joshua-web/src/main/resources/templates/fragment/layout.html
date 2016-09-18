@@ -1,0 +1,26 @@
+<!--
+HTML 布局基本组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+<body>
+
+<!-- 标题组件 -->
+<div th:fragment="header (title)" class="ui layout header">
+    <h1 class="ui header" th:utext="${title}">布局标题</h1>
+    <div class="ui dividing header"></div>
+</div>
+
+<!-- 大图组件 -->
+<div th:fragment="picture (src)" class="ui rounded fluid image">
+    <img src="#" th:src="@{'/assets/images/' + ${src}}"/>
+</div>
+
+<script src="../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
