@@ -5,7 +5,12 @@
     <title>光音堂</title>
 </head>
 <body>
+
 <div th:replace="fragment/admin-nav :: primary">导航栏</div>
+
+<div class="ui admin layout root">
+    <div th:replace="fragment/admin-layout :: header('光音堂网站后台')">导航栏</div>
+</div>
 
 <script th:src="@{/assets/js/joshua.min.js}"></script>
 </body>

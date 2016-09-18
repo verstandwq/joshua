@@ -1,20 +1,5 @@
-/*设置导航栏搜索框宽度*/
-input.search {
-    width: 150px;
-}
-
-/*搜索框中icon位置*/
-.ui.icon.input > i.circular.icon {
-    top: .2em !important;
-    right: .3em !important;
-}
-
-/*侧导航*/
-.ui.vertical.menu {
-    width: 10rem;
-}
-
-/*导航高度100%*/
-.ui.vertical.menu {
-    height: 100% !important;
+.ui.admin.sticky.menu {
+    width: 15rem;
+    height: 100%;
+    overflow-y: auto;
 }

@@ -8,34 +8,20 @@
     <meta charset="utf-8"/>
     <title>后台导航</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
-    <style>
-        /*导航高度100%*/
-        .ui.vertical.menu {
-            height: 100% !important;
-            position: fixed;
-        }
-    </style>
 </head>
 
 <body>
-
-<nav th:fragment="primary" class="ui admin inverted vertical menu">
+<nav th:fragment="primary" class="ui admin inverted vertical sticky fixed menu">
     <div class="ui inverted accordion">
         <div class="item">
-            <div class="ui dropdown">
-                <i class="content icon"></i>
-                <div class="menu">
-                    <div class="item">我的信息</div>
-                    <div class="item">更改密码</div>
-                    <div class="item">切换账户</div>
-                    <div class="item">退出</div>
-                </div>
-            </div>
-            <span class="text header" sec:authentication="principal.nickname">用户名</span>
+            <h3 class="ui inverted header">
+                <i class="user icon"></i>
+                <div class="content" sec:authentication="principal.nickname">用户名</div>
+            </h3>
         </div>
 
         <div class="item" sec:authorize="hasRole('ROLE_MANAGE_STATIC_PAGE')">
-            <div class=" title header"><i class="dropdown icon"></i> 静态页面管理</div>
+            <div class="title header"><i class="dropdown icon"></i> 静态页面管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/static/home}">首页管理</a>
                 <a class="item" th:href="@{/admin/static/intro}">教堂简介</a>
@@ -66,7 +52,7 @@
         </div>
 
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 文章管理</div>
+            <div class="title header"><i class="dropdown icon"></i> 文章管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/article}">
                     我的文章<span class="ui primary left pointing label">0</span>
@@ -84,7 +70,7 @@
         </div>
 
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 团契管理</div>
+            <div class="title header"><i class="dropdown icon"></i> 团契管理</div>
             <div class="content">
                 <a class="item" sec:authorize="hasRole('ROLE_MANAGE_FELLOWSHIP')"
                    th:href="@{/admin/fellowship}">所有团契</a>
@@ -93,7 +79,7 @@
         </div>
 
         <div class="item" sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')">
-            <div class=" title header"><i class="dropdown icon"></i> 留言管理</div>
+            <div class="title header"><i class="dropdown icon"></i> 留言管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/message}">
                     所有<span class="ui primary left pointing label">0</span>
@@ -109,6 +95,15 @@
                 </a>
             </div>
         </div>
+
+        <div class="item">
+            <div class="title header"><i class="dropdown icon"></i> 我的信息</div>
+            <div class="content">
+                <a class="item" th:href="@{/admin/user/info}">我的资料</a>
+                <a class="item" th:href="@{/admin/user/password}">更改密码</a>
+                <a class="item" th:href="@{/admin/user/logout}">退出</a>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -116,8 +111,8 @@
 <script src="../../websrc/js/semantic.js"></script>
 <script>
     $(document).ready(function () {
-        $('.ui.accordion').accordion('refresh');
-        $('.ui.dropdown').dropdown();
+        $('.ui.admin.menu .ui.accordion').accordion('refresh');
+        $('.ui.admin.menu .ui.dropdown').dropdown();
     })
 </script>
 </body>
