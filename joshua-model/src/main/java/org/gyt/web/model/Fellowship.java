@@ -19,7 +19,7 @@ public class Fellowship {
     @Id
     private String name;
 
-    private boolean enable;
+    private boolean enable = true;
 
     private String displayName;
 

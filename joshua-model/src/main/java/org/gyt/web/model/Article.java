@@ -17,6 +17,8 @@ public class Article {
     @Id
     private Long id;
 
+    private boolean disable;
+
     private String title;
 
     @ManyToOne
@@ -53,6 +55,14 @@ public class Article {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isDisable() {
+        return disable;
+    }
+
+    public void setDisable(boolean disable) {
+        this.disable = disable;
     }
 
     public String getTitle() {

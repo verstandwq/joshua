@@ -5,7 +5,7 @@ import org.gyt.web.model.Fellowship;
 import java.util.List;
 
 /**
- * 团契API，提供一下接口
+ * 团契API，提供以下接口
  * - 查询所有团契
  * - 查询指定团契
  * - 创建团契
