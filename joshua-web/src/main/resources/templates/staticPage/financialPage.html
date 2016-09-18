@@ -1,22 +1,23 @@
 <!--
-一级页面 - 财务报告页面基本组件
+一级页面 - 财务报告
 -->
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
 <!--/* 引用基本组件header中的header，head中的元素内容会被基本组件替换掉，这里面的内容仅用于本地测试 */-->
 <head th:replace="fragment/header :: head">
     <meta charset="UTF-8"/>
     <title>光音堂</title>
     <link href="../../public/assets/css/joshua.min.css" rel="stylesheet"/>
 </head>
-
 <body>
+<div class="ui container">
+    <!-- 引用主要导航栏组件，同样，元素里面的内容仅供内地调试使用，实际在服务器中会被主要导航栏组件替换掉，以下同理 -->
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
 
-<!-- 基本组件等待定义 -->
-<div th:fragment="component">
-    <p>财务报告组件正在实现中</p>
+    <div>
+        <p>财务报告</p>
+    </div>
 </div>
-
 <!--/* 引用页脚组件 */-->
 <div th:replace="fragment/footer :: footer">页脚</div>
 <script src="../../public/assets/js/joshua.min.js" th:src="@{/assets/js/joshua.min.js}"></script>
