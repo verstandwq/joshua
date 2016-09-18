@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.ui.dropdown').dropdown({on: 'hover'});
+    $('.ui.menu .ui.dropdown').dropdown({on: 'hover'});
 });
 
 /**

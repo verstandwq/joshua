@@ -105,7 +105,7 @@
                     <div th:replace="fragment/admin-user-details :: roleTable(${item})">角色表格</div>
                 </div>
                 <div class="ui bottom attached segment">
-                    <button class="ui primary fluid button">添加角色</button>
+                    <button class="ui admin user add role primary fluid button">添加角色</button>
                 </div>
             </div>
             <div class="six wide column">
@@ -140,7 +140,29 @@
     </tbody>
 </table>
 
+<div th:fragment="modal (item)" class="ui admin user role add modal">
+    <div class="header" th:utext="'添加角色 - ' + ${item.username}">添加角色</div>
+    <div class="content">
+        <div class="ui selection fluid dropdown">
+            <i class="dropdown icon"></i>
+            <div class="default text">请选择角色</div>
+            <div class="menu">
+                <div th:each="role : ${roles}" class="item" th:attr="data-value=${role.name}" th:utext="${role.name}">
+                    角色
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive button">确定</button>
+        <button class="ui negative button">取消</button>
+    </div>
+</div>
+
 <script src="../../websrc/js/lib-001-jquery.js"></script>
 <script src="../../websrc/js/lib-002-semantic.js"></script>
+<script>
+    $(".ui.admin.user.role.add.modal .dropdown").dropdown();
+</script>
 </body>
 </html>

@@ -32509,7 +32509,7 @@ $(document).ready(function () {
     };
 
     var removeUserRole = function (username, role) {
-        if (confirm("确定要角色吗？")) {
+        if (confirm("确定要移除角色吗？")) {
             var formData = new FormData();
             formData.append("username", username);
             formData.append("role", role);
@@ -32523,18 +32523,60 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        alert("删除角色成功");
+                        alert("移除角色成功");
                         location.reload();
                     } else {
-                        console.error("删除角色失败");
+                        console.error("移除角色失败");
                     }
                 },
                 error: function () {
-                    console.error("删除角色失败");
+                    console.error("移除角色失败");
                 }
             });
         }
     };
+
+    var addUserRole = function (role) {
+        if (role) {
+            var formData = new FormData();
+            formData.append("username", $(".ui.admin.user.form input[name='username']").val());
+            formData.append("role", role);
+            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+
+            $.ajax({
+                url: "/api/role/add",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if (status) {
+                        alert("添加角色成功");
+                        location.reload();
+                    } else {
+                        console.error("添加角色失败");
+                    }
+                },
+                error: function () {
+                    console.error("添加角色失败");
+                }
+            });
+        } else {
+            alert("请选择角色");
+        }
+    };
+
+    $(".ui.admin.user.role.add.modal .dropdown").dropdown();
+
+    $(".ui.admin.user.role.add.modal").modal({
+        closeable: false,
+        onApprove: function () {
+            addUserRole($(".ui.admin.user.role.add.modal .ui.dropdown").dropdown("get value"));
+        },
+        onDeny: function () {
+            return true;
+        }
+    });
 
     $(".ui.admin.user.lock").on("click", function () {
         performUserOperation("lock", $(this).text().trim(), $(this).data("username"));
@@ -32555,13 +32597,17 @@ $(document).ready(function () {
     $(".ui.admin.user.remove.role").on("click", function () {
         removeUserRole($(this).data("username"), $(this).data("role"));
     });
+
+    $(".ui.admin.user.add.role.button").on("click", function () {
+        $(".ui.admin.user.role.add.modal").modal("show");
+    });
 });
 /**
  * Created by Administrator on 2016/9/18.
  */
 
 $(document).ready(function () {
-    $('.ui.dropdown').dropdown({on: 'hover'});
+    $('.ui.menu .ui.dropdown').dropdown({on: 'hover'});
 });
 
 /**
