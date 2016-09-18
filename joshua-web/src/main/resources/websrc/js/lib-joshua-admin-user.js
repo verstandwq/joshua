@@ -12,6 +12,8 @@ $(document).ready(function () {
                 url: "/api/user/" + url + "/" + username,
                 type: "post",
                 data: formData,
+                processData: false,
+                contentType: false,
                 success: function (status) {
                     if (status) {
                         alert(text + "用户成功");
@@ -23,7 +25,7 @@ $(document).ready(function () {
                 error: function () {
                     console.error(text + "用户失败");
                 }
-            })
+            });
         }
     };
 

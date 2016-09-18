@@ -11,6 +11,8 @@
 <div class="ui admin layout root">
     <div th:replace="fragment/admin-layout :: header('用户管理', ${subtitle})">布局标题</div>
     <div th:replace="fragment/admin-user :: table(${users})">用户表格</div>
+    <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">
+    </form>
 </div>
 
 <script th:src="@{/assets/js/joshua.js}"></script>

@@ -133,6 +133,7 @@ public class Application {
                 user.setName(String.format("测试用户名字%03d", i));
                 user.setTelephone(String.format("13588880%03d", i));
                 user.setEmail(String.format("testUser%03d@gyt.com", i));
+                user.setSex(new Random().nextInt(3));
 
                 if (new Random().nextInt(100) <= 3) {
                     user.getRoles().add(roleService.get("SYSTEM_ADMIN"));
