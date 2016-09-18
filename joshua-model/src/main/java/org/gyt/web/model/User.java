@@ -45,7 +45,7 @@ public class User implements UserDetails {
 
     private String address;
 
-    private Date createdDate;
+    private Date createdDate = new Date();
 
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
@@ -98,6 +98,14 @@ public class User implements UserDetails {
 
     public void setDisabled(boolean disabled) {
         this.disabled = disabled;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public boolean isDisabled() {
+        return disabled;
     }
 
     public void setUsername(String username) {

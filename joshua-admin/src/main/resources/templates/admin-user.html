@@ -9,7 +9,7 @@
 <div th:replace="fragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="fragment/admin-layout :: header('用户管理')">布局标题</div>
+    <div th:replace="fragment/admin-layout :: header('用户管理', ${subtitle})">布局标题</div>
     <div th:replace="fragment/admin-user :: table(${users})">用户表格</div>
 </div>
 
