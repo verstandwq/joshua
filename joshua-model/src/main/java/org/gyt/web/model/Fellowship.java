@@ -19,6 +19,10 @@ public class Fellowship {
     @Id
     private String name;
 
+    private boolean enable;
+
+    private String displayName;
+
     private Date createdDate;
 
     private User owner;
@@ -35,6 +39,22 @@ public class Fellowship {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public Date getCreatedDate() {
