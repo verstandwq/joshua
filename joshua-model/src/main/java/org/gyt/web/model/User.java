@@ -45,6 +45,8 @@ public class User implements UserDetails {
 
     private String address;
 
+    private Date createdDate;
+
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
@@ -152,6 +154,14 @@ public class User implements UserDetails {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Set<Role> getRoles() {

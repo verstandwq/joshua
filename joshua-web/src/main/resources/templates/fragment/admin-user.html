@@ -1,0 +1,39 @@
+<!--
+后台用户管理组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="utf-8"/>
+    <title>后台用户</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+<body>
+
+<table th:fragment="table (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>用户昵称</th>
+        <th>用户状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td th:colspan="3">当前还没有内容</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.username}"></td>
+        <td th:utext="${item.nickname}"></td>
+        <td th:if="${item.isAccountNonLocked() and item.isEnabled()}">正常</td>
+        <td th:if="${!item.isAccountNonLocked() and item.isEnabled()}">锁定</td>
+        <td th:if="${!item.isEnabled()}">禁用</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="../../websrc/js/jquery.js"></script>
+<script src="../../websrc/js/semantic.js"></script>
+</body>
+</html>
