@@ -31,12 +31,16 @@ public class AdminUserPageController {
 
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("users", userService.getAll());
+            modelAndView.addObject("subtitle", "全部用户");
         } else if (type.equalsIgnoreCase("system")) {
             modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("SYSTEM_ADMIN"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "系统管理员");
         } else if (type.equalsIgnoreCase("owner")) {
             modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FELLOWSHIP_OWNER"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "团契所有者");
         } else if (type.equalsIgnoreCase("admin")) {
             modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FELLOWSHIP_ADMIN"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "团契管理员");
         }
 
         return modelAndView;

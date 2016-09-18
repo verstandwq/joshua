@@ -13,12 +13,12 @@
 <body>
 
 <!-- 标题组件 -->
-<div th:fragment="header (title)" class="ui admin layout header">
+<div th:fragment="header (title, subtitle)" class="ui admin layout header">
     <h1 class="ui center aligned header" th:utext="${title}">布局标题</h1>
-    <div class="ui dividing header"></div>
+    <div class="ui horizontal divider" th:utext="${subtitle}">布局小标题</div>
 </div>
 
-<script src="../../websrc/js/jquery.js"></script>
-<script src="../../websrc/js/semantic.js"></script>
+<script src="../../websrc/js/lib-001-jquery.js"></script>
+<script src="../../websrc/js/lib-002-semantic.js"></script>
 </body>
 </html>

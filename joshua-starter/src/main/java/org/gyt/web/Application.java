@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Locale;
+import java.util.Random;
 
 /**
  * Nokia ChengDu Engine Team
@@ -26,6 +27,7 @@ public class Application {
 
         createDefaultRoles(applicationContext);
         createRootUser(applicationContext);
+        createTestUsers(applicationContext);
 
         Locale.setDefault(new Locale("zh_CN"));
     }
@@ -113,6 +115,43 @@ public class Application {
             userService.create(user);
 
             LOGGER.info(String.format("创建超级用户成功：%s", userService.get("administrator")));
+        }
+    }
+
+    private static void createTestUsers(ApplicationContext applicationContext) {
+        UserService userService = applicationContext.getBean(UserService.class);
+        RoleService roleService = applicationContext.getBean(RoleService.class);
+
+        for (int i = 0; i < 100; i++) {
+            String username = String.format("testUser%03d", i);
+
+            if (null == userService.get(username)) {
+                User user = new User();
+                user.setUsername(username);
+                user.setPassword("12345678");
+                user.setNickname(String.format("测试用户昵称%03d", i));
+                user.setName(String.format("测试用户名字%03d", i));
+                user.setTelephone(String.format("13588880%03d", i));
+                user.setEmail(String.format("testUser%03d@gyt.com", i));
+                user.setSex(new Random().nextInt(3));
+
+                if (new Random().nextInt(100) <= 3) {
+                    user.getRoles().add(roleService.get("SYSTEM_ADMIN"));
+                }
+
+                if (new Random().nextInt(100) <= 10) {
+                    user.getRoles().add(roleService.get("FELLOWSHIP_OWNER"));
+                }
+
+                if (new Random().nextInt(100) <= 30) {
+                    user.getRoles().add(roleService.get("FELLOWSHIP_ADMIN"));
+                }
+
+                user.getRoles().add(roleService.get("USER"));
+
+                userService.create(user);
+                LOGGER.info(String.format("创建测试用户成功：%s", userService.get(username)));
+            }
         }
     }
 }

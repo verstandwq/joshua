@@ -46,4 +46,13 @@ public class Role {
     public void setAuthorities(List<String> authorities) {
         this.authorities = authorities;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "name='" + name + '\'' +
+                ", enable=" + enable +
+                ", authorities=" + authorities +
+                '}';
+    }
 }
