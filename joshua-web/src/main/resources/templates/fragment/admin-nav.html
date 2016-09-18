@@ -40,11 +40,11 @@
             </div>
         </div>
 
-        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_SYSTEM_ADMIN')">
+        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_SYSTEM_ROLE')">
             <div class="title header "><i class="dropdown icon"></i> 用户管理</div>
             <div class=" content">
                 <a class="item" th:href="@{/admin/user}">所有用户</a>
-                <a class="item" th:href="@{/admin/user(type='system')}">系统管理员</a>
+                <a class="item" th:href="@{/admin/user(type='system')}" sec:authorize="hasRole('ROLE_MANAGE_SYSTEM_ADMIN')">系统管理员</a>
                 <a class="item" th:href="@{/admin/user(type='owner')}">团契所有者</a>
                 <a class="item" th:href="@{/admin/user(type='admin')}">团契管理员</a>
                 <a class="item" th:href="@{/admin/role}">角色管理</a>

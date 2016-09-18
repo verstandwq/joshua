@@ -2,7 +2,9 @@ package org.gyt.web.admin;
 
 import org.apache.commons.lang3.StringUtils;
 import org.gyt.web.api.service.UserService;
+import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,7 @@ public class AdminUserPageController {
     private UserService userService;
 
     @RequestMapping("/user")
-    public ModelAndView home(
+    public ModelAndView userTablePage(
             @RequestParam(required = false) String type
     ) {
         ModelAndView modelAndView = new ModelAndView("admin-user");
@@ -35,6 +37,23 @@ public class AdminUserPageController {
             modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FELLOWSHIP_OWNER"))).collect(Collectors.toList()));
         } else if (type.equalsIgnoreCase("admin")) {
             modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FELLOWSHIP_ADMIN"))).collect(Collectors.toList()));
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/user/{username}")
+    public ModelAndView userDetailsPage(
+            @PathVariable String username
+    ) {
+        ModelAndView modelAndView = new ModelAndView("admin-user-details");
+
+        User user = userService.get(username);
+
+        if (null == user) {
+            modelAndView.setViewName("404");
+        } else {
+            modelAndView.addObject("user", user);
         }
 
         return modelAndView;

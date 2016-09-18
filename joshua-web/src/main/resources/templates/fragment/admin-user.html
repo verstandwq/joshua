@@ -17,11 +17,12 @@
         <th>用户名</th>
         <th>用户昵称</th>
         <th>用户状态</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(items)}">
-        <td th:colspan="3">当前还没有内容</td>
+        <td th:colspan="4">当前还没有内容</td>
     </tr>
     <tr th:each="item : ${items}">
         <td th:utext="${item.username}"></td>
@@ -29,9 +30,15 @@
         <td th:if="${item.isAccountNonLocked() and item.isEnabled()}">正常</td>
         <td th:if="${!item.isAccountNonLocked() and item.isEnabled()}">锁定</td>
         <td th:if="${!item.isEnabled()}">禁用</td>
+        <td><a class="ui tiny button" th:href="@{'/admin/user/' + ${item.username}}" target="_blank">查看</a></td>
     </tr>
     </tbody>
 </table>
+
+<div th:fragment="details (item)" class="ui segment">
+    <div th:utext="${item.username}"></div>
+    <div th:utext="${item.nickname}"></div>
+</div>
 
 <script src="../../websrc/js/jquery.js"></script>
 <script src="../../websrc/js/semantic.js"></script>
