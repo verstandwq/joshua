@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
 
-    var performOperation = function (url, text, username) {
+    var performUserOperation = function (url, text, username) {
         if (confirm("确定要" + text + "用户 " + username + " 吗？")) {
             var formData = new FormData();
             formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
@@ -29,19 +29,51 @@ $(document).ready(function () {
         }
     };
 
+    var removeUserRole = function (username, role) {
+        if (confirm("确定要角色吗？")) {
+            var formData = new FormData();
+            formData.append("username", username);
+            formData.append("role", role);
+            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+
+            $.ajax({
+                url: "/api/role/remove",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if (status) {
+                        alert("删除角色成功");
+                        location.reload();
+                    } else {
+                        console.error("删除角色失败");
+                    }
+                },
+                error: function () {
+                    console.error("删除角色失败");
+                }
+            });
+        }
+    };
+
     $(".ui.admin.user.lock").on("click", function () {
-        performOperation("lock", $(this).text().trim(), $(this).data("username"));
+        performUserOperation("lock", $(this).text().trim(), $(this).data("username"));
     });
 
     $(".ui.admin.user.unlock").on("click", function () {
-        performOperation("unlock", $(this).text().trim(), $(this).data("username"));
+        performUserOperation("unlock", $(this).text().trim(), $(this).data("username"));
     });
 
     $(".ui.admin.user.disable").on("click", function () {
-        performOperation("disable", $(this).text().trim(), $(this).data("username"));
+        performUserOperation("disable", $(this).text().trim(), $(this).data("username"));
     });
 
     $(".ui.admin.user.enable").on("click", function () {
-        performOperation("enable", $(this).text().trim(), $(this).data("username"));
+        performUserOperation("enable", $(this).text().trim(), $(this).data("username"));
+    });
+
+    $(".ui.admin.user.remove.role").on("click", function () {
+        removeUserRole($(this).data("username"), $(this).data("role"));
     });
 });
