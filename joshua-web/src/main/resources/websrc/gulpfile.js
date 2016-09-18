@@ -28,7 +28,7 @@ gulp.task("minify-js", function () {
             ext: {
                 min: ".min.js"
             },
-            noSource: true
+            noSource: false
         }))
         .pipe(gulp.dest('../public/assets/js/'))
 });
