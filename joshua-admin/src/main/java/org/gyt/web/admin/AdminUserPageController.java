@@ -1,6 +1,7 @@
 package org.gyt.web.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class AdminUserPageController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping("/user")
     public ModelAndView userTablePage(
@@ -58,6 +62,7 @@ public class AdminUserPageController {
             modelAndView.setViewName("404");
         } else {
             modelAndView.addObject("user", user);
+            modelAndView.addObject("roles", roleService.get());
         }
 
         return modelAndView;

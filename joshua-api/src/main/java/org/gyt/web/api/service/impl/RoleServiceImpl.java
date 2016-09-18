@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -24,7 +25,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<Role> get() {
-        return roleRepository.findAll();
+        return roleRepository.findAll().stream().filter(role -> !role.getName().equals("ROOT")).collect(Collectors.toList());
     }
 
     @Override
