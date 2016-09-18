@@ -1,10 +1,10 @@
 /*设置导航栏搜索框宽度*/
-input.search{
+input.search {
     width: 150px;
 }
 
 /*搜索框中icon位置*/
-.ui.icon.input>i.circular.icon {
+.ui.icon.input > i.circular.icon {
     top: .2em !important;
     right: .3em !important;
 }
@@ -17,14 +17,4 @@ input.search{
 /*导航高度100%*/
 .ui.vertical.menu {
     height: 100% !important;
-}
-/*我的信息标签位置*/
-i.content.icon {
-    position: relative;
-    right: -105px;
-}
-/*我的信息下拉框位置*/
-.ui.dropdown .menu {
-    left: 60px;
-    top: 21px;
 }

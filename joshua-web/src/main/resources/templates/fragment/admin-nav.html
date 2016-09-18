@@ -14,30 +14,15 @@
             height: 100% !important;
             position: fixed;
         }
-
-        /*我的信息标签位置*/
-        i.content.icon {
-            position: relative;
-            right: -105px;
-        }
-
-        /*我的信息下拉框位置*/
-        .ui.dropdown .menu {
-            left: 60px;
-            top: 21px;
-        }
     </style>
 </head>
 
 <body>
 
-<nav th:fragment="primary" class="ui admin vertical inverted sticky menu segment">
-
+<nav th:fragment="primary" class="ui admin inverted vertical menu">
     <div class="ui inverted accordion">
-
         <div class="item">
-            <span class="text header" sec:authentication="principal.nickname">用户名</span>
-            <div class="ui dropdown right">
+            <div class="ui dropdown">
                 <i class="content icon"></i>
                 <div class="menu">
                     <div class="item">我的信息</div>
@@ -46,58 +31,82 @@
                     <div class="item">退出</div>
                 </div>
             </div>
+            <span class="text header" sec:authentication="principal.nickname">用户名</span>
         </div>
 
-        <div class="item">
-            <div class="title header "><i class="dropdown icon"></i> 用户</div>
+        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_STATIC_PAGE')">
+            <div class=" title header"><i class="dropdown icon"></i> 静态页面管理</div>
+            <div class="content">
+                <a class="item" th:href="@{/admin/static/home}">首页管理</a>
+                <a class="item" th:href="@{/admin/static/intro}">教堂简介</a>
+                <a class="item" th:href="@{/admin/static/pastor}">主任牧师</a>
+                <a class="item" th:href="@{/admin/static/believe}">基督信仰</a>
+                <a class="item" th:href="@{/admin/static/newbie}">新人</a>
+                <a class="item" th:href="@{/admin/static/worship}">主日崇拜</a>
+                <a class="item" th:href="@{/admin/static/fellowship}">团契生活</a>
+                <a class="item" th:href="@{/admin/static/service}">主内服侍</a>
+                <a class="item" th:href="@{/admin/static/testimony}">见证奉献</a>
+                <a class="item" th:href="@{/admin/static/recommend}">好文推荐</a>
+                <a class="item" th:href="@{/admin/static/media}">媒体资源</a>
+                <a class="item" th:href="@{/admin/static/report}">事工报告</a>
+                <a class="item" th:href="@{/admin/static/finalcial}">财务报告</a>
+                <a class="item" th:href="@{/admin/static/wedding}">教堂婚礼</a>
+            </div>
+        </div>
+
+        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_SYSTEM_ADMIN')">
+            <div class="title header "><i class="dropdown icon"></i> 用户管理</div>
             <div class=" content">
-                <a href="/" class="item">用户管理</a>
-                <a href="/" class="item">系统管理员</a>
-                <a href="/" class="item">团契所有者</a>
-                <a href="/" class="item">团契管理员</a>
-                <a href="/" class="item">角色管理</a>
+                <a class="item" th:href="@{/admin/user}">所有用户</a>
+                <a class="item" th:href="@{/admin/user(type='system')}">系统管理员</a>
+                <a class="item" th:href="@{/admin/user(type='owner')}">团契所有者</a>
+                <a class="item" th:href="@{/admin/user(type='admin')}">团契管理员</a>
+                <a class="item" th:href="@{/admin/role}">角色管理</a>
             </div>
         </div>
 
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 文章</div>
+            <div class=" title header"><i class="dropdown icon"></i> 文章管理</div>
             <div class="content">
-                <a href="/" class="item">我的文章<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">待审核文章<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">已发布文章<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">被拒文章<span class="ui red circular label">2</span></a>
+                <a class="item" th:href="@{/admin/article}">
+                    我的文章<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='audit')}">
+                    待审核文章<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='publish')}">
+                    已发布文章<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='reject')}">
+                    被拒文章<span class="ui primary left pointing label">0</span>
+                </a>
             </div>
         </div>
 
         <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 团契</div>
+            <div class=" title header"><i class="dropdown icon"></i> 团契管理</div>
             <div class="content">
-                <a href="/" class="item">团契管理</a>
-                <a href="/" class="item">我的团契</a>
+                <a class="item" sec:authorize="hasRole('ROLE_MANAGE_FELLOWSHIP')"
+                   th:href="@{/admin/fellowship}">所有团契</a>
+                <a class="item" th:href="@{/admin/user/fellowship}">我的团契</a>
             </div>
         </div>
 
-        <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 留言</div>
+        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')">
+            <div class=" title header"><i class="dropdown icon"></i> 留言管理</div>
             <div class="content">
-                <a href="/" class="item">我的留言<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">待分类留言<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">建议<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">咨询<span class="ui red circular label">2</span></a>
-                <a href="/" class="item">代祷<span class="ui red circular label">2</span></a>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class=" title header"><i class="dropdown icon"></i> 静态页面</div>
-            <div class="content">
-                <a href="/" class="item">首页图片</a>
-                <a href="/" class="item">教堂简介</a>
-                <a href="/" class="item">事工报告</a>
-                <a href="/" class="item">每周讲道</a>
-                <a href="/" class="item">财务报告</a>
-                <a href="/" class="item">教堂婚礼</a>
-                <a href="/" class="item">主任牧师</a>
+                <a class="item" th:href="@{/admin/message}">
+                    所有<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/message(type=advise)}">
+                    建议<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/message(type=question)}">
+                    咨询<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/message(type=suffrage)}">
+                    代祷<span class="ui primary left pointing label">0</span>
+                </a>
             </div>
         </div>
     </div>
@@ -106,12 +115,10 @@
 <script src="../../websrc/js/jquery.js"></script>
 <script src="../../websrc/js/semantic.js"></script>
 <script>
-    //        折叠菜单
     $(document).ready(function () {
         $('.ui.accordion').accordion('refresh');
         $('.ui.dropdown').dropdown();
     })
-
 </script>
 </body>
 </html>
