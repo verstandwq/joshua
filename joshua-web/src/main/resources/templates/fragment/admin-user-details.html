@@ -130,7 +130,7 @@
         <td th:colspan="4">该用户还没有任何角色</td>
     </tr>
     <tr th:each="role : ${item.roles}">
-        <td th:utext="${role.name}"></td>
+        <td th:utext="${role.displayName}"></td>
         <td>
             <button th:attr="data-username=${item.username}, data-role=${role.name}"
                     class="ui admin user remove role tiny red button">移除
@@ -147,7 +147,9 @@
             <i class="dropdown icon"></i>
             <div class="default text">请选择角色</div>
             <div class="menu">
-                <div th:each="role : ${roles}" class="item" th:attr="data-value=${role.name}" th:utext="${role.name}">
+                <div th:each="role : ${roles}" class="item"
+                     th:attr="data-value=${role.name}"
+                     th:utext="${role.displayName}">
                     角色
                 </div>
             </div>
