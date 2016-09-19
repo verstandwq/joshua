@@ -35,9 +35,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public boolean create(String name) {
+        return create(name, name);
+    }
+
+    @Override
+    public boolean create(String name, String displayName) {
         if (!StringUtils.isEmpty(name) && null == get(name)) {
             Role role = new Role();
             role.setName(name);
+            role.setDisplayName(displayName);
             roleRepository.save(role);
         }
         return false;

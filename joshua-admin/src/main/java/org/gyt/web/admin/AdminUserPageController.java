@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 /**
@@ -36,15 +37,27 @@ public class AdminUserPageController {
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("users", userService.getAll());
             modelAndView.addObject("subtitle", "全部用户");
-        } else if (type.equalsIgnoreCase("system")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("SYSTEM_ADMIN"))).collect(Collectors.toList()));
+        } else if (type.equalsIgnoreCase("ADMIN")) {
+            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("ADMIN"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "系统管理员");
-        } else if (type.equalsIgnoreCase("owner")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FELLOWSHIP_OWNER"))).collect(Collectors.toList()));
-            modelAndView.addObject("subtitle", "团契所有者");
-        } else if (type.equalsIgnoreCase("admin")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FELLOWSHIP_ADMIN"))).collect(Collectors.toList()));
+        } else if (type.equalsIgnoreCase("EDITOR")) {
+            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("EDITOR"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "网站编辑");
+        } else if (type.equalsIgnoreCase("FS_ADMIN")) {
+            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FS_ADMIN"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "团契管理员");
+        } else if (type.equalsIgnoreCase("RE_ADMIN")) {
+            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("RE_ADMIN"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "资源管理员");
+        } else if (type.equalsIgnoreCase("MEMBER")) {
+            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("MEMBER"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "团契成员");
+        } else if (type.equalsIgnoreCase("USER")) {
+            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("USER"))).collect(Collectors.toList()));
+            modelAndView.addObject("subtitle", "注册用户");
+        } else {
+            modelAndView.addObject("users", new ArrayList<>());
+            modelAndView.addObject("subtitle", "未知类型");
         }
 
         return modelAndView;

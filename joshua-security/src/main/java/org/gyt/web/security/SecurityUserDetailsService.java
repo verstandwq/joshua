@@ -22,9 +22,10 @@ public class SecurityUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.get(username);
-        if (user == null) {
+        if (user == null || user.isDisabled()) {
             throw new UsernameNotFoundException(String.format("can't found user: %s", username));
         }
+
         return user;
     }
 }
