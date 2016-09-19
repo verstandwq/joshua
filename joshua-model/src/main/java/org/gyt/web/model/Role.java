@@ -15,6 +15,8 @@ public class Role {
     @Id
     private String name;
 
+    private String displayName;
+
     private boolean enable = true;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -29,6 +31,14 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public boolean isEnable() {

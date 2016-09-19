@@ -57,7 +57,9 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
 
-        roles.forEach(role -> role.getAuthorities().forEach(authority -> grantedAuthorityList.add(new SimpleGrantedAuthority(authority))));
+        if (this.isAccountNonLocked()) {
+            roles.forEach(role -> role.getAuthorities().forEach(authority -> grantedAuthorityList.add(new SimpleGrantedAuthority(authority))));
+        }
 
         return grantedAuthorityList;
     }

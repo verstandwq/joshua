@@ -48,6 +48,15 @@ public interface RoleService {
     boolean create(String name);
 
     /**
+     * 创建角色，默认没有任何权限
+     *
+     * @param name        角色唯一名字
+     * @param displayName 角色显示名字
+     * @return 当且仅当角色不存在并且创建成功时返回true，否则返回false
+     */
+    boolean create(String name, String displayName);
+
+    /**
      * 添加权限到角色
      *
      * @param name      角色名字

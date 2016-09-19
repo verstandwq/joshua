@@ -27,8 +27,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_LOGIN')")
-                .antMatchers("/api/**").access("hasRole('ROLE_ADMIN_LOGIN')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_ACCESS')")
+                .antMatchers("/api/**").access("hasRole('ROLE_ADMIN_ACCESS')")
                 .antMatchers(
                         "/",
                         "/index",
@@ -36,6 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/bible",
                         "/believe",
                         "/contact",
+                        "/fellowship",
                         "/financial",
                         "/group",
                         "/about",
@@ -43,14 +44,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/media",
                         "/newcomer",
                         "/pastor",
-                        "/preach",
                         "/recommend",
                         "/report",
+                        "/service",
                         "/sunday",
                         "/testimony",
                         "/worship",
                         "/login",
-                        "/logon",
                         "/assets/**",
                         "/images/**"
                 ).permitAll()

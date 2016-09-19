@@ -36,66 +36,86 @@ public class Application {
         RoleService roleService = applicationContext.getBean(RoleService.class);
 
         if (null == roleService.get("ROOT")) {
-            roleService.create("ROOT");
-            roleService.add("ROOT", Authority.ROLE_ADMIN_LOGIN);
-            roleService.add("ROOT", Authority.ROLE_MANAGE_SYSTEM_ADMIN);
-            roleService.add("ROOT", Authority.ROLE_MANAGE_SYSTEM_ROLE);
+            roleService.create("ROOT", "超级用户");
+            roleService.add("ROOT", Authority.ROLE_ADMIN_ACCESS);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_USER_ROLE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_USER_STATUS);
             roleService.add("ROOT", Authority.ROLE_MANAGE_STATIC_PAGE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_NAVIGATION);
             roleService.add("ROOT", Authority.ROLE_MANAGE_NOTIFICATION);
             roleService.add("ROOT", Authority.ROLE_MANAGE_MESSAGE);
-            roleService.add("ROOT", Authority.ROLE_MANAGE_MEDIA_RESOURCE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_RESOURCE);
             roleService.add("ROOT", Authority.ROLE_MANAGE_FELLOWSHIP);
-            roleService.add("ROOT", Authority.ROLE_MANAGE_FELLOWSHIP_ADMIN);
-            roleService.add("ROOT", Authority.ROLE_PUBLISH_ARTICLE);
             roleService.add("ROOT", Authority.ROLE_MANAGE_ARTICLE);
-            roleService.add("ROOT", Authority.ROLE_DOWNLOAD_MEDIA);
+            roleService.add("ROOT", Authority.ROLE_DOWNLOAD_RESOURCE);
             roleService.add("ROOT", Authority.ROLE_SEND_MESSAGE);
 
             LOGGER.info(String.format("创建角色成功：%s", "ROOT"));
         }
 
-        if (null == roleService.get("SYSTEM_ADMIN")) {
-            roleService.create("SYSTEM_ADMIN");
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_ADMIN_LOGIN);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_SYSTEM_ROLE);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_STATIC_PAGE);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_NOTIFICATION);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_MESSAGE);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_MEDIA_RESOURCE);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_FELLOWSHIP);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_FELLOWSHIP_ADMIN);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_PUBLISH_ARTICLE);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_MANAGE_ARTICLE);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_DOWNLOAD_MEDIA);
-            roleService.add("SYSTEM_ADMIN", Authority.ROLE_SEND_MESSAGE);
+        if (null == roleService.get("ADMIN")) {
+            roleService.create("ADMIN", "系统管理员");
+            roleService.add("ROOT", Authority.ROLE_ADMIN_ACCESS);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_USER_ROLE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_USER_STATUS);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_STATIC_PAGE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_NAVIGATION);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_NOTIFICATION);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_MESSAGE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_RESOURCE);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_FELLOWSHIP);
+            roleService.add("ROOT", Authority.ROLE_MANAGE_ARTICLE);
+            roleService.add("ROOT", Authority.ROLE_DOWNLOAD_RESOURCE);
+            roleService.add("ROOT", Authority.ROLE_SEND_MESSAGE);
 
-            LOGGER.info(String.format("创建角色成功：%s", "SYSTEM_ADMIN"));
+            LOGGER.info(String.format("创建角色成功：%s", "ADMIN"));
         }
 
-        if (null == roleService.get("FELLOWSHIP_OWNER")) {
-            roleService.create("FELLOWSHIP_OWNER");
-            roleService.add("FELLOWSHIP_OWNER", Authority.ROLE_ADMIN_LOGIN);
-            roleService.add("FELLOWSHIP_OWNER", Authority.ROLE_MANAGE_FELLOWSHIP_ADMIN);
-            roleService.add("FELLOWSHIP_OWNER", Authority.ROLE_MANAGE_ARTICLE);
-            roleService.add("FELLOWSHIP_OWNER", Authority.ROLE_DOWNLOAD_MEDIA);
-            roleService.add("FELLOWSHIP_OWNER", Authority.ROLE_SEND_MESSAGE);
+        if (null == roleService.get("EDITOR")) {
+            roleService.create("EDITOR", "网站编辑");
+            roleService.add("EDITOR", Authority.ROLE_MANAGE_STATIC_PAGE);
+            roleService.add("EDITOR", Authority.ROLE_MANAGE_NAVIGATION);
+            roleService.add("EDITOR", Authority.ROLE_MANAGE_ARTICLE);
+            roleService.add("EDITOR", Authority.ROLE_MANAGE_MESSAGE);
+            roleService.add("EDITOR", Authority.ROLE_ADMIN_ACCESS);
+            roleService.add("EDITOR", Authority.ROLE_DOWNLOAD_RESOURCE);
+            roleService.add("EDITOR", Authority.ROLE_SEND_MESSAGE);
 
-            LOGGER.info(String.format("创建角色成功：%s", "FELLOWSHIP_OWNER"));
+            LOGGER.info(String.format("创建角色成功：%s", "EDITOR"));
         }
 
-        if (null == roleService.get("FELLOWSHIP_ADMIN")) {
-            roleService.create("FELLOWSHIP_ADMIN");
-            roleService.add("FELLOWSHIP_ADMIN", Authority.ROLE_ADMIN_LOGIN);
-            roleService.add("FELLOWSHIP_ADMIN", Authority.ROLE_MANAGE_ARTICLE);
-            roleService.add("FELLOWSHIP_ADMIN", Authority.ROLE_DOWNLOAD_MEDIA);
-            roleService.add("FELLOWSHIP_ADMIN", Authority.ROLE_SEND_MESSAGE);
+        if (null == roleService.get("FS_ADMIN")) {
+            roleService.create("FS_ADMIN", "团契管理员");
+            roleService.add("EDITOR", Authority.ROLE_MANAGE_FELLOWSHIP);
+            roleService.add("EDITOR", Authority.ROLE_ADMIN_ACCESS);
+            roleService.add("EDITOR", Authority.ROLE_DOWNLOAD_RESOURCE);
+            roleService.add("EDITOR", Authority.ROLE_SEND_MESSAGE);
 
-            LOGGER.info(String.format("创建角色成功：%s", "FELLOWSHIP_ADMIN"));
+            LOGGER.info(String.format("创建角色成功：%s", "FS_ADMIN"));
+        }
+
+        if (null == roleService.get("RE_ADMIN")) {
+            roleService.create("RE_ADMIN", "资源管理员");
+            roleService.add("RE_ADMIN", Authority.ROLE_MANAGE_RESOURCE);
+            roleService.add("RE_ADMIN", Authority.ROLE_ADMIN_ACCESS);
+            roleService.add("RE_ADMIN", Authority.ROLE_DOWNLOAD_RESOURCE);
+            roleService.add("RE_ADMIN", Authority.ROLE_SEND_MESSAGE);
+
+            LOGGER.info(String.format("创建角色成功：%s", "RE_ADMIN"));
+        }
+
+        if (null == roleService.get("MEMBER")) {
+            roleService.create("MEMBER", "团契成员");
+            roleService.add("MEMBER", Authority.ROLE_ADMIN_ACCESS);
+            roleService.add("MEMBER", Authority.ROLE_DOWNLOAD_RESOURCE);
+            roleService.add("MEMBER", Authority.ROLE_SEND_MESSAGE);
+
+            LOGGER.info(String.format("创建角色成功：%s", "MEMBER"));
         }
 
         if (null == roleService.get("USER")) {
-            roleService.create("USER");
-            roleService.add("USER", Authority.ROLE_DOWNLOAD_MEDIA);
+            roleService.create("USER", "注册用户");
+            roleService.add("USER", Authority.ROLE_DOWNLOAD_RESOURCE);
             roleService.add("USER", Authority.ROLE_SEND_MESSAGE);
 
             LOGGER.info(String.format("创建角色成功：%s", "USER"));
@@ -122,7 +142,7 @@ public class Application {
         UserService userService = applicationContext.getBean(UserService.class);
         RoleService roleService = applicationContext.getBean(RoleService.class);
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             String username = String.format("testUser%03d", i);
 
             if (null == userService.get(username)) {
@@ -136,15 +156,15 @@ public class Application {
                 user.setSex(new Random().nextInt(3));
 
                 if (new Random().nextInt(100) <= 3) {
-                    user.getRoles().add(roleService.get("SYSTEM_ADMIN"));
+                    user.getRoles().add(roleService.get("ADMIN"));
                 }
 
                 if (new Random().nextInt(100) <= 10) {
-                    user.getRoles().add(roleService.get("FELLOWSHIP_OWNER"));
+                    user.getRoles().add(roleService.get("EDITOR"));
                 }
 
                 if (new Random().nextInt(100) <= 30) {
-                    user.getRoles().add(roleService.get("FELLOWSHIP_ADMIN"));
+                    user.getRoles().add(roleService.get("FS_ADMIN"));
                 }
 
                 user.getRoles().add(roleService.get("USER"));
