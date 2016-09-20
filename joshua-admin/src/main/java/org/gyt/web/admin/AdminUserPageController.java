@@ -73,6 +73,7 @@ public class AdminUserPageController {
 
         if (null == user) {
             modelAndView.setViewName("404");
+            modelAndView.addObject("message", String.format("找不到用户：%s", username));
         } else {
             modelAndView.addObject("user", user);
             modelAndView.addObject("roles", roleService.get());

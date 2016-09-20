@@ -1,11 +1,10 @@
 package org.gyt.web.admin;
 
-import org.gyt.web.api.service.RoleService;
-import org.gyt.web.api.service.UserService;
+import org.gyt.web.api.service.FellowshipService;
+import org.gyt.web.model.Fellowship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,17 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminFellowshipPageController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private RoleService roleService;
+    private FellowshipService fellowshipService;
 
     @RequestMapping("/fellowship")
-    public ModelAndView tablePage(
-            @RequestParam(required = false) String type
-    ) {
+    public ModelAndView tablePage() {
         ModelAndView modelAndView = new ModelAndView("admin-fellowship");
-        modelAndView.addObject("subtitle", "小标题");
+        modelAndView.addObject("subtitle", "所有团契");
+        modelAndView.addObject("items", fellowshipService.getAll());
         return modelAndView;
     }
 
@@ -37,7 +32,16 @@ public class AdminFellowshipPageController {
             @PathVariable String name
     ) {
         ModelAndView modelAndView = new ModelAndView("admin-fellowship-details");
-        modelAndView.addObject("subtitle", name);
+
+        Fellowship fellowship = fellowshipService.get(name);
+
+        if (null == fellowship) {
+            modelAndView.setViewName("404");
+            modelAndView.addObject("message", String.format("找不到团契：%s", name));
+        } else {
+            modelAndView.addObject("item", fellowship);
+        }
+
         return modelAndView;
     }
 }
