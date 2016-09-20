@@ -5,7 +5,7 @@
 $(document).ready(function () {
 
     var performUserOperation = function (url, text, username) {
-        if (confirm("确定要" + text + "用户 " + username + " 吗？")) {
+        new Dialog(text + "用户", "确定要" + text + "用户 " + username + " 吗？", function () {
             var formData = new FormData();
             formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
             $.ajax({
@@ -16,21 +16,22 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        alert(text + "用户成功");
-                        location.reload();
+                        new Dialog("消息", text + "用户成功", function () {
+                            location.reload();
+                        }).message();
                     } else {
-                        console.error(text + "用户失败");
+                        new Dialog("消息", text + "用户失败").error();
                     }
                 },
                 error: function () {
-                    console.error(text + "用户失败");
+                    new Dialog("消息", text + "用户失败").error();
                 }
             });
-        }
+        }).confirm();
     };
 
     var removeUserRole = function (username, role) {
-        if (confirm("确定要移除角色吗？")) {
+        new Dialog("移除角色", "确定要移除角色吗？", function () {
             var formData = new FormData();
             formData.append("username", username);
             formData.append("role", role);
@@ -44,17 +45,18 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        alert("移除角色成功");
-                        location.reload();
+                        new Dialog("移除角色", "移除角色成功", function () {
+                            location.reload();
+                        }).message();
                     } else {
-                        console.error("移除角色失败");
+                        new Dialog("移除角色", "移除角色失败").error();
                     }
                 },
                 error: function () {
-                    console.error("移除角色失败");
+                    new Dialog("移除角色", "移除角色失败").error();
                 }
             });
-        }
+        }).confirm();
     };
 
     var addUserRole = function (role) {
@@ -72,14 +74,15 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        alert("添加角色成功");
-                        location.reload();
+                        new Dialog("添加角色", "添加角色成功", function () {
+                            location.reload();
+                        }).message();
                     } else {
-                        console.error("添加角色失败");
+                        new Dialog("添加角色", "添加角色失败").error();
                     }
                 },
                 error: function () {
-                    console.error("添加角色失败");
+                    new Dialog("添加角色", "添加角色失败").error();
                 }
             });
         } else {
