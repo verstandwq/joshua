@@ -35,8 +35,8 @@ public class AdminUserPageController {
         ModelAndView modelAndView = new ModelAndView("admin-user");
 
         if (StringUtils.isEmpty(type)) {
-            modelAndView.addObject("users", userService.getAll());
-            modelAndView.addObject("subtitle", "全部用户");
+            modelAndView.addObject("users", new ArrayList<>());
+            modelAndView.addObject("subtitle", "未知类型");
         } else if (type.equalsIgnoreCase("ADMIN")) {
             modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("ADMIN"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "系统管理员");
