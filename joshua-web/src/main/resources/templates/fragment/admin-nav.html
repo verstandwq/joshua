@@ -50,30 +50,12 @@
             </div>
         </div>
 
-        <div class="item">
-            <div class="title header"><i class="dropdown icon"></i> 文章管理</div>
+        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_NOTIFICATION')">
+            <div class="title header"><i class="dropdown icon"></i> 通知管理</div>
             <div class="content">
-                <a class="item" th:href="@{/admin/article}">
-                    我的文章<span class="ui primary left pointing label">0</span>
-                </a>
-                <a class="item" th:href="@{/admin/article(type='audit')}">
-                    待审核文章<span class="ui primary left pointing label">0</span>
-                </a>
-                <a class="item" th:href="@{/admin/article(type='publish')}">
-                    已发布文章<span class="ui primary left pointing label">0</span>
-                </a>
-                <a class="item" th:href="@{/admin/article(type='reject')}">
-                    驳回文章<span class="ui primary left pointing label">0</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="title header"><i class="dropdown icon"></i> 团契管理</div>
-            <div class="content">
-                <a class="item" sec:authorize="hasRole('ROLE_MANAGE_FELLOWSHIP')"
-                   th:href="@{/admin/fellowship}">所有团契</a>
-                <a class="item" th:href="@{/admin/user/fellowship}">我的团契</a>
+                <a class="item" th:href="@{/admin/notification}">所有通知</a>
+                <a class="item" th:href="@{/admin/notification(type='ACTIVATE')}">当前通知</a>
+                <a class="item" th:href="@{/admin/notification(type='EXPIRED')}">过期通知</a>
             </div>
         </div>
 
@@ -91,6 +73,33 @@
                 </a>
                 <a class="item" th:href="@{/admin/message(type=suffrage)}">
                     代祷<span class="ui primary left pointing label">0</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="title header"><i class="dropdown icon"></i> 团契管理</div>
+            <div class="content">
+                <a class="item" sec:authorize="hasRole('ROLE_MANAGE_FELLOWSHIP')"
+                   th:href="@{/admin/fellowship}">所有团契</a>
+                <a class="item" th:href="@{/admin/user/fellowship}">我的团契</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="title header"><i class="dropdown icon"></i> 文章管理</div>
+            <div class="content">
+                <a class="item" th:href="@{/admin/article}">
+                    我的文章<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='audit')}">
+                    待审核文章<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='publish')}">
+                    已发布文章<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='reject')}">
+                    驳回文章<span class="ui primary left pointing label">0</span>
                 </a>
             </div>
         </div>
