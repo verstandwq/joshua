@@ -50,6 +50,13 @@
             </div>
         </div>
 
+        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_NAVIGATION')">
+            <div class="title header"><i class="dropdown icon"></i> 导航管理</div>
+            <div class="content">
+                <a class="item" th:href="@{/admin/navigation}">一级导航管理</a>
+            </div>
+        </div>
+
         <div class="item" sec:authorize="hasRole('ROLE_MANAGE_NOTIFICATION')">
             <div class="title header"><i class="dropdown icon"></i> 通知管理</div>
             <div class="content">
@@ -65,13 +72,13 @@
                 <a class="item" th:href="@{/admin/message}">
                     所有<span class="ui primary left pointing label">0</span>
                 </a>
-                <a class="item" th:href="@{/admin/message(type=advise)}">
+                <a class="item" th:href="@{/admin/message(type=ADVISE)}">
                     建议<span class="ui primary left pointing label">0</span>
                 </a>
-                <a class="item" th:href="@{/admin/message(type=question)}">
+                <a class="item" th:href="@{/admin/message(type=QUESTION)}">
                     咨询<span class="ui primary left pointing label">0</span>
                 </a>
-                <a class="item" th:href="@{/admin/message(type=suffrage)}">
+                <a class="item" th:href="@{/admin/message(type=SUFFRAGE)}">
                     代祷<span class="ui primary left pointing label">0</span>
                 </a>
             </div>
@@ -92,13 +99,16 @@
                 <a class="item" th:href="@{/admin/article}">
                     我的文章<span class="ui primary left pointing label">0</span>
                 </a>
-                <a class="item" th:href="@{/admin/article(type='audit')}">
+                <a class="item" th:href="@{/admin/article(type='RAW')}">
+                    草稿箱<span class="ui primary left pointing label">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/article(type='AUDIT')}">
                     待审核文章<span class="ui primary left pointing label">0</span>
                 </a>
-                <a class="item" th:href="@{/admin/article(type='publish')}">
+                <a class="item" th:href="@{/admin/article(type='PUBLISH')}">
                     已发布文章<span class="ui primary left pointing label">0</span>
                 </a>
-                <a class="item" th:href="@{/admin/article(type='reject')}">
+                <a class="item" th:href="@{/admin/article(type='REJECT')}">
                     驳回文章<span class="ui primary left pointing label">0</span>
                 </a>
             </div>
