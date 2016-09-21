@@ -1,0 +1,82 @@
+<!--
+文章列表基本组件，用于显示文章列表
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+
+<body>
+<!-- 前端文章列表组件 -->
+<div th:fragment="table (title, items)" class="ui segment">
+    <h2 class="ui header" th:utext="${title}">文章列表标题</h2>
+    <div class="ui items">
+        <div class="item">
+            <a class="ui small image">
+                <img src="../../public/assets/images/placeholder.png"
+                     th:src="@{/assets/images/placeholder.png}"/>
+            </a>
+            <div class="content">
+                <a class="header">本周主日讲道内容已经火热出炉</a>
+                <div class="meta"><i class="calendar icon"></i> <span>2016年8月4日</span></div>
+                <div class="description">
+                    起初　神创造天地。地是空虚混沌．渊面黑暗．　神的灵运行在水面上。神说、要有光、就有了光。神看光是好的、就把光暗分开了。神称光为昼、称暗为夜．有晚上、有早晨、这是头一日。
+                </div>
+                <div class="extra"><i class="like icon"></i><span class="right floated">10万+</span><i
+                        class="right floated user icon"></i></div>
+            </div>
+        </div>
+        <div class="item">
+            <a class="ui small image">
+                <img src="../../public/assets/images/placeholder.png"
+                     th:src="@{/assets/images/placeholder.png}"/>
+            </a>
+            <div class="content">
+                <a class="header">暑假夏令营圆满成功</a>
+                <div class="meta"><i class="calendar icon"></i> <span>2016年8月3日</span></div>
+                <div class="description">
+                    起初　神创造天地。地是空虚混沌．渊面黑暗．　神的灵运行在水面上。神说、要有光、就有了光。神看光是好的、就把光暗分开了。神称光为昼、称暗为夜．有晚上、有早晨、这是头一日。
+                </div>
+                <div class="extra"><i class="like icon"></i><span class="right floated">500++</span><i
+                        class="right floated user icon"></i></div>
+            </div>
+        </div>
+        <div class="item">
+            <a class="ui small image">
+                <img src="../../public/assets/images/placeholder.png"
+                     th:src="@{/assets/images/placeholder.png}"/>
+            </a>
+            <div class="content">
+                <a class="header">内江关爱留守儿童活动成功结束</a>
+                <div class="meta"><i class="calendar icon"></i> <span>2016年8月2日</span></div>
+                <div class="description">
+                    起初　神创造天地。地是空虚混沌．渊面黑暗．　神的灵运行在水面上。神说、要有光、就有了光。神看光是好的、就把光暗分开了。神称光为昼、称暗为夜．有晚上、有早晨、这是头一日。
+                </div>
+                <div class="extra"><i class="like icon"></i><span class="right floated">13</span><i
+                        class="right floated user icon"></i></div>
+            </div>
+        </div>
+        <div class="item">
+            <a class="ui small image">
+                <img src="../../public/assets/images/placeholder.png"
+                     th:src="@{/assets/images/placeholder.png}"/>
+            </a>
+            <div class="content">
+                <a class="header">2016年8月见证分享会报名中</a>
+                <div class="meta"><i class="calendar icon"></i> <span>2016年8月1日</span></div>
+                <div class="description">
+                    起初　神创造天地。地是空虚混沌．渊面黑暗．　神的灵运行在水面上。神说、要有光、就有了光。神看光是好的、就把光暗分开了。神称光为昼、称暗为夜．有晚上、有早晨、这是头一日。
+                </div>
+                <div class="extra"><i class="like icon"></i><span class="right floated">8000+</span><i
+                        class="right floated user icon"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
