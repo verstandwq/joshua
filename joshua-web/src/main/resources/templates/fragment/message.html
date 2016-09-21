@@ -23,7 +23,7 @@
     <div class="ui error message" th:if="${publishFailed}">
         <div class="content">发布留言失败</div>
     </div>
-    <form class="ui message form" th:action="@{/admin/message}" method="post" th:object="${message}">
+    <form class="ui message form" th:action="@{/message/publish}" method="post" th:object="${message}">
         <div class="inline fields">
             <label for="type">请选择留言类型</label>
 

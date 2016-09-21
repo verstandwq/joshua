@@ -50,20 +50,4 @@ public class AdminMessagePageController {
 
         return modelAndView;
     }
-
-    @RequestMapping(value = "/message", method = RequestMethod.POST)
-    public ModelAndView publish(@ModelAttribute Message message) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/contactPage");
-
-        message.setCreatedDate(new Date());
-        message.setOwner((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-
-        if (messageService.create(message)) {
-            modelAndView.setViewName("redirect:/contact?publishSuccess=true");
-        } else {
-            modelAndView.setViewName("redirect:/contact?publishFailed=true");
-        }
-
-        return modelAndView;
-    }
 }
