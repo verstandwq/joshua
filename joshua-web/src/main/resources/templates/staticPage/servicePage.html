@@ -11,14 +11,20 @@
     <div th:replace="fragment/navigation :: primary">导航栏</div>
 
     <div class="ui grid">
-        <div class="twelve wide column">
+        <div class="thirteen wide column">
             <div th:replace="fragment/layout :: header (title='主内服侍')"></div>
+
+            <div class="ui cards">
+                <div th:replace="fragment/fellowship :: card('初爱敬拜赞美', '/assets/images/service/敬拜赞美.png', '“你们要赞美耶和华！…要用角声赞美他！鼓瑟弹琴赞美他！击鼓跳舞赞美他！用丝弦的乐器和箫的声音赞美他！…你们要赞美耶和华！” —— 诗篇150篇', 'firstlove')"></div>
+                <div th:replace="fragment/fellowship :: card('福音大使', '/assets/images/service/福音大使.png', '“如今长存的有信，有望，有爱；这三样，其中最大的是爱。”-哥林多前书13:13', 'fyds')"></div>
+            </div>
         </div>
-        <div class="four wide column">
+        <div class="three wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
         </div>
     </div>
 </div>
+
 <div th:replace="fragment/footer :: footer">页脚</div>
 <script th:replace="fragment/header :: script" src="../../public/assets/js/joshua.min.js"></script>
 </body>

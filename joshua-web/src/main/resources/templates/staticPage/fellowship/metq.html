@@ -1,0 +1,38 @@
+<!--/* 团契首页 - 初爱敬拜赞美临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('蒙恩团契')"></div>
+            <div th:replace="fragment/layout :: picture ('service/蒙恩团契.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('神能将各样的恩惠多多地加给你们，是你们凡事常常充足，能多行各样善事。如经上所记：“他施舍钱财，周济贫穷，他的仁义存到永远。”', '哥林多后书9章8，9')"></div>
+
+            <div th:replace="fragment/layout :: paragraph ('“蒙恩团契”是2015年5月由本堂工商界弟兄姊妹倡导发起的团契，现有团契成员共68人 。“蒙恩团契”坚持以圣经教导为唯一信仰根基，目的是要用上帝的话语来帮助工商界人士建立纯正的圣经观、世界价值观。实现信仰与事业双赢，得享今生与永恒的祝福。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('团契每周四晚上7：30—9：00聚会，透过查经、分享、见证，让肢体相互效力、彼此坚固信心，传播福音，牧养主羊，并通过各种特会及拟开展的公益活动，播撒上帝的爱。团契的弟兄姊妹互相联络，彼此相爱，在主里共同建造，并在工作和生活中成为光和盐，活出基督的样式，将荣耀归给上帝！  ')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('工商团契会员必须是受洗归主的基督徒，包括企业家、与工商界关系密切的专业人士，如律师、医生、作家、艺术家等，及其他具有良好社会影响力的人士，需有良好的见证。2.   会员申请需填写会员申请表，且有两名会员推荐，通过后才成为正式会员。团契规则：成为蒙恩团契成员后须尊重本会信仰，遵守本会制度，定期出席团契组织的一切活动，若因事因病不能出席须请假并说明缘由，连续三次无假未出席的，团契可以取消其成员资格。3.   欢迎礼拜四晚上出席团契聚会，出席三次以上就可以扫描团契微信群，成为团契成员。 ')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契时间')"></div>
+            <div th:replace="fragment/layout :: paragraph ('时间：每周四晚上7：30—9：00 地点：非马艺术馆三楼')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!--
+团契基本组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+<body>
+
+<!-- 团契卡片 -->
+<div th:fragment="card (name, logo, verse, link)" class="ui card">
+    <div class="content">
+        <div class="header" th:utext="${name}">团契名字</div>
+    </div>
+    <div class="ui image">
+        <a>
+            <img src="../../public/assets/images/service/敬拜赞美.png" th:src="@{${logo}}"/>
+        </a>
+    </div>
+    <div class="content">
+        <div class="description" th:utext="${verse}">团契介绍</div>
+    </div>
+    <div class="extra content">
+        <a class="ui animated fluid button" href="#" th:href="@{'/fellowship/' + ${link}}">
+            <div class="visible content">访问我们</div>
+            <div class="hidden content">
+                <i class="right arrow icon"></i>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<script src="../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

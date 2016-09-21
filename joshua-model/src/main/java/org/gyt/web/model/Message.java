@@ -1,8 +1,6 @@
 package org.gyt.web.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import java.util.Date;
 
@@ -15,15 +13,16 @@ import java.util.Date;
 public class Message {
 
     @Id
+    @GeneratedValue
     private Long id;
 
+    @OneToOne
     private User owner;
 
     private Date createdDate;
 
     private MessageType type;
 
-    @Max(100)
     private String content;
 
     /**

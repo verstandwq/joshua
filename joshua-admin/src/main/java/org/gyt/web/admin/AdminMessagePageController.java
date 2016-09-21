@@ -3,14 +3,16 @@ package org.gyt.web.admin;
 import org.apache.commons.lang3.StringUtils;
 import org.gyt.web.api.service.MessageService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.model.Message;
 import org.gyt.web.model.MessageType;
+import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 后台页面路由器
@@ -23,7 +25,7 @@ public class AdminMessagePageController {
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping("/message")
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
     public ModelAndView tablePage(
             @RequestParam(required = false) String type
     ) {

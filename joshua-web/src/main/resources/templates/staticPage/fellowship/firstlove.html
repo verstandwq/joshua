@@ -1,0 +1,42 @@
+<!--/* 团契首页 - 初爱敬拜赞美临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('初爱敬拜赞美')"></div>
+            <div th:replace="fragment/layout :: picture ('service/敬拜赞美.png')"></div>
+            <div th:replace="fragment/layout :: verse ('你们要赞美耶和华！…要用角声赞美他！鼓瑟弹琴赞美他！击鼓跳舞赞美他！用丝弦的乐器和箫的声音赞美他！…你们要赞美耶和华！', '诗篇150篇')"></div>
+
+            <div th:replace="fragment/layout :: paragraph ('光音堂初爱敬拜赞美队是由一群非音乐专业的弟兄姐妹，因着主的爱而组成的音乐服侍团契。“初爱”出自圣经启示录中2章第4至第5节，由耶稣教导的“不可离弃起初的爱心”之意而来，映示着赞美队弟兄姊妹不畏风雨，坚心服侍的心志。初爱敬拜赞美队每周分别在主日的午堂礼拜和周五晚上的青年团契服侍，由具备带领恩赐的弟兄姐妹轮流带领。每周主日礼拜后，赞美队成员将在下午一起查经，共同学习神的话语、分享见证和困难，并在此后进行下一周歌曲的练习。赞美队还会承接堂里的周年庆典服侍、重大节日服侍、音乐会服侍、教会肢体间的音乐交流等服侍，包括圣诞节、堂周年庆、复活节、受难节、感恩节等。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('赞美队一周有两项服侍任务： 1. 周日午堂礼拜：10:15到堂准备，10:45礼拜开始时服侍，12:00礼拜结束时服侍完毕。2. 周五晚青年团契：18:30到堂准备，19:30开始服侍，一般20:00服侍结束。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('小组查经')"></div>
+            <div th:replace="fragment/layout :: paragraph ('赞美队队员要求人人参加查经，以在主内成长进步。查经时间一般为周日下午13:30左右，在教堂以东50米的非马艺术馆三楼进行。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('日常练习')"></div>
+            <div th:replace="fragment/layout :: paragraph ('赞美队练习时间为周日下午查经后，一般从15:30开始。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('初爱赞美队欢迎有敬拜感动和音乐恩赐的弟兄姊妹加入，要求：1. 信主并受洗，且有良好的信仰基础和服侍心志；2. 在光音堂参加聚会至少连续三月以上；3. 具备基本音乐素养；4. 连续参加赞美队练习两个月以上。')"></div>
+
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

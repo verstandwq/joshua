@@ -30,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_ACCESS')")
                 .antMatchers("/admin/user/**").access("hasRole('ROLE_MANAGE_USER_STATUS')")
                 .antMatchers("/api/**").access("hasRole('ROLE_ADMIN_ACCESS')")
+                .antMatchers("/message/publish").access("hasRole('ROLE_SEND_MESSAGE')")
                 .antMatchers(
                         "/",
                         "/index",

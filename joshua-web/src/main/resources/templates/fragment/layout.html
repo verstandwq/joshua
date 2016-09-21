@@ -21,6 +21,20 @@ HTML 布局基本组件
     <img src="#" th:src="@{'/assets/images/' + ${src}}"/>
 </div>
 
+<!-- 圣经经句组件 -->
+<div th:fragment="verse (content, location)" class="ui raised padded black segment">
+    <p th:utext="${content}">神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。</p>
+    <a class="ui black right ribbon label" th:utext="${location}">约翰福音3:16</a>
+</div>
+
+<!-- 小标题组件 -->
+<h2 th:fragment="subheader (title)" class="ui header" th:utext="${title}">小标题</h2>
+
+<!-- 段落组件 -->
+<div th:fragment="paragraph (content)">
+    <p th:utext="${content}"></p>
+</div>
+
 <script src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>

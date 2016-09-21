@@ -1,0 +1,38 @@
+<!--/* 团契首页 - 初爱敬拜赞美临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('沙龙暖心团契')"></div>
+            <div th:replace="fragment/layout :: picture ('service/沙龙团契.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('但那等候耶和华的，必从新得力。他们必如鹰展翅上腾，他们奔跑却不困倦行走却不疲乏。', '以赛亚书40章31')"></div>
+
+            <div th:replace="fragment/layout :: paragraph ('曾经婚姻的经历让我们重新审视自己，上帝的大爱让我们成长、从新得力，我们愿在主爱中清心等候预备，见证主伟大的荣耀。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('本团契为每月的第二、第四周周一晚上7：30-9：00在非马艺术馆三楼聚会。我们以美敬拜、查经，以及弟兄姊妹个人见证分享在主爱里彼此关顾，彼此鼓励成长，一起共育属灵的需要。 ')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('1.	凡参加过团契聚会三次以上，均能加入“沙龙暖心驿站”微信群。  2.	本团契保护每位成员的隐私，个人分享及见证都只限于本团契内，不得外传。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契时间')"></div>
+            <div th:replace="fragment/layout :: paragraph ('时间：每月的第二、第四周周一晚上7：30-9：00 地点：非马艺术馆三楼')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
