@@ -1,6 +1,7 @@
 package org.gyt.web.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
 public class Notification {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String title;

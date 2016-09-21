@@ -1,6 +1,10 @@
 package org.gyt.web.controller;
 
+import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.model.Message;
+import org.gyt.web.model.MessageType;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,8 +44,17 @@ public class StaticPageController {
 
     /* 联系我们 */
     @RequestMapping("/contact")
-    public ModelAndView contactPage() {
-        return new ModelAndView("staticPage/contactPage");
+    public ModelAndView contactPage(
+            @RequestParam(required = false) boolean publishSuccess,
+            @RequestParam(required = false) boolean publishFailed
+    ) {
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/contactPage");
+        Message message = new Message();
+        message.setType(MessageType.SUFFRAGE);
+        modelAndView.addObject("message", message);
+        modelAndView.addObject("publishSuccess", publishSuccess);
+        modelAndView.addObject("publishFailed", publishFailed);
+        return modelAndView;
     }
 
     /* 团契介绍 */

@@ -1,6 +1,7 @@
 package org.gyt.web.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 public class SecondaryNavItem {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String name;

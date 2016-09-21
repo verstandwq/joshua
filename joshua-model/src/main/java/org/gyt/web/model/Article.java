@@ -15,6 +15,7 @@ import java.util.Date;
 public class Article {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private boolean disable;

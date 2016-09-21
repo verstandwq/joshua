@@ -32727,6 +32727,17 @@ Dialog.prototype.confirm = function () {
     this.modal.modal("show");
 };
 $(document).ready(function () {
+    $(".ui.message.form .ui.radio.checkbox").checkbox();
+});
+
+
+
+
+
+
+
+
+$(document).ready(function () {
     $('.ui.menu .ui.dropdown').dropdown({on: 'hover'});
 });
 
