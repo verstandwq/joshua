@@ -1,0 +1,21 @@
+<!--
+主日崇拜基本组件，用于显示崇拜信息
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+
+<body>
+<!-- 用户登录组件 -->
+<div th:fragment="section (title, verse, location)" class="ui segment">
+    <h2 class="ui center aligned header" th:utext="${title}">崇拜标题</h2>
+    <div th:replace="fragment/layout :: verse (${verse}, ${location})"></div>
+</div>
+
+<script src="../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
