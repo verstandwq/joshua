@@ -1,0 +1,39 @@
+<!--/* 团契首页 - 初爱敬拜赞美临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('青年团契')"></div>
+            <div th:replace="fragment/layout :: picture ('service/青年团契.png')"></div>
+            <div th:replace="fragment/layout :: verse ('少壮的狮子还缺食忍饿，但寻求耶和华的，什么好处都不缺', '诗篇34：10')"></div>
+
+            <div th:replace="fragment/layout :: paragraph ('光音堂青年团契主要聚会人群由18至45岁，青年基督徒、慕道友、以及各行各业的组成。团契根据圣经《希伯来书》10章25节教导—“你们不可停止聚会，好像那些停止惯了的人，倒要彼此劝勉”为原则，为社会主要贡献群体的青年人提供一个相互关爱、劝勉、交流以及学习的团契。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('聚会时间')"></div>
+            <div th:replace="fragment/layout :: paragraph ('每周五 19：30 – 21：30')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('聚会流程')"></div>
+            <div th:replace="fragment/layout :: paragraph ('1. 敬拜赞美           2. 欢迎新人           3. 经文或主题分享           4. 分组讨论')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('特殊活动')"></div>
+            <div th:replace="fragment/layout :: paragraph ('1.在复活节等基督教重要节日中，光音堂圣乐团将举办不同类型的音乐会。           2.每月第四个周五举办见证赞美会    ')"></div>
+
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

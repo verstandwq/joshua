@@ -1,0 +1,36 @@
+<!--/* 团契首页 - 初爱敬拜赞美临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('福音大使')"></div>
+            <div th:replace="fragment/layout :: picture ('service/福音大使.png')"></div>
+            <div th:replace="fragment/layout :: verse ('如今长存的有信，有望，有爱；这三样，其中最大的是爱。', '哥林多前书13:13')"></div>
+
+            <div th:replace="fragment/layout :: paragraph ('福音大使是由一批稳定在光音堂聚会弟兄姊妹志愿组成的服侍团队。主要的服侍内容是：教会里新生命接待和传福音。 对来聚会的弟兄姊妹尤其是第一次来聚会的未信者/慕道友/基督徒，提供教会的初步介绍、导引和个别帮助，传递神的爱。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('1.	轮班在周日的两堂主日礼拜服侍。第一堂服侍人员08:25达到教会，服侍到礼拜结束；第二堂服侍人员10:10到达教会，服侍到礼拜结束。2.	轮班周五青年团契做新人接待和服务工作。分组讨论时服侍人员在新人组做接待工作。3.	在教会的一些大型活动（如复活节，圣诞节等）做接待和服侍工作')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('1.	已信主受洗且对新生命/传福音有负担和感动弟兄姊妹都可报名加入。  2.	已信主未受洗，但有固定的读经/祷告/聚会生活，并预备受洗的弟兄姊妹，可报名加入。   ')"></div>
+
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

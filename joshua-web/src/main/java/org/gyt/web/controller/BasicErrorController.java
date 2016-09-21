@@ -36,6 +36,11 @@ public class BasicErrorController implements ErrorController {
             modelAndView.addObject("timestamp", errors.get("timestamp"));
             modelAndView.addObject("message", errors.get("message"));
             modelAndView.addObject("path", errors.get("path"));
+        } else if (errors.get("status").equals(500)) {
+            modelAndView.addObject("exception", errors.get("exception"));
+            modelAndView.addObject("message", errors.get("message"));
+            modelAndView.addObject("trace", errors.get("trace"));
+            modelAndView.addObject("path", errors.get("path"));
         }
 
         return modelAndView;

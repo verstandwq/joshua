@@ -18,10 +18,6 @@ public class FellowshipPageController {
     public ModelAndView getFellowshipHomePage(@PathVariable String name) {
         ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/fellowship/" + name);
 
-        if (modelAndView.getModel().isEmpty()) {
-            modelAndView = ModelAndViewUtils.newModelAndView("404");
-            modelAndView.addObject("message", String.format("没有找到团契%s", name));
-        }
 
         return modelAndView;
     }
