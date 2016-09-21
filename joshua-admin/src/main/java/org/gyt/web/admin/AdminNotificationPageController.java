@@ -1,13 +1,16 @@
 package org.gyt.web.admin;
 
-import org.gyt.web.api.service.RoleService;
-import org.gyt.web.api.service.UserService;
+import org.apache.commons.lang3.StringUtils;
+import org.gyt.web.api.service.NotificationService;
+import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
 
 /**
  * 后台页面路由器
@@ -18,26 +21,28 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminNotificationPageController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private RoleService roleService;
+    private NotificationService notificationService;
 
     @RequestMapping("/notification")
     public ModelAndView tablePage(
             @RequestParam(required = false) String type
     ) {
-        ModelAndView modelAndView = new ModelAndView("admin-notification");
-        modelAndView.addObject("subtitle", type);
-        return modelAndView;
-    }
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-notification");
 
-    @RequestMapping("/notification/{id}")
-    public ModelAndView detailsPage(
-            @PathVariable String id
-    ) {
-        ModelAndView modelAndView = new ModelAndView("admin-notification-details");
-        modelAndView.addObject("subtitle", id);
+        if (StringUtils.isEmpty(type)) {
+            modelAndView.addObject("items", notificationService.getAll());
+            modelAndView.addObject("subtitle", "所有通知");
+        } else if (type.equalsIgnoreCase("ACTIVATE")) {
+            modelAndView.addObject("items", notificationService.getActivate());
+            modelAndView.addObject("subtitle", "已激活通知");
+        } else if (type.equalsIgnoreCase("EXPIRED")) {
+            modelAndView.addObject("items", notificationService.getExpired());
+            modelAndView.addObject("subtitle", "已过期通知");
+        } else {
+            modelAndView.addObject("items", new ArrayList<>());
+            modelAndView.addObject("subtitle", "未知类型");
+        }
+
         return modelAndView;
     }
 }

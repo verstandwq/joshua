@@ -1,11 +1,9 @@
 package org.gyt.web.admin;
 
-import org.gyt.web.api.service.RoleService;
-import org.gyt.web.api.service.UserService;
+import org.gyt.web.api.service.NavigationService;
+import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,17 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminNavigationPageController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
-    private RoleService roleService;
+    private NavigationService navigationService;
 
     @RequestMapping("/navigation")
-    public ModelAndView tablePage(
-            @RequestParam(required = false) String type
-    ) {
-        ModelAndView modelAndView = new ModelAndView("admin-navigation");
-        modelAndView.addObject("subtitle", "小标题");
+    public ModelAndView primaryPage() {
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-navigation");
+        modelAndView.addObject("subtitle", "导航栏管理");
+        modelAndView.addObject("items", navigationService.getAll());
         return modelAndView;
     }
 }
