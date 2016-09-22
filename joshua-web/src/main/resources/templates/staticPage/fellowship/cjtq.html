@@ -1,0 +1,41 @@
+<!--/* 团契首页 - 查经团契临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('查经团契')"></div>
+            <div th:replace="fragment/layout :: picture ('service/查经团契.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('我们素常彼此谈论，以为甘甜，我们与群众在神的殿中同行。', '诗55:14')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契介绍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('弟兄姊妹通过查经学习，可以更加认识真理，更加明白神的话语，能提高属灵生命的成长，也能彼此交通经文带来的思考。团契按顺序查考圣经，一步一步学习神的话语，从神的话语中看见神要给我们的启示。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契规则')"></div>
+            <div th:replace="fragment/layout :: paragraph ('鼓励大家自己思考圣经，分享神的话语给个人带来的感动，并且怎样把神的话语活在生活中，让信仰和生活结合起来。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('如何加入团契')"></div>
+            <div th:replace="fragment/layout :: paragraph ('在查经时间可以直接参加。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('参加者要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('基督徒或非基督徒都可参加。')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

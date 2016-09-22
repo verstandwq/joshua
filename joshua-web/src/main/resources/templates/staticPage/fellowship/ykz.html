@@ -1,0 +1,41 @@
+<!--/* 团契首页 - 音控组临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('音控组')"></div>
+            <div th:replace="fragment/layout :: picture ('service/音控组.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('两个人总比一个人好，因为二人劳碌同得美好的果效。若是跌倒，这人可以扶起他的同伴；若是孤身跌倒，没有别人扶他起来，这人就有祸了！再者，二人同睡，就都暖和；一人独睡，怎能暖和呢？有人攻胜孤身一人，若有二人便能敌挡他；三股合成的绳子不容易折断。', '传道书4 : 9-12')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('音控组介绍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('音控组的成员是一群业余时间参与服侍，来自不同的行业，有不同的工作休息时间，彼此分担，共同参与事工服侍的弟兄姊妹和慕道友。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('音控组的职责和使命')"></div>
+            <div th:replace="fragment/layout :: paragraph ('组织和培养愿意为神摆上，参与音控服侍的弟兄姊妹和慕道友，在会议音视频硬件设备和软件方面提供基础的和专业的服务，协助牧师传道。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('音控组有以下几项主要的服侍任务： 1. 周日礼拜：从礼拜开始前30分钟直到礼拜结束。2. 周五晚青年团契：从团契开始前30分钟直到牧师讲道结束。3. 为复活节、圣诞节等重要基督教活动提供音视频技术支持。 4. 教堂婚礼的音视频技术支持。5. 维护和使用教堂的各种音视频设备（包括分会场的转播设备）。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('凡愿意为神摆上，参与音控服侍的弟兄姊妹和慕道友，音控组都会提供适当的机会和培训。')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
