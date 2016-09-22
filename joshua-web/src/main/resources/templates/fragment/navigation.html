@@ -83,8 +83,8 @@
                 <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
             </div>
             <div class="ui username vertical menu popup">
-                <a class="item" href="#">我的信息</a>
-                <a class="item" href="#">更改密码</a>
+                <a class="item" th:href="@{/info}">我的信息</a>
+                <a class="item" th:href="@{/password}">更改密码</a>
                 <a class="item user logout"> 退出
                     <form th:action="@{/logout}" method="post">
                     </form>

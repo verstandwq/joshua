@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 一级页面路由器
+ * 登录注销注册页面路由器
  * Created by y27chen on 2016/7/12.
  */
 @RestController

@@ -1,4 +1,4 @@
-<!--/* 用户登录页面 */-->
+<!--/* 用户个人信息页面 */-->
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <!--/* 引用基本组件header中的header，head中的元素内容会被基本组件替换掉，这里面的内容仅用于本地测试 */-->
@@ -8,9 +8,10 @@
     <link href="../public/assets/css/joshua.min.css" rel="stylesheet"/>
 </head>
 <body>
+<!-- 用户登录组件 -->
 <div class="ui container">
     <div th:replace="fragment/navigation :: primary">导航栏</div>
-    <div th:replace="fragment/login :: login"></div>
+    <div th:replace="fragment/user-info :: info('')"></div>
 </div>
 
 <!--/* 引用页脚组件 */-->
