@@ -1,0 +1,38 @@
+<!--/* 团契首页 - 圣餐组临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('圣餐组')"></div>
+            <div th:replace="fragment/layout :: picture ('service/圣餐组.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('我当日传给你们的，原是从主领受的，就是主耶稣被卖的那一夜，拿起饼来，祝谢了，就擘开，说：“这是我的身体，为你们舍的（“舍”有古卷作“擘开”）。你们应当如此行，为的是记念我。”饭后，也照样拿起杯来，说：“这杯是用我的血所立的新约，你们每逢喝的时候，要如此行，为的是记念我。”', '林前11：23-25')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('为圣餐作好准备并在圣餐礼拜发放圣餐')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('事工部规则')"></div>
+            <div th:replace="fragment/layout :: paragraph ('听从安排，准时参加，不能参加提前一天告知。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('已受洗，并在教会内有侍奉的同工。')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

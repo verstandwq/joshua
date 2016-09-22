@@ -1,0 +1,38 @@
+<!--/* 团契首页 - 安保组临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('安保组')"></div>
+            <div th:replace="fragment/layout :: picture ('service/安保组.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('恩惠、怜悯、平安从父神和他儿子耶稣基督，在真理和爱心上必常与我们同在！', '约一1:3')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('主内服侍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('维持教堂日常聚会，大型活动秩序和保护聚会人员人生及财产安全，紧急情况疏散引导，培养弟兄姊妹安全意识')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契时间')"></div>
+            <div th:replace="fragment/layout :: paragraph ('简单，高效，委身，负责，成长')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('重视人生安全，愿意为教会平安出一份力的弟兄姊妹皆可，有一定的专业知识和技能更好')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

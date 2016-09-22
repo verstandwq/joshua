@@ -1,0 +1,41 @@
+<!--/* 团契首页 - 迦拿夫妻团契临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('迦拿夫妻团契')"></div>
+            <div th:replace="fragment/layout :: picture ('service/夫妻团契.png')"></div>
+            <div th:replace="fragment/layout :: verse ('爱是恒久忍耐，又有恩慈；爱是不嫉妒；爱是不自夸，不张狂，不做害羞的事，不求自己的益处，不轻易发怒，不计算人的恶，不喜欢不义，只喜欢真理；凡事包容，凡事相信，凡事盼望，凡事忍耐。爱是永不止息。', '哥林多前书 13:4-8')"></div>
+            <div th:replace="fragment/layout :: verse ('所以神配合的，人不可分开。', '马可福音 10:9')"></div>
+
+            <div th:replace="fragment/layout :: paragraph ('光音堂迦拿夫妻团契欢迎已婚夫妇，本着神创立婚姻的原则彼此劝勉，树立正确的基督信仰婚姻观。团契根据圣经《彼得前书》4章8节 “最要紧的是彼此切实相爱，因為爱能遮掩许多的罪” 为原则，让已婚夫妇按照神的旨意彼此相爱，教养孩童，帮助夫妻能够每天沐浴在爱中，彼此欣赏、包容、扶持、尊重，活出爱，成為神荣耀的见证！')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('聚会流程')"></div>
+            <div th:replace="fragment/layout :: paragraph ('1. 敬拜赞美         2. 讚美练习         3. 主题分享         4. 分组讨论')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('聚会时间')"></div>
+            <div th:replace="fragment/layout :: paragraph ('每月第二和第四周 周日 14:00 – 16:00')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('特殊活动')"></div>
+            <div th:replace="fragment/layout :: paragraph (' 每逢每月的第五周周六，夫妻团契有各种类型的特别活动，彼此亲密，為的是夫妻和家庭之间有更多相聚的时间，共同分享神的恩典，让我们的家被更多爱包围！')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

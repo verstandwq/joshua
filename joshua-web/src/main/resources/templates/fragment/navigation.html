@@ -48,8 +48,8 @@
     <div class="ui dropdown item">
         <span>认识基督</span>
         <div class="menu">
-            <a class="item" th:href="@{/testimony}">见证奉献</a>
-            <a class="item" th:href="@{/recommend}">好文推荐</a>
+            <a class="item" th:href="@{/testimony}">见证分享</a>
+            <a class="item" th:href="@{/recommend}">团契文章</a>
             <a class="item" th:href="@{/media}">媒体资源</a>
             <a class="item" th:href="@{/bible}">在线圣经</a>
         </div>
@@ -60,7 +60,6 @@
         <span>家事园地</span>
         <div class="menu">
             <a class="item" th:href="@{/report}">事工报告</a>
-            <a class="item" th:href="@{/financial}">财务报告</a>
             <a class="item" th:href="@{/wedding}">教堂婚礼</a>
         </div>
     </div>
@@ -80,15 +79,17 @@
         </div>
 
         <div sec:authorize="isAuthenticated()" class="item">
-            <div class="ui inverted blue icon button">
+            <div class="ui inverted blue icon username button">
                 <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
             </div>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="item">
-            <form th:action="@{/logout}" method="post">
-                <button th:type="submit" class="ui inverted blue button">退出</button>
-            </form>
+            <div class="ui username vertical menu popup">
+                <a class="item" th:href="@{/info}">我的信息</a>
+                <a class="item" th:href="@{/password}">更改密码</a>
+                <a class="item user logout"> 退出
+                    <form th:action="@{/logout}" method="post">
+                    </form>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
@@ -97,12 +98,6 @@
 <div th:fragment="secondary">
     <!-- 侧导航 -->
     <div class="ui vertical menu">
-        <div class="item">
-            <div class="ui input focus icon">
-                <input class="search" type="text" th:placeholder="搜索"/>
-                <i class="circular search link icon"></i>
-            </div>
-        </div>
         <div class="item">
             <span>光音堂</span>
             <div class="menu">
@@ -125,8 +120,8 @@
         <div class="item">
             <span>认识基督</span>
             <div class="menu">
-                <a class="item" th:href="@{/testimony}">见证奉献</a>
-                <a class="item" th:href="@{/recommend}">好文推荐</a>
+                <a class="item" th:href="@{/testimony}">见证分享</a>
+                <a class="item" th:href="@{/recommend}">团契文章</a>
                 <a class="item" th:href="@{/media}">媒体资源</a>
                 <a class="item" th:href="@{/bible}">在线圣经</a>
             </div>
@@ -135,7 +130,6 @@
             <span>家事园地</span>
             <div class="menu">
                 <a class="item" th:href="@{/report}">事工报告</a>
-                <a class="item" th:href="@{/financial}">财务报告</a>
                 <a class="item" th:href="@{/wedding}">教堂婚礼</a>
             </div>
         </div>

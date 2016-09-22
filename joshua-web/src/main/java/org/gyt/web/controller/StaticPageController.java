@@ -63,12 +63,6 @@ public class StaticPageController {
         return new ModelAndView("staticPage/fellowshipPage");
     }
 
-    /* 财务报告 */
-    @RequestMapping("/financial")
-    public ModelAndView financialPage() {
-        return new ModelAndView("staticPage/financialPage");
-    }
-
     /* 教堂简介 */
     @RequestMapping("/about")
     public ModelAndView introductionPage() {
@@ -78,7 +72,7 @@ public class StaticPageController {
     /* 教堂婚礼 */
     @RequestMapping("/wedding")
     public ModelAndView marriagePage() {
-        return new ModelAndView("staticPage/marriagePage");
+        return new ModelAndView("staticPage/weddingPage");
     }
 
     /* 媒体资源 */

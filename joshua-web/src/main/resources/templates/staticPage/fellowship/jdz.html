@@ -1,0 +1,38 @@
+<!--/* 团契首页 - 接待组临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('接待组')"></div>
+            <div th:replace="fragment/layout :: picture ('service/接待组.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('不可忘记用爱心接待客旅，因为曾有接待客旅的，不知不觉就接待了天使。', '来13:2')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('服侍内容介绍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('周一至周六开教堂大门，简单地打扫教堂，接待前来咨询的朋友，有事转传牧师。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('事工部规则')"></div>
+            <div th:replace="fragment/layout :: paragraph ('有固定时间，按时到教会开门，听从组长安排，不能来提前给组长请假。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('加入服侍团队的要求')"></div>
+            <div th:replace="fragment/layout :: paragraph ('身体健康，愿意为主奉献，能吃苦耐劳')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>

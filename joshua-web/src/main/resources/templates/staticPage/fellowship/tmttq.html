@@ -1,0 +1,41 @@
+<!--/* 团契首页 - 提摩太团契临时静态页面 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="ui container">
+    <div th:replace="fragment/navigation :: primary">导航栏</div>
+
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header ('提摩太团契')"></div>
+            <div th:replace="fragment/layout :: picture ('service/提摩太团契.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('不可叫人小看你年轻，总要在言语、行为、爱心、信心、清洁上，都做信徒的榜样。', '提前4.12')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契介绍')"></div>
+            <div th:replace="fragment/layout :: paragraph ('光音堂校园团契是目前堂内发展较为迅速的团契。成立于2015年11月底，本着学校老师学生共同成长为原则，大手拉小手以圣经真道中扎根、生活学业中互爱、生命品格上成长、福音宣教上投身为目标，为所有来到光音堂的老师学生营造和谐温馨的敬拜和查经氛围，并给所有参与团契活动的成员提供服侍的机会。团契有着良好的组织结构，目前已经形成敬拜赞美，健康娱乐，生活理财，宣传联络四大服侍部门，部门之外还设立了五个互助小组。该团契将每月第四周星期天下午举行聚会，在这里的生活让他们得到了改变，弟兄姊妹从中体会到了生命的意义，他们虽然年轻，却愿意做一个为神的义为国家为社会奉献的人。')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('聚会时间')"></div>
+            <div th:replace="fragment/layout :: paragraph ('每月第四周下午13：30—16:30')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('团契规则')"></div>
+            <div th:replace="fragment/layout :: paragraph ('爱神、爱人如己、')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('如何加入团契')"></div>
+            <div th:replace="fragment/layout :: paragraph ('只要你是老师、学生（主要是高中生、大学生、研究生） 我们都欢迎你的加入。 ')"></div>
+
+            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
