@@ -79,15 +79,17 @@
         </div>
 
         <div sec:authorize="isAuthenticated()" class="item">
-            <div class="ui inverted blue icon button">
+            <div class="ui inverted blue icon username button">
                 <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
             </div>
-        </div>
-
-        <div sec:authorize="isAuthenticated()" class="item">
-            <form th:action="@{/logout}" method="post">
-                <button th:type="submit" class="ui inverted blue button">退出</button>
-            </form>
+            <div class="ui username vertical menu popup">
+                <a class="item" href="#">我的信息</a>
+                <a class="item" href="#">更改密码</a>
+                <a class="item user logout"> 退出
+                    <form th:action="@{/logout}" method="post">
+                    </form>
+                </a>
+            </div>
         </div>
     </div>
 </nav>

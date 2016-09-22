@@ -119,7 +119,10 @@
             <div class="content">
                 <a class="item" th:href="@{/admin/user/info}">我的资料</a>
                 <a class="item" th:href="@{/admin/user/password}">更改密码</a>
-                <a class="item" th:href="@{/logout}">退出</a>
+                <a class="item user logout"> 退出
+                    <form th:action="@{/logout}" method="post">
+                    </form>
+                </a>
             </div>
         </div>
     </div>
