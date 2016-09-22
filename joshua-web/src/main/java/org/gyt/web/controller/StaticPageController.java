@@ -78,7 +78,7 @@ public class StaticPageController {
     /* 教堂婚礼 */
     @RequestMapping("/wedding")
     public ModelAndView marriagePage() {
-        return new ModelAndView("staticPage/marriagePage");
+        return new ModelAndView("staticPage/weddingPage");
     }
 
     /* 媒体资源 */
