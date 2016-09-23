@@ -10,6 +10,7 @@
 
 <div class="ui admin layout root">
     <div th:replace="fragment/admin-layout :: header('文章详细信息', ${subtitle})">布局标题</div>
+    <div th:replace="fragment/editor :: article-reader(${item})">文章阅读器</div>
     <form class="ui admin user form" th:action="@{/}" th:object="${user}" method="post" style="display: none">
         <input type="hidden" th:field="*{username}"/>
     </form>

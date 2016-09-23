@@ -1,3 +1,6 @@
+/**
+ * 文章编辑器
+ */
 $(document).ready(function () {
 
     /**
@@ -24,11 +27,59 @@ $(document).ready(function () {
         ['clean']
     ];
 
-    var quill = new Quill(".article-editor", {
-        placeholder: '请输入文章内容',
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
+    if ($(".article-editor .container").length > 0) {
+        var quill = new Quill(".article-editor .container", {
+            placeholder: '请输入文章内容',
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        });
+    }
+
+    $(".article-editor .ui.save.button").on("click", function () {
+        var formData = new FormData();
+        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+        formData.append("content",
+            JSON.stringify(quill.getContents())
+                .replace(/\n/g, "\\n")
+        );
+
+        $.ajax({
+            url: "/admin/article/save",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (status) {
+                if (status) {
+                    new Dialog("保存文章", "保存成功").message();
+                } else {
+                    new Dialog("保存文章", "保存失败").error();
+                }
+            },
+            error: function () {
+                new Dialog("保存文章", "保存失败").error();
+            }
+        });
     });
+});
+
+/**
+ * 文章阅读器
+ */
+$(document).ready(function () {
+
+    if ($(".article-reader .container").length > 0) {
+        var quill = new Quill(".article-reader .container", {
+            modules: {
+                toolbar: false
+            },
+            theme: 'snow',
+            readOnly: true
+        });
+
+        var delta = JSON.parse($(".article-reader .article-reader-content").text());
+        quill.setContents(delta.ops);
+    }
 });

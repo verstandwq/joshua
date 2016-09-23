@@ -8,13 +8,11 @@ import org.gyt.web.model.ArticleStatus;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,6 +73,7 @@ public class AdminArticlePageController {
             modelAndView.addObject("message", String.format("找不到文章：%s", id));
         } else {
             modelAndView.addObject("item", article);
+            modelAndView.addObject("user", user);
         }
 
         return modelAndView;
@@ -83,7 +82,23 @@ public class AdminArticlePageController {
     @RequestMapping("/article/new")
     public ModelAndView newArticlePage() {
         ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
-        modelAndView.addObject("subtitle", "新建文章");
+        modelAndView.addObject("title", "新建文章");
+        modelAndView.addObject("item", new Article());
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/article/save", method = RequestMethod.POST)
+    public String saveArticle(@ModelAttribute Article article) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (article.getId() == null) {
+            article.setAuthor(user);
+            article.setCreatedDate(new Date());
+        }
+
+        article.setLastModifiedTime(new Date());
+        article.setLastModifiedUser(user);
+
+        return articleService.create(article) ? "success" : null;
     }
 }

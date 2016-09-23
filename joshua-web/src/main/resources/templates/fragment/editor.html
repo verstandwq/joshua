@@ -3,7 +3,7 @@ Html编辑器组件
 -->
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 <head>
     <meta charset="utf-8"/>
     <title>基督教光音堂</title>
@@ -12,7 +12,49 @@ Html编辑器组件
 
 <body>
 
-<div th:fragment="article-editor" class="article-editor">
+<div th:fragment="article-editor (item)" class="ui grid article-editor">
+    <div class="row">
+        <div class="eight wide column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">标题</div>
+                <input class="input title" th:value="${item.title}" type="text" placeholder="请输入文章标题"/>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">所属团契</div>
+                <input class="input fellowship" th:value="${item.fellowship}" type="text" placeholder="请选择文章所属团契"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">描述</div>
+                <input class="input description" th:value="${item.description}" type="text" placeholder="请输入文章描述"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui buttons">
+                <button class="ui save positive button">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="container"></div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="article-reader (item)" class="article-reader">
+    <div class="container"></div>
+    <div class="article-reader-content" th:utext="${item.getContent()}" style="display: none"></div>
 </div>
 
 <script src="../../public/assets/js/joshua.js"></script>
