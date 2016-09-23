@@ -1,0 +1,116 @@
+<!--
+Html编辑器组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="utf-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+
+<body>
+
+<div th:fragment="article-editor (item)" class="ui grid article-editor">
+    <div class="row">
+        <div class="eight wide column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">标题</div>
+                <input class="input title" th:value="${item.title}" type="text" placeholder="请输入文章标题"/>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">所属团契</div>
+                <input class="input fellowship" th:value="${item.fellowship}" type="text" placeholder="请选择文章所属团契"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">描述</div>
+                <input class="input description" th:value="${item.description}" type="text" placeholder="请输入文章描述"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui buttons">
+                <button class="ui save positive button">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="container"></div>
+        </div>
+    </div>
+
+    <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+    <input class="input id" th:value="${item.id}" type="hidden"/>
+</div>
+
+<div th:fragment="article-audit (item)" class="ui grid article-audit">
+
+    <div class="row">
+        <div class="column">
+            <h2 class="ui header">文章信息</h2>
+            <table class="ui seletable celled table">
+                <tbody>
+                <tr>
+                    <td>标题</td>
+                    <td class="input title" th:utext="${item.title}">标题</td>
+                </tr>
+                <tr>
+                    <td>所属团契</td>
+                    <td class="input fellowship" th:utext="${item.fellowship}">所属团契</td>
+                </tr>
+                <tr>
+                    <td>描述</td>
+                    <td class="input description" th:utext="${item.description}">描述</td>
+                </tr>
+                <tr>
+                    <td>作者</td>
+                    <td class="input author" th:utext="${item.author.username}">作者</td>
+                </tr>
+                <tr>
+                    <td>文章状态</td>
+                    <td th:utext="${item.status}">作者</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="ui buttons">
+                <button class="ui publish positive button">发布</button>
+                <button class="ui reject negative button">驳回</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="container"></div>
+            <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+        </div>
+    </div>
+
+    <input class="input id" th:value="${item.id}" type="hidden"/>
+</div>
+
+<div th:fragment="article-reader (item)" class="article-reader">
+    <div class="container"></div>
+    <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+</div>
+
+<script src="../../public/assets/js/joshua.js"></script>
+</body>
+</html>

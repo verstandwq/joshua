@@ -9,10 +9,9 @@
 <div th:replace="fragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="fragment/admin-layout :: header('文章详细信息', ${subtitle})">布局标题</div>
-    <div th:replace="fragment/editor :: article-reader(${item})">文章阅读器</div>
-    <form class="ui admin user form" th:action="@{/}" th:object="${user}" method="post" style="display: none">
-        <input type="hidden" th:field="*{username}"/>
+    <div th:replace="fragment/admin-layout :: header(${title}, '光音堂文章审核')">布局标题</div>
+    <div th:if="not ${error}" th:replace="fragment/editor :: article-audit(${item})">文章审核</div>
+    <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">
     </form>
 </div>
 
