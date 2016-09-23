@@ -79,4 +79,11 @@ public class AdminArticlePageController {
 
         return modelAndView;
     }
+
+    @RequestMapping("/article/new")
+    public ModelAndView newArticlePage() {
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
+        modelAndView.addObject("subtitle", "新建文章");
+        return modelAndView;
+    }
 }
