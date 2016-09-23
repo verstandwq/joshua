@@ -47,7 +47,7 @@ public class Article {
 
     private String auditComment;
 
-    private Long pageView;
+    private Long pageView = 0L;
 
     @Lob
     private String content;

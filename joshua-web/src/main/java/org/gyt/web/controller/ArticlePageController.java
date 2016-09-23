@@ -4,7 +4,6 @@ import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Article;
 import org.gyt.web.model.ArticleStatus;
-import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,7 @@ public class ArticlePageController {
     public ModelAndView detailsPage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-details");
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("article-details");
         Article article = articleService.get(Long.valueOf(id));
 
         if (null == article || !article.getStatus().equals(ArticleStatus.PUBLISHED)) {
@@ -34,7 +33,14 @@ public class ArticlePageController {
             modelAndView.addObject("message", "文章不存在或者未发布");
         } else {
             modelAndView.addObject("item", article);
-            modelAndView.addObject("user", new User());
+            modelAndView.addObject("user", article.getAuthor());
+
+            if (null == article.getPageView()) {
+                article.setPageView(0L);
+            } else {
+                article.setPageView(article.getPageView() + 1);
+            }
+            articleService.createOrUpdate(article);
         }
 
         return modelAndView;

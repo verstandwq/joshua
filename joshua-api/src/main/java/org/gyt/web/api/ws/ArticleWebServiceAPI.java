@@ -30,7 +30,7 @@ public class ArticleWebServiceAPI {
         if (article != null) {
             article.setAuditor(user);
             article.setStatus(ArticleStatus.PUBLISHED);
-            return articleService.create(article);
+            return articleService.createOrUpdate(article);
         }
 
         return false;
@@ -45,7 +45,7 @@ public class ArticleWebServiceAPI {
             article.setAuditor(user);
             article.setStatus(ArticleStatus.REJECTED);
             article.setAuditComment(message);
-            return articleService.create(article);
+            return articleService.createOrUpdate(article);
         }
 
         return false;

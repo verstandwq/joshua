@@ -155,19 +155,16 @@
 </section>
 
 <!-- 最新消息组件 -->
-<section th:fragment="section4" class="ui two column stackable grid">
-    <div class="ui horizontal divider">教堂资讯</div>
-    <div class="column">
-        <div th:replace="fragment/article :: table('最新消息','')"></div>
-    </div>
-    <div class="column">
-        <div th:replace="fragment/article :: table('教会活动','')"></div>
+<section th:fragment="section4" class="ui grid">
+    <div class="row">
+        <div class="column">
+            <div th:replace="fragment/article :: table('最新消息', ${articles})"></div>
+        </div>
     </div>
 </section>
 
 <!-- 媒体资源组件 -->
 <section th:fragment="section5" class="ui grid section5">
-    <div class="ui horizontal divider">媒体资源</div>
     <div class="ui centered green card">
         <div class="content">
             <img class="right floated ui image" src="../../public/assets/images/placeholder.png"

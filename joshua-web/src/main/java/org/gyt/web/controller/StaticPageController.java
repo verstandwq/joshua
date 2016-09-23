@@ -1,8 +1,10 @@
 package org.gyt.web.controller;
 
+import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Message;
 import org.gyt.web.model.MessageType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,19 +17,24 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class StaticPageController {
 
+    @Autowired
+    private ArticleService articleService;
+
     @RequestMapping("/")
     public ModelAndView getHomePage() {
-        return new ModelAndView("index");
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("index");
+        modelAndView.addObject("articles", articleService.getLatestArticles());
+        return modelAndView;
     }
 
     @RequestMapping("/index")
     public ModelAndView getHomePage2() {
-        return new ModelAndView("index");
+        return getHomePage();
     }
 
     @RequestMapping("/home")
     public ModelAndView getHomePage3() {
-        return new ModelAndView("index");
+        return getHomePage();
     }
 
     /* 在线圣经 */
@@ -96,7 +103,9 @@ public class StaticPageController {
     /* 好文推荐 */
     @RequestMapping("/recommend")
     public ModelAndView recommendPage() {
-        return new ModelAndView("staticPage/recommendPage");
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/recommendPage");
+        modelAndView.addObject("items", articleService.getLatestArticles());
+        return modelAndView;
     }
 
     /* 事工报告 */

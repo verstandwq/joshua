@@ -9,6 +9,7 @@ import java.util.List;
  * - 获取指定文章内容
  * - 获取团契文章列表
  * - 获取用户文章列表
+ * - 获取最新发布的文章
  * - 创建文章
  * - 激活、禁用文章
  * - 申请审核文章
@@ -42,12 +43,19 @@ public interface ArticleService {
     List<Article> getFromUser(String username);
 
     /**
+     * 获取最新发布的文章
+     *
+     * @return 最新发布的文章
+     */
+    List<Article> getLatestArticles();
+
+    /**
      * 创建文章
      *
      * @param article 文章对象
      * @return 如果文章创建成功返回true，否则返回false
      */
-    boolean create(Article article);
+    boolean createOrUpdate(Article article);
 
     /**
      * 激活文章
