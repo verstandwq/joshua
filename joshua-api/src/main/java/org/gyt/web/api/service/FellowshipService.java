@@ -37,10 +37,11 @@ public interface FellowshipService {
     /**
      * 创建团契
      *
-     * @param name 团契名称
+     * @param name        团契名称
+     * @param displayName 团契中文名称
      * @return 如果团契不存在，并且创建成功时返回true，否则返回false
      */
-    boolean create(String name);
+    boolean create(String name, String displayName);
 
     /**
      * 激活团契

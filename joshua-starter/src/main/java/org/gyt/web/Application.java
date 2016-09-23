@@ -1,5 +1,6 @@
 package org.gyt.web;
 
+import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
 import org.gyt.web.model.Authority;
@@ -28,6 +29,7 @@ public class Application {
         createDefaultRoles(applicationContext);
         createRootUser(applicationContext);
         createTestUsers(applicationContext);
+        createDefaultFellowship(applicationContext);
 
         Locale.setDefault(new Locale("zh_CN"));
     }
@@ -176,6 +178,33 @@ public class Application {
                 userService.create(user);
                 LOGGER.info(String.format("创建测试用户成功：%s", userService.get(username)));
             }
+        }
+    }
+
+    private static void createDefaultFellowship(ApplicationContext applicationContext) {
+        createFellowship(applicationContext, "abz", "安保组");
+        createFellowship(applicationContext, "cjtq", "查经团契");
+        createFellowship(applicationContext, "dgh", "祷告会");
+        createFellowship(applicationContext, "firstlove", "初爱敬拜赞美");
+        createFellowship(applicationContext, "fyds", "福音大使");
+        createFellowship(applicationContext, "jdz", "接待组");
+        createFellowship(applicationContext, "jntq", "迦拿夫妻团契");
+        createFellowship(applicationContext, "metq", "蒙恩团契");
+        createFellowship(applicationContext, "qntq", "青年团契");
+        createFellowship(applicationContext, "scz", "查经组");
+        createFellowship(applicationContext, "slnxtq", "沙龙暖心团契");
+        createFellowship(applicationContext, "tmttq", "提摩太团契");
+        createFellowship(applicationContext, "ygtq", "雅歌团契");
+        createFellowship(applicationContext, "ykz", "音控组");
+        createFellowship(applicationContext, "zztq", "长者团契");
+    }
+
+    private static void createFellowship(ApplicationContext applicationContext, String name, String displayName) {
+        FellowshipService fellowshipService = applicationContext.getBean(FellowshipService.class);
+        if (null == fellowshipService.get(name)) {
+            fellowshipService.create(name, displayName);
+            fellowshipService.setOwner(name, "administrator");
+            LOGGER.info(String.format("创建默认团契成功：%s %s", name, displayName));
         }
     }
 }

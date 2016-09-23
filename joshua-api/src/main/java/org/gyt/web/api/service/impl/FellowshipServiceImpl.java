@@ -33,11 +33,11 @@ public class FellowshipServiceImpl implements FellowshipService {
     }
 
     @Override
-    public boolean create(String name) {
-        if (null != get(name)) {
+    public boolean create(String name, String displayName) {
+        if (null == get(name)) {
             Fellowship fellowship = new Fellowship();
             fellowship.setName(name);
-            fellowship.setDisplayName(name);
+            fellowship.setDisplayName(displayName);
             fellowship.setCreatedDate(new Date());
 
             fellowshipRepository.save(fellowship);
