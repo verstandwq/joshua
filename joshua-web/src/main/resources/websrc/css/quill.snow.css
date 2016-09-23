@@ -653,7 +653,7 @@
   width: 152px;
 }
 .ql-snow .ql-color-picker .ql-picker-item {
-  border: 1px solid transparent;
+  border: none;
   float: left;
   height: 16px;
   margin: 2px;

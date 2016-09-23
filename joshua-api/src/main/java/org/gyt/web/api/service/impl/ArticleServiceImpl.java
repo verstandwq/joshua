@@ -7,6 +7,9 @@ import org.gyt.web.api.service.UserService;
 import org.gyt.web.model.Article;
 import org.gyt.web.model.ArticleStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,7 +43,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public boolean create(Article article) {
+    public List<Article> getLatestArticles() {
+        Pageable pageable = new PageRequest(0, 20, Sort.Direction.fromString("ASC"), "createdDate");
+        return articleRepository.findAll(pageable).getContent().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean createOrUpdate(Article article) {
         return articleRepository.save(article) != null;
     }
 

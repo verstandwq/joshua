@@ -134,11 +134,15 @@ public class AdminArticlePageController {
         if (article.getId() == null) {
             article.setAuthor(user);
             article.setCreatedDate(new Date());
+        } else {
+            Article src = articleService.get(article.getId());
+            article.setAuthor(src.getAuthor());
+            article.setCreatedDate(src.getCreatedDate());
         }
 
         article.setLastModifiedTime(new Date());
         article.setLastModifiedUser(user);
 
-        return articleService.create(article) ? "success" : null;
+        return articleService.createOrUpdate(article) ? "success" : null;
     }
 }
