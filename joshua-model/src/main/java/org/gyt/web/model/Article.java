@@ -36,10 +36,13 @@ public class Article {
     @Enumerated(value = EnumType.STRING)
     private ArticleStatus status = ArticleStatus.RAW;
 
+    @ManyToOne
     private User author;
 
+    @ManyToOne
     private User lastModifiedUser;
 
+    @ManyToOne
     private User auditor;
 
     private String auditComment;

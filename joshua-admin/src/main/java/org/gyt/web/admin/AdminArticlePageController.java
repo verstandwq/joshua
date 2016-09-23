@@ -79,6 +79,46 @@ public class AdminArticlePageController {
         return modelAndView;
     }
 
+    @RequestMapping("/article/{id}/edit")
+    public ModelAndView editArticlePage(
+            @PathVariable String id
+    ) {
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
+        modelAndView.addObject("title", "编辑文章");
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Article article = articleService.get(Long.valueOf(id));
+
+        if (article == null) {
+            modelAndView.addObject("error", "文章不存在");
+        } else if (!article.getAuthor().getUsername().equals(user.getUsername())) {
+            modelAndView.addObject("error", "只能编辑自己的文章");
+        } else {
+            modelAndView.addObject("item", article);
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/article/{id}/audit")
+    public ModelAndView auditArticlePage(
+            @PathVariable String id
+    ) {
+        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-audit");
+        modelAndView.addObject("title", "审核文章");
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Article article = articleService.get(Long.valueOf(id));
+
+        if (article == null) {
+            modelAndView.addObject("error", "文章不存在");
+        } else {
+            modelAndView.addObject("item", article);
+        }
+
+        return modelAndView;
+    }
+
     @RequestMapping("/article/new")
     public ModelAndView newArticlePage() {
         ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
