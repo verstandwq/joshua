@@ -74,6 +74,36 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(".article-editor .ui.audit.button").on("click", function () {
+
+        new Dialog("申请发布", "确定要申请发布文章吗？， 申请发布后讲不能再修改文章内容，如果文章被驳回，则可以修改以后继续发布", function () {
+            var formData = new FormData();
+            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+            formData.append("id", $(".article-editor .input.id").val());
+
+            $.ajax({
+                url: "/api/article/audit",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if (status) {
+                        new Dialog("申请发布", "申请发布成功", function () {
+                            window.location.reload();
+                        }).message();
+                    } else {
+                        new Dialog("申请发布", "申请发布失败").error();
+                    }
+                },
+                error: function () {
+                    new Dialog("申请发布", "申请发布失败").error();
+                }
+            });
+        }).confirm();
+
+    });
 });
 
 /**
@@ -127,7 +157,9 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("发布文章", "发布成功").message();
+                        new Dialog("发布文章", "发布成功", function () {
+                            window.location.reload();
+                        }).message();
                     } else {
                         new Dialog("发布文章", "发布失败").error();
                     }
@@ -153,7 +185,9 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("驳回文章", "驳回成功").message();
+                        new Dialog("驳回文章", "驳回成功", function () {
+                            window.location.reload();
+                        }).message();
                     } else {
                         new Dialog("驳回文章", "驳回失败").error();
                     }

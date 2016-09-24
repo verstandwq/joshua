@@ -95,6 +95,7 @@ public class AdminArticlePageController {
             modelAndView.addObject("error", "只能编辑自己的文章");
         } else {
             modelAndView.addObject("item", article);
+            modelAndView.addObject("edit", true);
         }
 
         return modelAndView;

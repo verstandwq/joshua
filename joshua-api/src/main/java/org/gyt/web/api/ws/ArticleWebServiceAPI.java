@@ -5,6 +5,7 @@ import org.gyt.web.model.Article;
 import org.gyt.web.model.ArticleStatus;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,12 +23,25 @@ public class ArticleWebServiceAPI {
     @Autowired
     private ArticleService articleService;
 
+    @RequestMapping(value = "/audit", method = RequestMethod.POST)
+    public boolean audit(@RequestParam Long id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Article article = articleService.get(id);
+
+        if (article != null && article.getAuthor().getUsername().equals(user.getUsername())) {
+            article.setStatus(ArticleStatus.AUDITING);
+            return articleService.createOrUpdate(article);
+        }
+
+        return false;
+    }
+
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
     public boolean publish(@RequestParam Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Article article = articleService.get(id);
 
-        if (article != null) {
+        if (article != null && article.getStatus().equals(ArticleStatus.AUDITING) && user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_ARTICLE"))) {
             article.setAuditor(user);
             article.setStatus(ArticleStatus.PUBLISHED);
             return articleService.createOrUpdate(article);
@@ -41,7 +55,7 @@ public class ArticleWebServiceAPI {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Article article = articleService.get(id);
 
-        if (article != null) {
+        if (article != null && article.getStatus().equals(ArticleStatus.AUDITING) && user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_ARTICLE"))) {
             article.setAuditor(user);
             article.setStatus(ArticleStatus.REJECTED);
             article.setAuditComment(message);
