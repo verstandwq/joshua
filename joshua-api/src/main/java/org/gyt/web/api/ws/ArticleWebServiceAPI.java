@@ -24,16 +24,16 @@ public class ArticleWebServiceAPI {
     private ArticleService articleService;
 
     @RequestMapping(value = "/audit", method = RequestMethod.POST)
-    public boolean audit(@RequestParam Long id) {
+    public String audit(@RequestParam Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Article article = articleService.get(id);
 
         if (article != null && article.getAuthor().getUsername().equals(user.getUsername())) {
             article.setStatus(ArticleStatus.AUDITING);
-            return articleService.createOrUpdate(article);
+            return articleService.createOrUpdate(article) ? "success" : "更新状态失败";
         }
 
-        return false;
+        return "文章不存在或者权限不够";
     }
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
