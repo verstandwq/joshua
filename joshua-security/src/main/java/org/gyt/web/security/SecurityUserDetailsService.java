@@ -21,7 +21,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.get(username);
+        User user = userService.get(username.toLowerCase());
         if (user == null || user.isDisabled()) {
             throw new UsernameNotFoundException(String.format("can't found user: %s", username));
         }
