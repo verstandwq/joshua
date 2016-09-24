@@ -38,6 +38,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> getFellowshipPublishedArticles(String name) {
+        return articleRepository.findAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED) && article.getFellowship().getName().equals(name)).collect(Collectors.toList());
+    }
+
+    @Override
     public List<Article> getFromUser(String username) {
         return articleRepository.findAll().stream().filter(article -> article.getAuthor().getUsername().equals(username) || article.getAuditor().getUsername().equals(username)).collect(Collectors.toList());
     }

@@ -35,6 +35,14 @@ public interface ArticleService {
     List<Article> getFromFellowship(String name);
 
     /**
+     * 获取团契最新发布文章列表
+     *
+     * @param name 团契名称
+     * @return 如果团契不存在或者没有文章返回空列表
+     */
+    List<Article> getFellowshipPublishedArticles(String name);
+
+    /**
      * 获取用户文章列表，包含与该用户相关的所有文章（文章作者，审阅者）
      *
      * @param username 用户名称

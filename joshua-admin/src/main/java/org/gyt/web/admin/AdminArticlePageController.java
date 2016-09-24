@@ -159,7 +159,12 @@ public class AdminArticlePageController {
             Article src = articleService.get(article.getId());
             article.setAuthor(src.getAuthor());
             article.setCreatedDate(src.getCreatedDate());
+
+            if (src.getStatus().equals(ArticleStatus.PUBLISHED)) {
+                return "该文章已经发布，不能修改已经发布的文章";
+            }
         }
+
 
         article.setLastModifiedTime(new Date());
         article.setLastModifiedUser(user);

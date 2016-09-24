@@ -82,10 +82,10 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (status) {
-                if (status) {
+                if ("success" == status) {
                     new Dialog("保存文章", "保存成功").message();
                 } else {
-                    new Dialog("保存文章", "保存失败").error();
+                    new Dialog("保存文章", "保存失败，原因：" + status).error();
                 }
             },
             error: function () {

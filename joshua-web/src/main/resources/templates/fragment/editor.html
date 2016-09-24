@@ -22,7 +22,7 @@ Html编辑器组件
         </div>
         <div class="eight wide column">
             <div class="ui fellowship search selection fluid dropdown">
-                <input type="hidden"/>
+                <input type="hidden" th:value="${item.fellowship.name}"/>
                 <i class="dropdown icon"></i>
                 <div class="default text">所属团契</div>
                 <div class="menu">
@@ -49,7 +49,7 @@ Html编辑器组件
         <div class="column">
             <div class="ui horizontal divider">操作</div>
             <div class="ui buttons">
-                <button th:if="not ${edit}" class="ui save positive button">保存</button>
+                <button class="ui save positive button">保存</button>
                 <button th:if="${edit}" class="ui audit positive button">申请发布</button>
                 <button class="ui delete negative button">删除</button>
             </div>
