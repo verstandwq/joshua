@@ -2,8 +2,7 @@
 后台用户管理组件
 -->
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <title>后台用户</title>
@@ -110,9 +109,11 @@
             </div>
             <div class="six wide column">
                 <h2>拥有团契所有权</h2>
+                <div th:replace="fragment/admin-user-details :: ownerTable(${owners})">拥有团契表格</div>
             </div>
             <div class="six wide column">
                 <h2>拥有团契管理权</h2>
+                <div th:replace="fragment/admin-user-details :: adminTable(${admins})">拥有管理员团契表格</div>
             </div>
         </div>
     </div>
@@ -136,6 +137,40 @@
                     class="ui admin user remove role tiny red button">移除
             </button>
         </td>
+    </tr>
+    </tbody>
+</table>
+
+<table th:fragment="ownerTable (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>团契名称</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td th:colspan="4">该用户还没有用户任何团契</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.displayName}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<table th:fragment="adminTable (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>团契名称</th>
+        <th>团契所有者</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td th:colspan="2">该用户还没有用户任何团契的管理员身份</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.displayName}"></td>
+        <td th:utext="${item.owner.nickname}"></td>
     </tr>
     </tbody>
 </table>

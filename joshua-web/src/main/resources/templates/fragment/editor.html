@@ -21,9 +21,16 @@ Html编辑器组件
             </div>
         </div>
         <div class="eight wide column">
-            <div class="ui labeled fluid input">
-                <div class="ui label">所属团契</div>
-                <input class="input fellowship" th:value="${item.fellowship}" type="text" placeholder="请选择文章所属团契"/>
+            <div class="ui fellowship search selection fluid dropdown">
+                <input type="hidden" th:value="${item.fellowship.name}"/>
+                <i class="dropdown icon"></i>
+                <div class="default text">所属团契</div>
+                <div class="menu">
+                    <div th:each="item : ${fellowship}" class="item" th:attr="data-value=${item.name}"
+                         th:utext="${item.displayName}">
+                        团契名称
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -37,10 +44,14 @@ Html编辑器组件
         </div>
     </div>
 
+
     <div class="row">
         <div class="column">
+            <div class="ui horizontal divider">操作</div>
             <div class="ui buttons">
                 <button class="ui save positive button">保存</button>
+                <button th:if="${edit}" class="ui audit positive button">申请发布</button>
+                <button class="ui delete negative button">删除</button>
             </div>
         </div>
     </div>

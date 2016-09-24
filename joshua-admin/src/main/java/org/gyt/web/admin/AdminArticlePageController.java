@@ -2,18 +2,18 @@ package org.gyt.web.admin;
 
 import org.apache.commons.lang3.StringUtils;
 import org.gyt.web.api.service.ArticleService;
+import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Article;
 import org.gyt.web.model.ArticleStatus;
+import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -26,6 +26,9 @@ public class AdminArticlePageController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private FellowshipService fellowshipService;
 
     @RequestMapping("/article")
     public ModelAndView tablePage(
@@ -95,6 +98,11 @@ public class AdminArticlePageController {
             modelAndView.addObject("error", "只能编辑自己的文章");
         } else {
             modelAndView.addObject("item", article);
+            modelAndView.addObject("edit", true);
+            Set<Fellowship> fellowshipSet = new HashSet<>();
+            fellowshipSet.addAll(fellowshipService.getUserOwnerFellowship(user.getUsername()));
+            fellowshipSet.addAll(fellowshipService.getUserAdminFellowship(user.getUsername()));
+            modelAndView.addObject("fellowship", fellowshipSet);
         }
 
         return modelAndView;
@@ -122,8 +130,21 @@ public class AdminArticlePageController {
     @RequestMapping("/article/new")
     public ModelAndView newArticlePage() {
         ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (fellowshipService.getUserOwnerFellowship(user.getUsername()).isEmpty() && fellowshipService.getUserAdminFellowship(user.getUsername()).isEmpty()) {
+            modelAndView.setViewName("403");
+            modelAndView.addObject("message", "抱歉，您还没有任何团契的管理权限，不能发布文章到团契");
+            return modelAndView;
+        }
+
         modelAndView.addObject("title", "新建文章");
         modelAndView.addObject("item", new Article());
+
+        Set<Fellowship> fellowshipSet = new HashSet<>();
+        fellowshipSet.addAll(fellowshipService.getUserOwnerFellowship(user.getUsername()));
+        fellowshipSet.addAll(fellowshipService.getUserAdminFellowship(user.getUsername()));
+        modelAndView.addObject("fellowship", fellowshipSet);
         return modelAndView;
     }
 
@@ -138,7 +159,12 @@ public class AdminArticlePageController {
             Article src = articleService.get(article.getId());
             article.setAuthor(src.getAuthor());
             article.setCreatedDate(src.getCreatedDate());
+
+            if (src.getStatus().equals(ArticleStatus.PUBLISHED)) {
+                return "该文章已经发布，不能修改已经发布的文章";
+            }
         }
+
 
         article.setLastModifiedTime(new Date());
         article.setLastModifiedUser(user);

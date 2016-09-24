@@ -1,6 +1,8 @@
 package org.gyt.web.controller;
 
+import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,10 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/fellowship")
 public class FellowshipPageController {
 
+    @Autowired
+    private ArticleService articleService;
+
     @RequestMapping("/{name}")
     public ModelAndView getFellowshipHomePage(@PathVariable String name) {
         ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/fellowship/" + name);
 
+        modelAndView.addObject("items", articleService.getFellowshipPublishedArticles(name));
 
         return modelAndView;
     }

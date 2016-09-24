@@ -1,6 +1,7 @@
 package org.gyt.web.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
 import org.gyt.web.model.User;
@@ -27,6 +28,9 @@ public class AdminUserPageController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private FellowshipService fellowshipService;
 
     @RequestMapping("/user")
     public ModelAndView userTablePage(
@@ -77,6 +81,8 @@ public class AdminUserPageController {
         } else {
             modelAndView.addObject("user", user);
             modelAndView.addObject("roles", roleService.get());
+            modelAndView.addObject("owners", fellowshipService.getUserOwnerFellowship(username));
+            modelAndView.addObject("admins", fellowshipService.getUserAdminFellowship(username));
         }
 
         return modelAndView;
