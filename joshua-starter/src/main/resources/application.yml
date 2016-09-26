@@ -37,6 +37,9 @@ spring:
         content:
           enabled: true
 
+multipart:
+  max-file-size: 20MB
+  max-request-size: 20MB
 #
 # loggin configuration
 #

@@ -13,6 +13,7 @@
     <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
     <div th:if="${#strings.isEmpty(error)}">
         <div th:replace="fragment/editor :: article-editor(${item})">文章编辑器</div>
+        <div th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
     </div>
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">
     </form>
