@@ -22,12 +22,12 @@ Html编辑器组件
         </div>
         <div class="eight wide column">
             <div class="ui fellowship search selection fluid dropdown">
-                <input type="hidden" th:value="${item.fellowship.name}"/>
+                <input type="hidden" th:value="${item.fellowship != null ? item.fellowship.name : null}"/>
                 <i class="dropdown icon"></i>
                 <div class="default text">所属团契</div>
                 <div class="menu">
-                    <div th:each="item : ${fellowship}" class="item" th:attr="data-value=${item.name}"
-                         th:utext="${item.displayName}">
+                    <div th:each="value : ${fellowship}" class="item" th:attr="data-value=${value.name}"
+                         th:utext="${value.displayName}">
                         团契名称
                     </div>
                 </div>
@@ -43,7 +43,6 @@ Html编辑器组件
             </div>
         </div>
     </div>
-
 
     <div class="row">
         <div class="column">
@@ -79,7 +78,7 @@ Html编辑器组件
                 </tr>
                 <tr>
                     <td>所属团契</td>
-                    <td class="input fellowship" th:utext="${item.fellowship}">所属团契</td>
+                    <td class="input fellowship" th:utext="${item.fellowship.displayName}">所属团契</td>
                 </tr>
                 <tr>
                     <td>描述</td>
@@ -120,6 +119,17 @@ Html编辑器组件
 <div th:fragment="article-reader (item)" class="article-reader">
     <div class="container"></div>
     <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+</div>
+
+<div th:fragment="dimmer (content)" class="ui dimmer">
+    <div class="content">
+        <div class="center">
+            <h2 class="ui inverted icon header">
+                <i class="circle notched loading icon"></i>
+                <span th:utext="${content}"></span>
+            </h2>
+        </div>
+    </div>
 </div>
 
 <script src="../../public/assets/js/joshua.js"></script>

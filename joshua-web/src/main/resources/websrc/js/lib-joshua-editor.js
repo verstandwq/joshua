@@ -1,4 +1,16 @@
 /**
+ * 公共函数定义
+ */
+
+var showDimmer = function () {
+    $(".ui.dimmer").dimmer("show");
+};
+
+var hideDimmer = function () {
+    $(".ui.dimmer").dimmer("hide");
+};
+
+/**
  * 文章编辑器
  */
 $(document).ready(function () {
@@ -64,6 +76,8 @@ $(document).ready(function () {
             return;
         }
 
+        showDimmer();
+
         var formData = new FormData();
         formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
         formData.append("id", $(".article-editor .input.id").val());
@@ -83,13 +97,19 @@ $(document).ready(function () {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("保存文章", "保存成功").message();
+                    new Dialog("保存文章", "保存成功", function () {
+                        hideDimmer();
+                    }).message();
                 } else {
-                    new Dialog("保存文章", "保存失败，原因：" + status).error();
+                    new Dialog("保存文章", "保存失败，原因：" + status, function () {
+                        hideDimmer();
+                    }).error();
                 }
             },
             error: function () {
-                new Dialog("保存文章", "保存失败").error();
+                new Dialog("保存文章", "保存失败", function () {
+                    hideDimmer();
+                }).error();
             }
         });
     });
@@ -100,6 +120,8 @@ $(document).ready(function () {
     $(".article-editor .ui.audit.button").on("click", function () {
 
         new Dialog("申请发布", "确定要申请发布文章吗？， 申请发布后讲不能再修改文章内容，如果文章被驳回，则可以修改以后继续发布", function () {
+            showDimmer();
+
             var formData = new FormData();
             formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
             formData.append("id", $(".article-editor .input.id").val());
@@ -113,14 +135,19 @@ $(document).ready(function () {
                 success: function (status) {
                     if ("success" == status) {
                         new Dialog("申请发布", "申请发布成功", function () {
+                            hideDimmer();
                             window.location.reload();
                         }).message();
                     } else {
-                        new Dialog("申请发布", "申请发布失败，原因:" + status).error();
+                        new Dialog("申请发布", "申请发布失败，原因:" + status, function () {
+                            hideDimmer();
+                        }).error();
                     }
                 },
                 error: function () {
-                    new Dialog("申请发布", "申请发布失败").error();
+                    new Dialog("申请发布", "申请发布失败", function () {
+                        hideDimmer();
+                    }).error();
                 }
             });
         }).confirm();
@@ -171,6 +198,7 @@ $(document).ready(function () {
 
     $(".article-audit .publish.button").on("click", function () {
         new Dialog("发布文章", "确定要发布文章？ 文章发布以后即可在网站访问", function () {
+            showDimmer();
             var formData = new FormData();
             formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
             formData.append("id", $(".article-audit .input.id").val());
@@ -184,14 +212,19 @@ $(document).ready(function () {
                 success: function (status) {
                     if (status) {
                         new Dialog("发布文章", "发布成功", function () {
+                            hideDimmer();
                             window.location.reload();
                         }).message();
                     } else {
-                        new Dialog("发布文章", "发布失败").error();
+                        new Dialog("发布文章", "发布失败", function () {
+                            hideDimmer();
+                        }).error();
                     }
                 },
                 error: function () {
-                    new Dialog("发布文章", "发布失败").error();
+                    new Dialog("发布文章", "发布失败", function () {
+                        hideDimmer();
+                    }).error();
                 }
             });
         }).confirm();
@@ -199,6 +232,7 @@ $(document).ready(function () {
 
     $(".article-audit .reject.button").on("click", function () {
         new Dialog("驳回文章", "确定要驳回文章？", function () {
+            showDimmer();
             var formData = new FormData();
             formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
             formData.append("id", $(".article-audit .input.id").val());
@@ -212,14 +246,19 @@ $(document).ready(function () {
                 success: function (status) {
                     if (status) {
                         new Dialog("驳回文章", "驳回成功", function () {
+                            hideDimmer();
                             window.location.reload();
                         }).message();
                     } else {
-                        new Dialog("驳回文章", "驳回失败").error();
+                        new Dialog("驳回文章", "驳回失败", function () {
+                            hideDimmer();
+                        }).error();
                     }
                 },
                 error: function () {
-                    new Dialog("驳回文章", "驳回失败").error();
+                    new Dialog("驳回文章", "驳回失败", function () {
+                        hideDimmer();
+                    }).error();
                 }
             });
         }).confirm();
