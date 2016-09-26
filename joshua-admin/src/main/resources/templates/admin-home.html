@@ -10,6 +10,25 @@
 
 <div class="ui admin layout root">
     <div th:replace="fragment/admin-layout :: header('光音堂官方网站', '后台系统')">布局标题</div>
+
+    <div class="ui four statistics">
+        <div class="statistic">
+            <div class="value" th:utext="${resistedCount}">58473</div>
+            <div class="label">注册人数</div>
+        </div>
+        <div class="statistic">
+            <div class="value" th:utext="${fellowshipCount}">32</div>
+            <div class="label">团契数量</div>
+        </div>
+        <div class="statistic">
+            <div class="value" th:utext="${articleCount}">576</div>
+            <div class="label">已发布文章</div>
+        </div>
+        <div class="statistic">
+            <div class="value" th:utext="${messageCount}">576</div>
+            <div class="label">留言信息</div>
+        </div>
+    </div>
 </div>
 
 <script th:replace="fragment/header :: script"></script>
