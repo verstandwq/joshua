@@ -80,7 +80,7 @@ public class AdminUserPageController {
             modelAndView.addObject("message", String.format("找不到用户：%s", username));
         } else {
             modelAndView.addObject("user", user);
-            modelAndView.addObject("roles", roleService.get());
+            modelAndView.addObject("roles", roleService.get().stream().filter(role -> !user.getRoles().stream().anyMatch(role1 -> role1.equals(role))).collect(Collectors.toList()));
             modelAndView.addObject("owners", fellowshipService.getUserOwnerFellowship(username));
             modelAndView.addObject("admins", fellowshipService.getUserAdminFellowship(username));
         }
