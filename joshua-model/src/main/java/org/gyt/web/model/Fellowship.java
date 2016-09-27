@@ -28,6 +28,9 @@ public class Fellowship {
     @OneToMany
     private List<User> admins = new ArrayList<>();
 
+    @OneToMany
+    private List<Article> articles = new ArrayList<>();
+
     public Fellowship() {
     }
 
@@ -77,5 +80,13 @@ public class Fellowship {
 
     public void setAdmins(List<User> admins) {
         this.admins = admins;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }
