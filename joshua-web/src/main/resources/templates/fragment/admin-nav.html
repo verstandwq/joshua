@@ -20,7 +20,7 @@
             </h3>
         </a>
 
-        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_STATIC_PAGE')">
+        <div class="static item" sec:authorize="hasRole('ROLE_MANAGE_STATIC_PAGE')">
             <div class="title header"><i class="dropdown icon"></i> 静态页面管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/static/home}">首页管理</a>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_USER_STATUS')">
+        <div class="user item" sec:authorize="hasRole('ROLE_MANAGE_USER_STATUS')">
             <div class="title header "><i class="dropdown icon"></i> 用户管理</div>
             <div class=" content">
                 <a class="item" th:href="@{/admin/user(type='USER')}">
@@ -64,14 +64,14 @@
             </div>
         </div>
 
-        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_NAVIGATION')">
+        <div class="navigation item" sec:authorize="hasRole('ROLE_MANAGE_NAVIGATION')">
             <div class="title header"><i class="dropdown icon"></i> 导航管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/navigation}">一级导航管理</a>
             </div>
         </div>
 
-        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_NOTIFICATION')">
+        <div class="notification item" sec:authorize="hasRole('ROLE_MANAGE_NOTIFICATION')">
             <div class="title header"><i class="dropdown icon"></i> 通知管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/notification}">
@@ -87,7 +87,7 @@
             </div>
         </div>
 
-        <div class="item" sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')">
+        <div class="message item" sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')">
             <div class="title header"><i class="dropdown icon"></i> 留言管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/message}">
@@ -107,7 +107,7 @@
             </div>
         </div>
 
-        <div class="item">
+        <div class="fellowship item">
             <div class="title header"><i class="dropdown icon"></i> 团契管理</div>
             <div class="content">
                 <a class="item" sec:authorize="hasRole('ROLE_MANAGE_FELLOWSHIP')"
@@ -116,7 +116,7 @@
             </div>
         </div>
 
-        <div class="item">
+        <div class="article item">
             <div class="title header"><i class="dropdown icon"></i> 文章管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/article}">
@@ -142,7 +142,7 @@
             </div>
         </div>
 
-        <div class="item">
+        <div class="info item">
             <div class="title header"><i class="dropdown icon"></i> 我的信息</div>
             <div class="content">
                 <a class="item" th:href="@{/info}">我的资料</a>
