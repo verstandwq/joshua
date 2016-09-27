@@ -10,10 +10,16 @@ import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -46,6 +52,7 @@ public class AdminArticlePageController {
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("items", articleList);
             modelAndView.addObject("subtitle", "我的文章");
+            type = "MINE";
         } else if (type.equalsIgnoreCase("RAW")) {
             modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.RAW)).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "草稿箱");
@@ -62,6 +69,8 @@ public class AdminArticlePageController {
             modelAndView.addObject("items", new ArrayList<>());
             modelAndView.addObject("subtitle", "未知类型");
         }
+
+        modelAndView.addObject("type", type);
         return modelAndView;
     }
 
@@ -78,6 +87,8 @@ public class AdminArticlePageController {
             modelAndView.setViewName("404");
             modelAndView.addObject("message", String.format("找不到文章：%s", id));
         } else {
+            modelAndView.addObject("title", article.getTitle());
+            modelAndView.addObject("subtitle", "文章预览");
             modelAndView.addObject("item", article);
             modelAndView.addObject("user", user);
         }

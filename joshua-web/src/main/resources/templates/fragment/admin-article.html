@@ -2,45 +2,115 @@
 后台文章管理组件
 -->
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8">
-    <title>后台文章</title>
+    <meta charset="utf-8"/>
+    <title>后台布局</title>
     <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
 </head>
 <body>
 
-<table th:fragment="table (article)" class="ui celled table">
-            <a class="ui inverted blue button"  target="_blank">发文章</a>
+<!-- 我的文章基本组件 -->
+<table th:fragment="table-mine (items)" class="ui celled table">
     <thead>
     <tr>
+        <th>文章ID</th>
         <th>文章标题</th>
-        <th>用户名</th>
-        <th>日期</th>
         <th>所属团契</th>
         <th>状态</th>
         <th>操作</th>
     </tr>
     </thead>
     <tbody>
-    <tr if="${#lists.isEmpty(article)}>
-        <td >当前还没有内容</td>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td>当前还没有内容</td>
     </tr>
-    <tr th:each="item : ${article}">
-        <td th:utext="${article.title}"></td>
-        <td th:utext="${article.author}"></td>
-        <td th:utext="${article.createdDate}"></td>
-        <td th:utext="${article.fellowship}"></td>
-        <td ><label class="ui green label">已发布</label></td>
-        <td ><label class="ui orange label">未发布</label></td>
-        <td ><label class="ui red label">待审核</label></td>
-        <td ><label class="ui black label">被驳回</label></td>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.id}"></td>
+        <td th:utext="${item.title}"></td>
+        <td th:utext="${item.fellowship.displayName}"></td>
+        <td th:if="${item.status.name() == 'RAW'}"><label class="ui grey label">未发布</label></td>
+        <td th:if="${item.status.name() == 'AUDITING'}"><label class="ui orange label">审核中</label></td>
+        <td th:if="${item.status.name() == 'PUBLISHED'}"><label class="ui green label">已发布</label></td>
+        <td th:if="${item.status.name() == 'REJECTED'}"><label class="ui red label">被驳回</label></td>
         <td>
-            <a class="ui tiny button" target="_blank">查看</a>
-            <a class="ui tiny button" target="_blank">修改</a>
-            <button
-                    class="ui admin user unlock tiny green button">发布
-            </button>
+            <a class="ui black tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table th:fragment="table-normal (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>文章ID</th>
+        <th>文章标题</th>
+        <th>所属团契</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td>当前还没有内容</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.id}"></td>
+        <td th:utext="${item.title}"></td>
+        <td th:utext="${item.fellowship.displayName}"></td>
+        <td>
+            <a class="ui black tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
+            <a class="ui black tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id} + '/edit'}">修改</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table th:fragment="table-audit (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>文章ID</th>
+        <th>文章标题</th>
+        <th>所属团契</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td>当前还没有内容</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.id}"></td>
+        <td th:utext="${item.title}"></td>
+        <td th:utext="${item.fellowship.displayName}"></td>
+        <td>
+            <a class="ui black tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
+            <a sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')" class="ui black tiny button" target="_blank"
+               th:href="@{'/admin/article/' + ${item.id} + '/audit'}">审核</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<table th:fragment="table-publish (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>文章ID</th>
+        <th>文章标题</th>
+        <th>所属团契</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td>当前还没有内容</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.id}"></td>
+        <td th:utext="${item.title}"></td>
+        <td th:utext="${item.fellowship.displayName}"></td>
+        <td>
+            <a class="ui black tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
         </td>
     </tr>
     </tbody>
