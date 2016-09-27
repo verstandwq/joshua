@@ -50503,7 +50503,7 @@ $(document).ready(function () {
                             window.location.reload();
                         }).message();
                     } else {
-                        new Dialog("发布文章", "发布失败", function () {
+                        new Dialog("发布文章", "发布失败，原因:" + status, function () {
                             hideDimmer();
                         }).error();
                     }
@@ -50537,7 +50537,7 @@ $(document).ready(function () {
                             window.location.reload();
                         }).message();
                     } else {
-                        new Dialog("驳回文章", "驳回失败", function () {
+                        new Dialog("驳回文章", "驳回失败，原因:" + status, function () {
                             hideDimmer();
                         }).error();
                     }
