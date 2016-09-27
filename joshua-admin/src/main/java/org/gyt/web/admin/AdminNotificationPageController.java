@@ -23,11 +23,14 @@ public class AdminNotificationPageController {
     @Autowired
     private NotificationService notificationService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping("/notification")
     public ModelAndView tablePage(
             @RequestParam(required = false) String type
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-notification");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-notification");
 
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("items", notificationService.getAll());

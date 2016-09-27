@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
+import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,11 +33,14 @@ public class AdminUserPageController {
     @Autowired
     private FellowshipService fellowshipService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping("/user")
     public ModelAndView userTablePage(
             @RequestParam(required = false) String type
     ) {
-        ModelAndView modelAndView = new ModelAndView("admin-user");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-user");
 
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("users", new ArrayList<>());
@@ -71,7 +75,7 @@ public class AdminUserPageController {
     public ModelAndView userDetailsPage(
             @PathVariable String username
     ) {
-        ModelAndView modelAndView = new ModelAndView("admin-user-details");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-user-details");
 
         User user = userService.get(username);
 

@@ -1,6 +1,7 @@
 package org.gyt.web.admin;
 
 import org.gyt.web.api.service.FellowshipService;
+import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Fellowship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +20,12 @@ public class AdminFellowshipPageController {
     @Autowired
     private FellowshipService fellowshipService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping("/fellowship")
     public ModelAndView tablePage() {
-        ModelAndView modelAndView = new ModelAndView("admin-fellowship");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-fellowship");
         modelAndView.addObject("subtitle", "所有团契");
         modelAndView.addObject("items", fellowshipService.getAll());
         return modelAndView;
@@ -31,7 +35,7 @@ public class AdminFellowshipPageController {
     public ModelAndView detailsPage(
             @PathVariable String name
     ) {
-        ModelAndView modelAndView = new ModelAndView("admin-fellowship-details");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-fellowship-details");
 
         Fellowship fellowship = fellowshipService.get(name);
 
