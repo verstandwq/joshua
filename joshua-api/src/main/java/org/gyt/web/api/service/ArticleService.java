@@ -71,7 +71,7 @@ public interface ArticleService {
      * @param article 文章对象
      * @return 如果文章创建成功返回true，否则返回false
      */
-    boolean createOrUpdate(Article article);
+    Article createOrUpdate(Article article);
 
     /**
      * 激活文章

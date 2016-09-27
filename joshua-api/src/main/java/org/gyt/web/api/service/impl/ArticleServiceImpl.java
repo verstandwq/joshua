@@ -44,7 +44,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> getFromUser(String username) {
-        return articleRepository.findAll().stream().filter(article -> article.getAuthor().getUsername().equals(username) || article.getAuditor().getUsername().equals(username)).collect(Collectors.toList());
+        return articleRepository.findAll().stream().filter(article -> article.getAuthor().getUsername().equals(username) || (article.getAuditor() != null && article.getAuditor().getUsername().equals(username))).collect(Collectors.toList());
     }
 
     @Override
@@ -59,8 +59,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public boolean createOrUpdate(Article article) {
-        return articleRepository.save(article) != null;
+    public Article createOrUpdate(Article article) {
+        return articleRepository.save(article);
     }
 
     @Override

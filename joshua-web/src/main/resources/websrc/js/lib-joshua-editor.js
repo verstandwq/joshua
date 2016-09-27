@@ -10,6 +10,59 @@ var hideDimmer = function () {
     $(".ui.dimmer").dimmer("hide");
 };
 
+var saveArticle = function (quill) {
+    var title = $(".article-editor .input.title").val();
+    var fellowship = $(".article-editor .dropdown.fellowship").dropdown('get value');
+
+    if (!title) {
+        new Dialog("保存文章", "文章标题不能为空").message();
+        return;
+    }
+
+    if (!fellowship) {
+        new Dialog("保存文章", "文章所属团契不能为空").message();
+        return;
+    }
+
+    showDimmer();
+
+    var formData = new FormData();
+    formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+    formData.append("id", $(".article-editor .input.id").val());
+    formData.append("title", title);
+    formData.append("fellowship", fellowship);
+    formData.append("description", $(".article-editor .input.description").val());
+    formData.append("content",
+        JSON.stringify(quill.getContents())
+            .replace(/\n/g, "\\n")
+    );
+
+    $.ajax({
+        url: "/api/article/save",
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (status) {
+            if (status) {
+                hideDimmer();
+                new Dialog("保存文章", "保存成功", function () {
+                    window.location = '/admin/article/' + status + '/edit';
+                }).message();
+            } else {
+                new Dialog("保存文章", "保存失败，原因：" + status, function () {
+                    hideDimmer();
+                }).error();
+            }
+        },
+        error: function () {
+            new Dialog("保存文章", "保存失败", function () {
+                hideDimmer();
+            }).error();
+        }
+    });
+};
+
 /**
  * 文章编辑器
  */
@@ -63,55 +116,7 @@ $(document).ready(function () {
      * 保存文章
      */
     $(".article-editor .ui.save.button").on("click", function () {
-        var title = $(".article-editor .input.title").val();
-        var fellowship = $(".article-editor .dropdown.fellowship").dropdown('get value');
-
-        if (!title) {
-            new Dialog("保存文章", "文章标题不能为空").message();
-            return;
-        }
-
-        if (!fellowship) {
-            new Dialog("保存文章", "文章所属团契不能为空").message();
-            return;
-        }
-
-        showDimmer();
-
-        var formData = new FormData();
-        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
-        formData.append("id", $(".article-editor .input.id").val());
-        formData.append("title", title);
-        formData.append("fellowship", fellowship);
-        formData.append("description", $(".article-editor .input.description").val());
-        formData.append("content",
-            JSON.stringify(quill.getContents())
-                .replace(/\n/g, "\\n")
-        );
-
-        $.ajax({
-            url: "/api/article/save",
-            type: "post",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (status) {
-                if ("success" == status) {
-                    new Dialog("保存文章", "保存成功", function () {
-                        hideDimmer();
-                    }).message();
-                } else {
-                    new Dialog("保存文章", "保存失败，原因：" + status, function () {
-                        hideDimmer();
-                    }).error();
-                }
-            },
-            error: function () {
-                new Dialog("保存文章", "保存失败", function () {
-                    hideDimmer();
-                }).error();
-            }
-        });
+        saveArticle(quill);
     });
 
     /**
