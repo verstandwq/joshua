@@ -1,11 +1,15 @@
 package org.gyt.web.api.utils;
 
 import org.gyt.web.api.model.ArticleCountModel;
+import org.gyt.web.api.model.MessageCountModel;
+import org.gyt.web.api.model.NotificationCountModel;
 import org.gyt.web.api.model.UserCountModel;
 import org.gyt.web.api.service.ArticleService;
-import org.gyt.web.api.service.FellowshipService;
+import org.gyt.web.api.service.MessageService;
+import org.gyt.web.api.service.NotificationService;
 import org.gyt.web.api.service.UserService;
 import org.gyt.web.model.ArticleStatus;
+import org.gyt.web.model.MessageType;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,7 +25,10 @@ public class CountModelComponent {
     private ArticleService articleService;
 
     @Autowired
-    private FellowshipService fellowshipService;
+    private NotificationService notificationService;
+
+    @Autowired
+    private MessageService messageService;
 
     public UserCountModel getUserCountModel() {
         UserCountModel countModel = new UserCountModel();
@@ -56,5 +63,22 @@ public class CountModelComponent {
         }
 
         return articleCountModel;
+    }
+
+    public NotificationCountModel getNotificationCountModel() {
+        NotificationCountModel notificationCountModel = new NotificationCountModel();
+        notificationCountModel.setAllCount(notificationService.getAll().stream().count());
+        notificationCountModel.setCurrentCount(notificationService.getActivate().stream().count());
+        notificationCountModel.setExpiredCount(notificationService.getExpired().stream().count());
+        return notificationCountModel;
+    }
+
+    public MessageCountModel getMessageCountModel() {
+        MessageCountModel messageCountModel = new MessageCountModel();
+        messageCountModel.setAllCount(messageService.getAll().stream().count());
+        messageCountModel.setAdviseCount(messageService.getByType(MessageType.ADVICE).stream().count());
+        messageCountModel.setQuestionCount(messageService.getByType(MessageType.QUESTION).stream().count());
+        messageCountModel.setSuffrageCount(messageService.getByType(MessageType.SUFFRAGE).stream().count());
+        return messageCountModel;
     }
 }

@@ -1,72 +1,52 @@
 package org.gyt.web.api.model;
 
 /**
- * 用户计数器，用于统计一下信息
- * - 系统管理员人数
- * - 网站编辑人数
- * - 团契管理员人数
- * - 资源管理员人数
- * - 团契成员人数
- * - 注册用户人数
+ * 留言计数器，用于统计以下信息
+ * - 所有留言个数
+ * - 建议留言个数
+ * - 咨询留言个数
+ * - 代祷留言个数
  * Created by y27chen on 2016/9/27.
  */
 public class MessageCountModel {
 
-    private Long adminCount;
-    private Long editorCount;
-    private Long adminFSCount;
-    private Long adminRECount;
-    private Long memberCount;
-    private Long userCount;
+    private Long allCount;
+    private Long adviseCount;
+    private Long questionCount;
+    private Long suffrageCount;
 
     public MessageCountModel() {
     }
 
-    public Long getAdminCount() {
-        return adminCount;
+    public Long getAllCount() {
+        return allCount;
     }
 
-    public void setAdminCount(Long adminCount) {
-        this.adminCount = adminCount;
+    public void setAllCount(Long allCount) {
+        this.allCount = allCount;
     }
 
-    public Long getEditorCount() {
-        return editorCount;
+    public Long getAdviseCount() {
+        return adviseCount;
     }
 
-    public void setEditorCount(Long editorCount) {
-        this.editorCount = editorCount;
+    public void setAdviseCount(Long adviseCount) {
+        this.adviseCount = adviseCount;
     }
 
-    public Long getAdminFSCount() {
-        return adminFSCount;
+    public Long getQuestionCount() {
+        return questionCount;
     }
 
-    public void setAdminFSCount(Long adminFSCount) {
-        this.adminFSCount = adminFSCount;
+    public void setQuestionCount(Long questionCount) {
+        this.questionCount = questionCount;
     }
 
-    public Long getAdminRECount() {
-        return adminRECount;
+    public Long getSuffrageCount() {
+        return suffrageCount;
     }
 
-    public void setAdminRECount(Long adminRECount) {
-        this.adminRECount = adminRECount;
-    }
-
-    public Long getMemberCount() {
-        return memberCount;
-    }
-
-    public void setMemberCount(Long memberCount) {
-        this.memberCount = memberCount;
-    }
-
-    public Long getUserCount() {
-        return userCount;
-    }
-
-    public void setUserCount(Long userCount) {
-        this.userCount = userCount;
+    public void setSuffrageCount(Long suffrageCount) {
+        this.suffrageCount = suffrageCount;
     }
 }

@@ -13,12 +13,12 @@
 <body>
 <nav th:fragment="primary" class="ui admin inverted vertical sticky fixed menu">
     <div class="ui inverted accordion">
-        <div class="item">
+        <a class="item" th:href="@{/admin}">
             <h3 class="ui inverted header">
                 <i class="user icon"></i>
                 <div class="content" sec:authentication="principal.nickname">用户名</div>
             </h3>
-        </div>
+        </a>
 
         <div class="item" sec:authorize="hasRole('ROLE_MANAGE_STATIC_PAGE')">
             <div class="title header"><i class="dropdown icon"></i> 静态页面管理</div>
@@ -74,9 +74,16 @@
         <div class="item" sec:authorize="hasRole('ROLE_MANAGE_NOTIFICATION')">
             <div class="title header"><i class="dropdown icon"></i> 通知管理</div>
             <div class="content">
-                <a class="item" th:href="@{/admin/notification}">所有通知</a>
-                <a class="item" th:href="@{/admin/notification(type='ACTIVATE')}">当前通知</a>
-                <a class="item" th:href="@{/admin/notification(type='EXPIRED')}">过期通知</a>
+                <a class="item" th:href="@{/admin/notification}">
+                    所有通知 <span class="ui primary left pointing label"
+                               th:utext="${notificationCountModel.allCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/notification(type='ACTIVATE')}">
+                    当前通知 <span class="ui primary left pointing label" th:utext="${notificationCountModel.curerntCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/notification(type='EXPIRED')}">
+                    过期通知 <span class="ui primary left pointing label" th:utext="${notificationCountModel.expiredCount}">0</span>
+                </a>
             </div>
         </div>
 
@@ -84,16 +91,18 @@
             <div class="title header"><i class="dropdown icon"></i> 留言管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/message}">
-                    所有<span class="ui primary left pointing label">0</span>
-                </a>
-                <a class="item" th:href="@{/admin/message(type=ADVISE)}">
-                    建议<span class="ui primary left pointing label">0</span>
-                </a>
-                <a class="item" th:href="@{/admin/message(type=QUESTION)}">
-                    咨询<span class="ui primary left pointing label">0</span>
+                    所有 <span class="ui primary left pointing label" th:utext="${messageCountModel.allCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/message(type=SUFFRAGE)}">
-                    代祷<span class="ui primary left pointing label">0</span>
+                    代祷 <span class="ui primary left pointing label"
+                             th:utext="${messageCountModel.suffrageCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/message(type=QUESTION)}">
+                    咨询 <span class="ui primary left pointing label"
+                             th:utext="${messageCountModel.questionCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/message(type=ADVISE)}">
+                    建议 <span class="ui primary left pointing label" th:utext="${messageCountModel.adviseCount}">0</span>
                 </a>
             </div>
         </div>

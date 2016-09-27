@@ -26,6 +26,8 @@ public class ModelAndViewUtils {
         ModelAndView modelAndView = new ModelAndView(viewName);
         modelAndView.addObject("userCountModel", countModelComponent.getUserCountModel());
         modelAndView.addObject("articleCountModel", countModelComponent.getArticleCountModel());
+        modelAndView.addObject("notificationCountModel", countModelComponent.getNotificationCountModel());
+        modelAndView.addObject("messageCountModel", countModelComponent.getMessageCountModel());
         return modelAndView;
     }
 }
