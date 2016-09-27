@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Administrator on 2016/9/16.
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class AdminPageController {
 
     @Autowired
@@ -30,13 +30,21 @@ public class AdminPageController {
     @Autowired
     private MessageRepository messageRepository;
 
-    @RequestMapping("/")
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
+    @RequestMapping("admin")
     public ModelAndView home() {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-home");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-home");
         modelAndView.addObject("resistedCount", userService.count());
         modelAndView.addObject("fellowshipCount", fellowshipService.getAll().size());
         modelAndView.addObject("articleCount", articleRepository.count());
         modelAndView.addObject("messageCount", messageRepository.count());
         return modelAndView;
+    }
+
+    @RequestMapping("admin/")
+    public ModelAndView home2() {
+        return home();
     }
 }

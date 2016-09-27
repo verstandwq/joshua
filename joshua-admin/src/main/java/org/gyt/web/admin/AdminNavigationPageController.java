@@ -18,9 +18,12 @@ public class AdminNavigationPageController {
     @Autowired
     private NavigationService navigationService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping("/navigation")
     public ModelAndView primaryPage() {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-navigation");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-navigation");
         modelAndView.addObject("subtitle", "导航栏管理");
         modelAndView.addObject("items", navigationService.getAll());
         return modelAndView;

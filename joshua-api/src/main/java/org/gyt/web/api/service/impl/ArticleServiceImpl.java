@@ -54,6 +54,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> getAll() {
+        return articleRepository.findAll();
+    }
+
+    @Override
     public boolean createOrUpdate(Article article) {
         return articleRepository.save(article) != null;
     }

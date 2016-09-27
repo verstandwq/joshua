@@ -25,9 +25,12 @@ public class MessageWebServiceAPI {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
     public ModelAndView publish(@ModelAttribute Message message) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/contactPage");
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/contactPage");
 
         message.setCreatedDate(new Date());
         message.setOwner((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());

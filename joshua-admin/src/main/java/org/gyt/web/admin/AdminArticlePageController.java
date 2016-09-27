@@ -30,11 +30,14 @@ public class AdminArticlePageController {
     @Autowired
     private FellowshipService fellowshipService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping("/article")
     public ModelAndView tablePage(
             @RequestParam(required = false) String type
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article");
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -66,7 +69,7 @@ public class AdminArticlePageController {
     public ModelAndView detailsPage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-details");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-details");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Article article = articleService.get(Long.valueOf(id));
@@ -86,7 +89,7 @@ public class AdminArticlePageController {
     public ModelAndView editArticlePage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-editor");
         modelAndView.addObject("title", "编辑文章");
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -112,7 +115,7 @@ public class AdminArticlePageController {
     public ModelAndView auditArticlePage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-audit");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-audit");
         modelAndView.addObject("title", "审核文章");
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -129,7 +132,7 @@ public class AdminArticlePageController {
 
     @RequestMapping("/article/new")
     public ModelAndView newArticlePage() {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-article-editor");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-editor");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (fellowshipService.getUserOwnerFellowship(user.getUsername()).isEmpty() && fellowshipService.getUserAdminFellowship(user.getUsername()).isEmpty()) {

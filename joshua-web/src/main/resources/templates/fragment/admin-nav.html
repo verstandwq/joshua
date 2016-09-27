@@ -41,12 +41,26 @@
         <div class="item" sec:authorize="hasRole('ROLE_MANAGE_USER_STATUS')">
             <div class="title header "><i class="dropdown icon"></i> 用户管理</div>
             <div class=" content">
-                <a class="item" th:href="@{/admin/user(type='ADMIN')}">系统管理员</a>
-                <a class="item" th:href="@{/admin/user(type='EDITOR')}">网站编辑</a>
-                <a class="item" th:href="@{/admin/user(type='FS_ADMIN')}">团契管理员</a>
-                <a class="item" th:href="@{/admin/user(type='RE_ADMIN')}">资源管理员</a>
-                <a class="item" th:href="@{/admin/user(type='MEMBER')}">团契成员</a>
-                <a class="item" th:href="@{/admin/user(type='USER')}">注册用户</a>
+                <a class="item" th:href="@{/admin/user(type='USER')}">
+                    注册用户 <span class="ui primary left pointing label" th:utext="${userCountModel.userCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/user(type='MEMBER')}">
+                    团契成员 <span class="ui primary left pointing label" th:utext="${userCountModel.memberCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/user(type='ADMIN')}">
+                    系统管理员 <span class="ui primary left pointing label" th:utext="${userCountModel.adminCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/user(type='EDITOR')}">
+                    网站编辑 <span class="ui primary left pointing label" th:utext="${userCountModel.editorCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/user(type='FS_ADMIN')}">
+                    团契管理员 <span class="ui primary left pointing label"
+                                th:utext="${userCountModel.adminFSCount}">0</span>
+                </a>
+                <a class="item" th:href="@{/admin/user(type='RE_ADMIN')}">
+                    资源管理员 <span class="ui primary left pointing label"
+                                th:utext="${userCountModel.adminRECount}">0</span>
+                </a>
             </div>
         </div>
 
@@ -97,19 +111,24 @@
             <div class="title header"><i class="dropdown icon"></i> 文章管理</div>
             <div class="content">
                 <a class="item" th:href="@{/admin/article}">
-                    我的文章<span class="ui primary left pointing label">0</span>
+                    我的文章 <span class="ui primary left pointing label"
+                               th:utext="${articleCountModel.myArticleCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/article(type='RAW')}">
-                    草稿箱<span class="ui primary left pointing label">0</span>
+                    草稿箱 <span class="ui primary left pointing label"
+                              th:utext="${articleCountModel.rawArticleCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/article(type='AUDIT')}">
-                    待审核文章<span class="ui primary left pointing label">0</span>
+                    待审核文章 <span class="ui primary left pointing label"
+                                th:utext="${articleCountModel.auditArticleCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/article(type='PUBLISH')}">
-                    已发布文章<span class="ui primary left pointing label">0</span>
+                    已发布文章 <span class="ui primary left pointing label"
+                                th:utext="${articleCountModel.publishArticleCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/article(type='REJECT')}">
-                    驳回文章<span class="ui primary left pointing label">0</span>
+                    驳回文章 <span class="ui primary left pointing label"
+                               th:utext="${articleCountModel.rejectArticleCount}">0</span>
                 </a>
             </div>
         </div>

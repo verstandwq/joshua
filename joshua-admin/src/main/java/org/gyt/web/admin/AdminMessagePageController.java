@@ -25,11 +25,14 @@ public class AdminMessagePageController {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping(value = "/message", method = RequestMethod.GET)
     public ModelAndView tablePage(
             @RequestParam(required = false) String type
     ) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("admin-message");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-message");
 
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("items", messageService.getAll());

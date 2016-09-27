@@ -21,9 +21,12 @@ public class FellowshipPageController {
     @Autowired
     private FellowshipService fellowshipService;
 
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
     @RequestMapping("/{name}")
     public ModelAndView getFellowshipHomePage(@PathVariable String name) {
-        ModelAndView modelAndView = ModelAndViewUtils.newModelAndView("staticPage/fellowship/" + name);
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/fellowship/" + name);
 
         Fellowship fellowship = fellowshipService.get(name);
         modelAndView.addObject("items", fellowship.getArticles());
