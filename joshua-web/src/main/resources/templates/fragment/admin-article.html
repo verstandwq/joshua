@@ -111,6 +111,12 @@
         <td th:utext="${item.fellowship.displayName}"></td>
         <td>
             <a class="ui black tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
+            <button sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')" th:if="${item.isDisable()}"
+                    class="ui admin article enable green tiny button" th:attr="data-id=${item.id}">激活
+            </button>
+            <button sec:authorize="hasRole('ROLE_MANAGE_MESSAGE')" th:if="${not item.isDisable()}"
+                    class="ui admin article disable red tiny button" th:attr="data-id=${item.id}">禁用
+            </button>
         </td>
     </tr>
     </tbody>

@@ -27,7 +27,7 @@
             <div th:replace="fragment/layout :: subheader ('团契时间')"></div>
             <div th:replace="fragment/layout :: paragraph ('时间：每周四晚上7：30—9：00 地点：非马艺术馆三楼')"></div>
 
-            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+            <div th:replace="fragment/article :: table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

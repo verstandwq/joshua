@@ -28,7 +28,7 @@
             <div th:replace="fragment/layout :: subheader ('如何加入团契')"></div>
             <div th:replace="fragment/layout :: paragraph ('只要你是老师、学生（主要是高中生、大学生、研究生） 我们都欢迎你的加入。 ')"></div>
 
-            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+            <div th:replace="fragment/article :: table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
