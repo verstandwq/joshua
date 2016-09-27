@@ -54,6 +54,14 @@ public class ArticleWebServiceAPI {
         Article article = articleService.get(id);
 
         if (article != null && article.getAuthor().getUsername().equals(user.getUsername())) {
+            if (article.getStatus().equals(ArticleStatus.PUBLISHED)) {
+                return "该文章已经发布";
+            }
+
+            if (article.getStatus().equals(ArticleStatus.AUDITING)) {
+                return "该文章已经在审核中";
+            }
+            
             article.setStatus(ArticleStatus.AUDITING);
             return articleService.createOrUpdate(article).getStatus().equals(ArticleStatus.AUDITING) ? "success" : "更新状态失败";
         }
