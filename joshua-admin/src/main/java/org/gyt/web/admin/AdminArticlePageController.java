@@ -10,10 +10,16 @@ import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -44,24 +50,35 @@ public class AdminArticlePageController {
         List<Article> articleList = articleService.getFromUser(user.getUsername());
 
         if (StringUtils.isEmpty(type)) {
-            modelAndView.addObject("items", articleList);
+            modelAndView.addObject("items", articleService.getFromUser(user.getUsername()));
             modelAndView.addObject("subtitle", "我的文章");
+            type = "MINE";
         } else if (type.equalsIgnoreCase("RAW")) {
             modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.RAW)).collect(Collectors.toList()));
-            modelAndView.addObject("subtitle", "草稿箱");
+            modelAndView.addObject("subtitle", "我的草稿箱");
         } else if (type.equalsIgnoreCase("AUDIT")) {
-            modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList()));
+            if (user.getRoles().stream().anyMatch(role -> role.getAuthorities().stream().anyMatch(s -> s.equals("ROLE_MANAGE_ARTICLE")))) {
+                modelAndView.addObject("items", articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList()));
+            } else {
+                modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList()));
+            }
             modelAndView.addObject("subtitle", "待审核文章");
         } else if (type.equalsIgnoreCase("PUBLISH")) {
-            modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList()));
+            if (user.getRoles().stream().anyMatch(role -> role.getAuthorities().stream().anyMatch(s -> s.equals("ROLE_MANAGE_ARTICLE")))) {
+                modelAndView.addObject("items", articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList()));
+            } else {
+                modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList()));
+            }
             modelAndView.addObject("subtitle", "已发布文章");
         } else if (type.equalsIgnoreCase("REJECT")) {
             modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.REJECTED)).collect(Collectors.toList()));
-            modelAndView.addObject("subtitle", "驳回文章");
+            modelAndView.addObject("subtitle", "我的驳回文章");
         } else {
             modelAndView.addObject("items", new ArrayList<>());
             modelAndView.addObject("subtitle", "未知类型");
         }
+
+        modelAndView.addObject("type", type);
         return modelAndView;
     }
 
@@ -78,6 +95,8 @@ public class AdminArticlePageController {
             modelAndView.setViewName("404");
             modelAndView.addObject("message", String.format("找不到文章：%s", id));
         } else {
+            modelAndView.addObject("title", article.getTitle());
+            modelAndView.addObject("subtitle", "文章预览");
             modelAndView.addObject("item", article);
             modelAndView.addObject("user", user);
         }

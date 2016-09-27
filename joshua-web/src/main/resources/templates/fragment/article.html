@@ -14,7 +14,7 @@
 <div th:fragment="table (title, items)" class="ui segment">
     <h2 class="ui header" th:utext="${title}">文章列表标题</h2>
     <div class="ui items">
-        <div th:each="article : ${items}" class="item">
+        <div th:each="article : ${items}" th:if="${not article.isDisable()}" class="item">
             <a class="ui small image" th:href="@{'/article/' + ${article.id}}" target="_blank">
                 <img src="../../public/assets/images/logo.gif"
                      th:src="@{/assets/images/logo.gif}"/>

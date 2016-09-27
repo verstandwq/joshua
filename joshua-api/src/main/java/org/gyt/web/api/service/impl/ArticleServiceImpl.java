@@ -34,7 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> getFromFellowship(String name) {
-        return articleRepository.findAll().stream().filter(article -> article.getFellowship() != null && article.getFellowship().getName().equals(name)).collect(Collectors.toList());
+        return articleRepository.findAll().stream().filter(article -> article.isDisable() && article.getFellowship() != null && article.getFellowship().getName().equals(name)).collect(Collectors.toList());
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<Article> getLatestArticles() {
         Pageable pageable = new PageRequest(0, 20, Sort.Direction.fromString("ASC"), "createdDate");
-        return articleRepository.findAll(pageable).getContent().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
+        return articleRepository.findAll(pageable).getContent().stream().filter(article -> !article.isDisable() && article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
     }
 
     @Override

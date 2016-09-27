@@ -98,4 +98,30 @@ public class ArticleWebServiceAPI {
 
         return "驳回文章失败";
     }
+
+    @RequestMapping(value = "/disable", method = RequestMethod.POST)
+    public String disable(@RequestParam Long id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Article article = articleService.get(id);
+
+        if (article != null && !article.isDisable() && user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_ARTICLE"))) {
+            article.setDisable(true);
+            return articleService.createOrUpdate(article).isDisable() ? "success" : "禁用文章失败";
+        }
+
+        return "文章不存在或者已经禁用";
+    }
+
+    @RequestMapping(value = "/enable", method = RequestMethod.POST)
+    public String enable(@RequestParam Long id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Article article = articleService.get(id);
+
+        if (article != null && article.isDisable() && user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_ARTICLE"))) {
+            article.setDisable(false);
+            return !articleService.createOrUpdate(article).isDisable() ? "success" : "激活文章失败";
+        }
+
+        return "文章不存在或者已经激活";
+    }
 }

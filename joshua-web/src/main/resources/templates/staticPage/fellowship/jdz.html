@@ -25,7 +25,7 @@
             <div th:replace="fragment/layout :: subheader ('加入服侍团队的要求')"></div>
             <div th:replace="fragment/layout :: paragraph ('身体健康，愿意为主奉献，能吃苦耐劳')"></div>
 
-            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+            <div th:replace="fragment/article :: table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

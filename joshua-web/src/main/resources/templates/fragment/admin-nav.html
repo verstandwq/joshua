@@ -127,6 +127,10 @@
                     草稿箱 <span class="ui primary left pointing label"
                               th:utext="${articleCountModel.rawArticleCount}">0</span>
                 </a>
+                <a class="item" th:href="@{/admin/article(type='REJECT')}">
+                    驳回文章 <span class="ui primary left pointing label"
+                               th:utext="${articleCountModel.rejectArticleCount}">0</span>
+                </a>
                 <a class="item" th:href="@{/admin/article(type='AUDIT')}">
                     待审核文章 <span class="ui primary left pointing label"
                                 th:utext="${articleCountModel.auditArticleCount}">0</span>
@@ -134,10 +138,6 @@
                 <a class="item" th:href="@{/admin/article(type='PUBLISH')}">
                     已发布文章 <span class="ui primary left pointing label"
                                 th:utext="${articleCountModel.publishArticleCount}">0</span>
-                </a>
-                <a class="item" th:href="@{/admin/article(type='REJECT')}">
-                    驳回文章 <span class="ui primary left pointing label"
-                               th:utext="${articleCountModel.rejectArticleCount}">0</span>
                 </a>
             </div>
         </div>

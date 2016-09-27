@@ -27,7 +27,7 @@
             <div th:replace="fragment/layout :: subheader ('聚会地点')"></div>
             <div th:replace="fragment/layout :: paragraph ('教会多功能室(非马美术馆三楼)')"></div>
 
-            <div th:replace="fragment/article :: table('我们的消息','')"></div>
+            <div th:replace="fragment/article :: table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
