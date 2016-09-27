@@ -7,10 +7,9 @@ import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * 文章web接口
@@ -22,6 +21,30 @@ public class ArticleWebServiceAPI {
 
     @Autowired
     private ArticleService articleService;
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(@ModelAttribute Article article) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (article.getId() == null) {
+            article.setAuthor(user);
+            article.setCreatedDate(new Date());
+        } else {
+            Article src = articleService.get(article.getId());
+            article.setAuthor(src.getAuthor());
+            article.setCreatedDate(src.getCreatedDate());
+
+            if (src.getStatus().equals(ArticleStatus.PUBLISHED)) {
+                return "该文章已经发布，不能修改已经发布的文章";
+            }
+        }
+
+
+        article.setLastModifiedTime(new Date());
+        article.setLastModifiedUser(user);
+
+        return articleService.createOrUpdate(article) ? "success" : "文章保存失败";
+    }
 
     @RequestMapping(value = "/audit", method = RequestMethod.POST)
     public String audit(@RequestParam Long id) {

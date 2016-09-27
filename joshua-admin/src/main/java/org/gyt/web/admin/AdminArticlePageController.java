@@ -150,28 +150,4 @@ public class AdminArticlePageController {
         modelAndView.addObject("fellowship", fellowshipSet);
         return modelAndView;
     }
-
-    @RequestMapping(value = "/article/save", method = RequestMethod.POST)
-    public String saveArticle(@ModelAttribute Article article) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (article.getId() == null) {
-            article.setAuthor(user);
-            article.setCreatedDate(new Date());
-        } else {
-            Article src = articleService.get(article.getId());
-            article.setAuthor(src.getAuthor());
-            article.setCreatedDate(src.getCreatedDate());
-
-            if (src.getStatus().equals(ArticleStatus.PUBLISHED)) {
-                return "该文章已经发布，不能修改已经发布的文章";
-            }
-        }
-
-
-        article.setLastModifiedTime(new Date());
-        article.setLastModifiedUser(user);
-
-        return articleService.createOrUpdate(article) ? "success" : null;
-    }
 }

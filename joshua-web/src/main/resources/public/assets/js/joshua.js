@@ -50372,7 +50372,7 @@ $(document).ready(function () {
         );
 
         $.ajax({
-            url: "/admin/article/save",
+            url: "/api/article/save",
             type: "post",
             data: formData,
             processData: false,
