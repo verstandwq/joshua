@@ -215,7 +215,7 @@ $(document).ready(function () {
                 processData: false,
                 contentType: false,
                 success: function (status) {
-                    if (status) {
+                    if ("success" == status) {
                         new Dialog("发布文章", "发布成功", function () {
                             hideDimmer();
                             window.location.reload();
@@ -249,7 +249,7 @@ $(document).ready(function () {
                 processData: false,
                 contentType: false,
                 success: function (status) {
-                    if (status) {
+                    if ("success" == status) {
                         new Dialog("驳回文章", "驳回成功", function () {
                             hideDimmer();
                             window.location.reload();
