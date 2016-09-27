@@ -79,7 +79,7 @@
                                th:utext="${notificationCountModel.allCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/notification(type='ACTIVATE')}">
-                    当前通知 <span class="ui primary left pointing label" th:utext="${notificationCountModel.curerntCount}">0</span>
+                    当前通知 <span class="ui primary left pointing label" th:utext="${notificationCountModel.currentCount}">0</span>
                 </a>
                 <a class="item" th:href="@{/admin/notification(type='EXPIRED')}">
                     过期通知 <span class="ui primary left pointing label" th:utext="${notificationCountModel.expiredCount}">0</span>
