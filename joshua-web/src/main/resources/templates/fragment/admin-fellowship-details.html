@@ -74,5 +74,36 @@
     </tfoot>
 </table>
 
+<div th:fragment="transfer-modal (item)" class="ui admin fellowship transfer modal">
+    <div class="header" th:utext="'更改所有者 - ' + ${item.displayName}">更改所有者</div>
+    <div class="content">
+        <div class="ui horizontal divider">请输入新的团契所有者用户名</div>
+
+        <div class="ui fluid icon input">
+            <input id="owner-username" th:attr="data-name=${item.name}" type="text" placeholder="请输入所有者用户名"/>
+            <i class="search icon"></i>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive button">确定</button>
+        <button class="ui negative button">取消</button>
+    </div>
+</div>
+
+<div th:fragment="admins-modal (item)" class="ui admin fellowship admin add modal">
+    <div class="header" th:utext="'添加管理员 - ' + ${item.displayName}">添加管理员</div>
+    <div class="content">
+        <div class="ui horizontal divider">请输入管理员用户名</div>
+
+        <div class="ui fluid icon input">
+            <input id="admin-username" th:attr="data-name=${item.name}" type="text" placeholder="请输入管理员用户名"/>
+            <i class="search icon"></i>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive button">确定</button>
+        <button class="ui negative button">取消</button>
+    </div>
+</div>
 </body>
 </html>
