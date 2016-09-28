@@ -91,4 +91,24 @@ public class FellowshipWebServiceAPI {
 
         return "团契不存在或者已经禁用";
     }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public String remove(@RequestParam String name, String username) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Fellowship fellowship = fellowshipService.get(name);
+
+        if (fellowship != null && fellowship.isEnable()) {
+            if (fellowship.getOwner().getUsername().equals(user.getUsername()) || user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_FELLOWSHIP"))) {
+                if (fellowshipService.removeAdmin(name, username)) {
+                    return "success";
+                } else {
+                    return "指定的用户不存在，或者已经移除该管理员";
+                }
+            } else {
+                return "只有拥有团契管理权限或者是本团契所有者才能移除管理员。";
+            }
+        }
+
+        return "团契不存在或者已经禁用";
+    }
 }

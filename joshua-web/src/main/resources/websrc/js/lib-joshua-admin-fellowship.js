@@ -120,6 +120,37 @@ var addAdminFellowship = function (name, username) {
     });
 };
 
+var removeAdminFellowship = function (name, username) {
+    new Dialog("移除管理员", "确定要移除管理员" + username + "?", function () {
+        var formData = new FormData();
+        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+        formData.append("name", name);
+        formData.append("username", username);
+
+        $.ajax({
+            url: "/api/fellowship/remove",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (status) {
+                if ("success" == status) {
+                    new Dialog("移除管理员", "移除管理员成功", function () {
+                        window.location.reload();
+                    }).message();
+                } else {
+                    new Dialog("移除管理员", "移除管理员失败，原因：" + status, function () {
+                    }).error();
+                }
+            },
+            error: function () {
+                new Dialog("移除管理员", "移除管理员失败", function () {
+                }).error();
+            }
+        });
+    }).confirm();
+};
+
 $(document).ready(function () {
     $(".ui.admin.fellowship.enable.button").on("click", function () {
         enableFellowship($(this).data("name"));
@@ -127,6 +158,10 @@ $(document).ready(function () {
 
     $(".ui.admin.fellowship.disable.button").on("click", function () {
         disableFellowship($(this).data("name"));
+    });
+
+    $(".ui.admin.fellowship.remove.button").on("click", function () {
+        removeAdminFellowship($("#fellowship-id").text().trim(), $(this).data("username"));
     });
 
     $(".ui.admin.fellowship.transfer.owner.button").on("click", function () {
@@ -143,7 +178,7 @@ $(document).ready(function () {
         closeable: false,
         onApprove: function () {
             var input = $("#owner-username");
-            transferFellowship(input.data("name"), input.val());
+            transferFellowship($("#fellowship-id").text().trim(), input.val());
         },
         onDeny: function () {
             return true;
@@ -154,7 +189,7 @@ $(document).ready(function () {
         closeable: false,
         onApprove: function () {
             var input = $("#admin-username");
-            addAdminFellowship(input.data("name"), input.val());
+            addAdminFellowship($("#fellowship-id").text().trim(), input.val());
         },
         onDeny: function () {
             return true;

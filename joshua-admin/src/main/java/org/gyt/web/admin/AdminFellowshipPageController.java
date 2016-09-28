@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 后台页面路由器
  * Created by Administrator on 2016/9/16.
@@ -38,7 +41,11 @@ public class AdminFellowshipPageController {
         ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-fellowship");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         modelAndView.addObject("subtitle", "我的团契");
-        modelAndView.addObject("items", fellowshipService.getUserOwnerFellowship(user.getUsername()));
+
+        Set<Fellowship> fellowshipSet = new HashSet<>();
+        fellowshipSet.addAll(fellowshipService.getUserOwnerFellowship(user.getUsername()));
+        fellowshipSet.addAll(fellowshipService.getUserAdminFellowship(user.getUsername()));
+        modelAndView.addObject("items", fellowshipSet);
         return modelAndView;
     }
 
