@@ -24,7 +24,7 @@
             <div th:replace="fragment/layout :: subheader ('如何加入团契')"></div>
             <div th:replace="fragment/layout :: paragraph ('在查经时间可以直接参加。基督徒或非基督徒都可参加。')"></div>
 
-            <div th:replace="fragment/article :: table('我们的消息', ${items})"></div>
+            <div th:replace="fragment/article :: group-table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

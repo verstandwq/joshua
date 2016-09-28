@@ -28,7 +28,7 @@
             <div th:replace="fragment/layout :: subheader ('特殊活动')"></div>
             <div th:replace="fragment/layout :: paragraph (' 每逢每月的第五周周六，夫妻团契有各种类型的特别活动，彼此亲密，為的是夫妻和家庭之间有更多相聚的时间，共同分享神的恩典，让我们的家被更多爱包围！')"></div>
 
-            <div th:replace="fragment/article :: table('我们的消息', ${items})"></div>
+            <div th:replace="fragment/article :: group-table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

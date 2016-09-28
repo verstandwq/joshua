@@ -1,10 +1,109 @@
+<!--
+后台团契管理组件
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="utf-8"/>
+    <title>后台用户</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
 </head>
 <body>
-$END$
+
+<table th:fragment="details (item)" class="ui celled table">
+    <tbody>
+    <tr>
+        <td>团契ID</td>
+        <td id="fellowship-id" th:utext="${item.name}">团契ID</td>
+    </tr>
+    <tr>
+        <td>团契名称</td>
+        <td th:utext="${item.displayName}">团契名称</td>
+    </tr>
+    <tr>
+        <td>创建日期</td>
+        <td th:utext="${#dates.format(item.createdDate,'yyyy-MM-dd')}">创建日期</td>
+    </tr>
+    <tr>
+        <td>状态</td>
+        <td th:if="${item.isEnable()}"><label class="ui green label">激活</label></td>
+        <td th:if="${not item.isEnable()}"><label class="ui red label">禁用</label></td>
+    </tr>
+    <tr>
+        <td>所有者</td>
+        <td th:utext="${item.owner.nickname}">所有者</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="2">
+            <button class="ui admin fellowship transfer owner tiny button fluid">更改所有者</button>
+        </th>
+    </tr>
+    </tfoot>
+</table>
+
+<table th:fragment="admin-table (items)" class="ui celled table">
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>用户昵称</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td th:colspan="3">当前还没有内容</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.username}">用户名</td>
+        <td th:utext="${item.nickname}">用户昵称</td>
+        <td>
+            <button class="ui admin fellowship remove red tiny button"
+                    th:attr="data-username=${item.username}">移除
+            </button>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="3">
+            <button class="ui admin fellowship add primary tiny button fluid">添加管理员</button>
+        </th>
+    </tr>
+    </tfoot>
+</table>
+
+<div th:fragment="transfer-modal (item)" class="ui admin fellowship transfer modal">
+    <div class="header" th:utext="'更改所有者 - ' + ${item.displayName}">更改所有者</div>
+    <div class="content">
+        <div class="ui horizontal divider">请输入新的团契所有者用户名</div>
+
+        <div class="ui fluid icon input">
+            <input id="owner-username" th:attr="data-name=${item.name}" type="text" placeholder="请输入所有者用户名"/>
+            <i class="search icon"></i>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive button">确定</button>
+        <button class="ui negative button">取消</button>
+    </div>
+</div>
+
+<div th:fragment="admins-modal (item)" class="ui admin fellowship add modal">
+    <div class="header" th:utext="'添加管理员 - ' + ${item.displayName}">添加管理员</div>
+    <div class="content">
+        <div class="ui horizontal divider">请输入管理员用户名</div>
+
+        <div class="ui fluid icon input">
+            <input id="admin-username" th:attr="data-name=${item.name}" type="text" placeholder="请输入管理员用户名"/>
+            <i class="search icon"></i>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="ui positive button">确定</button>
+        <button class="ui negative button">取消</button>
+    </div>
+</div>
 </body>
 </html>

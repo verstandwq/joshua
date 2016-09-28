@@ -18,6 +18,11 @@
         </div>
         <div class="row">
             <div class="column">
+                <a class="ui icon label" th:href="@{'/fellowship/' + ${item.fellowship.name}}">
+                    <i class="home icon"></i>
+                    <span th:utext="${item.fellowship.displayName}">所属团契</span>
+                </a>
+
                 <label class="ui icon label">
                     <i class="calendar icon"></i>
                     <span th:utext="${#dates.format(item.createdDate, 'yyyy-MM-dd')}">创建日期</span>

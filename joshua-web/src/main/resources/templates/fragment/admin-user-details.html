@@ -10,114 +10,50 @@
 </head>
 <body>
 
-<div th:fragment="details (item)" class="ui segment">
-    <h2>用户个人资料</h2>
-    <div class="ui stackable grid">
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">用户名</label>
-            </div>
-            <div class="fourteen wide column">
-                <label class="ui black label" th:utext="${item.username}">username</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">账号状态</label>
-            </div>
-            <div class="fourteen wide column">
-                <label class="ui green label" th:if="${item.isAccountNonLocked() and item.isEnabled()}">正常</label>
-                <label class="ui orange label" th:if="${!item.isAccountNonLocked() and item.isEnabled()}">锁定</label>
-                <label class="ui red label" th:if="${!item.isEnabled()}">禁用</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">昵称</label>
-            </div>
-            <div class="fourteen wide column">
-                <label class="ui black label" th:utext="${item.nickname}">用户昵称</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">电话</label>
-            </div>
-            <div class="fourteen wide column">
-                <label th:if="${not #strings.isEmpty(item.telephone)}" class="ui black label"
-                       th:utext="${item.telephone}">13568820265</label>
-                <label th:if="${#strings.isEmpty(item.telephone)}" class="ui grey label">未填写</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">邮箱</label>
-            </div>
-            <div class="fourteen wide column">
-                <label th:if="${not #strings.isEmpty(item.email)}" class="ui black label"
-                       th:utext="${item.email}">chopinchen@vip.sina.com</label>
-                <label th:if="${#strings.isEmpty(item.email)}" class="ui grey label">未填写</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">真实姓名</label>
-            </div>
-            <div class="fourteen wide column">
-                <label th:if="${not #strings.isEmpty(item.name)}" class="ui black label"
-                       th:utext="${item.name}">陈阳</label>
-                <label th:if="${#strings.isEmpty(item.name)}" class="ui grey label">未填写</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">性别</label>
-            </div>
-            <div class="fourteen wide column">
-                <label class="ui black label"
-                       th:utext="${item.sex == 1 ? '弟兄' : (item.sex == 2 ? '姊妹' : '未知')}">弟兄</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">联系地址</label>
-            </div>
-            <div class="fourteen wide column">
-                <label th:if="${not #strings.isEmpty(item.address)}" class="ui black label"
-                       th:utext="${item.address}">高新区</label>
-                <label th:if="${#strings.isEmpty(item.address)}" class="ui grey label">未填写</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="two wide center aligned column">
-                <label class="ui black fluid label">创建日期</label>
-            </div>
-            <div class="fourteen wide column">
-                <label class="ui black label" th:utext="${item.createdDate}">2016年9月18日</label>
-            </div>
-        </div>
-
-        <div class="center aligned row">
-            <div class="four wide column">
-                <h2>用户角色</h2>
-                <div class="ui attached segment">
-                    <div th:replace="fragment/admin-user-details :: roleTable(${item})">角色表格</div>
-                </div>
-                <div class="ui bottom attached segment">
-                    <button class="ui admin user add role primary fluid button">添加角色</button>
-                </div>
-            </div>
-            <div class="six wide column">
-                <h2>拥有团契所有权</h2>
-                <div th:replace="fragment/admin-user-details :: ownerTable(${owners})">拥有团契表格</div>
-            </div>
-            <div class="six wide column">
-                <h2>拥有团契管理权</h2>
-                <div th:replace="fragment/admin-user-details :: adminTable(${admins})">拥有管理员团契表格</div>
-            </div>
-        </div>
-    </div>
-</div>
+<table th:fragment="details (item)" class="ui celled table">
+    <tbody>
+    <tr>
+        <td>用户名</td>
+        <td th:utext="${item.username}">用户名</td>
+    </tr>
+    <tr>
+        <td>账号状态</td>
+        <td>
+            <label class="ui green label" th:if="${item.isAccountNonLocked() and item.isEnabled()}">正常</label>
+            <label class="ui orange label" th:if="${!item.isAccountNonLocked() and item.isEnabled()}">锁定</label>
+            <label class="ui red label" th:if="${!item.isEnabled()}">禁用</label>
+        </td>
+    </tr>
+    <tr>
+        <td>昵称</td>
+        <td th:utext="${item.nickname}">昵称</td>
+    </tr>
+    <tr>
+        <td>电话</td>
+        <td th:utext="${not #strings.isEmpty(item.telephone) ? item.telephone : '未填写'}"></td>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td th:utext="${not #strings.isEmpty(item.email) ? item.email : '未填写'}"></td>
+    </tr>
+    <tr>
+        <td>真实姓名</td>
+        <td th:utext="${not #strings.isEmpty(item.name) ? item.name : '未填写'}"></td>
+    </tr>
+    <tr>
+        <td>性别</td>
+        <td th:utext="${item.sex == 1 ? '弟兄' : (item.sex == 2 ? '姊妹' : '未知')}"></td>
+    </tr>
+    <tr>
+        <td>联系地址</td>
+        <td th:utext="${not #strings.isEmpty(item.address) ? item.address : '未填写'}"></td>
+    </tr>
+    <tr>
+        <td>注册日期</td>
+        <td th:utext="${#dates.format(item.createdDate,'yyyy-MM-dd')}">注册日期</td>
+    </tr>
+    </tbody>
+</table>
 
 <table th:fragment="roleTable (item)" class="ui celled table">
     <thead>

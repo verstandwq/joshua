@@ -49,8 +49,9 @@ public class FellowshipServiceImpl implements FellowshipService {
     public boolean enable(String name) {
         Fellowship fellowship = get(name);
         if (null != fellowship && !fellowship.isEnable()) {
-            fellowship.setEnable(false);
+            fellowship.setEnable(true);
             fellowshipRepository.save(fellowship);
+            return true;
         }
         return false;
     }
@@ -68,8 +69,9 @@ public class FellowshipServiceImpl implements FellowshipService {
     public boolean disable(String name) {
         Fellowship fellowship = get(name);
         if (null != fellowship && fellowship.isEnable()) {
-            fellowship.setEnable(true);
+            fellowship.setEnable(false);
             fellowshipRepository.save(fellowship);
+            return true;
         }
         return false;
     }
@@ -82,6 +84,7 @@ public class FellowshipServiceImpl implements FellowshipService {
         if (null != fellowship && user != null) {
             fellowship.setOwner(user);
             fellowshipRepository.save(fellowship);
+            return true;
         }
 
         return false;

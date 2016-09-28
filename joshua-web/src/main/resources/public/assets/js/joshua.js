@@ -50032,134 +50032,6 @@ return /******/ (function(modules) { // webpackBootstrap
 });
 ;
 /**
- * 后台用户管理操作
- */
-
-$(document).ready(function () {
-
-    var performUserOperation = function (url, text, username) {
-        new Dialog(text + "用户", "确定要" + text + "用户 " + username + " 吗？", function () {
-            var formData = new FormData();
-            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
-            $.ajax({
-                url: "/api/user/" + url + "/" + username,
-                type: "post",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (status) {
-                    if (status) {
-                        new Dialog("消息", text + "用户成功", function () {
-                            location.reload();
-                        }).message();
-                    } else {
-                        new Dialog("消息", text + "用户失败").error();
-                    }
-                },
-                error: function () {
-                    new Dialog("消息", text + "用户失败").error();
-                }
-            });
-        }).confirm();
-    };
-
-    var removeUserRole = function (username, role) {
-        new Dialog("移除角色", "确定要移除角色吗？", function () {
-            var formData = new FormData();
-            formData.append("username", username);
-            formData.append("role", role);
-            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
-
-            $.ajax({
-                url: "/api/role/remove",
-                type: "post",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (status) {
-                    if (status) {
-                        new Dialog("移除角色", "移除角色成功", function () {
-                            location.reload();
-                        }).message();
-                    } else {
-                        new Dialog("移除角色", "移除角色失败").error();
-                    }
-                },
-                error: function () {
-                    new Dialog("移除角色", "移除角色失败").error();
-                }
-            });
-        }).confirm();
-    };
-
-    var addUserRole = function (role) {
-        if (role) {
-            var formData = new FormData();
-            formData.append("username", $(".ui.admin.user.form input[name='username']").val());
-            formData.append("role", role);
-            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
-
-            $.ajax({
-                url: "/api/role/add",
-                type: "post",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (status) {
-                    if (status) {
-                        new Dialog("添加角色", "添加角色成功", function () {
-                            location.reload();
-                        }).message();
-                    } else {
-                        new Dialog("添加角色", "添加角色失败").error();
-                    }
-                },
-                error: function () {
-                    new Dialog("添加角色", "添加角色失败").error();
-                }
-            });
-        } else {
-            alert("请选择角色");
-        }
-    };
-
-    $(".ui.admin.user.role.add.modal .dropdown").dropdown();
-
-    $(".ui.admin.user.role.add.modal").modal({
-        closeable: false,
-        onApprove: function () {
-            addUserRole($(".ui.admin.user.role.add.modal .ui.dropdown").dropdown("get value"));
-        },
-        onDeny: function () {
-            return true;
-        }
-    });
-
-    $(".ui.admin.user.lock").on("click", function () {
-        performUserOperation("lock", $(this).text().trim(), $(this).data("username"));
-    });
-
-    $(".ui.admin.user.unlock").on("click", function () {
-        performUserOperation("unlock", $(this).text().trim(), $(this).data("username"));
-    });
-
-    $(".ui.admin.user.disable").on("click", function () {
-        performUserOperation("disable", $(this).text().trim(), $(this).data("username"));
-    });
-
-    $(".ui.admin.user.enable").on("click", function () {
-        performUserOperation("enable", $(this).text().trim(), $(this).data("username"));
-    });
-
-    $(".ui.admin.user.remove.role").on("click", function () {
-        removeUserRole($(this).data("username"), $(this).data("role"));
-    });
-
-    $(".ui.admin.user.add.role.button").on("click", function () {
-        $(".ui.admin.user.role.add.modal").modal("show");
-    });
-});
-/**
  * 公共函数定义
  */
 var enableArticle = function (id) {
@@ -50232,127 +50104,6 @@ $(document).ready(function () {
     });
 });
 
-/**
- * Dialog Utils
- * Created by y27chen on 2016/1/27.
- */
-"use strict";
-var Dialog = function (title, content, onApprove, onDeny, predefined) {
-    this.type = "m";
-    this.title = title || "标题";
-    this.content = content || "没有内容";
-    this.onApprove = onApprove;
-    this.onDeny = onDeny;
-    this.predifined = predefined || false;
-
-    this.modal = null;
-};
-
-Dialog.prototype.init = function () {
-    $(".dialog").remove();
-    /* create modal container */
-    var modal = document.createElement("div");
-    modal.setAttribute("class", "ui small modal dialog");
-
-    /* create modal header */
-    var header = document.createElement("div");
-    header.setAttribute("class", "header");
-
-    /* create modal message */
-    var msgContent = document.createElement("div");
-    msgContent.setAttribute("class", "content");
-
-    /* for predefined only */
-    var msgPreContainer = document.createElement("pre");
-
-    /* create modal icon */
-    var type = this.type;
-    var headIcon = document.createElement("i");
-    if (type == "w") {
-        headIcon.setAttribute("class", "warning circle orange icon");
-    } else if (type == "e") {
-        headIcon.setAttribute("class", "warning sign red icon");
-    } else if (type == "c") {
-        headIcon.setAttribute("class", "help circle blue icon");
-    } else {
-        headIcon.setAttribute("class", "info circle green icon");
-    }
-
-    /* set modal structure */
-    header.appendChild(headIcon);
-    header.innerHTML = header.innerHTML + " " + this.title;
-
-    if (this.predifined) {
-        msgPreContainer.innerHTML = this.content;
-        msgContent.appendChild(msgPreContainer);
-    } else {
-        msgContent.innerHTML = this.content;
-    }
-
-    modal.appendChild(header);
-    modal.appendChild(msgContent);
-
-    /* create action ui if needed */
-    if (this.onApprove !== undefined) {
-        /* create action container */
-        var actions = document.createElement("div");
-        actions.setAttribute("class", "actions");
-
-        /* create positive buttons */
-        var approve = document.createElement("div");
-        approve.setAttribute("class", "ui positive button");
-        approve.innerHTML = "确定";
-
-        /* create*/
-        var deny = document.createElement("div");
-        deny.setAttribute("class", "ui negative button");
-        deny.innerHTML = "取消";
-
-        /* set modal structure */
-
-        /* append deny button if defined deny callback */
-        if (type == "c") {
-            actions.appendChild(deny);
-        }
-        actions.appendChild(approve);
-        modal.appendChild(actions);
-
-        $(modal).modal({
-            closable: false,
-            onDeny: this.onDeny || function () {
-            },
-            onApprove: this.onApprove || function () {
-            },
-            blurring: true
-        });
-    }
-
-    this.modal = $(modal);
-};
-
-Dialog.prototype.message = function () {
-    this.type = "m";
-    this.init();
-    this.modal.modal("show");
-};
-
-Dialog.prototype.warning = function () {
-    this.type = "w";
-    this.init();
-    this.modal.modal("show");
-};
-
-Dialog.prototype.error = function () {
-    this.type = "e";
-    this.init();
-    this.modal.modal("show");
-};
-
-Dialog.prototype.confirm = function () {
-    this.type = "c";
-    this.init();
-    this.modal.modal("show");
-};
 /**
  * 公共函数定义
  */
@@ -50622,6 +50373,497 @@ $(document).ready(function () {
                 }
             });
         }).confirm();
+    });
+});
+/**
+ * Created by Administrator on 16-9-24.
+ */
+
+var enableFellowship = function (name) {
+    new Dialog("激活团契", "激活团契后团契和团契所属的文章会重新在网站显示，确认要激活吗？", function () {
+        var formData = new FormData();
+        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+        formData.append("name", name);
+
+        $.ajax({
+            url: "/api/fellowship/enable",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (status) {
+                if ("success" == status) {
+                    new Dialog("激活团契", "激活成功", function () {
+                        window.location.reload();
+                    }).message();
+                } else {
+                    new Dialog("激活团契", "激活失败，原因：" + status, function () {
+                    }).error();
+                }
+            },
+            error: function () {
+                new Dialog("激活团契", "激活失败", function () {
+                }).error();
+            }
+        });
+    }).confirm();
+};
+
+var disableFellowship = function (name) {
+    new Dialog("禁用团契", "禁用团契后团契和团契所属的文章将不会在网站显示，确认要禁用吗？", function () {
+        var formData = new FormData();
+        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+        formData.append("name", name);
+
+        $.ajax({
+            url: "/api/fellowship/disable",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (status) {
+                if ("success" == status) {
+                    new Dialog("禁用团契", "禁用成功", function () {
+                        window.location.reload();
+                    }).message();
+                } else {
+                    new Dialog("禁用团契", "禁用失败，原因：" + status, function () {
+                    }).error();
+                }
+            },
+            error: function () {
+                new Dialog("禁用团契", "禁用失败", function () {
+                }).error();
+            }
+        });
+    }).confirm();
+};
+
+var transferFellowship = function (name, username) {
+    var formData = new FormData();
+    formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+    formData.append("name", name);
+    formData.append("username", username);
+
+    $.ajax({
+        url: "/api/fellowship/transfer",
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (status) {
+            if ("success" == status) {
+                new Dialog("转移团契", "转移成功", function () {
+                    window.location.reload();
+                }).message();
+            } else {
+                new Dialog("转移团契", "转移失败，原因：" + status, function () {
+                }).error();
+            }
+        },
+        error: function () {
+            new Dialog("转移团契", "转移失败", function () {
+            }).error();
+        }
+    });
+};
+
+var addAdminFellowship = function (name, username) {
+    var formData = new FormData();
+    formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+    formData.append("name", name);
+    formData.append("username", username);
+
+    $.ajax({
+        url: "/api/fellowship/add",
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (status) {
+            if ("success" == status) {
+                new Dialog("添加管理员", "添加管理员成功", function () {
+                    window.location.reload();
+                }).message();
+            } else {
+                new Dialog("添加管理员", "添加管理员失败，原因：" + status, function () {
+                }).error();
+            }
+        },
+        error: function () {
+            new Dialog("添加管理员", "添加管理员失败", function () {
+            }).error();
+        }
+    });
+};
+
+var removeAdminFellowship = function (name, username) {
+    new Dialog("移除管理员", "确定要移除管理员" + username + "?", function () {
+        var formData = new FormData();
+        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+        formData.append("name", name);
+        formData.append("username", username);
+
+        $.ajax({
+            url: "/api/fellowship/remove",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (status) {
+                if ("success" == status) {
+                    new Dialog("移除管理员", "移除管理员成功", function () {
+                        window.location.reload();
+                    }).message();
+                } else {
+                    new Dialog("移除管理员", "移除管理员失败，原因：" + status, function () {
+                    }).error();
+                }
+            },
+            error: function () {
+                new Dialog("移除管理员", "移除管理员失败", function () {
+                }).error();
+            }
+        });
+    }).confirm();
+};
+
+$(document).ready(function () {
+    $(".ui.admin.fellowship.enable.button").on("click", function () {
+        enableFellowship($(this).data("name"));
+    });
+
+    $(".ui.admin.fellowship.disable.button").on("click", function () {
+        disableFellowship($(this).data("name"));
+    });
+
+    $(".ui.admin.fellowship.remove.button").on("click", function () {
+        removeAdminFellowship($("#fellowship-id").text().trim(), $(this).data("username"));
+    });
+
+    $(".ui.admin.fellowship.transfer.owner.button").on("click", function () {
+        $("#owner-username").val("");
+        $(".ui.admin.fellowship.transfer.modal").modal("show");
+    });
+
+    $(".ui.admin.fellowship.add.button").on("click", function () {
+        $("#admin-username").val("");
+        $(".ui.admin.fellowship.add.modal").modal("show");
+    });
+
+    $(".ui.admin.fellowship.transfer.modal").modal({
+        closeable: false,
+        onApprove: function () {
+            var input = $("#owner-username");
+            transferFellowship(input.data("name"), input.val());
+        },
+        onDeny: function () {
+            return true;
+        }
+    });
+
+    $(".ui.admin.fellowship.add.modal").modal({
+        closeable: false,
+        onApprove: function () {
+            var input = $("#admin-username");
+            addAdminFellowship(input.data("name"), input.val());
+        },
+        onDeny: function () {
+            return true;
+        }
+    });
+});
+/**
+ * 后台用户管理操作
+ */
+
+$(document).ready(function () {
+
+    var performUserOperation = function (url, text, username) {
+        new Dialog(text + "用户", "确定要" + text + "用户 " + username + " 吗？", function () {
+            var formData = new FormData();
+            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+            $.ajax({
+                url: "/api/user/" + url + "/" + username,
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if (status) {
+                        new Dialog("消息", text + "用户成功", function () {
+                            location.reload();
+                        }).message();
+                    } else {
+                        new Dialog("消息", text + "用户失败").error();
+                    }
+                },
+                error: function () {
+                    new Dialog("消息", text + "用户失败").error();
+                }
+            });
+        }).confirm();
+    };
+
+    var removeUserRole = function (username, role) {
+        new Dialog("移除角色", "确定要移除角色吗？", function () {
+            var formData = new FormData();
+            formData.append("username", username);
+            formData.append("role", role);
+            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+
+            $.ajax({
+                url: "/api/role/remove",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if (status) {
+                        new Dialog("移除角色", "移除角色成功", function () {
+                            location.reload();
+                        }).message();
+                    } else {
+                        new Dialog("移除角色", "移除角色失败").error();
+                    }
+                },
+                error: function () {
+                    new Dialog("移除角色", "移除角色失败").error();
+                }
+            });
+        }).confirm();
+    };
+
+    var addUserRole = function (role) {
+        if (role) {
+            var formData = new FormData();
+            formData.append("username", $(".ui.admin.user.form input[name='username']").val());
+            formData.append("role", role);
+            formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+
+            $.ajax({
+                url: "/api/role/add",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if (status) {
+                        new Dialog("添加角色", "添加角色成功", function () {
+                            location.reload();
+                        }).message();
+                    } else {
+                        new Dialog("添加角色", "添加角色失败").error();
+                    }
+                },
+                error: function () {
+                    new Dialog("添加角色", "添加角色失败").error();
+                }
+            });
+        } else {
+            alert("请选择角色");
+        }
+    };
+
+    $(".ui.admin.user.role.add.modal .dropdown").dropdown();
+
+    $(".ui.admin.user.role.add.modal").modal({
+        closeable: false,
+        onApprove: function () {
+            addUserRole($(".ui.admin.user.role.add.modal .ui.dropdown").dropdown("get value"));
+        },
+        onDeny: function () {
+            return true;
+        }
+    });
+
+    $(".ui.admin.user.lock").on("click", function () {
+        performUserOperation("lock", $(this).text().trim(), $(this).data("username"));
+    });
+
+    $(".ui.admin.user.unlock").on("click", function () {
+        performUserOperation("unlock", $(this).text().trim(), $(this).data("username"));
+    });
+
+    $(".ui.admin.user.disable").on("click", function () {
+        performUserOperation("disable", $(this).text().trim(), $(this).data("username"));
+    });
+
+    $(".ui.admin.user.enable").on("click", function () {
+        performUserOperation("enable", $(this).text().trim(), $(this).data("username"));
+    });
+
+    $(".ui.admin.user.remove.role").on("click", function () {
+        removeUserRole($(this).data("username"), $(this).data("role"));
+    });
+
+    $(".ui.admin.user.add.role.button").on("click", function () {
+        $(".ui.admin.user.role.add.modal").modal("show");
+    });
+});
+/**
+ * Dialog Utils
+ * Created by y27chen on 2016/1/27.
+ */
+"use strict";
+var Dialog = function (title, content, onApprove, onDeny, predefined) {
+    this.type = "m";
+    this.title = title || "标题";
+    this.content = content || "没有内容";
+    this.onApprove = onApprove;
+    this.onDeny = onDeny;
+    this.predifined = predefined || false;
+
+    this.modal = null;
+};
+
+Dialog.prototype.init = function () {
+    $(".dialog").remove();
+    /* create modal container */
+    var modal = document.createElement("div");
+    modal.setAttribute("class", "ui small modal dialog");
+
+    /* create modal header */
+    var header = document.createElement("div");
+    header.setAttribute("class", "header");
+
+    /* create modal message */
+    var msgContent = document.createElement("div");
+    msgContent.setAttribute("class", "content");
+
+    /* for predefined only */
+    var msgPreContainer = document.createElement("pre");
+
+    /* create modal icon */
+    var type = this.type;
+    var headIcon = document.createElement("i");
+    if (type == "w") {
+        headIcon.setAttribute("class", "warning circle orange icon");
+    } else if (type == "e") {
+        headIcon.setAttribute("class", "warning sign red icon");
+    } else if (type == "c") {
+        headIcon.setAttribute("class", "help circle blue icon");
+    } else {
+        headIcon.setAttribute("class", "info circle green icon");
+    }
+
+    /* set modal structure */
+    header.appendChild(headIcon);
+    header.innerHTML = header.innerHTML + " " + this.title;
+
+    if (this.predifined) {
+        msgPreContainer.innerHTML = this.content;
+        msgContent.appendChild(msgPreContainer);
+    } else {
+        msgContent.innerHTML = this.content;
+    }
+
+    modal.appendChild(header);
+    modal.appendChild(msgContent);
+
+    /* create action ui if needed */
+    if (this.onApprove !== undefined) {
+        /* create action container */
+        var actions = document.createElement("div");
+        actions.setAttribute("class", "actions");
+
+        /* create positive buttons */
+        var approve = document.createElement("div");
+        approve.setAttribute("class", "ui positive button");
+        approve.innerHTML = "确定";
+
+        /* create*/
+        var deny = document.createElement("div");
+        deny.setAttribute("class", "ui negative button");
+        deny.innerHTML = "取消";
+
+        /* set modal structure */
+
+        /* append deny button if defined deny callback */
+        if (type == "c") {
+            actions.appendChild(deny);
+        }
+        actions.appendChild(approve);
+        modal.appendChild(actions);
+
+        $(modal).modal({
+            closable: false,
+            onDeny: this.onDeny || function () {
+            },
+            onApprove: this.onApprove || function () {
+            },
+            blurring: true
+        });
+    }
+
+    this.modal = $(modal);
+};
+
+Dialog.prototype.message = function () {
+    this.type = "m";
+    this.init();
+    this.modal.modal("show");
+};
+
+Dialog.prototype.warning = function () {
+    this.type = "w";
+    this.init();
+    this.modal.modal("show");
+};
+
+Dialog.prototype.error = function () {
+    this.type = "e";
+    this.init();
+    this.modal.modal("show");
+};
+
+Dialog.prototype.confirm = function () {
+    this.type = "c";
+    this.init();
+    this.modal.modal("show");
+};
+$(document).ready(function () {
+
+    $(".ui.user.password.submit.button").on("click", function () {
+        var newPassword = $("#new-password").val();
+        var confirmPassword = $("#confirm-password").val();
+
+        if (newPassword.length < 8) {
+            new Dialog("修改密码", "新的密码长度不能少于8位").warning();
+            return;
+        }
+
+        if (newPassword != confirmPassword) {
+            new Dialog("修改密码", "两次密码输入不一致").warning();
+            return;
+        }
+
+        var formData = new FormData();
+        formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+        formData.append("password", newPassword);
+
+        $.ajax({
+            url: "/api/user/password",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (status) {
+                if ("success" == status) {
+                    new Dialog("修改密码", "修改密码成功", function () {
+                        window.location.reload();
+                    }).message();
+                } else {
+                    new Dialog("修改密码", "修改密码失败，原因:" + status, function () {
+                    }).error();
+                }
+            },
+            error: function () {
+                new Dialog("修改密码", "修改密码失败", function () {
+                }).error();
+            }
+        });
+
     });
 });
 $(document).ready(function () {
