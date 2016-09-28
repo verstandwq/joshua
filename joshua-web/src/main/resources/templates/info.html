@@ -11,7 +11,7 @@
 <!-- 用户登录组件 -->
 <div class="ui container">
     <div th:replace="fragment/navigation :: primary">导航栏</div>
-    <div th:replace="fragment/user-info :: info('')"></div>
+    <div th:replace="fragment/user-info :: info(${user})"></div>
 </div>
 
 <!--/* 引用页脚组件 */-->

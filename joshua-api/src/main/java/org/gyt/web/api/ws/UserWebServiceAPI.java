@@ -1,9 +1,12 @@
 package org.gyt.web.api.ws;
 
-import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
+import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 用户web接口
@@ -15,6 +18,33 @@ public class UserWebServiceAPI {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ModelAndViewUtils modelAndViewUtils;
+
+    @RequestMapping(value = "/info", method = RequestMethod.POST)
+    public ModelAndView changeInfo(@ModelAttribute User user) {
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("redirect:/info?publishSuccess=true");
+
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        currentUser.setNickname(user.getNickname());
+        currentUser.setTelephone(user.getTelephone());
+        currentUser.setEmail(user.getEmail());
+        currentUser.setName(user.getName());
+        currentUser.setSex(user.getSex());
+        currentUser.setAddress(user.getAddress());
+
+        userService.update(currentUser);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/password", method = RequestMethod.POST)
+    public String changePassword(@RequestParam String username, @RequestParam String password) {
+
+        return "未知原因";
+    }
 
     @RequestMapping(value = "/lock/{username}", method = RequestMethod.POST)
     public boolean lock(@PathVariable String username) {

@@ -11,7 +11,59 @@
 
 <body>
 <div th:fragment="info (user)" class="ui grid">
-    个人信息
+    <div class="column">
+        <div class="ui success message" th:if="${publishSuccess}">
+            <div class="content">更新我的信息成功</div>
+        </div>
+        <div class="ui error message" th:if="${publishFailed}">
+            <div class="content">更新我的信息失败</div>
+        </div>
+        <form class="ui form" th:action="@{/api/user/info}" th:object="${user}" method="post">
+            <h4 class="ui dividing header">我的信息</h4>
+            <div class="inline field">
+                <label>我的昵称</label>
+                <input type="text" th:field="*{nickname}"/>
+            </div>
+            <div class="inline field">
+                <label>我的姓名</label>
+                <input type="text" th:field="*{name}"/>
+            </div>
+            <div class="inline field">
+                <label>我的电话</label>
+                <input type="text" th:field="*{telephone}"/>
+            </div>
+            <div class="inline field">
+                <label>我的邮箱</label>
+                <input type="text" th:field="*{email}"/>
+            </div>
+            <div class="inline field">
+                <label>我的联系地址</label>
+                <input type="text" th:field="*{address}"/>
+            </div>
+            <div class="inline fields">
+                <label>怎么称呼我</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="sex" th:field="*{sex}" th:value="1"/>
+                        <label>弟兄</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="sex" th:field="*{sex}" th:value="2"/>
+                        <label>姊妹</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="sex" th:field="*{sex}" th:value="0"/>
+                        <label>我不方便透露</label>
+                    </div>
+                </div>
+            </div>
+            <button class="ui primary button">修改我的状态</button>
+        </form>
+    </div>
 </div>
 
 
