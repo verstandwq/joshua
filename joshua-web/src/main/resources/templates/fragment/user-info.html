@@ -19,7 +19,7 @@
             <div class="content">更新我的信息失败</div>
         </div>
         <form class="ui form" th:action="@{/api/user/info}" th:object="${user}" method="post">
-            <h4 class="ui dividing header">我的账户名: <span th:utext="*{username}"></span></h4>
+            <h4 class="ui dividing header">我的账户名: <label class="ui black label" th:utext="*{username}"></label></h4>
             <div class="inline field">
                 <label>我的昵称</label>
                 <input type="text" th:field="*{nickname}"/>
