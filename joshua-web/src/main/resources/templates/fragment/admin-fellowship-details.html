@@ -10,30 +10,68 @@
 </head>
 <body>
 
-<table th:fragment="details (item)" class="ui definition table">
+<table th:fragment="details (item)" class="ui celled table">
+    <tbody>
+    <tr>
+        <td>团契ID</td>
+        <td th:utext="${item.name}">团契ID</td>
+    </tr>
+    <tr>
+        <td>团契名称</td>
+        <td th:utext="${item.displayName}">团契名称</td>
+    </tr>
+    <tr>
+        <td>创建日期</td>
+        <td th:utext="${#dates.format(item.createdDate,'yyyy-MM-dd')}">创建日期</td>
+    </tr>
+    <tr>
+        <td>状态</td>
+        <td th:if="${item.isEnable()}"><label class="ui green label">激活</label></td>
+        <td th:if="${not item.isEnable()}"><label class="ui red label">禁用</label></td>
+    </tr>
+    <tr>
+        <td>所有者</td>
+        <td th:utext="${item.owner.nickname}">所有者</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="2">
+            <button class="ui admin fellowship transfer owner tiny button fluid">更改所有者</button>
+        </th>
+    </tr>
+    </tfoot>
+</table>
+
+<table th:fragment="admin-table (items)" class="ui celled table">
     <thead>
     <tr>
-        <th></th>
-        <th>创建日期</th>
-        <th>所有者</th>
-        <th>管理员数量</th>
+        <th>用户名</th>
+        <th>用户昵称</th>
         <th>操作</th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(items)}">
-        <td th:colspan="4">当前还没有内容</td>
+        <td th:colspan="3">当前还没有内容</td>
     </tr>
-
     <tr th:each="item : ${items}">
-        <td th:utext="${item.displayName}"></td>
-        <td th:utext="${item.owner.nickname}"></td>
-        <td th:utext="${item.admins.size()}"></td>
+        <td th:utext="${item.username}">用户名</td>
+        <td th:utext="${item.nickname}">用户昵称</td>
         <td>
-            <a class="ui tiny button" th:href="@{'/admin/fellowship/' + ${item.name}}" target="_blank">查看</a>
+            <button class="ui admin fellowship remove red tiny button"
+                    th:attr="data-username=${item.username}">移除
+            </button>
         </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="3">
+            <button class="ui admin fellowship add primary tiny button fluid">添加管理员</button>
+        </th>
+    </tr>
+    </tfoot>
 </table>
 
 </body>
