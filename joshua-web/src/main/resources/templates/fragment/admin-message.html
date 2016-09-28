@@ -1,0 +1,40 @@
+<!--
+后台留言管理组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="utf-8"/>
+    <title>后台用户</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+<body>
+
+<table th:fragment="table (items)" class="ui definition celled selectable sortable table">
+    <thead>
+    <tr>
+        <th class="one wide"></th>
+        <th class="two wide">创建日期</th>
+        <th class="two wide">创建者</th>
+        <th class="one wide">类型</th>
+        <th class="ten wide">信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(items)}">
+        <td th:colspan="6">当前还没有内容</td>
+    </tr>
+
+    <tr th:each="item : ${items}">
+        <td th:utext="${item.id}"></td>
+        <td th:utext="${#dates.format(item.createdDate,'yyyy-MM-dd')}"></td>
+        <td th:utext="${item.owner.username}"></td>
+        <td th:utext="${item.type.name() == 'SUFFRAGE' ? '代祷' : (item.type.name() == 'QUESTION' ? '咨询' : '建议')}"></td>
+        <td th:utext="${item.content}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
