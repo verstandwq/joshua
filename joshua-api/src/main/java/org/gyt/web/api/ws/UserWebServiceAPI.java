@@ -1,10 +1,12 @@
 package org.gyt.web.api.ws;
 
 import org.gyt.web.api.service.UserService;
+import org.gyt.web.api.utils.LoginUtils;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,9 +43,17 @@ public class UserWebServiceAPI {
     }
 
     @RequestMapping(value = "/password", method = RequestMethod.POST)
-    public String changePassword(@RequestParam String username, @RequestParam String password) {
+    public String changePassword(@RequestParam String password) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        return "未知原因";
+        if (LoginUtils.isValidPassword(password)) {
+            currentUser.setPassword(new BCryptPasswordEncoder().encode(password));
+            userService.update(currentUser);
+        } else {
+            return "密码格式不正确";
+        }
+
+        return "success";
     }
 
     @RequestMapping(value = "/lock/{username}", method = RequestMethod.POST)
