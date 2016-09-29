@@ -50579,7 +50579,7 @@ var markMessageAsRead = function (id) {
     formData.append("id", id);
 
     $.ajax({
-        url: "/api/message/read",
+        url: "/message/read",
         type: "post",
         data: formData,
         processData: false,
@@ -50605,7 +50605,7 @@ var markMessageAsUnRead = function (id) {
     formData.append("id", id);
 
     $.ajax({
-        url: "/api/message/unread",
+        url: "/message/unread",
         type: "post",
         data: formData,
         processData: false,
