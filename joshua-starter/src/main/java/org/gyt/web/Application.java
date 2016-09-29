@@ -23,6 +23,7 @@ public class Application {
         if (args.length > 0 && args[0].equals("test")) {
             ApplicationTestResourceHelper.createTestUsers(applicationContext);
             ApplicationTestResourceHelper.createTestArticles(applicationContext);
+            ApplicationTestResourceHelper.createTestMessage(applicationContext);
         }
 
         Locale.setDefault(new Locale("zh_CN"));

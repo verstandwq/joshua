@@ -15,6 +15,14 @@ import java.util.List;
 public interface MessageService {
 
     /**
+     * 获取指定留言信息
+     *
+     * @param id 留言信息ID
+     * @return 留言信息
+     */
+    Message get(Long id);
+
+    /**
      * 获取所有留言信息
      *
      * @return 返回所有留言信息列表
@@ -35,5 +43,5 @@ public interface MessageService {
      * @param message 留言对象
      * @return 当留言创建成功是返回true，否则返回false
      */
-    boolean create(Message message);
+    boolean createOrUpdate(Message message);
 }

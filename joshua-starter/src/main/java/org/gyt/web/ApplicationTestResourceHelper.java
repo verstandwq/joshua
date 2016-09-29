@@ -1,12 +1,7 @@
 package org.gyt.web;
 
-import org.gyt.web.api.service.ArticleService;
-import org.gyt.web.api.service.FellowshipService;
-import org.gyt.web.api.service.RoleService;
-import org.gyt.web.api.service.UserService;
-import org.gyt.web.model.Article;
-import org.gyt.web.model.ArticleStatus;
-import org.gyt.web.model.User;
+import org.gyt.web.api.service.*;
+import org.gyt.web.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -112,6 +107,35 @@ class ApplicationTestResourceHelper {
                 if (articleService.createOrUpdate(article) != null) {
                     LOGGER.info(String.format("创建测试文章成功：%s", articleService.get((long) (i + 1))));
                 }
+            }
+        }
+    }
+
+    static void createTestMessage(ApplicationContext applicationContext) {
+        UserService userService = applicationContext.getBean(UserService.class);
+        MessageService messageService = applicationContext.getBean(MessageService.class);
+
+        for (int i = 0; i < TEST_MESSAGE_COUNT; i++) {
+            if (messageService.get((long) (i + 1)) == null) {
+                Message message = new Message();
+
+                message.setOwner(userService.get("administrator"));
+                message.setCreatedDate(new Date());
+                message.setContact("消息联系人" + i + 1);
+                message.setContent("消息内容" + i + 1);
+
+                int type = new Random().nextInt(3);
+
+                if (type == 0) {
+                    message.setType(MessageType.SUFFRAGE);
+                } else if (type == 1) {
+                    message.setType(MessageType.ADVICE);
+                } else {
+                    message.setType(MessageType.QUESTION);
+                }
+
+                messageService.createOrUpdate(message);
+                LOGGER.info(String.format("创建测试消息成功：%s", messageService.get((long) (i + 1))));
             }
         }
     }

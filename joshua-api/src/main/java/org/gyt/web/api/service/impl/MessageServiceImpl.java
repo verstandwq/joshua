@@ -17,8 +17,15 @@ public class MessageServiceImpl implements MessageService {
     private MessageRepository messageRepository;
 
     @Override
+    public Message get(Long id) {
+        return messageRepository.findOne(id);
+    }
+
+    @Override
     public List<Message> getAll() {
-        return messageRepository.findAll();
+        List<Message> messageList = messageRepository.findAll();
+        messageList.sort((o1, o2) -> o1.isRead() ? 1 : -1);
+        return messageList;
     }
 
     @Override
@@ -27,7 +34,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public boolean create(Message message) {
+    public boolean createOrUpdate(Message message) {
         return messageRepository.save(message) != null;
     }
 }
