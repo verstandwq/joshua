@@ -21,6 +21,8 @@ public class Message {
 
     private Date createdDate;
 
+    private boolean isRead;
+
     private MessageType type;
 
     private String content;
@@ -55,6 +57,14 @@ public class Message {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
     }
 
     public MessageType getType() {

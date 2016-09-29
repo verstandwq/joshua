@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.api.utils.PaginationComponent;
 import org.gyt.web.model.Article;
 import org.gyt.web.model.ArticleStatus;
 import org.gyt.web.model.Fellowship;
@@ -39,9 +40,14 @@ public class AdminArticlePageController {
     @Autowired
     private ModelAndViewUtils modelAndViewUtils;
 
+    @Autowired
+    private PaginationComponent paginationComponent;
+
     @RequestMapping("/article")
     public ModelAndView tablePage(
-            @RequestParam(required = false) String type
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false, defaultValue = "1") int pageNumber,
+            @RequestParam(required = false, defaultValue = "20") int pageSize
     ) {
         ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article");
 
@@ -49,36 +55,37 @@ public class AdminArticlePageController {
 
         List<Article> articleList = articleService.getFromUser(user.getUsername());
 
-        if (StringUtils.isEmpty(type)) {
-            modelAndView.addObject("items", articleService.getFromUser(user.getUsername()));
+        if (StringUtils.isEmpty(type) || type.equalsIgnoreCase("MINE")) {
             modelAndView.addObject("subtitle", "我的文章");
             type = "MINE";
         } else if (type.equalsIgnoreCase("RAW")) {
-            modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.RAW)).collect(Collectors.toList()));
+            articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.RAW)).collect(Collectors.toList());
             modelAndView.addObject("subtitle", "我的草稿箱");
         } else if (type.equalsIgnoreCase("AUDIT")) {
             if (user.getRoles().stream().anyMatch(role -> role.getAuthorities().stream().anyMatch(s -> s.equals("ROLE_MANAGE_ARTICLE")))) {
-                modelAndView.addObject("items", articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList()));
+                articleList = articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList());
             } else {
-                modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList()));
+                articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList());
             }
             modelAndView.addObject("subtitle", "待审核文章");
         } else if (type.equalsIgnoreCase("PUBLISH")) {
             if (user.getRoles().stream().anyMatch(role -> role.getAuthorities().stream().anyMatch(s -> s.equals("ROLE_MANAGE_ARTICLE")))) {
-                modelAndView.addObject("items", articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList()));
+                articleList = articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
             } else {
-                modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList()));
+                articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
             }
             modelAndView.addObject("subtitle", "已发布文章");
         } else if (type.equalsIgnoreCase("REJECT")) {
-            modelAndView.addObject("items", articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.REJECTED)).collect(Collectors.toList()));
+            articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.REJECTED)).collect(Collectors.toList());
             modelAndView.addObject("subtitle", "我的驳回文章");
         } else {
-            modelAndView.addObject("items", new ArrayList<>());
+            articleList = new ArrayList<>();
             modelAndView.addObject("subtitle", "未知类型");
         }
 
         modelAndView.addObject("type", type);
+        modelAndView.addObject("items", paginationComponent.listPagination(articleList, pageNumber, pageSize));
+        paginationComponent.addPaginationModel(modelAndView, "/admin/article?type=" + type, articleList.size(), pageNumber, pageSize);
         return modelAndView;
     }
 

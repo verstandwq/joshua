@@ -6,10 +6,7 @@ import org.gyt.web.model.Message;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -35,12 +32,44 @@ public class MessageWebServiceAPI {
         message.setCreatedDate(new Date());
         message.setOwner((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
-        if (messageService.create(message)) {
+        if (messageService.createOrUpdate(message)) {
             modelAndView.setViewName("redirect:/contact?publishSuccess=true");
         } else {
             modelAndView.setViewName("redirect:/contact?publishFailed=true");
         }
 
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/read", method = RequestMethod.POST)
+    public String read(@RequestParam Long id) {
+        Message message = messageService.get(id);
+
+        if (message != null) {
+            message.setRead(true);
+            if (messageService.createOrUpdate(message)) {
+                return "success";
+            }
+
+            return "更新状态失败";
+        }
+
+        return "留言消息不存在";
+    }
+
+    @RequestMapping(value = "/unread", method = RequestMethod.POST)
+    public String unread(@RequestParam Long id) {
+        Message message = messageService.get(id);
+
+        if (message != null) {
+            message.setRead(false);
+            if (messageService.createOrUpdate(message)) {
+                return "success";
+            }
+
+            return "更新状态失败";
+        }
+
+        return "留言消息不存在";
     }
 }

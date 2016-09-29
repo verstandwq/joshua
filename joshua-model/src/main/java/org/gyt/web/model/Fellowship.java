@@ -25,10 +25,10 @@ public class Fellowship {
     @ManyToOne
     private User owner;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<User> admins = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "fellowship")
     private List<Article> articles = new ArrayList<>();
 
     public Fellowship() {

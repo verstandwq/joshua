@@ -12,9 +12,9 @@
     <div th:replace="fragment/navigation :: primary">导航栏</div>
 
     <div class="ui segment">
-        <h1>403</h1>
-        <h2>抱歉，您没有权限访问的资源</h2>
-        <p th:utext="${message}"></p>
+        <h1 class="ui center aligned header">403</h1>
+        <h4 class="ui center aligned header"
+            th:utext="${#strings.isEmpty(message) ? '抱歉，您没有权限访问该资源' : message}"></h4>
     </div>
 </div>
 

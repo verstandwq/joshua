@@ -11,14 +11,15 @@
 </head>
 <body>
 
-<table th:fragment="table (items)" class="ui definition celled selectable sortable table">
+<table th:fragment="table (items)" class="ui celled selectable sortable table">
     <thead>
     <tr>
-        <th class="one wide"></th>
+        <th class="one wide">留言ID</th>
         <th class="two wide">创建日期</th>
         <th class="two wide">创建者</th>
         <th class="one wide">类型</th>
-        <th class="ten wide">信息</th>
+        <th class="eight wide">内容</th>
+        <th class="two wide">操作</th>
     </tr>
     </thead>
     <tbody>
@@ -32,8 +33,25 @@
         <td th:utext="${item.owner.username}"></td>
         <td th:utext="${item.type.name() == 'SUFFRAGE' ? '代祷' : (item.type.name() == 'QUESTION' ? '咨询' : '建议')}"></td>
         <td th:utext="${item.content}"></td>
+        <td>
+            <button th:if="${not item.isRead()}"
+                    th:attr="data-id=${item.id}"
+                    class="ui admin mark read tiny button fluid">标记为已读
+            </button>
+            <button th:if="${item.isRead()}"
+                    th:attr="data-id=${item.id}"
+                    class="ui admin mark unread tiny button fluid">标记为未读
+            </button>
+        </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <th class="center aligned" colspan="6">
+            <div th:replace="fragment/pagination :: basic"></div>
+        </th>
+    </tr>
+    </tfoot>
 </table>
 
 </body>

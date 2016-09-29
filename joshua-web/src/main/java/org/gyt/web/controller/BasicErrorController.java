@@ -1,5 +1,6 @@
 package org.gyt.web.controller;
 
+import org.gyt.web.api.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorController;
@@ -22,6 +23,9 @@ public class BasicErrorController implements ErrorController {
     @Autowired
     private ErrorAttributes errorAttributes;
 
+    @Autowired
+    private ArticleService articleService;
+
     @RequestMapping
     public ModelAndView handleError(HttpServletRequest request) {
         Map<String, Object> errors = errorAttributes.getErrorAttributes(new ServletRequestAttributes(request), true);
@@ -31,6 +35,7 @@ public class BasicErrorController implements ErrorController {
             modelAndView.setViewName("404");
             modelAndView.addObject("timestamp", errors.get("timestamp"));
             modelAndView.addObject("path", errors.get("path"));
+            modelAndView.addObject("articles", articleService.getLatestArticles());
         } else if (errors.get("status").equals(403)) {
             modelAndView.setViewName("403");
             modelAndView.addObject("timestamp", errors.get("timestamp"));
