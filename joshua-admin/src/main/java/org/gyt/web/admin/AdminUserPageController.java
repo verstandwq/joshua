@@ -5,6 +5,7 @@ import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.api.utils.PaginationComponent;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,9 +37,14 @@ public class AdminUserPageController {
     @Autowired
     private ModelAndViewUtils modelAndViewUtils;
 
+    @Autowired
+    private PaginationComponent paginationComponent;
+
     @RequestMapping("/user")
     public ModelAndView userTablePage(
-            @RequestParam(required = false) String type
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false, defaultValue = "1") int pageNumber,
+            @RequestParam(required = false, defaultValue = "20") int pageSize
     ) {
         ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-user");
 
@@ -46,28 +52,29 @@ public class AdminUserPageController {
             modelAndView.addObject("users", new ArrayList<>());
             modelAndView.addObject("subtitle", "未知类型");
         } else if (type.equalsIgnoreCase("ADMIN")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("ADMIN"))).collect(Collectors.toList()));
+            modelAndView.addObject("users", userService.get(pageNumber, pageSize).stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("ADMIN"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "系统管理员");
         } else if (type.equalsIgnoreCase("EDITOR")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("EDITOR"))).collect(Collectors.toList()));
+            modelAndView.addObject("users", userService.get(pageNumber, pageSize).stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("EDITOR"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "网站编辑");
         } else if (type.equalsIgnoreCase("FS_ADMIN")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FS_ADMIN"))).collect(Collectors.toList()));
+            modelAndView.addObject("users", userService.get(pageNumber, pageSize).stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("FS_ADMIN"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "团契管理员");
         } else if (type.equalsIgnoreCase("RE_ADMIN")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("RE_ADMIN"))).collect(Collectors.toList()));
+            modelAndView.addObject("users", userService.get(pageNumber, pageSize).stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("RE_ADMIN"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "资源管理员");
         } else if (type.equalsIgnoreCase("MEMBER")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("MEMBER"))).collect(Collectors.toList()));
+            modelAndView.addObject("users", userService.get(pageNumber, pageSize).stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("MEMBER"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "团契成员");
         } else if (type.equalsIgnoreCase("USER")) {
-            modelAndView.addObject("users", userService.getAll().stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("USER"))).collect(Collectors.toList()));
+            modelAndView.addObject("users", userService.get(pageNumber, pageSize).stream().filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("USER"))).collect(Collectors.toList()));
             modelAndView.addObject("subtitle", "注册用户");
         } else {
             modelAndView.addObject("users", new ArrayList<>());
             modelAndView.addObject("subtitle", "未知类型");
         }
 
+        paginationComponent.addPaginationModel(modelAndView, "/admin/user?type=" + type, userService.count(), pageNumber, pageSize);
         return modelAndView;
     }
 
