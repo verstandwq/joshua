@@ -11,10 +11,48 @@
 <div class="ui admin layout root">
     <div th:replace="fragment/admin-layout :: header(${title}, '光音堂文章编辑器')">布局标题</div>
     <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
-    <div th:if="${#strings.isEmpty(error)}">
-        <div th:replace="fragment/editor :: article-editor(${item})">文章编辑器</div>
-        <div th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
+
+    <div th:if="${#strings.isEmpty(error)}" class="ui grid article-editor">
+        <div class="eight wide column">
+            <div class="ui horizontal divider">文章基本信息</div>
+
+            <div class="ui labeled fluid input">
+                <div class="ui label">标题</div>
+                <input class="input title" th:value="${item.title}" type="text" placeholder="请输入文章标题"/>
+            </div>
+            <div class="ui horizontal hidden divider"></div>
+            <div class="ui labeled fluid input">
+                <div class="ui label">描述</div>
+                <input class="input description" th:value="${item.description}" type="text" placeholder="请输入文章描述"/>
+            </div>
+            <div class="ui horizontal hidden divider"></div>
+            <div class="ui fellowship search selection fluid dropdown">
+                <input type="hidden" th:value="${item.fellowship != null ? item.fellowship.name : null}"/>
+                <i class="dropdown icon"></i>
+                <div class="default text">所属团契</div>
+                <div class="menu">
+                    <div th:each="value : ${fellowship}" class="item" th:attr="data-value=${value.name}"
+                         th:utext="${value.displayName}">
+                        团契名称
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui horizontal divider">操作</div>
+            <div class="ui buttons">
+                <button class="ui save positive button">保存</button>
+                <button th:if="${edit}" class="ui audit primary button">申请发布</button>
+                <button class="ui delete negative button">删除</button>
+            </div>
+        </div>
+        <div class="sixteen wide column">
+            <div class="ui horizontal divider">文章正文</div>
+            <div th:replace="fragment/editor :: article-editor(${item})">文章编辑器</div>
+            <div th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
+        </div>
     </div>
+
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">
     </form>
 </div>

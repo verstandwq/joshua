@@ -10,8 +10,49 @@
 
 <div class="ui admin layout root">
     <div th:replace="fragment/admin-layout :: header(${title}, '光音堂文章审核')">布局标题</div>
-    <div th:if="not ${error}" th:replace="fragment/editor :: article-audit(${item})">文章审核</div>
-    <div th:if="not ${error}" th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
+    <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
+
+    <div th:if="${#strings.isEmpty(error)}" class="ui grid article-audit">
+        <div class="eight wide column">
+            <div class="ui horizontal divider">文章基本信息</div>
+            <table class="ui celled table">
+                <tbody>
+                <tr>
+                    <td>标题</td>
+                    <td class="input title" th:utext="${item.title}">标题</td>
+                </tr>
+                <tr>
+                    <td>所属团契</td>
+                    <td class="input fellowship" th:utext="${item.fellowship.displayName}">所属团契</td>
+                </tr>
+                <tr>
+                    <td>描述</td>
+                    <td class="input description" th:utext="${item.description}">描述</td>
+                </tr>
+                <tr>
+                    <td>作者</td>
+                    <td class="input author" th:utext="${item.author.username}">作者</td>
+                </tr>
+                <tr>
+                    <td>文章状态</td>
+                    <td th:utext="${item.status}">作者</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="eight wide column">
+            <div class="ui horizontal divider">操作</div>
+            <div class="ui buttons">
+                <button class="ui publish positive button">发布</button>
+                <button class="ui reject negative button">驳回</button>
+            </div>
+        </div>
+        <div class="sixteen wide column">
+            <div class="ui horizontal divider">文章正文</div>
+            <div th:replace="fragment/editor :: article-audit(${item})">文章审核</div>
+            <div th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
+        </div>
+    </div>
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">
     </form>
 </div>
