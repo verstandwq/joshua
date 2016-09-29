@@ -12,12 +12,9 @@
     <div th:replace="fragment/navigation :: primary">导航栏</div>
 
     <div class="ui segment">
-        <h1>500</h1>
-        <h2>哦，服务器似乎出现了一丢丢问题</h2>
-        <p th:utext="${path}"></p>
-        <p th:utext="${exception}"></p>
-        <p th:utext="${message}"></p>
-        <p th:utext="${trace}"></p>
+        <h1 class="ui center aligned header">500</h1>
+        <h4 class="ui center aligned header" th:utext="${message}"></h4>
+        <h4 class="ui center aligned header" th:utext="${trace}"></h4>
     </div>
 </div>
 
