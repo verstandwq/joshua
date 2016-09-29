@@ -28,7 +28,11 @@ public class Application {
 
         createDefaultRoles(applicationContext);
         createRootUser(applicationContext);
-        createTestUsers(applicationContext);
+
+        if (args.length > 0 && args[0].equals("test")) {
+            createTestUsers(applicationContext);
+        }
+
         createDefaultFellowship(applicationContext);
 
         Locale.setDefault(new Locale("zh_CN"));
@@ -144,7 +148,7 @@ public class Application {
         UserService userService = applicationContext.getBean(UserService.class);
         RoleService roleService = applicationContext.getBean(RoleService.class);
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             String username = String.format("testUser%03d", i);
 
             if (null == userService.get(username)) {
