@@ -39,6 +39,13 @@
         </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <th class="center aligned" colspan="5">
+            <div th:replace="fragment/pagination :: basic"></div>
+        </th>
+    </tr>
+    </tfoot>
 </table>
 
 <table th:fragment="table-normal (items)" class="ui celled table">
@@ -64,6 +71,13 @@
         </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <th class="center aligned" colspan="4">
+            <div th:replace="fragment/pagination :: basic"></div>
+        </th>
+    </tr>
+    </tfoot>
 </table>
 
 <table th:fragment="table-audit (items)" class="ui celled table">
@@ -90,6 +104,13 @@
         </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <th class="center aligned" colspan="4">
+            <div th:replace="fragment/pagination :: basic"></div>
+        </th>
+    </tr>
+    </tfoot>
 </table>
 
 <table th:fragment="table-publish (items)" class="ui celled table">
@@ -120,6 +141,13 @@
         </td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <th class="center aligned" colspan="4">
+            <div th:replace="fragment/pagination :: basic"></div>
+        </th>
+    </tr>
+    </tfoot>
 </table>
 
 <script src="../../websrc/js/lib-001-jquery.js"></script>

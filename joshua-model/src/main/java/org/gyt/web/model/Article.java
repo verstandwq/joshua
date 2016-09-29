@@ -1,8 +1,5 @@
 package org.gyt.web.model;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -26,7 +23,6 @@ public class Article {
 
     @ManyToOne
     @JoinColumn
-    @Cascade(CascadeType.ALL)
     private Fellowship fellowship;
 
     private Date createdDate;

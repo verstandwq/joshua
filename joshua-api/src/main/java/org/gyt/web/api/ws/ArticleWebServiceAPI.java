@@ -77,7 +77,6 @@ public class ArticleWebServiceAPI {
         if (article != null && article.getStatus().equals(ArticleStatus.AUDITING) && user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_ARTICLE"))) {
             article.setAuditor(user);
             article.setStatus(ArticleStatus.PUBLISHED);
-            article.getFellowship().getArticles().add(article);
             return articleService.createOrUpdate(article).getStatus().equals(ArticleStatus.PUBLISHED) ? "success" : "发布文章失败";
         }
 
