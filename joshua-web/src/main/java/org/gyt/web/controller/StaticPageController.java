@@ -103,6 +103,12 @@ public class StaticPageController {
         return modelAndViewUtils.newModelAndView("staticPage/pastorPage");
     }
 
+    /* 公益活动 */
+    @RequestMapping("/public")
+    public ModelAndView publicPage() {
+        return modelAndViewUtils.newModelAndView("staticPage/publicPage");
+    }
+
     /* 好文推荐 */
     @RequestMapping("/recommend")
     public ModelAndView recommendPage() {
@@ -121,6 +127,12 @@ public class StaticPageController {
     @RequestMapping("/service")
     public ModelAndView servicePage() {
         return modelAndViewUtils.newModelAndView("staticPage/servicePage");
+    }
+
+    /* 教会代祷 */
+    @RequestMapping("/suffrage")
+    public ModelAndView suffragePage() {
+        return modelAndViewUtils.newModelAndView("staticPage/suffragePage");
     }
 
     /* 儿童主日学 */

@@ -38,6 +38,15 @@ public interface UserService {
      *
      * @param pageNumber 页面号，需要根据用户总数计算
      * @param pageSize   页面大小，需要根据用户总数计算
+     * @return 当前页面的用户列表信息，个数最多为页面大小指定的个数，如果页面号不正确则返回空列表
+     */
+    List<User> get(int pageNumber, int pageSize);
+
+    /**
+     * 批量获取用户信息
+     *
+     * @param pageNumber 页面号，需要根据用户总数计算
+     * @param pageSize   页面大小，需要根据用户总数计算
      * @param order      结果排序，ASC为升序，DESC为降序
      * @param sort       排序参考列名
      * @return 当前页面的用户列表信息，个数最多为页面大小指定的个数，如果页面号不正确则返回空列表

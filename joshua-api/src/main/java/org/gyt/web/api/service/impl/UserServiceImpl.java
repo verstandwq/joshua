@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> get(int pageNumber, int pageSize) {
+        return get(pageNumber, pageSize, "ASC", "username");
+    }
+
+    @Override
     public List<User> get(int pageNumber, int pageSize, String order, String... sort) {
         Pageable pageable = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.fromString(order), sort);
         return userRepository.findAll(pageable).getContent();

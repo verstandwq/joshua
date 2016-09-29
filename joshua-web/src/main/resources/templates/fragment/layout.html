@@ -35,6 +35,20 @@ HTML 布局基本组件
     <p th:utext="${content}"></p>
 </div>
 
+<!-- 圆形效果图组件 -->
+<div th:fragment="circular-picture (url, visiblePicture, hiddenPicture)" class="ui fade reveal">
+    <div class="visible content">
+        <a th:href="@{${url}}">
+            <img class="ui medium circular image" th:src="@{${visiblePicture}}"/>
+        </a>
+    </div>
+    <div class="hidden content">
+        <a th:href="@{${url}}">
+            <img class="ui medium circular image" th:src="@{${hiddenPicture}}"/>
+        </a>
+    </div>
+</div>
+
 <script src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>

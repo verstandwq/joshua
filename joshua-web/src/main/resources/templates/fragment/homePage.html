@@ -26,39 +26,9 @@
 <!-- 用户分流组件 -->
 <section th:fragment="section2" class="ui grid section2">
     <div class="centered row">
-        <div class="ui fade reveal">
-            <div class="visible content">
-                <a> <img class="ui medium circular image"
-                         src="../../public/assets/images/placeholder.png" th:src="@{/assets/images/placeholder.png}"/>
-                </a>
-            </div>
-            <div class="hidden content">
-                <a> <img class="ui medium circular image"
-                         src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-            </div>
-        </div>
-        <div class="ui fade reveal">
-            <div class="visible content">
-                <a> <img class="ui medium circular image"
-                         src="../../public/assets/images/placeholder.png" th:src="@{/assets/images/placeholder.png}"/>
-                </a>
-            </div>
-            <div class="hidden content">
-                <a> <img class="ui medium circular image"
-                         src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-            </div>
-        </div>
-        <div class="ui fade reveal">
-            <div class="visible content">
-                <a> <img class="ui medium circular image"
-                         src="../../public/assets/images/placeholder.png" th:src="@{/assets/images/placeholder.png}"/>
-                </a>
-            </div>
-            <div class="hidden content">
-                <a> <img class="ui medium circular image"
-                         src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-            </div>
-        </div>
+        <div th:replace="fragment/layout :: circular-picture('/newcomer', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+        <div th:replace="fragment/layout :: circular-picture('/worship', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+        <div th:replace="fragment/layout :: circular-picture('/fellowship', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
     </div>
 </section>
 
@@ -75,80 +45,14 @@
     <div class="ten wide column">
         <div class="ui three column doubling grid">
             <div class="centered row">
-                <div class="ui fade reveal">
-                    <div class="visible content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/placeholder.png"
-                                 th:src="@{/assets/images/placeholder.png}"/>
-                        </a>
-                    </div>
-                    <div class="hidden content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-                    </div>
-                </div>
-                <div class="ui fade reveal">
-                    <div class="visible content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/placeholder.png"
-                                 th:src="@{/assets/images/placeholder.png}"/>
-                        </a>
-                    </div>
-                    <div class="hidden content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-                    </div>
-                </div>
-                <div class="ui fade reveal">
-                    <div class="visible content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/placeholder.png"
-                                 th:src="@{/assets/images/placeholder.png}"/>
-                        </a>
-                    </div>
-                    <div class="hidden content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-                    </div>
-                </div>
+                <div th:replace="fragment/layout :: circular-picture('/believe', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/sunday', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/service', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
             </div>
             <div class="centered row">
-                <div class="ui fade reveal">
-                    <div class="visible content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/placeholder.png"
-                                 th:src="@{/assets/images/placeholder.png}"/>
-                        </a>
-                    </div>
-                    <div class="hidden content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-                    </div>
-                </div>
-                <div class="ui fade reveal">
-                    <div class="visible content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/placeholder.png"
-                                 th:src="@{/assets/images/placeholder.png}"/>
-                        </a>
-                    </div>
-                    <div class="hidden content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-                    </div>
-                </div>
-                <div class="ui fade reveal">
-                    <div class="visible content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/placeholder.png"
-                                 th:src="@{/assets/images/placeholder.png}"/>
-                        </a>
-                    </div>
-                    <div class="hidden content">
-                        <a> <img class="ui medium circular image"
-                                 src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/> </a>
-                    </div>
-                </div>
+                <div th:replace="fragment/layout :: circular-picture('/suffrage', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/testimony', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/public', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
             </div>
         </div>
     </div>
