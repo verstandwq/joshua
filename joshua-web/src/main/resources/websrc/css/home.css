@@ -6,11 +6,13 @@
     height: 400px;
 }
 
-.section2 img.circular {
-    width: 256px !important;
-    height: 256px !important;
-    margin-left: 1em;
-    margin-right: 1em;
+#section2 {
+    background: rgba(55, 60, 61, 1);
+    background: radial-gradient(at center center, rgb(70, 83, 102) 0%, rgb(18, 26, 32) 100%);
+}
+
+#section2 .joshua.picture {
+    width: 256px;
 }
 
 .section3 img.circular {
