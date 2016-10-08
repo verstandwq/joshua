@@ -1,6 +1,9 @@
 #section1 {
-    height: 400px;
     margin: 10px 0 10px 0;
+}
+
+#section1 .jumbotron {
+    height: 400px;
 }
 
 .section2 img.circular {

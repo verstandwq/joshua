@@ -1,3 +1,19 @@
 .joshua.menu.container {
     background-color: rgba(236, 234, 209, 1);
 }
+
+.joshua.picture {
+    width: 192px;
+    height: auto;
+    margin: 10px;
+
+    transition: all 0.5s ease;
+}
+
+.joshua.picture:hover {
+    transform: rotate(20deg);
+}
+
+.joshua.picture img {
+    border-radius: 12px;
+}

@@ -12,12 +12,14 @@
 
 <body>
 <!-- 活动大图组件 -->
-<section th:fragment="section1" class="ui grid section1">
-    <div class="large screen only row">
-        <div class="column">
-            <div class="ui black inverted huge message page grid center aligned jumbotron">
-                <h1 class="ui inverted huge header">欢迎来到基督教光音堂</h1>
-                <p>神爱世人、甚至将他的独生子赐给他们、叫一切信他的、不至灭亡、反得永生。 约翰福音 3:16</p>
+<section th:fragment="section1" id="section1">
+    <div class="ui grid">
+        <div class="large screen only row">
+            <div class="column">
+                <div class="ui black inverted huge message page grid center aligned jumbotron">
+                    <h1 class="ui inverted huge header">欢迎来到基督教光音堂</h1>
+                    <p>神爱世人、甚至将他的独生子赐给他们、叫一切信他的、不至灭亡、反得永生。 约翰福音 3:16</p>
+                </div>
             </div>
         </div>
     </div>
@@ -26,9 +28,9 @@
 <!-- 用户分流组件 -->
 <section th:fragment="section2" class="ui grid section2">
     <div class="centered row">
-        <div th:replace="fragment/layout :: circular-picture('/newcomer', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
-        <div th:replace="fragment/layout :: circular-picture('/worship', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
-        <div th:replace="fragment/layout :: circular-picture('/fellowship', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+        <div th:replace="fragment/layout :: circular-picture('/newcomer', '/assets/images/placeholder.png')"></div>
+        <div th:replace="fragment/layout :: circular-picture('/worship', '/assets/images/placeholder.png')"></div>
+        <div th:replace="fragment/layout :: circular-picture('/fellowship', '/assets/images/placeholder.png')"></div>
     </div>
 </section>
 
@@ -45,14 +47,14 @@
     <div class="ten wide column">
         <div class="ui three column doubling grid">
             <div class="centered row">
-                <div th:replace="fragment/layout :: circular-picture('/believe', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
-                <div th:replace="fragment/layout :: circular-picture('/sunday', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
-                <div th:replace="fragment/layout :: circular-picture('/service', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/believe', '/assets/images/placeholder.png')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/sunday', '/assets/images/placeholder.png')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/service', '/assets/images/placeholder.png')"></div>
             </div>
             <div class="centered row">
-                <div th:replace="fragment/layout :: circular-picture('/suffrage', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
-                <div th:replace="fragment/layout :: circular-picture('/testimony', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
-                <div th:replace="fragment/layout :: circular-picture('/public', '/assets/images/placeholder.png', '/assets/images/logo.gif')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/suffrage', '/assets/images/placeholder.png')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/testimony', '/assets/images/placeholder.png')"></div>
+                <div th:replace="fragment/layout :: circular-picture('/public', '/assets/images/placeholder.png')"></div>
             </div>
         </div>
     </div>
