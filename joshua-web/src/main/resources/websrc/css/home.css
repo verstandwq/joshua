@@ -1,9 +1,6 @@
-.joshua.menu.container {
-    background-color: rgba(236, 234, 209, 1);
-}
-
-.section1 .jumbotron {
+#section1 {
     height: 400px;
+    margin: 10px 0 10px 0;
 }
 
 .section2 img.circular {

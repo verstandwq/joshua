@@ -7,10 +7,9 @@
     <link href="../public/assets/css/joshua.min.css" rel="stylesheet"/>
 </head>
 <body>
+<div th:replace="fragment/navigation :: primary">导航栏</div>
 
 <div class="ui container">
-    <div th:replace="fragment/navigation :: primary">导航栏</div>
-
     <div class="ui segment">
         <h1 class="ui center aligned header">500</h1>
         <h4 class="ui center aligned header" th:utext="${message}"></h4>

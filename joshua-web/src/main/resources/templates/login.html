@@ -8,8 +8,9 @@
     <link href="../public/assets/css/joshua.min.css" rel="stylesheet"/>
 </head>
 <body>
+<div th:replace="fragment/navigation :: primary">导航栏</div>
+
 <div class="ui container">
-    <div th:replace="fragment/navigation :: primary">导航栏</div>
     <div th:replace="fragment/login :: login"></div>
 </div>
 
