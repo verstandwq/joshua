@@ -10,13 +10,13 @@
 </head>
 <body>
 
-<table th:fragment="table (items)" class="ui celled table">
+<table th:fragment="table (items)" class="ui celled selectable sortable table">
     <thead>
     <tr>
-        <th>用户名</th>
-        <th>用户昵称</th>
-        <th>用户状态</th>
-        <th>操作</th>
+        <th class="two wide">用户名</th>
+        <th class="four wide">用户昵称</th>
+        <th class="one wide">用户状态</th>
+        <th class="nine wide">操作</th>
     </tr>
     </thead>
     <tbody>

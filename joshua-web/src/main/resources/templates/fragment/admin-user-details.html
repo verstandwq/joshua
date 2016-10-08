@@ -55,11 +55,11 @@
     </tbody>
 </table>
 
-<table th:fragment="roleTable (item)" class="ui celled table">
+<table th:fragment="roleTable (item)" class="ui celled selectable sortable table">
     <thead>
     <tr>
-        <th>角色</th>
-        <th>操作</th>
+        <th class="eight wide">角色</th>
+        <th class="eight wide">操作</th>
     </tr>
     </thead>
     <tbody>
@@ -84,7 +84,7 @@
     </tfoot>
 </table>
 
-<table th:fragment="ownerTable (items)" class="ui celled table">
+<table th:fragment="ownerTable (items)" class="ui celled selectable sortable table">
     <thead>
     <tr>
         <th>团契名称</th>
@@ -100,11 +100,11 @@
     </tbody>
 </table>
 
-<table th:fragment="adminTable (items)" class="ui celled table">
+<table th:fragment="adminTable (items)" class="ui celled selectable sortable table">
     <thead>
     <tr>
-        <th>团契名称</th>
-        <th>团契所有者</th>
+        <th class="eight wide">团契名称</th>
+        <th class="eight wide">团契所有者</th>
     </tr>
     </thead>
     <tbody>

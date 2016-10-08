@@ -43,12 +43,12 @@
     </tfoot>
 </table>
 
-<table th:fragment="admin-table (items)" class="ui celled table">
+<table th:fragment="admin-table (items)" class="ui celled selectable sortable table">
     <thead>
     <tr>
-        <th>用户名</th>
-        <th>用户昵称</th>
-        <th>操作</th>
+        <th class="six wide">用户名</th>
+        <th class="six wide">用户昵称</th>
+        <th class="four wide">操作</th>
     </tr>
     </thead>
     <tbody>
