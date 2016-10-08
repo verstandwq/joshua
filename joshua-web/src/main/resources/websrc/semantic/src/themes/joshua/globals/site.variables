@@ -1,0 +1,10 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@joshuaPrimaryBlack :   #121A20;
+@joshuaPrimaryGrey  :   #373C3D;
+@joshuaPrimaryWhite :   #F0F0F0;
+
+@primaryColor       :   @joshuaPrimaryBlack;
+@secondaryColor     :   @joshuaPrimaryWhite;
