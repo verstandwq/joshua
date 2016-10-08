@@ -5,7 +5,9 @@
 /*-------------------
        Fonts
 --------------------*/
+@fontName           : "Hiragino Sans GB","Microsoft YaHei","微软雅黑","arial","Tahoma","SimSun","sans-serif";
 @importGoogleFonts  :   false;
+@fontPath           : '../fonts';
 
 
 /*-------------------
@@ -15,5 +17,15 @@
 @joshuaPrimaryGrey  :   #373C3D;
 @joshuaPrimaryWhite :   #F0F0F0;
 
+@joshuaGreenColor       :   #468A3E;
+@joshuaOrangeColor      :   #CF7C38;
+@joshuaWhiteColor       :   #E3E3D2;
+@joshuaLightWhiteColor  :   #ECEAD1;
+
 @primaryColor       :   @joshuaPrimaryBlack;
 @secondaryColor     :   @joshuaPrimaryWhite;
+
+/*-------------------
+        Page
+--------------------*/
+@pageBackground     :   @joshuaPrimaryWhite;

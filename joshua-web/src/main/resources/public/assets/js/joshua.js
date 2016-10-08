@@ -50953,6 +50953,7 @@ $(document).ready(function () {
     $('.ui.menu .ui.dropdown').dropdown({on: 'hover'});
     $('.ui.username.button').popup({
         position: "bottom center",
+        inline: true,
         on: "click"
     });
 
