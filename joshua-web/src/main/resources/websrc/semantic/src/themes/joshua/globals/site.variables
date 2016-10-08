@@ -2,6 +2,15 @@
      User Global Variables
 *******************************/
 
+/*-------------------
+       Fonts
+--------------------*/
+@importGoogleFonts  :   false;
+
+
+/*-------------------
+       Colors
+--------------------*/
 @joshuaPrimaryBlack :   #121A20;
 @joshuaPrimaryGrey  :   #373C3D;
 @joshuaPrimaryWhite :   #F0F0F0;
