@@ -1,11 +1,17 @@
+/*
+    菜单容器定义
+*/
 .joshua.menu.container {
     background-color: rgba(236, 234, 209, 1);
 }
 
+/*
+    图片显示框架定义
+*/
 .joshua.picture {
     width: 192px;
     height: auto;
-    margin: 10px;
+    margin: 12px;
 
     transition: all 0.5s ease;
 }
