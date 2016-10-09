@@ -14,11 +14,7 @@
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='主日崇拜')"></div>
 
-            <div class="ui horizontal divider">第一堂信息</div>
-            <div th:replace="fragment/worship :: section ('饶恕人的过犯', '你们饶恕人的过犯，你们的天父也必饶恕你们的过犯；你们不饶恕人得过犯，你们天父也必不饶恕你们的过犯', '马太福音6:14-15')"></div>
-
-            <div class="ui horizontal divider">第二堂信息</div>
-            <div th:replace="fragment/worship :: section ('彼此饶恕', '你们饶恕人的过犯，你们的天父也必饶恕你们的过犯；你们不饶恕人得过犯，你们天父也必不饶恕你们的过犯', '马太福音6:14-15')"></div>
+            <div th:replace="fragment/article :: table(${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

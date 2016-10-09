@@ -134,6 +134,12 @@ class ApplicationResourceHelper {
         createFellowship(applicationContext, "ygtq", "雅歌团契");
         createFellowship(applicationContext, "ykz", "音控组");
         createFellowship(applicationContext, "zztq", "长者团契");
+
+        createFellowship(applicationContext, "worship", "主日崇拜");
+        createFellowship(applicationContext, "testimony", "见证分享");
+        createFellowship(applicationContext, "report", "事工报告");
+        createFellowship(applicationContext, "public", "公益活动");
+        createFellowship(applicationContext, "suffrage", "教会代祷");
     }
 
     private static void createFellowship(ApplicationContext applicationContext, String name, String displayName) {
