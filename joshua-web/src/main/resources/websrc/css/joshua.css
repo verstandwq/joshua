@@ -6,6 +6,13 @@
 }
 
 /*
+    页面容器定义
+*/
+.joshua.main {
+    margin: 2em 0 2em 0;
+}
+
+/*
     图片显示框架定义
 */
 .joshua.picture {
