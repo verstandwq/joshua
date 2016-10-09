@@ -23149,7 +23149,7 @@ Floated Menu / Item
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 290px;
+  width: 270px;
   min-height: 0px;
   background: #FFFFFF;
   padding: 0em;
@@ -24186,6 +24186,10 @@ a.ui.card:hover,
 .ui.cards > .card {
   font-size: 1em;
 }
+
+/*******************************
+         Theme Overrides
+*******************************/
 
 /*******************************
     User Variable Overrides

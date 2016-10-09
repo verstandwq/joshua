@@ -11,7 +11,7 @@
 
 <div class="ui joshua main container">
     <div class="ui grid">
-        <div class="thirteen wide column">
+        <div class="column">
             <div th:replace="fragment/layout :: header (title='团契生活')"></div>
 
             <div class="ui cards">
@@ -25,9 +25,6 @@
                 <div th:replace="fragment/fellowship :: card('雅歌团契', '/assets/images/service/雅歌团契.jpg', '', 'ygtq')"></div>
                 <div th:replace="fragment/fellowship :: card('长者团契', '/assets/images/service/长者团契.jpg', '', 'zztq')"></div>
             </div>
-        </div>
-        <div class="three wide column">
-            <div th:replace="fragment/navigation :: secondary"></div>
         </div>
     </div>
 </div>

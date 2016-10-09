@@ -70,20 +70,20 @@
 
             <!--/* 右侧菜单 */-->
             <div class="right menu">
-                <!--/* 搜索 */-->
+                <!--/* 搜索
                 <div class="item">
                     <div class="ui input focus icon">
                         <input class="search" type="text" th:placeholder="搜索"/>
                         <i class="circular search link icon"></i>
                     </div>
-                </div>
+                </div>*/-->
 
                 <div sec:authorize="not isAuthenticated()" class="item">
-                    <a class="ui inverted blue button" th:href="@{/login}">登录</a>
+                    <a class="ui button" th:href="@{/login}">登录</a>
                 </div>
 
                 <div sec:authorize="isAuthenticated()" class="item">
-                    <div class="ui inverted blue icon username button">
+                    <div class="ui icon username button">
                         <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
                     </div>
                     <div class="ui popup">
@@ -104,8 +104,7 @@
 
 <!-- 次要导航栏，用于二级页面侧边导航栏 -->
 <div th:fragment="secondary">
-    <!-- 侧导航 -->
-    <div class="ui vertical menu">
+    <div class="ui vertical joshua side menu">
         <div class="item">
             <span>光音堂</span>
             <div class="menu">
