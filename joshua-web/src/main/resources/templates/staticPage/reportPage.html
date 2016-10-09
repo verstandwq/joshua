@@ -13,6 +13,8 @@
     <div class="ui grid">
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='事工报告')"></div>
+
+            <div th:replace="fragment/article :: table(${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

@@ -12,7 +12,9 @@
 <div class="ui joshua main container">
     <div class="ui grid">
         <div class="twelve wide column">
-            <div th:replace="fragment/layout :: header (title='见证奉献')"></div>
+            <div th:replace="fragment/layout :: header (title='见证分享')"></div>
+
+            <div th:replace="fragment/article :: table(${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

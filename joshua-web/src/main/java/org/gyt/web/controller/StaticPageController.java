@@ -1,7 +1,9 @@
 package org.gyt.web.controller;
 
 import org.gyt.web.api.service.ArticleService;
+import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.Message;
 import org.gyt.web.model.MessageType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class StaticPageController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private FellowshipService fellowshipService;
 
     @Autowired
     private ModelAndViewUtils modelAndViewUtils;
@@ -106,7 +111,10 @@ public class StaticPageController {
     /* 公益活动 */
     @RequestMapping("/public")
     public ModelAndView publicPage() {
-        return modelAndViewUtils.newModelAndView("staticPage/publicPage");
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/publicPage");
+        Fellowship fellowship = fellowshipService.get("public");
+        modelAndView.addObject("items", fellowship.getArticles());
+        return modelAndView;
     }
 
     /* 好文推荐 */
@@ -120,7 +128,10 @@ public class StaticPageController {
     /* 事工报告 */
     @RequestMapping("/report")
     public ModelAndView reportPage() {
-        return modelAndViewUtils.newModelAndView("staticPage/reportPage");
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/reportPage");
+        Fellowship fellowship = fellowshipService.get("report");
+        modelAndView.addObject("items", fellowship.getArticles());
+        return modelAndView;
     }
 
     /* 主内服侍 */
@@ -132,7 +143,10 @@ public class StaticPageController {
     /* 教会代祷 */
     @RequestMapping("/suffrage")
     public ModelAndView suffragePage() {
-        return modelAndViewUtils.newModelAndView("staticPage/suffragePage");
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/suffragePage");
+        Fellowship fellowship = fellowshipService.get("suffrage");
+        modelAndView.addObject("items", fellowship.getArticles());
+        return modelAndView;
     }
 
     /* 儿童主日学 */
@@ -144,12 +158,18 @@ public class StaticPageController {
     /* 见证奉献 */
     @RequestMapping("/testimony")
     public ModelAndView testimonyPage() {
-        return modelAndViewUtils.newModelAndView("staticPage/testimonyPage");
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/testimonyPage");
+        Fellowship fellowship = fellowshipService.get("testimony");
+        modelAndView.addObject("items", fellowship.getArticles());
+        return modelAndView;
     }
 
     /* 主日崇拜 */
     @RequestMapping("/worship")
     public ModelAndView worshipPage() {
-        return modelAndViewUtils.newModelAndView("staticPage/worshipPage");
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/worshipPage");
+        Fellowship fellowship = fellowshipService.get("worship");
+        modelAndView.addObject("items", fellowship.getArticles());
+        return modelAndView;
     }
 }
