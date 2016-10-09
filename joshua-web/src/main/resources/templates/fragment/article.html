@@ -21,7 +21,7 @@
     <div th:each="article : ${items}" th:if="${not article.isDisable() and article.status.name() == 'PUBLISHED'}"
          class="item">
         <a class="ui tiny image" th:href="@{'/article/' + ${article.id}}" target="_blank">
-            <img src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"/>
+            <img src="../../public/assets/images/logo.gif" th:src="@{/assets/images/placeholder.png}"/>
         </a>
         <div class="content">
             <a class="header" th:utext="${article.title}" th:href="@{'/article/' + ${article.id}}"

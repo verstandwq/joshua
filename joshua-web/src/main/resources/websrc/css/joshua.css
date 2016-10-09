@@ -1,0 +1,32 @@
+/*
+    页面容器定义
+*/
+.joshua.main {
+    margin: 2em 0 2em 0;
+}
+
+/*
+    图片显示框架定义
+*/
+.joshua.picture {
+    width: 192px;
+    height: auto;
+    margin: 12px;
+
+    transition: all 0.5s ease;
+}
+
+.joshua.picture:hover {
+    transform: rotate(20deg);
+}
+
+.joshua.picture img {
+    border-radius: 12px;
+}
+
+/*
+    侧边导航栏定义
+*/
+.joshua.side.menu {
+    background: rgba(240, 240, 240, 0.85) !important;
+}

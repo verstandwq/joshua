@@ -350,8 +350,8 @@
 --------------------*/
 
 /* For source only. Modified in gulp for dist */
-@imagePath : '../../themes/default/assets/images';
-@fontPath  : '../../themes/default/assets/fonts';
+@imagePath : '../images';
+@fontPath  : '../fonts';
 
 /*-------------------
        Em Sizes
@@ -425,13 +425,13 @@
 --------------------*/
 
 @facebookColor   : #3B5998;
-@twitterColor    : #0084B4;
-@googlePlusColor : #DC4A38;
+@twitterColor    : #55ACEE;
+@googlePlusColor : #DD4B39;
 @linkedInColor   : #1F88BE;
 @youtubeColor    : #CC181E;
-@instagramColor  : #49769C;
-@pinterestColor  : #00ACED;
+@pinterestColor  : #BD081C;
 @vkColor         : #4D7198;
+@instagramColor  : #49769C;
 
 /*-------------------
       Borders

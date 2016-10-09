@@ -1,22 +1,46 @@
-.section1 .jumbotron {
-    height: 400px;
+#section1 .jumbotron {
+    height: 450px;
 }
 
-.section2 img.circular {
-    width: 256px !important;
-    height: 256px !important;
-    margin-left: 1em;
-    margin-right: 1em;
+#section2 {
+    padding: 20px;
+    background: rgba(207, 124, 56, 1);
+    background: radial-gradient(at center center, rgb(207, 164, 104) 0%, rgb(207, 124, 56) 100%);
 }
 
-.section3 img.circular {
-    width: 192px !important;
-    height: 192px !important;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+#section2 .joshua.picture {
+    width: 256px;
+    margin: 20px;
 }
 
-.section5 img {
-    width: 64px;
-    height: 64px;
+#section3 {
+    color: white;
+    padding: 20px;
+    background: rgba(55, 60, 61, 1);
+    background: radial-gradient(at center center, rgb(70, 83, 102) 0%, rgb(18, 26, 32) 100%);
+}
+
+#section4 {
+    color: white;
+    padding: 20px;
+    background: rgba(70, 138, 62, 1);
+    background: radial-gradient(at center center, rgb(70, 138, 62) 0%, rgb(25, 104, 19) 100%);
+}
+
+#section4 .item .content .header {
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+#section4 .item .content .header:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .5);
+}
+
+#section4 .item .content .meta {
+    color: rgba(255, 255, 255, .85);
+}
+
+#section4 .item .content .extra {
+    color: rgba(255, 255, 255, .5);
 }

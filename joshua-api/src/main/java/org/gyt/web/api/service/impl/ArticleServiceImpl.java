@@ -41,8 +41,8 @@ public class ArticleServiceImpl implements ArticleService {
         List<Article> articleList = articleRepository.findAll().stream().filter(article -> !article.isDisable() && article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
         articleList.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
 
-        if (articleList.size() > 10) {
-            return articleList.subList(0, 10);
+        if (articleList.size() > 5) {
+            return articleList.subList(0, 5);
         }
 
         return articleList;
