@@ -83,6 +83,8 @@ public class AdminArticlePageController {
             modelAndView.addObject("subtitle", "未知类型");
         }
 
+        articleList.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
+
         modelAndView.addObject("type", type);
         modelAndView.addObject("items", paginationComponent.listPagination(articleList, pageNumber, pageSize));
         paginationComponent.addPaginationModel(modelAndView, "/admin/article?type=" + type, articleList.size(), pageNumber, pageSize);
