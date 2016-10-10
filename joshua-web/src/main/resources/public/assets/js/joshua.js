@@ -50181,7 +50181,6 @@ $(document).ready(function () {
 
         /* 基本控件 */
         [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'font': []}],
 
         /* 文字样式控件 */
         ['bold', 'italic', 'underline', 'strike'],
