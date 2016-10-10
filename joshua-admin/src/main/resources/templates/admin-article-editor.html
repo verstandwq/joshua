@@ -18,12 +18,12 @@
 
             <div class="ui labeled fluid input">
                 <div class="ui label">标题</div>
-                <input class="input title" th:value="${item.title}" type="text" placeholder="请输入文章标题"/>
+                <input class="input title" th:value="${item.title}" type="text" maxlength="64" placeholder="请输入文章标题，最多64个字"/>
             </div>
             <div class="ui horizontal hidden divider"></div>
             <div class="ui labeled fluid input">
                 <div class="ui label">描述</div>
-                <input class="input description" th:value="${item.description}" type="text" placeholder="请输入文章描述"/>
+                <input class="input description" th:value="${item.description}" maxlength="54" type="text" placeholder="请输入文章描述，最多54个字"/>
             </div>
             <div class="ui horizontal hidden divider"></div>
             <div class="ui fellowship search selection fluid dropdown">

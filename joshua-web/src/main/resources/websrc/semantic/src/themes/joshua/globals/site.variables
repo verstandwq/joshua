@@ -24,8 +24,3 @@
 
 @primaryColor       :   @joshuaPrimaryBlack;
 @secondaryColor     :   @joshuaPrimaryWhite;
-
-/*-------------------
-        Page
---------------------*/
-@pageBackground     :   @joshuaPrimaryWhite;
