@@ -42,13 +42,8 @@
                 <div class="field">
                     <input type="password" th:field="*{password}" placeholder="密码"/>
                 </div>
-                <div class="field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" tabindex="0" class="hidden"/>
-                        <label>记住我</label>
-                    </div>
-                </div>
                 <button class="ui primary button" type="submit">登录</button>
+                <a href="#" th:href="@{/forget}">忘记密码？</a>
             </form>
         </div>
         <div class="ui raised segment">
