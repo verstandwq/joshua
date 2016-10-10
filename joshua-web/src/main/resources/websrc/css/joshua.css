@@ -23,10 +23,3 @@
 .joshua.picture img {
     border-radius: 12px;
 }
-
-/*
-    侧边导航栏定义
-*/
-.joshua.side.menu {
-    background: rgba(240, 240, 240, 0.85) !important;
-}

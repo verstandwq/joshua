@@ -50181,7 +50181,6 @@ $(document).ready(function () {
 
         /* 基本控件 */
         [{'header': [1, 2, 3, 4, 5, 6, false]}],
-        [{'font': []}],
 
         /* 文字样式控件 */
         ['bold', 'italic', 'underline', 'strike'],
@@ -50203,7 +50202,7 @@ $(document).ready(function () {
      */
     if ($(".article-editor .container").length > 0) {
         var quill = new Quill(".article-editor .container", {
-            placeholder: '请输入文章内容',
+            placeholder: '请输入文章内容，文章大小最多为20M，超过以后会保存失败',
             modules: {
                 toolbar: toolbarOptions
             },

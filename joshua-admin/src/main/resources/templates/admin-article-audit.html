@@ -35,7 +35,10 @@
                 </tr>
                 <tr>
                     <td>文章状态</td>
-                    <td th:utext="${item.status}">作者</td>
+                    <td th:if="${item.status.name() == 'RAW'}"><label class="ui grey label">未发布</label></td>
+                    <td th:if="${item.status.name() == 'AUDITING'}"><label class="ui orange label">审核中</label></td>
+                    <td th:if="${item.status.name() == 'PUBLISHED'}"><label class="ui green label">已发布</label></td>
+                    <td th:if="${item.status.name() == 'REJECTED'}"><label class="ui red label">被驳回</label></td>
                 </tr>
                 </tbody>
             </table>
