@@ -1,7 +1,6 @@
 package org.gyt.web.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -52,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/public",
                         "/suffrage",
                         "/login",
+                        "/logon",
                         "/forget",
                         "/assets/**",
                         "/images/**"
@@ -68,7 +68,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/password").access("hasRole('ROLE_SEND_MESSAGE')")
                 .and()
                 .csrf()
-                .ignoringAntMatchers("/forget")
+                .ignoringAntMatchers("/forget", "/login", "/logon")
                 .and()
                 .authorizeRequests()
                 .anyRequest()

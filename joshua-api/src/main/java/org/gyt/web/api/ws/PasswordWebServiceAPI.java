@@ -2,9 +2,11 @@ package org.gyt.web.api.ws;
 
 import org.gyt.web.api.service.MailService;
 import org.gyt.web.api.service.UserService;
+import org.gyt.web.api.utils.LoginUtils;
 import org.gyt.web.api.utils.StringGeneratorUtils;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,13 +20,27 @@ import javax.mail.MessagingException;
  * Created by Administrator on 2016/9/18.
  */
 @RestController
-public class ForgetWebServiceAPI {
+public class PasswordWebServiceAPI {
 
     @Autowired
     private UserService userService;
 
     @Autowired
     private MailService mailService;
+
+    @RequestMapping(value = "/password", method = RequestMethod.POST)
+    public String changePassword(@RequestParam String password) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (LoginUtils.isValidPassword(password)) {
+            currentUser.setPassword(new BCryptPasswordEncoder().encode(password));
+            userService.update(currentUser);
+        } else {
+            return "密码格式不正确";
+        }
+
+        return "success";
+    }
 
     @RequestMapping(value = "/forget", method = RequestMethod.POST)
     public String changeInfo(@RequestParam String username, @RequestParam String email) {

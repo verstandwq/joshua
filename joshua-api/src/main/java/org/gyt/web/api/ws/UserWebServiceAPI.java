@@ -42,20 +42,6 @@ public class UserWebServiceAPI {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/password", method = RequestMethod.POST)
-    public String changePassword(@RequestParam String password) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (LoginUtils.isValidPassword(password)) {
-            currentUser.setPassword(new BCryptPasswordEncoder().encode(password));
-            userService.update(currentUser);
-        } else {
-            return "密码格式不正确";
-        }
-
-        return "success";
-    }
-
     @RequestMapping(value = "/lock/{username}", method = RequestMethod.POST)
     public boolean lock(@PathVariable String username) {
         return userService.lock(username);
