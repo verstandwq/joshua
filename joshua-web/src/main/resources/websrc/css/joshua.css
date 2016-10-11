@@ -13,9 +13,9 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 168px;
+    height: 154px;
 
-    background: url("../images/background-2.jpg"), rgb(240, 240, 240);
+    background: url("../images/background-2.png"), rgb(240, 240, 240);
     opacity: .84;
 }
 
@@ -23,12 +23,12 @@
     背景定义
 */
 .joshua.wood.background {
-    background: url("../images/background-1.jpg");
+    background: url("../images/background-1.png");
     opacity: .87;
 }
 
 .joshua.stone.background {
-    background: url("../images/background-2.jpg");
+    background: url("../images/background-2.png");
     opacity: .84;
 }
 
@@ -55,9 +55,15 @@
     按钮边框定义
 */
 button, .ui.button {
-    border: 3px double transparent;
+    border: 3px double transparent !important;
 }
 
 button, .ui.button:hover {
-    border: 3px double black;
+    border: 3px double rgb(70, 83, 102) !important;
+
+}
+
+button, .ui.button:active {
+    border: 3px double rgb(70, 83, 102) !important;
+    background-clip: padding-box;
 }

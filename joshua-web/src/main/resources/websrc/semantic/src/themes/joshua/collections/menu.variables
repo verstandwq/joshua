@@ -1,0 +1,6 @@
+/*******************************
+             Menu
+*******************************/
+@verticalMargin         :   0em;
+@buttonVerticalPadding  :   .5em;
+@secondaryItemMargin    :   0 .75em;
