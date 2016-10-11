@@ -50229,7 +50229,7 @@ $(document).ready(function () {
      */
     $(".article-editor .ui.audit.button").on("click", function () {
 
-        new Dialog("申请发布", "确定要申请发布文章吗？， 申请发布后讲不能再修改文章内容，如果文章被驳回，则可以修改以后继续发布", function () {
+        new Dialog("申请发布", "确定要申请发布文章吗？， 申请发布后将不能再修改文章内容，如果文章被驳回，则可以修改以后继续发布", function () {
             showDimmer();
 
             var formData = new FormData();

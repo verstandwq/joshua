@@ -79,7 +79,7 @@ body {
   background: #FFFFFF;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "arial", "Tahoma", "SimSun", "sans-serif", 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
-  line-height: 1.4285em;
+  line-height: 1.618em;
   color: rgba(0, 0, 0, 0.87);
   font-smoothing: antialiased;
 }
@@ -143,7 +143,7 @@ h5:last-child {
 
 p {
   margin: 0em 0em 1em;
-  line-height: 1.4285em;
+  line-height: 1.618em;
 }
 
 p:first-child {
@@ -21054,7 +21054,7 @@ Floated Menu / Item
   margin: 1em 0em;
   background: #F8F8F9;
   padding: 1em 1.5em;
-  line-height: 1.4285em;
+  line-height: 1.618em;
   color: rgba(0, 0, 0, 0.87);
   -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
   transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
@@ -21157,7 +21157,7 @@ Floated Menu / Item
   cursor: pointer;
   position: absolute;
   margin: 0em;
-  top: 0.78575em;
+  top: 0.691em;
   right: 0.5em;
   opacity: 0.7;
   -webkit-transition: opacity 0.1s ease;
@@ -23310,7 +23310,7 @@ Floated Menu / Item
 .ui.card > .content > .header:not(.ui) {
   font-weight: bold;
   font-size: 1.28571429em;
-  margin-top: -0.21425em;
+  margin-top: -0.309em;
   line-height: 1.2857em;
 }
 
@@ -24691,7 +24691,7 @@ a.ui.card:hover,
   border-left: none;
   font-size: 1em;
   max-width: 500px;
-  line-height: 1.4285em;
+  line-height: 1.618em;
 }
 
 /*--------------
@@ -24932,7 +24932,7 @@ a.ui.card:hover,
 
 .ui.items > .item > .content > .header {
   display: inline-block;
-  margin: -0.21425em 0em 0em;
+  margin: -0.309em 0em 0em;
   font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "arial", "Tahoma", "SimSun", "sans-serif", 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.85);
@@ -24982,7 +24982,7 @@ a.ui.card:hover,
   margin-top: 0.6em;
   max-width: auto;
   font-size: 1em;
-  line-height: 1.4285em;
+  line-height: 1.618em;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -26015,7 +26015,7 @@ a.ui.card:hover,
 
 .ui.accordion.menu .item .title > .dropdown.icon {
   float: right;
-  margin: 0.21425em 0em 0em 1em;
+  margin: 0.309em 0em 0em 1em;
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
@@ -28873,7 +28873,7 @@ select.ui.dropdown {
   }
 
   .ui.modal > .close {
-    top: 1.0535rem;
+    top: 1.243rem;
     right: 1rem;
     color: rgba(0, 0, 0, 0.87);
   }
@@ -29077,7 +29077,7 @@ select.ui.dropdown {
 }
 
 .ui.fullscreen.modal > .close {
-  top: 1.0535rem;
+  top: 1.243rem;
   right: 1rem;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -29343,7 +29343,7 @@ a.ui.nag {
   min-width: min-content;
   z-index: 1900;
   border: 1px solid #D4D4D5;
-  line-height: 1.4285em;
+  line-height: 1.618em;
   max-width: 250px;
   background: #FFFFFF;
   padding: 0.833em 1em;
@@ -29419,7 +29419,7 @@ a.ui.nag {
   white-space: nowrap;
   font-size: 1rem;
   border: 1px solid #D4D4D5;
-  line-height: 1.4285em;
+  line-height: 1.618em;
   max-width: none;
   background: #FFFFFF;
   padding: 0.833em 1em;

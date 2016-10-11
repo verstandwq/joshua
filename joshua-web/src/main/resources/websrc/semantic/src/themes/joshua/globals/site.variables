@@ -9,7 +9,6 @@
 @importGoogleFonts  :   false;
 @fontPath           : '../fonts';
 
-
 /*-------------------
        Colors
 --------------------*/
@@ -24,3 +23,8 @@
 
 @primaryColor       :   @joshuaPrimaryBlack;
 @secondaryColor     :   @joshuaPrimaryWhite;
+
+/*-------------------
+        Page
+--------------------*/
+@lineHeight          : 1.618em;
