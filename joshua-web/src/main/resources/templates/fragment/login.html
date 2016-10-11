@@ -13,9 +13,10 @@
 <!-- 用户登录组件 -->
 <div th:fragment="login" class="ui grid">
     <div class="eleven wide column">
-        <h1 class="ui header">光之教堂,天使之音</h1>
-        <p class="ui header">神爱世人、甚至将他的独生子赐给他们、叫一切信他的、不至灭亡、反得永生。 约翰福音 3:16</p>
-        <div class="ui large image">
+        <div th:replace="fragment/layout :: header (title='光之教堂，天使之音')"></div>
+        <div th:replace="fragment/layout :: verse ('神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。 ', '约翰福音 3:16')"></div>
+
+        <div class="ui fluid rounded image">
             <img src="../../public/assets/images/staticPage/登录欢迎页面.jpg" th:src="@{/assets/images/staticPage/登录欢迎页面.jpg}"
                  alt="基督教光音堂"/>
         </div>
@@ -34,7 +35,7 @@
             注册失败，用户名或邮箱已经存在
         </div>
         <div class="ui raised segment">
-            <h3>老用户？在此登录</h3>
+            <h3>老用户 在此登录</h3>
             <form class="ui form" action="#" th:action="@{/login}" th:object="${user}" method="post">
                 <div class="field">
                     <input type="text" th:field="*{username}" placeholder="用户名 或者 邮箱"/>
@@ -42,17 +43,12 @@
                 <div class="field">
                     <input type="password" th:field="*{password}" placeholder="密码"/>
                 </div>
-                <div class="field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" tabindex="0" class="hidden"/>
-                        <label>记住我</label>
-                    </div>
-                </div>
-                <button class="ui primary button" type="submit">登录</button>
+                <button class="ui button" type="submit">登录</button>
+                <a href="#" th:href="@{/forget}">忘记密码？</a>
             </form>
         </div>
         <div class="ui raised segment">
-            <h3>新用户？在此创建您的账户</h3>
+            <h3>新用户 在此创建您的账户</h3>
             <form class="ui form" action="#" th:action="@{/logon}" th:object="${user}" method="post">
                 <div class="field">
                     <input type="text" th:field="*{nickname}" placeholder="姓名" required="required"/>
@@ -61,12 +57,12 @@
                     <input type="text" th:field="*{username}" placeholder="登录名" required="required"/>
                 </div>
                 <div class="field">
-                    <input type="text" th:field="*{email}" placeholder="邮箱" required="required"/>
+                    <input type="text" th:field="*{email}" placeholder="邮箱，用于找回密码" required="required"/>
                 </div>
                 <div class="field">
                     <input type="password" th:field="*{password}" placeholder="密码" required="required" minlength="8"/>
                 </div>
-                <button class="ui primary button" type="submit">注册</button>
+                <button class="ui button" type="submit">注册</button>
             </form>
         </div>
     </div>

@@ -50229,7 +50229,7 @@ $(document).ready(function () {
      */
     $(".article-editor .ui.audit.button").on("click", function () {
 
-        new Dialog("申请发布", "确定要申请发布文章吗？， 申请发布后讲不能再修改文章内容，如果文章被驳回，则可以修改以后继续发布", function () {
+        new Dialog("申请发布", "确定要申请发布文章吗？， 申请发布后将不能再修改文章内容，如果文章被驳回，则可以修改以后继续发布", function () {
             showDimmer();
 
             var formData = new FormData();
@@ -50891,6 +50891,42 @@ Dialog.prototype.confirm = function () {
     this.modal.modal("show");
 };
 $(document).ready(function () {
+    $(".ui.user.forget.button").on("click", function () {
+        var username = $("input.user.forget.username").val();
+        var email = $("input.user.forget.email").val();
+
+        if (username && email) {
+            var formData = new FormData();
+            formData.append("username", username);
+            formData.append("email", email);
+
+            $.ajax({
+                url: "/forget",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (status) {
+                    if ("success" == status) {
+                        new Dialog("重置密码", "重置密码成功，密码已经发送到邮箱：" + email, function () {
+                            window.location = "login";
+                        }).message();
+                    } else {
+                        new Dialog("重置密码", "重置密码失败，原因：" + status).error();
+                    }
+                },
+                error: function () {
+                    new Dialog("重置密码", "重置密码失败", function () {
+                    }).error();
+                }
+            });
+        } else {
+            new Dialog("信息不正确", "必须填写登录名和邮箱").message()
+        }
+    });
+});
+
+$(document).ready(function () {
 
     $(".ui.user.password.submit.button").on("click", function () {
         var newPassword = $("#new-password").val();
@@ -50911,7 +50947,7 @@ $(document).ready(function () {
         formData.append("password", newPassword);
 
         $.ajax({
-            url: "/api/user/password",
+            url: "/password",
             type: "post",
             data: formData,
             processData: false,

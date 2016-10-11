@@ -35,10 +35,18 @@ HTML 布局基本组件
     <p th:utext="${content}"></p>
 </div>
 
-<!-- 圆形效果图组件 -->
-<div th:fragment="circular-picture (url, picture)" class="joshua circular picture">
+<!-- 图片效果图组件 -->
+<div th:fragment="joshua-picture (url, picture)" class="joshua normal picture">
     <a th:href="@{${url}}">
         <img class="ui medium image" th:src="@{${picture}}"/>
+    </a>
+</div>
+
+
+<!-- 图片效果图组件 -->
+<div th:fragment="circular-picture (url, picture)" class="joshua circular picture">
+    <a th:href="@{${url}}">
+        <img class="ui medium circular image" th:src="@{${picture}}"/>
     </a>
 </div>
 

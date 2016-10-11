@@ -19,7 +19,7 @@ $(document).ready(function () {
         formData.append("password", newPassword);
 
         $.ajax({
-            url: "/api/user/password",
+            url: "/password",
             type: "post",
             data: formData,
             processData: false,

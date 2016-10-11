@@ -5,26 +5,31 @@
 #section2 {
     padding: 20px;
     background: rgba(207, 124, 56, 1);
-    background: radial-gradient(at center center, rgb(207, 164, 104) 0%, rgb(207, 124, 56) 100%);
+    background: linear-gradient(rgb(212, 153, 60), rgb(140, 52, 30));
 }
 
 #section2 .joshua.picture {
     width: 256px;
+    height: 256px;
     margin: 20px;
+}
+
+#section2 .joshua.picture img {
+    width: 256px;
+    height: 256px;
 }
 
 #section3 {
     color: white;
     padding: 20px;
     background: rgba(55, 60, 61, 1);
-    background: radial-gradient(at center center, rgb(70, 83, 102) 0%, rgb(18, 26, 32) 100%);
 }
 
 #section4 {
     color: white;
     padding: 20px;
     background: rgba(70, 138, 62, 1);
-    background: radial-gradient(at center center, rgb(70, 138, 62) 0%, rgb(25, 104, 19) 100%);
+    background: radial-gradient(at center center, rgb(138, 220, 136) 0%, rgb(57, 117, 33) 100%);
 }
 
 #section4 .item .content .header {
