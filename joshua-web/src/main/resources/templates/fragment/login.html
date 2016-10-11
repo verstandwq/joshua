@@ -13,9 +13,10 @@
 <!-- 用户登录组件 -->
 <div th:fragment="login" class="ui grid">
     <div class="eleven wide column">
-        <h1 class="ui header">光之教堂,天使之音</h1>
-        <p class="ui header">神爱世人、甚至将他的独生子赐给他们、叫一切信他的、不至灭亡、反得永生。 约翰福音 3:16</p>
-        <div class="ui large image">
+        <div th:replace="fragment/layout :: header (title='光之教堂，天使之音')"></div>
+        <div th:replace="fragment/layout :: verse ('神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。 ', '约翰福音 3:16')"></div>
+
+        <div class="ui fluid rounded image">
             <img src="../../public/assets/images/staticPage/登录欢迎页面.jpg" th:src="@{/assets/images/staticPage/登录欢迎页面.jpg}"
                  alt="基督教光音堂"/>
         </div>
@@ -48,7 +49,7 @@
                         <label>记住我</label>
                     </div>
                 </div>
-                <button class="ui primary button" type="submit">登录</button>
+                <button class="ui button" type="submit">登录</button>
             </form>
         </div>
         <div class="ui raised segment">
@@ -66,7 +67,7 @@
                 <div class="field">
                     <input type="password" th:field="*{password}" placeholder="密码" required="required" minlength="8"/>
                 </div>
-                <button class="ui primary button" type="submit">注册</button>
+                <button class="ui button" type="submit">注册</button>
             </form>
         </div>
     </div>
