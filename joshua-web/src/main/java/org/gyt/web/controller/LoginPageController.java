@@ -43,6 +43,13 @@ public class LoginPageController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/forget", method = RequestMethod.GET)
+    public ModelAndView forget() {
+        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("forget");
+
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/logon", method = RequestMethod.POST)
     public ModelAndView logon(@ModelAttribute User user) {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("login");

@@ -30,12 +30,19 @@ spring:
 
   messages:
     basename: i18n/messages, i18n/navigation, i18n/primaryPage
+
   resources:
     cache-period: 31536000
     chain:
       strategy:
         content:
           enabled: true
+  mail:
+    host: smtp.sina.com
+    port: 25
+    username: cdgyt2013@sina.com
+    password: gyt20131013
+
 
 multipart:
   max-file-size: 20MB
