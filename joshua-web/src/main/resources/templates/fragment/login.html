@@ -34,7 +34,7 @@
             注册失败，用户名或邮箱已经存在
         </div>
         <div class="ui raised segment">
-            <h3>老用户？在此登录</h3>
+            <h3>老用户 在此登录</h3>
             <form class="ui form" action="#" th:action="@{/login}" th:object="${user}" method="post">
                 <div class="field">
                     <input type="text" th:field="*{username}" placeholder="用户名 或者 邮箱"/>
@@ -47,7 +47,7 @@
             </form>
         </div>
         <div class="ui raised segment">
-            <h3>新用户？在此创建您的账户</h3>
+            <h3>新用户 在此创建您的账户</h3>
             <form class="ui form" action="#" th:action="@{/logon}" th:object="${user}" method="post">
                 <div class="field">
                     <input type="text" th:field="*{nickname}" placeholder="姓名" required="required"/>

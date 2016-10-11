@@ -50,8 +50,8 @@ multipart:
 #
 # loggin configuration
 #
-logging.level.org.springframework: DEBUG
-logging.level.org.springframework.web: DEBUG
+logging.level.org.springframework: ERROR
+logging.level.org.springframework.web: ERROR
 logging.level.org.hibernate: ERROR
 logging.level.org.gyt.web: DEBUG
 logging:
