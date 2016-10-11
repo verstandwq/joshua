@@ -3,3 +3,7 @@
     height: 100%;
     overflow-y: auto;
 }
+
+.joshua.menu b {
+    font-size: 1.35em;
+}

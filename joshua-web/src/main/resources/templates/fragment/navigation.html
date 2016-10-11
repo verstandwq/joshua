@@ -13,8 +13,8 @@
 
 <!-- 主要导航栏，用于页面最顶部的导航栏 -->
 <div th:fragment="primary">
-    <div class="joshua menu container"></div>
-    <nav id="menu" class="ui secondary container menu">
+    <div class="joshua menu background"></div>
+    <nav id="menu" class="ui joshua secondary container menu">
         <!--/* 教堂LOGO */-->
         <div class="item">
             <a href="/" th:href="@{/}">
@@ -25,7 +25,7 @@
 
         <!--/* 光音堂导航 */-->
         <div class="ui dropdown item">
-            <span>光音堂</span>
+            <b>光音堂</b>
             <div class="menu">
                 <a class="item" th:href="@{/about}">教堂简介</a>
                 <a class="item" th:href="@{/pastor}">主任牧师</a>
@@ -35,7 +35,7 @@
 
         <!--/* 信仰生活导航 */-->
         <div class="ui dropdown item">
-            <span>信仰生活</span>
+            <b>信仰生活</b>
             <div class="menu">
                 <a class="item" th:href="@{/believe}">基督信仰</a>
                 <a class="item" th:href="@{/newcomer}">新人</a>
@@ -48,7 +48,7 @@
 
         <!--/* 认识基督导航 */-->
         <div class="ui dropdown item">
-            <span>认识基督</span>
+            <b>认识基督</b>
             <div class="menu">
                 <a class="item" th:href="@{/testimony}">见证分享</a>
                 <a class="item" th:href="@{/recommend}">团契文章</a>
@@ -59,7 +59,7 @@
 
         <!--/* 家事园地导航 */-->
         <div class="ui dropdown item">
-            <span>家事园地</span>
+            <b>家事园地</b>
             <div class="menu">
                 <a class="item" th:href="@{/report}">事工报告</a>
                 <a class="item" th:href="@{/wedding}">教堂婚礼</a>
@@ -105,7 +105,7 @@
 <div th:fragment="secondary">
     <div class="ui vertical joshua side menu">
         <div class="item">
-            <span>光音堂</span>
+            <b>光音堂</b>
             <div class="menu">
                 <a class="item" th:href="@{/about}">教堂简介</a>
                 <a class="item" th:href="@{/pastor}">主任牧师</a>
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="item">
-            <span>信仰生活</span>
+            <b>信仰生活</b>
             <div class="menu">
                 <a class="item" th:href="@{/believe}">基督信仰</a>
                 <a class="item" th:href="@{/newcomer}">新人</a>
@@ -124,7 +124,7 @@
             </div>
         </div>
         <div class="item">
-            <span>认识基督</span>
+            <b>认识基督</b>
             <div class="menu">
                 <a class="item" th:href="@{/testimony}">见证分享</a>
                 <a class="item" th:href="@{/recommend}">团契文章</a>
@@ -133,7 +133,7 @@
             </div>
         </div>
         <div class="item">
-            <span>家事园地</span>
+            <b>家事园地</b>
             <div class="menu">
                 <a class="item" th:href="@{/report}">事工报告</a>
                 <a class="item" th:href="@{/wedding}">教堂婚礼</a>
