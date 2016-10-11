@@ -20,6 +20,19 @@
 }
 
 /*
+    背景定义
+*/
+.joshua.wood.background {
+    background: url("../images/background-1.jpg");
+    opacity: .87;
+}
+
+.joshua.stone.background {
+    background: url("../images/background-2.jpg");
+    opacity: .84;
+}
+
+/*
     图片显示框架定义
 */
 .joshua.picture {
@@ -34,6 +47,6 @@
     transform: rotate(20deg);
 }
 
-.joshua.picture img {
+.joshua.normal.picture img {
     border-radius: 12px;
 }
