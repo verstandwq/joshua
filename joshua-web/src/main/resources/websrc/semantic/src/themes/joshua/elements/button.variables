@@ -5,5 +5,14 @@
 /*-------------------
        Element
 --------------------*/
-@backgroundColor:   transparent;
-@borderRadius   :   0 0 12px 12px;
+@backgroundColor    :   transparent;
+@borderRadius       :   0 0 12px 12px;
+/*-------------------
+        States
+--------------------*/
+
+/* Hovered */
+@hoverBackgroundColor   :   transparent;
+
+/* Pressed Down */
+@downBackgroundColor    :   #373C3D;

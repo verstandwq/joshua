@@ -36,3 +36,10 @@
 /*---  Colors  ---*/
 @green            : #468A3E;
 @orange           : #CF7C38;
+
+/*-------------------
+     Neutral Text
+--------------------*/
+
+@pressedTextColor            : rgba(255, 255, 255, 1);
+@invertedPressedTextColor    : rgba(0, 0, 0, 0.9);

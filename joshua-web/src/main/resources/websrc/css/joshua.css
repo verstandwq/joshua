@@ -50,3 +50,14 @@
 .joshua.normal.picture img {
     border-radius: 12px;
 }
+
+/*
+    按钮边框定义
+*/
+button, .ui.button {
+    border: 3px double transparent;
+}
+
+button, .ui.button:hover {
+    border: 3px double black;
+}
