@@ -50908,7 +50908,9 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if ("success" == status) {
-                        new Dialog("重置密码", "重置密码成功，密码已经发送到邮箱：" + email).message();
+                        new Dialog("重置密码", "重置密码成功，密码已经发送到邮箱：" + email, function () {
+                            window.location = "login";
+                        }).message();
                     } else {
                         new Dialog("重置密码", "重置密码失败，原因：" + status).error();
                     }
