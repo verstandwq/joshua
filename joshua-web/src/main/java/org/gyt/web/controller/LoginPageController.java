@@ -1,5 +1,6 @@
 package org.gyt.web.controller;
 
+import org.gyt.web.api.service.RoleService;
 import org.gyt.web.api.service.UserService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.User;
@@ -16,6 +17,9 @@ public class LoginPageController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private ModelAndViewUtils modelAndViewUtils;
@@ -44,6 +48,7 @@ public class LoginPageController {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("login");
 
         if (userService.create(user)) {
+            roleService.addToUser(user.getUsername(), "USER");
             modelAndView.addObject("logon", "success");
         } else {
             modelAndView.addObject("logon", "failed");
