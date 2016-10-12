@@ -81,6 +81,12 @@ public class StaticPageController {
         return modelAndView;
     }
 
+    /* 奉献捐赠 */
+    @RequestMapping("/devotion")
+    public ModelAndView devotionPage() {
+        return modelAndViewUtils.newModelAndView("staticPage/devotionPage");
+    }
+
     /* 团契介绍 */
     @RequestMapping("/fellowship")
     public ModelAndView groupPage() {

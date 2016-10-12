@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* 首页开放所有权限 */
                 .antMatchers("/", "/index", "/home").permitAll()
                 /* 默认静态页面开放所有权限 */
-                .antMatchers("/about", "/pastor", "/contact", "/believe", "/newcomer", "/fellowship", "/service", "/bible", "/wedding").permitAll()
+                .antMatchers("/about", "/pastor", "/contact", "/believe", "/newcomer", "/fellowship", "/service", "/bible", "/wedding", "/devotion").permitAll()
                 /* 有新闻动态的静态页面开放所有权限 */
                 .antMatchers("/worship", "/sunday", "/testimony", "/recommend", "/media", "/report", "/public", "/suffrage").permitAll()
                 /* 登录注册页面开放所有权限 */
