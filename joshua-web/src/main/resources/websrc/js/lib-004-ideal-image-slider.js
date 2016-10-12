@@ -462,7 +462,6 @@ var IdealImageSlider = (function() {
 		if (!sliderEl)
 		sliderEl = document.querySelector(this.settings.selector);
 
-		console.log(sliderEl);
 		if (!sliderEl) return null;
 
 		// Slides
@@ -470,7 +469,6 @@ var IdealImageSlider = (function() {
 			validSlides = [];
 		sliderEl.innerHTML = '';
 		Array.prototype.forEach.call(origChildren, function(slide, i) {
-			console.log(slide);
 			if (slide instanceof HTMLImageElement || slide instanceof HTMLAnchorElement) {
 				var slideEl = document.createElement('a'),
 					href = '',

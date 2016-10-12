@@ -13,7 +13,7 @@
     <div class="ui grid">
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='主日学')"></div>
-            <div th:replace="fragment/layout :: picture (src='service/主日学.jpg')"></div>
+            <div th:replace="fragment/layout :: picture (src='staticPage/sundaySchoolPage.jpg')"></div>
 
             <h2>主日学介绍</h2>
             <p>
@@ -33,6 +33,8 @@
             <p>
                 有感动并满足条件的弟兄姊妹先与负责人联系，并先参与助教工作，通过老师培训后，可以担任上课职能。
             </p>
+
+            <div th:replace="fragment/article :: group-table('我们的消息', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

@@ -50495,7 +50495,6 @@ var IdealImageSlider = (function() {
 		if (!sliderEl)
 		sliderEl = document.querySelector(this.settings.selector);
 
-		console.log(sliderEl);
 		if (!sliderEl) return null;
 
 		// Slides
@@ -50503,7 +50502,6 @@ var IdealImageSlider = (function() {
 			validSlides = [];
 		sliderEl.innerHTML = '';
 		Array.prototype.forEach.call(origChildren, function(slide, i) {
-			console.log(slide);
 			if (slide instanceof HTMLImageElement || slide instanceof HTMLAnchorElement) {
 				var slideEl = document.createElement('a'),
 					href = '',
@@ -51859,14 +51857,16 @@ $(document).ready(function () {
  首页脚本组件
  */
 $(document).ready(function () {
-    var slider = new IdealImageSlider.Slider({
-        selector: '#slider',
-        height: 450,
-        interval: 4000,
-        effect: 'fade'
-    });
-    slider.addBulletNav();
-    slider.start();
+    if (document.getElementById("slider")) {
+        var slider = new IdealImageSlider.Slider({
+            selector: '#slider',
+            height: 450,
+            interval: 4000,
+            effect: 'fade'
+        });
+        slider.addBulletNav();
+        slider.start();
+    }
 });
 
 

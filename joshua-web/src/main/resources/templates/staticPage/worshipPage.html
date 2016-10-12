@@ -13,8 +13,9 @@
     <div class="ui grid">
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='主日崇拜')"></div>
+            <div th:replace="fragment/layout :: picture (src='staticPage/worshipPage.jpg')"></div>
 
-            <div th:replace="fragment/article :: table(${items})"></div>
+            <div th:replace="fragment/article :: group-table('近期主日崇拜', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
