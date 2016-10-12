@@ -11,6 +11,7 @@ HTML 头部基本组件，用于每个页面的头部引用
     <meta charset="UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!--/* 定义页面标题，如果页面为定义标题，则使用默认标题 */-->
     <title th:text="${#strings.isEmpty(title)} ? '基督教光音堂' : ${title}"></title>
