@@ -17,6 +17,9 @@ public class Article {
 
     private boolean disable;
 
+    @Lob
+    private byte[] cover;
+
     private String title;
 
     private String description;
@@ -65,6 +68,14 @@ public class Article {
 
     public void setDisable(boolean disable) {
         this.disable = disable;
+    }
+
+    public byte[] getCover() {
+        return cover;
+    }
+
+    public void setCover(byte[] cover) {
+        this.cover = cover;
     }
 
     public String getTitle() {

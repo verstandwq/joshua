@@ -36,16 +36,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* 登录注册页面开放所有权限 */
                 .antMatchers("/login", "/logon", "/forget").permitAll()
                 /* 静态资源开放所有权限 */
-                .antMatchers("/assets/**").permitAll()
+                .antMatchers("/assets/**", "/cover/**").permitAll()
                 /* 文章页面和团契首页开放所有权限 */
                 .antMatchers("/article/**", "/fellowship/**").permitAll()
                 .and()
 
                 .authorizeRequests()
-                /* 后台访问需要具有后台访问权限 */
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_ACCESS')")
                 /* 调用后台API需要登录 */
                 .antMatchers("/api/**").access("hasRole('ROLE_SEND_MESSAGE')")
+                /* 后台访问需要具有后台访问权限 */
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_ACCESS')")
+                /* 静态页面管理需要具有静态页面管理权限 */
+                .antMatchers("/admin/static/**").access("hasRole('ROLE_MANAGE_STATIC_PAGE')")
                 /* 用户管理需要具有用户管理权限 */
                 .antMatchers("/admin/user/**").access("hasRole('ROLE_MANAGE_USER_STATUS')")
                 /* 发布消息需要具有发布消息权限 */
