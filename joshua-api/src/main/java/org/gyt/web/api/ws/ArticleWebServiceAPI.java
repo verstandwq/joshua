@@ -98,6 +98,20 @@ public class ArticleWebServiceAPI {
         return "驳回文章失败";
     }
 
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam Long id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Article article = articleService.get(id);
+
+        if (article != null && article.getAuthor() != null && article.getAuthor().getUsername().equals(user.getUsername())) {
+            article.setAuthor(null);
+            article.setFellowship(null);
+            return !articleService.createOrUpdate(article).isDisable() ? "success" : "删除文章失败";
+        }
+
+        return "文章不存在或者已经删除";
+    }
+
     @RequestMapping(value = "/disable", method = RequestMethod.POST)
     public String disable(@RequestParam Long id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
