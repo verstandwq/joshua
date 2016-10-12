@@ -15,7 +15,7 @@
             <div th:replace="fragment/layout :: header (title='见证分享')"></div>
             <div th:replace="fragment/layout :: picture (src='staticPage/testimonyPage.jpg')"></div>
 
-            <div th:replace="fragment/article :: table(${items})"></div>
+            <div th:replace="fragment/article :: group-table('近期见证分享', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>

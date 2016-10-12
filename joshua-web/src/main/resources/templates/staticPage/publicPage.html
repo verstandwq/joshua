@@ -15,7 +15,7 @@
             <div th:replace="fragment/layout :: header (title='公益活动')"></div>
             <div th:replace="fragment/layout :: picture (src='staticPage/publicPage.jpg')"></div>
 
-            <div th:replace="fragment/article :: table(${items})"></div>
+            <div th:replace="fragment/article :: group-table('近期公益活动', ${items})"></div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
