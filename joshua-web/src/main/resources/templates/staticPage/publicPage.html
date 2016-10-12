@@ -13,6 +13,7 @@
     <div class="ui grid">
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='公益活动')"></div>
+            <div th:replace="fragment/layout :: picture (src='staticPage/publicPage.jpg')"></div>
 
             <div th:replace="fragment/article :: table(${items})"></div>
         </div>
