@@ -28,8 +28,8 @@
 #section4 {
     color: white;
     padding: 20px;
-    background: rgba(70, 138, 62, 1);
-    background: radial-gradient(at center center, rgb(98, 176, 86) 0%, rgb(57, 117, 33) 100%);
+    background: rgba(57, 117, 33, 1);
+    background: radial-gradient(at center center, rgb(54, 109, 54) 0%, rgb(57, 117, 33) 100%);
 }
 
 #section4 .item .content .header {
