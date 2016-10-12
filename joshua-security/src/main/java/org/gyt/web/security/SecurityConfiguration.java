@@ -42,10 +42,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 
                 .authorizeRequests()
-                /* 后台访问需要具有后台访问权限 */
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_ACCESS')")
                 /* 调用后台API需要登录 */
                 .antMatchers("/api/**").access("hasRole('ROLE_SEND_MESSAGE')")
+                /* 后台访问需要具有后台访问权限 */
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN_ACCESS')")
+                /* 静态页面管理需要具有静态页面管理权限 */
+                .antMatchers("/admin/static/**").access("hasRole('ROLE_MANAGE_STATIC_PAGE')")
                 /* 用户管理需要具有用户管理权限 */
                 .antMatchers("/admin/user/**").access("hasRole('ROLE_MANAGE_USER_STATUS')")
                 /* 发布消息需要具有发布消息权限 */
