@@ -1,0 +1,33 @@
+<!--/* 奉献捐赠 */-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+    <link href="../../public/assets/css/joshua.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="fragment/navigation :: primary">导航栏</div>
+
+<div class="ui joshua main container">
+    <div class="ui grid">
+        <div class="twelve wide column">
+            <div th:replace="fragment/layout :: header (title='奉献捐赠')"></div>
+            <div th:replace="fragment/layout :: picture (src='staticPage/devotionPage.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('万军之耶和华说：“你们要将当纳的十分之一全然送入仓库，使我家有粮，以此试试我是否为你们敞开天上的窗户，倾福与你们，甚至无处可容。”', '玛拉基书 3：10')"></div>
+
+            <div th:replace="fragment/layout :: subheader ('银行账号')"></div>
+            <div th:replace="fragment/layout :: paragraph ('开户银行： 农业银行成都新南支行')"></div>
+            <div th:replace="fragment/layout :: paragraph ('账户名称： 成都基督教光音堂')"></div>
+            <div th:replace="fragment/layout :: paragraph ('银行账号： 2292 0901 0401 91468')"></div>
+
+        </div>
+        <div class="four wide column">
+            <div th:replace="fragment/navigation :: secondary"></div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragment/footer :: footer">页脚</div>
+<script th:replace="fragment/header :: script" src="../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
