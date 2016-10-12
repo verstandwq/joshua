@@ -119,22 +119,26 @@ class ApplicationResourceHelper {
     }
 
     static void createDefaultFellowship(ApplicationContext applicationContext) {
-        createFellowship(applicationContext, "abz", "安保组");
+        /* 创建教会团契 */
         createFellowship(applicationContext, "cjtq", "查经团契");
         createFellowship(applicationContext, "dgh", "祷告会");
-        createFellowship(applicationContext, "firstlove", "初爱敬拜赞美");
-        createFellowship(applicationContext, "fyds", "福音大使");
-        createFellowship(applicationContext, "jdz", "接待组");
         createFellowship(applicationContext, "jntq", "迦拿夫妻团契");
         createFellowship(applicationContext, "metq", "蒙恩团契");
         createFellowship(applicationContext, "qntq", "青年团契");
-        createFellowship(applicationContext, "scz", "查经组");
         createFellowship(applicationContext, "slnxtq", "沙龙暖心团契");
         createFellowship(applicationContext, "tmttq", "提摩太团契");
         createFellowship(applicationContext, "ygtq", "雅歌团契");
-        createFellowship(applicationContext, "ykz", "音控组");
         createFellowship(applicationContext, "zztq", "长者团契");
 
+        /* 创建主内服侍 */
+        createFellowship(applicationContext, "abz", "安保组");
+        createFellowship(applicationContext, "firstlove", "初爱敬拜赞美");
+        createFellowship(applicationContext, "fyds", "福音大使");
+        createFellowship(applicationContext, "jdz", "接待组");
+        createFellowship(applicationContext, "scz", "圣餐组");
+        createFellowship(applicationContext, "ykz", "音控组");
+
+        /* 创建特殊团契 */
         createFellowship(applicationContext, "worship", "主日崇拜");
         createFellowship(applicationContext, "testimony", "见证分享");
         createFellowship(applicationContext, "report", "事工报告");
@@ -147,7 +151,7 @@ class ApplicationResourceHelper {
         if (null == fellowshipService.get(name)) {
             fellowshipService.create(name, displayName);
             fellowshipService.setOwner(name, "administrator");
-            LOGGER.info(String.format("创建默认团契成功：%s %s", name, displayName));
+            LOGGER.info(String.format("创建团契成功：%s %s", name, displayName));
         }
     }
 }
