@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 静态页面路由器
  * Created by y27chen on 2016/7/12.
@@ -32,6 +35,12 @@ public class StaticPageController {
     public ModelAndView getHomePage() {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("index");
         modelAndView.addObject("articles", articleService.getLatestArticles());
+        List<String> images = new ArrayList<>();
+        images.add("/assets/images/gallery/ig1.jpg");
+        images.add("/assets/images/gallery/ig2.jpg");
+        images.add("/assets/images/gallery/ig3.jpg");
+        images.add("/assets/images/gallery/ig4.jpg");
+        modelAndView.addObject("imageGallery", images);
         return modelAndView;
     }
 

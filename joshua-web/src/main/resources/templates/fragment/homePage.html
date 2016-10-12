@@ -14,12 +14,9 @@
 <!-- 活动大图组件 -->
 <section th:fragment="section1" id="section1">
     <div id="slider">
-        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s1.jpg}"/></a>
-        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s2.jpg}"/></a>
-        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s3.jpg}"/></a>
-        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s4.jpg}"/></a>
-        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s5.jpg}"/></a>
-        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s6.jpg}"/></a>
+        <a th:each="image : ${imageGallery}" th:href="@{#}">
+            <img th:src="@{${image}}"/>
+        </a>
     </div>
 </section>
 
