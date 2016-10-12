@@ -2,6 +2,30 @@
  * 公共函数定义
  */
 
+/**
+ * 选择文章封面
+ */
+
+function selectCover(fileDom) {
+    if (window.FileReader) {
+        var reader = new FileReader();
+
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        if (!imageType.test(file.type)) {
+            new Dialog("选择封面", "请选择图片").warning();
+            return;
+        }
+        reader.onload = function (e) {
+            var img = document.getElementById("cover-picture");
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        new Dialog("选择封面", "您的设部不支持该功能").error();
+    }
+}
+
 var showDimmer = function () {
     $(".ui.dimmer").dimmer("show");
 };
@@ -29,6 +53,7 @@ var saveArticle = function (quill) {
     var formData = new FormData();
     formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
     formData.append("id", $(".article-editor .input.id").val());
+    formData.append("file", $("#file")[0].files[0]);
     formData.append("title", title);
     formData.append("fellowship", fellowship);
     formData.append("description", $(".article-editor .input.description").val());
@@ -151,7 +176,7 @@ $(document).ready(function () {
 
 
     /**
-     * 保存文章
+     * 删除文章
      */
     $(".article-editor .ui.delete.button").on("click", function () {
         var id = $(this).data("id");

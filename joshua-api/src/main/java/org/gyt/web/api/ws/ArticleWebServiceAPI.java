@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 
 /**
@@ -23,8 +25,16 @@ public class ArticleWebServiceAPI {
     private ArticleService articleService;
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute Article article) {
+    public String save(@ModelAttribute Article article, @RequestParam(required = false) MultipartFile file) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        try {
+            if (null != file) {
+                article.setCover(file.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (article.getId() == null) {
             article.setAuthor(user);

@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* 登录注册页面开放所有权限 */
                 .antMatchers("/login", "/logon", "/forget").permitAll()
                 /* 静态资源开放所有权限 */
-                .antMatchers("/assets/**").permitAll()
+                .antMatchers("/assets/**", "/cover/**").permitAll()
                 /* 文章页面和团契首页开放所有权限 */
                 .antMatchers("/article/**", "/fellowship/**").permitAll()
                 .and()
