@@ -119,7 +119,7 @@ class ApplicationResourceHelper {
     }
 
     static void createDefaultFellowship(ApplicationContext applicationContext) {
-        LOGGER.info("创建教会团契");
+        /* 创建教会团契 */
         createFellowship(applicationContext, "cjtq", "查经团契");
         createFellowship(applicationContext, "dgh", "祷告会");
         createFellowship(applicationContext, "jntq", "迦拿夫妻团契");
@@ -130,7 +130,7 @@ class ApplicationResourceHelper {
         createFellowship(applicationContext, "ygtq", "雅歌团契");
         createFellowship(applicationContext, "zztq", "长者团契");
 
-        LOGGER.info("创建主内服侍");
+        /* 创建主内服侍 */
         createFellowship(applicationContext, "abz", "安保组");
         createFellowship(applicationContext, "firstlove", "初爱敬拜赞美");
         createFellowship(applicationContext, "fyds", "福音大使");
@@ -138,7 +138,7 @@ class ApplicationResourceHelper {
         createFellowship(applicationContext, "scz", "圣餐组");
         createFellowship(applicationContext, "ykz", "音控组");
 
-        LOGGER.info("创建特殊团契");
+        /* 创建特殊团契 */
         createFellowship(applicationContext, "worship", "主日崇拜");
         createFellowship(applicationContext, "testimony", "见证分享");
         createFellowship(applicationContext, "report", "事工报告");
@@ -151,7 +151,7 @@ class ApplicationResourceHelper {
         if (null == fellowshipService.get(name)) {
             fellowshipService.create(name, displayName);
             fellowshipService.setOwner(name, "administrator");
-            LOGGER.info(String.format("创建默认团契成功：%s %s", name, displayName));
+            LOGGER.info(String.format("创建团契成功：%s %s", name, displayName));
         }
     }
 }
