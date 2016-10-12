@@ -51096,6 +51096,37 @@ var saveArticle = function (quill) {
     });
 };
 
+
+var deleteArticle = function (id) {
+    var formData = new FormData();
+    formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
+    formData.append("id", id);
+
+    $.ajax({
+        url: "/api/article/delete",
+        type: "post",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (status) {
+            if (status == "success") {
+                new Dialog("删除文章", "删除文章成功", function () {
+                    window.location = '/admin/article';
+                }).message();
+            } else {
+                new Dialog("删除文章", "删除文章失败，原因：" + status, function () {
+                    hideDimmer();
+                }).error();
+            }
+        },
+        error: function () {
+            new Dialog("删除文章", "删除文章失败", function () {
+                hideDimmer();
+            }).error();
+        }
+    });
+};
+
 /**
  * 文章编辑器
  */
@@ -51150,6 +51181,18 @@ $(document).ready(function () {
     $(".article-editor .ui.save.button").on("click", function () {
         saveArticle(quill);
     });
+
+
+    /**
+     * 保存文章
+     */
+    $(".article-editor .ui.delete.button").on("click", function () {
+        var id = $(this).data("id");
+        new Dialog("删除文章", "确定要删除该文章吗？", function () {
+            deleteArticle(id);
+        }).confirm();
+    });
+
 
     /**
      * 申请发布文章

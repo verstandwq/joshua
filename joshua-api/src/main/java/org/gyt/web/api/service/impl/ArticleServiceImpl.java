@@ -33,7 +33,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> getFromUser(String username) {
-        return articleRepository.findAll().stream().filter(article -> article.getAuthor().getUsername().equals(username) || (article.getAuditor() != null && article.getAuditor().getUsername().equals(username))).collect(Collectors.toList());
+        return articleRepository.findAll().stream().filter(article -> (article.getAuthor() != null && article.getAuthor().getUsername().equals(username)) || (article.getAuditor() != null && article.getAuditor().getUsername().equals(username))).collect(Collectors.toList());
     }
 
     @Override
