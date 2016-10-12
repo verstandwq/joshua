@@ -53,6 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/login",
                         "/logon",
                         "/forget",
+                        "/fellowship/**",
+                        "/article/**",
                         "/assets/**",
                         "/images/**"
                 ).permitAll()
