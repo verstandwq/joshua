@@ -13,15 +13,13 @@
 <body>
 <!-- 活动大图组件 -->
 <section th:fragment="section1" id="section1">
-    <div class="ui grid">
-        <div class="large screen only row">
-            <div class="column">
-                <div class="ui black inverted huge message page grid center aligned jumbotron">
-                    <h1 class="ui inverted huge header">欢迎来到基督教光音堂</h1>
-                    <p>神爱世人、甚至将他的独生子赐给他们、叫一切信他的、不至灭亡、反得永生。 约翰福音 3:16</p>
-                </div>
-            </div>
-        </div>
+    <div id="slider">
+        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s1.jpg}"/></a>
+        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s2.jpg}"/></a>
+        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s3.jpg}"/></a>
+        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s4.jpg}"/></a>
+        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s5.jpg}"/></a>
+        <a href="#"><img th:attr="data-src=@{/assets/images/homePage/s6.jpg}"/></a>
     </div>
 </section>
 
