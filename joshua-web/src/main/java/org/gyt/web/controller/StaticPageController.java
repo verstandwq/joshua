@@ -35,7 +35,8 @@ public class StaticPageController {
     @RequestMapping("/")
     public ModelAndView getHomePage() {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("index");
-        modelAndView.addObject("articles", articleService.getLatestArticles());
+        modelAndView.addObject("churchArticles", articleService.getChurchArticles());
+        modelAndView.addObject("fellowshipArticles", articleService.getFellowshipArticles());
         modelAndView.addObject("imageGallery", homePageService.getPictures());
         return modelAndView;
     }
@@ -132,7 +133,8 @@ public class StaticPageController {
     @RequestMapping("/recommend")
     public ModelAndView recommendPage() {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/recommendPage");
-        modelAndView.addObject("items", articleService.getLatestArticles());
+        Fellowship fellowship = fellowshipService.get("recommend");
+        modelAndView.addObject("items", fellowship.getArticles());
         return modelAndView;
     }
 

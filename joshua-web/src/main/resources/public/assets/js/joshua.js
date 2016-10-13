@@ -52909,9 +52909,7 @@ var enableArticle = function (id) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("激活文章", "激活成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("激活文章", "激活失败，原因：" + status, function () {
                     }).error();
@@ -52939,9 +52937,7 @@ var disableArticle = function (id) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("禁用文章", "禁用成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("禁用文章", "禁用失败，原因：" + status, function () {
                     }).error();
@@ -53037,10 +53033,7 @@ var saveArticle = function (quill) {
         contentType: false,
         success: function (status) {
             if (status) {
-                hideDimmer();
-                new Dialog("保存文章", "保存成功", function () {
-                    window.location = '/admin/article/' + status + '/edit';
-                }).message();
+                window.location = '/admin/article/' + status + '/edit';
             } else {
                 new Dialog("保存文章", "保存失败，原因：" + status, function () {
                     hideDimmer();
@@ -53173,10 +53166,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if ("success" == status) {
-                        new Dialog("申请发布", "申请发布成功", function () {
-                            hideDimmer();
-                            window.location.reload();
-                        }).message();
+                        window.location.reload();
                     } else {
                         new Dialog("申请发布", "申请发布失败，原因:" + status, function () {
                             hideDimmer();
@@ -53250,10 +53240,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if ("success" == status) {
-                        new Dialog("发布文章", "发布成功", function () {
-                            hideDimmer();
-                            window.location.reload();
-                        }).message();
+                        window.location.reload();
                     } else {
                         new Dialog("发布文章", "发布失败，原因:" + status, function () {
                             hideDimmer();
@@ -53284,10 +53271,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if ("success" == status) {
-                        new Dialog("驳回文章", "驳回成功", function () {
-                            hideDimmer();
-                            window.location.reload();
-                        }).message();
+                        window.location.reload();
                     } else {
                         new Dialog("驳回文章", "驳回失败，原因:" + status, function () {
                             hideDimmer();
