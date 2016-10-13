@@ -6,29 +6,29 @@
 </head>
 <body>
 
-<div th:replace="fragment/admin-nav :: primary">导航栏</div>
+<div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="fragment/admin-layout :: header('用户信息', ${user.nickname})">布局标题</div>
+    <div th:replace="adminFragment/admin-layout :: header('用户信息', ${user.nickname})">布局标题</div>
 
     <div class="ui stackable grid">
         <div class="four wide column">
             <div class="ui horizontal divider">用户基本信息</div>
-            <div th:replace="fragment/admin-user-details :: details(${user})">用户信息表格</div>
+            <div th:replace="adminFragment/admin-user-details :: details(${user})">用户信息表格</div>
             <div class="ui horizontal divider">用户角色信息</div>
-            <div th:replace="fragment/admin-user-details :: roleTable(${user})">用户角色表格</div>
+            <div th:replace="adminFragment/admin-user-details :: roleTable(${user})">用户角色表格</div>
         </div>
         <div class="six wide column">
             <div class="ui horizontal divider">用户拥有所有权的团契</div>
-            <div th:replace="fragment/admin-user-details :: ownerTable(${owners})">用户所有团契表格</div>
+            <div th:replace="adminFragment/admin-user-details :: ownerTable(${owners})">用户所有团契表格</div>
         </div>
         <div class="six wide column">
             <div class="ui horizontal divider">用户拥有管理权的团契</div>
-            <div th:replace="fragment/admin-user-details :: adminTable(${admins})">用户管理团契表格</div>
+            <div th:replace="adminFragment/admin-user-details :: adminTable(${admins})">用户管理团契表格</div>
         </div>
     </div>
 
-    <div th:replace="fragment/admin-user-details :: modal(${user})">添加权限对话框</div>
+    <div th:replace="adminFragment/admin-user-details :: modal(${user})">添加权限对话框</div>
 
     <form class="ui admin user form" th:action="@{/}" th:object="${user}" method="post" style="display: none">
         <input type="hidden" th:field="*{username}"/>

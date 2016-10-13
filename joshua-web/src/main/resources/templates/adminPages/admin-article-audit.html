@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<div th:replace="fragment/admin-nav :: primary">导航栏</div>
+<div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="fragment/admin-layout :: header(${title}, '光音堂文章审核')">布局标题</div>
+    <div th:replace="adminFragment/admin-layout :: header(${title}, '光音堂文章审核')">布局标题</div>
     <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
 
     <div th:if="${#strings.isEmpty(error)}" class="ui grid article-audit">
@@ -67,8 +67,8 @@
         </div>
         <div class="sixteen wide column">
             <div class="ui horizontal divider">文章正文</div>
-            <div th:replace="fragment/editor :: article-audit(${item})">文章审核</div>
-            <div th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
+            <div th:replace="adminFragment/editor :: article-audit(${item})">文章审核</div>
+            <div th:replace="adminFragment/editor :: dimmer('正在处理文章')"></div>
         </div>
     </div>
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">

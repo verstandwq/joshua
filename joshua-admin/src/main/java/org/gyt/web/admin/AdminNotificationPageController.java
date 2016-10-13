@@ -30,7 +30,7 @@ public class AdminNotificationPageController {
     public ModelAndView tablePage(
             @RequestParam(required = false) String type
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-notification");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-notification");
 
         if (StringUtils.isEmpty(type)) {
             modelAndView.addObject("items", notificationService.getAll());

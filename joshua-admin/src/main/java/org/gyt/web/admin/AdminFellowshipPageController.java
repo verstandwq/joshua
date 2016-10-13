@@ -30,7 +30,7 @@ public class AdminFellowshipPageController {
 
     @RequestMapping("/fellowship")
     public ModelAndView tablePage() {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-fellowship");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-fellowship");
         modelAndView.addObject("subtitle", "所有团契");
         modelAndView.addObject("items", fellowshipService.getAll());
         return modelAndView;
@@ -38,7 +38,7 @@ public class AdminFellowshipPageController {
 
     @RequestMapping("/myfellowship")
     public ModelAndView myTablePage() {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-fellowship");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-fellowship");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         modelAndView.addObject("subtitle", "我的团契");
 
@@ -53,7 +53,7 @@ public class AdminFellowshipPageController {
     public ModelAndView detailsPage(
             @PathVariable String name
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-fellowship-details");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-fellowship-details");
 
         Fellowship fellowship = fellowshipService.get(name);
 

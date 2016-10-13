@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<div th:replace="fragment/admin-nav :: primary">导航栏</div>
+<div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="fragment/admin-layout :: header(${title}, ${subtitle})">布局标题</div>
+    <div th:replace="adminFragment/admin-layout :: header(${title}, ${subtitle})">布局标题</div>
     <div class="ui grid">
         <div class="row">
             <div class="column">
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
             <div class="column">
-                <div th:replace="fragment/editor :: article-reader(${item})">文章阅读器</div>
+                <div th:replace="adminFragment/editor :: article-reader(${item})">文章阅读器</div>
             </div>
         </div>
     </div>
