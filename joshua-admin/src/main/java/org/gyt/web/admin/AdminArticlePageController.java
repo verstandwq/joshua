@@ -60,7 +60,7 @@ public class AdminArticlePageController {
             type = "MINE";
         } else if (type.equalsIgnoreCase("RAW")) {
             articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.RAW)).collect(Collectors.toList());
-            modelAndView.addObject("subtitle", "我的草稿箱");
+            modelAndView.addObject("subtitle", "草稿箱");
         } else if (type.equalsIgnoreCase("AUDIT")) {
             if (user.getRoles().stream().anyMatch(role -> role.getAuthorities().stream().anyMatch(s -> s.equals("ROLE_MANAGE_ARTICLE")))) {
                 articleList = articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList());
@@ -77,7 +77,7 @@ public class AdminArticlePageController {
             modelAndView.addObject("subtitle", "已发布文章");
         } else if (type.equalsIgnoreCase("REJECT")) {
             articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.REJECTED)).collect(Collectors.toList());
-            modelAndView.addObject("subtitle", "我的驳回文章");
+            modelAndView.addObject("subtitle", "驳回文章");
         } else {
             articleList = new ArrayList<>();
             modelAndView.addObject("subtitle", "未知类型");
@@ -85,6 +85,7 @@ public class AdminArticlePageController {
 
         articleList.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
 
+        modelAndView.addObject("title", String.format("光音堂后台 - %s", modelAndView.getModel().get("subtitle")));
         modelAndView.addObject("type", type);
         modelAndView.addObject("items", paginationComponent.listPagination(articleList, pageNumber, pageSize));
         paginationComponent.addPaginationModel(modelAndView, "/admin/article?type=" + type, articleList.size(), pageNumber, pageSize);
