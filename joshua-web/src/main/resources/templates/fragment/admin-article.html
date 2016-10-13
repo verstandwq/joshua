@@ -36,6 +36,8 @@
         <td th:if="${item.status.name() == 'REJECTED'}"><label class="ui red label">被驳回</label></td>
         <td>
             <a class="ui tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
+            <a th:if="${item.status.name() == 'RAW' or item.status.name() == 'REJECTED'}"
+               class="ui tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id} + '/edit'}">编辑</a>
         </td>
     </tr>
     </tbody>
@@ -67,7 +69,8 @@
         <td th:utext="${item.fellowship.displayName}"></td>
         <td>
             <a class="ui tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id}}">查看</a>
-            <a class="ui primary tiny button" target="_blank" th:href="@{'/admin/article/' + ${item.id} + '/edit'}">修改</a>
+            <a class="ui primary tiny button" target="_blank"
+               th:href="@{'/admin/article/' + ${item.id} + '/edit'}">编辑</a>
         </td>
     </tr>
     </tbody>
