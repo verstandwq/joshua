@@ -132,7 +132,8 @@ public class StaticPageController {
     @RequestMapping("/recommend")
     public ModelAndView recommendPage() {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/recommendPage");
-        modelAndView.addObject("items", articleService.getLatestArticles());
+        Fellowship fellowship = fellowshipService.get("recommend");
+        modelAndView.addObject("items", fellowship.getArticles());
         return modelAndView;
     }
 
