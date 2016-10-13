@@ -49,7 +49,7 @@ public class AdminArticlePageController {
             @RequestParam(required = false, defaultValue = "1") int pageNumber,
             @RequestParam(required = false, defaultValue = "20") int pageSize
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-article");
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -60,7 +60,7 @@ public class AdminArticlePageController {
             type = "MINE";
         } else if (type.equalsIgnoreCase("RAW")) {
             articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.RAW)).collect(Collectors.toList());
-            modelAndView.addObject("subtitle", "我的草稿箱");
+            modelAndView.addObject("subtitle", "草稿箱");
         } else if (type.equalsIgnoreCase("AUDIT")) {
             if (user.getRoles().stream().anyMatch(role -> role.getAuthorities().stream().anyMatch(s -> s.equals("ROLE_MANAGE_ARTICLE")))) {
                 articleList = articleService.getAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.AUDITING)).collect(Collectors.toList());
@@ -77,7 +77,7 @@ public class AdminArticlePageController {
             modelAndView.addObject("subtitle", "已发布文章");
         } else if (type.equalsIgnoreCase("REJECT")) {
             articleList = articleList.stream().filter(article -> article.getStatus().equals(ArticleStatus.REJECTED)).collect(Collectors.toList());
-            modelAndView.addObject("subtitle", "我的驳回文章");
+            modelAndView.addObject("subtitle", "驳回文章");
         } else {
             articleList = new ArrayList<>();
             modelAndView.addObject("subtitle", "未知类型");
@@ -85,6 +85,7 @@ public class AdminArticlePageController {
 
         articleList.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
 
+        modelAndView.addObject("title", String.format("光音堂后台 - %s", modelAndView.getModel().get("subtitle")));
         modelAndView.addObject("type", type);
         modelAndView.addObject("items", paginationComponent.listPagination(articleList, pageNumber, pageSize));
         paginationComponent.addPaginationModel(modelAndView, "/admin/article?type=" + type, articleList.size(), pageNumber, pageSize);
@@ -95,17 +96,16 @@ public class AdminArticlePageController {
     public ModelAndView detailsPage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-details");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-article-details");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Article article = articleService.get(Long.valueOf(id));
 
         if (null == article) {
-            modelAndView.setViewName("404");
-            modelAndView.addObject("message", String.format("找不到文章：%s", id));
+            modelAndView.addObject("error", "文章不存在");
         } else {
-            modelAndView.addObject("title", article.getTitle());
-            modelAndView.addObject("subtitle", "文章预览");
+            modelAndView.addObject("title", String.format("光音堂后台 - 文章预览 - %s", article.getTitle()));
+            modelAndView.addObject("subtitle", article.getTitle());
             modelAndView.addObject("item", article);
             modelAndView.addObject("user", user);
         }
@@ -117,7 +117,7 @@ public class AdminArticlePageController {
     public ModelAndView editArticlePage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-editor");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-article-editor");
         modelAndView.addObject("title", "编辑文章");
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -128,6 +128,8 @@ public class AdminArticlePageController {
         } else if (!article.getAuthor().getUsername().equals(user.getUsername())) {
             modelAndView.addObject("error", "只能编辑自己的文章");
         } else {
+            modelAndView.addObject("title", String.format("光音堂后台 - 文章编辑 - %s", article.getTitle()));
+            modelAndView.addObject("subtitle", article.getTitle());
             modelAndView.addObject("item", article);
             modelAndView.addObject("edit", true);
             Set<Fellowship> fellowshipSet = new HashSet<>();
@@ -143,7 +145,7 @@ public class AdminArticlePageController {
     public ModelAndView auditArticlePage(
             @PathVariable String id
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-audit");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-article-audit");
         modelAndView.addObject("title", "审核文章");
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -152,6 +154,8 @@ public class AdminArticlePageController {
         if (article == null) {
             modelAndView.addObject("error", "文章不存在");
         } else {
+            modelAndView.addObject("title", String.format("光音堂后台 - 文章审核 - %s", article.getTitle()));
+            modelAndView.addObject("subtitle", article.getTitle());
             modelAndView.addObject("item", article);
         }
 
@@ -160,7 +164,7 @@ public class AdminArticlePageController {
 
     @RequestMapping("/article/new")
     public ModelAndView newArticlePage() {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-article-editor");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-article-editor");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (fellowshipService.getUserOwnerFellowship(user.getUsername()).isEmpty() && fellowshipService.getUserAdminFellowship(user.getUsername()).isEmpty()) {
@@ -169,7 +173,8 @@ public class AdminArticlePageController {
             return modelAndView;
         }
 
-        modelAndView.addObject("title", "新建文章");
+        modelAndView.addObject("title", "光音堂后台 - 新建文章");
+        modelAndView.addObject("subtitle", "新建文章");
         modelAndView.addObject("item", new Article());
 
         Set<Fellowship> fellowshipSet = new HashSet<>();

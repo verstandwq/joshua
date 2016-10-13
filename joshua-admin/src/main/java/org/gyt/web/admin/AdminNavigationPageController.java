@@ -23,7 +23,7 @@ public class AdminNavigationPageController {
 
     @RequestMapping("/navigation")
     public ModelAndView primaryPage() {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-navigation");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-navigation");
         modelAndView.addObject("subtitle", "导航栏管理");
         modelAndView.addObject("items", navigationService.getAll());
         return modelAndView;

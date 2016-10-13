@@ -1,0 +1,75 @@
+<!--
+    文章预览页面
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/header :: head">
+    <meta charset="UTF-8"/>
+    <title>光音堂</title>
+</head>
+<body>
+
+<div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
+
+<div class="ui admin layout root">
+    <div th:replace="adminFragment/admin-layout :: header(${subtitle}, '文章预览')">布局标题</div>
+    <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
+
+    <div class="ui grid">
+        <div class="row">
+            <div class="column">
+                <div class="ui items">
+                    <div class="item">
+                        <a class="ui tiny image">
+                            <img th:if="${item.cover == null}" th:src="@{/assets/images/placeholder.png}"/>
+                            <img th:if="${item.cover != null}" th:src="@{'/cover/' + ${item.id}}"/>
+                        </a>
+                        <div class="content">
+                            <a class="header" th:utext="${item.title}">文章标题</a>
+                            <div class="meta" th:utext="${item.description}">文章描述</div>
+                            <div class="extra">
+                            <span> <i class="calendar icon"></i>
+                                <span th:utext="${#dates.format(item.createdDate, 'yyyy-MM-dd')}">创建日期</span>
+                            </span>
+                                <span>
+                                <i class="user icon"></i> <span
+                                        th:utext="${item.pageView} ? ${item.pageView} : 0">0</span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label class="ui icon label">
+                    <i class="home icon"></i>
+                    <span th:utext="${item.fellowship.displayName}">所属团契</span>
+                </label>
+
+                <label class="ui icon label">
+                    <i class="calendar icon"></i>
+                    <span th:utext="${#dates.format(item.createdDate, 'yyyy-MM-dd')}">创建日期</span>
+                </label>
+
+                <label class="ui right floated icon label">
+                    <i class="eye icon"></i>
+                    <span th:utext="${item.pageView} ? ${item.pageView} : 0">0</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div th:replace="fragment/article-editor :: article-reader(${item})">文章阅读器</div>
+            </div>
+        </div>
+    </div>
+    <form class="ui admin user form" th:action="@{/}" th:object="${user}" method="post" style="display: none">
+        <input type="hidden" th:field="*{username}"/>
+    </form>
+</div>
+
+<script th:replace="fragment/header :: script"></script>
+</body>
+</html>

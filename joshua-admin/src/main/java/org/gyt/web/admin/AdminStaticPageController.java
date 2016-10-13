@@ -26,7 +26,7 @@ public class AdminStaticPageController {
 
     @RequestMapping("/home")
     public ModelAndView home() {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/staticHomePage");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-static-home");
         List<String> images = new ArrayList<>();
         images.add("/assets/images/gallery/ig1.jpg");
         images.add("/assets/images/gallery/ig2.jpg");

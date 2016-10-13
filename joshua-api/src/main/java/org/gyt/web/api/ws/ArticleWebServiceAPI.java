@@ -44,6 +44,10 @@ public class ArticleWebServiceAPI {
             article.setAuthor(src.getAuthor());
             article.setCreatedDate(src.getCreatedDate());
 
+            if (src.getStatus().equals(ArticleStatus.AUDITING)) {
+                return "该文章已经在审核中，不能修改在审核中的文章";
+            }
+
             if (src.getStatus().equals(ArticleStatus.PUBLISHED)) {
                 return "该文章已经发布，不能修改已经发布的文章";
             }
@@ -114,6 +118,15 @@ public class ArticleWebServiceAPI {
         Article article = articleService.get(id);
 
         if (article != null && article.getAuthor() != null && article.getAuthor().getUsername().equals(user.getUsername())) {
+
+            if (article.getStatus().equals(ArticleStatus.AUDITING)) {
+                return "该文章已经在审核中，不能删除在审核中的文章";
+            }
+
+            if (article.getStatus().equals(ArticleStatus.PUBLISHED)) {
+                return "该文章已经发布，不能删除已经发布的文章";
+            }
+
             article.setAuthor(null);
             article.setFellowship(null);
             return !articleService.createOrUpdate(article).isDisable() ? "success" : "删除文章失败";
@@ -141,6 +154,7 @@ public class ArticleWebServiceAPI {
         Article article = articleService.get(id);
 
         if (article != null && article.isDisable() && user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_ARTICLE"))) {
+
             article.setDisable(false);
             return !articleService.createOrUpdate(article).isDisable() ? "success" : "激活文章失败";
         }

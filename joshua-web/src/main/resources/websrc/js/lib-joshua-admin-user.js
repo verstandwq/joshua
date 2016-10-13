@@ -16,9 +16,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("消息", text + "用户成功", function () {
-                            location.reload();
-                        }).message();
+                        location.reload();
                     } else {
                         new Dialog("消息", text + "用户失败").error();
                     }
@@ -45,9 +43,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("移除角色", "移除角色成功", function () {
-                            location.reload();
-                        }).message();
+                        location.reload();
                     } else {
                         new Dialog("移除角色", "移除角色失败").error();
                     }
@@ -74,9 +70,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("添加角色", "添加角色成功", function () {
-                            location.reload();
-                        }).message();
+                        location.reload();
                     } else {
                         new Dialog("添加角色", "添加角色失败").error();
                     }

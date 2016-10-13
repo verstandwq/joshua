@@ -36,7 +36,7 @@ public class AdminPageController {
 
     @RequestMapping("admin")
     public ModelAndView home() {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-home");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-home");
         modelAndView.addObject("resistedCount", userService.count());
         modelAndView.addObject("fellowshipCount", fellowshipService.getAll().size());
         modelAndView.addObject("articleCount", articleRepository.findAll().stream().filter(article -> article.getStatus().equals(ArticleStatus.PUBLISHED)).count());

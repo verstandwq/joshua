@@ -16,9 +16,7 @@ var enableFellowship = function (name) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("激活团契", "激活成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("激活团契", "激活失败，原因：" + status, function () {
                     }).error();
@@ -46,9 +44,7 @@ var disableFellowship = function (name) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("禁用团契", "禁用成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("禁用团契", "禁用失败，原因：" + status, function () {
                     }).error();
@@ -76,9 +72,7 @@ var transferFellowship = function (name, username) {
         contentType: false,
         success: function (status) {
             if ("success" == status) {
-                new Dialog("转移团契", "转移成功", function () {
-                    window.location.reload();
-                }).message();
+                window.location.reload();
             } else {
                 new Dialog("转移团契", "转移失败，原因：" + status, function () {
                 }).error();
@@ -105,9 +99,7 @@ var addAdminFellowship = function (name, username) {
         contentType: false,
         success: function (status) {
             if ("success" == status) {
-                new Dialog("添加管理员", "添加管理员成功", function () {
-                    window.location.reload();
-                }).message();
+                window.location.reload();
             } else {
                 new Dialog("添加管理员", "添加管理员失败，原因：" + status, function () {
                 }).error();
@@ -135,9 +127,7 @@ var removeAdminFellowship = function (name, username) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("移除管理员", "移除管理员成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("移除管理员", "移除管理员失败，原因：" + status, function () {
                     }).error();

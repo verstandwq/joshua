@@ -53011,6 +53011,11 @@ var saveArticle = function (quill) {
         return;
     }
 
+    if (quill.getLength() == 1) {
+        new Dialog("保存文章", "文章内容不能为空").message();
+        return;
+    }
+
     showDimmer();
 
     var formData = new FormData();
@@ -53032,7 +53037,7 @@ var saveArticle = function (quill) {
         processData: false,
         contentType: false,
         success: function (status) {
-            if (status) {
+            if (parseInt(status)) {
                 window.location = '/admin/article/' + status + '/edit';
             } else {
                 new Dialog("保存文章", "保存失败，原因：" + status, function () {
@@ -53305,9 +53310,7 @@ var enableFellowship = function (name) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("激活团契", "激活成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("激活团契", "激活失败，原因：" + status, function () {
                     }).error();
@@ -53335,9 +53338,7 @@ var disableFellowship = function (name) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("禁用团契", "禁用成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("禁用团契", "禁用失败，原因：" + status, function () {
                     }).error();
@@ -53365,9 +53366,7 @@ var transferFellowship = function (name, username) {
         contentType: false,
         success: function (status) {
             if ("success" == status) {
-                new Dialog("转移团契", "转移成功", function () {
-                    window.location.reload();
-                }).message();
+                window.location.reload();
             } else {
                 new Dialog("转移团契", "转移失败，原因：" + status, function () {
                 }).error();
@@ -53394,9 +53393,7 @@ var addAdminFellowship = function (name, username) {
         contentType: false,
         success: function (status) {
             if ("success" == status) {
-                new Dialog("添加管理员", "添加管理员成功", function () {
-                    window.location.reload();
-                }).message();
+                window.location.reload();
             } else {
                 new Dialog("添加管理员", "添加管理员失败，原因：" + status, function () {
                 }).error();
@@ -53424,9 +53421,7 @@ var removeAdminFellowship = function (name, username) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("移除管理员", "移除管理员成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("移除管理员", "移除管理员失败，原因：" + status, function () {
                     }).error();
@@ -53637,9 +53632,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("消息", text + "用户成功", function () {
-                            location.reload();
-                        }).message();
+                        location.reload();
                     } else {
                         new Dialog("消息", text + "用户失败").error();
                     }
@@ -53666,9 +53659,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("移除角色", "移除角色成功", function () {
-                            location.reload();
-                        }).message();
+                        location.reload();
                     } else {
                         new Dialog("移除角色", "移除角色失败").error();
                     }
@@ -53695,9 +53686,7 @@ $(document).ready(function () {
                 contentType: false,
                 success: function (status) {
                     if (status) {
-                        new Dialog("添加角色", "添加角色成功", function () {
-                            location.reload();
-                        }).message();
+                        location.reload();
                     } else {
                         new Dialog("添加角色", "添加角色失败").error();
                     }

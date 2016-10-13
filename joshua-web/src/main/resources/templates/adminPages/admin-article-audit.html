@@ -1,3 +1,6 @@
+<!--
+    文章审核详细页面
+-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragment/header :: head">
@@ -6,24 +9,23 @@
 </head>
 <body>
 
-<div th:replace="fragment/admin-nav :: primary">导航栏</div>
+<div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="fragment/admin-layout :: header(${title}, '光音堂文章审核')">布局标题</div>
+    <div th:replace="adminFragment/admin-layout :: header(${subtitle}, '文章审核')">布局标题</div>
     <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
 
     <div th:if="${#strings.isEmpty(error)}" class="ui grid article-audit">
-        <div class="eight wide column">
+        <div class="twelve wide column">
             <div class="ui horizontal divider">文章基本信息</div>
 
             <div class="ui grid">
                 <div class="six wide column">
-                    <label class="ui icon button fluid">文章封面</label>
-                    <div class="ui dividing header"></div>
-                    <img th:if="${item.cover == null}" th:src="@{/assets/images/placeholder.png}" id="cover-picture"
-                         class="ui rounded fluid image"/>
-                    <img th:if="${item.cover != null}" th:src="@{'/cover/' + ${item.id}}" id="cover-picture"
-                         class="ui rounded fluid image"/>
+                    <div class="ui segment">
+                        <label class="ui icon button fluid">文章封面</label>
+                        <div class="ui dividing header" style="margin-top: 1rem"></div>
+                        <div th:replace="adminFragment/admin-article :: getArticleCover(${item})"></div>
+                    </div>
                 </div>
                 <div class="ten wide column">
                     <table class="ui celled table">
@@ -42,33 +44,28 @@
                         </tr>
                         <tr>
                             <td>作者</td>
-                            <td class="input author" th:utext="${item.author.username}">作者</td>
+                            <td class="input author" th:utext="${item.author.getDisplayName()}">作者</td>
                         </tr>
                         <tr>
                             <td>文章状态</td>
-                            <td th:if="${item.status.name() == 'RAW'}"><label class="ui grey label">未发布</label></td>
-                            <td th:if="${item.status.name() == 'AUDITING'}"><label class="ui orange label">审核中</label>
+                            <td>
+                                <div th:replace="adminFragment/admin-article :: covertToStatusLabel (${item})"></div>
                             </td>
-                            <td th:if="${item.status.name() == 'PUBLISHED'}"><label class="ui green label">已发布</label>
-                            </td>
-                            <td th:if="${item.status.name() == 'REJECTED'}"><label class="ui red label">被驳回</label></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="eight wide column">
+        <div class="four wide column">
             <div class="ui horizontal divider">操作</div>
-            <div class="ui buttons">
-                <button class="ui publish positive button">发布</button>
-                <button class="ui reject negative button">驳回</button>
-            </div>
+            <button class="ui publish button">发布</button>
+            <button class="ui reject button">驳回</button>
         </div>
         <div class="sixteen wide column">
             <div class="ui horizontal divider">文章正文</div>
-            <div th:replace="fragment/editor :: article-audit(${item})">文章审核</div>
-            <div th:replace="fragment/editor :: dimmer('正在处理文章')"></div>
+            <div th:replace="fragment/article-editor :: article-audit(${item})">文章审核</div>
+            <div th:replace="fragment/article-editor :: dimmer('正在处理文章')"></div>
         </div>
     </div>
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">

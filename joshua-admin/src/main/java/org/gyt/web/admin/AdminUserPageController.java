@@ -47,7 +47,7 @@ public class AdminUserPageController {
             @RequestParam(required = false, defaultValue = "1") int pageNumber,
             @RequestParam(required = false, defaultValue = "20") int pageSize
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-user");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-user");
 
         List<User> userList = new ArrayList<>();
 
@@ -86,7 +86,7 @@ public class AdminUserPageController {
     public ModelAndView userDetailsPage(
             @PathVariable String username
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-user-details");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-user-details");
 
         User user = userService.get(username);
 

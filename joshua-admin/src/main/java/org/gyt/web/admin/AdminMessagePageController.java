@@ -39,7 +39,7 @@ public class AdminMessagePageController {
             @RequestParam(required = false, defaultValue = "1") int pageNumber,
             @RequestParam(required = false, defaultValue = "20") int pageSize
     ) {
-        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("admin-message");
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-message");
 
         List<Message> messageList = new ArrayList<>();
 
