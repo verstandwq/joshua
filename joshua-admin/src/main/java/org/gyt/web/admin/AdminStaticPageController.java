@@ -1,5 +1,6 @@
 package org.gyt.web.admin;
 
+import org.gyt.web.api.service.HomePageService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,9 @@ public class AdminStaticPageController {
     @Autowired
     private ModelAndViewUtils modelAndViewUtils;
 
+    @Autowired
+    private HomePageService homePageService;
+
     @RequestMapping("/home")
     public ModelAndView home() {
         ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/staticHomePage");
@@ -28,7 +32,7 @@ public class AdminStaticPageController {
         images.add("/assets/images/gallery/ig2.jpg");
         images.add("/assets/images/gallery/ig3.jpg");
         images.add("/assets/images/gallery/ig4.jpg");
-        modelAndView.addObject("imageGallery", images);
+        modelAndView.addObject("imageGallery", homePageService.getPictures());
         return modelAndView;
     }
 }

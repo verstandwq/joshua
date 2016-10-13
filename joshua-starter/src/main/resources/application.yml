@@ -56,3 +56,7 @@ logging.level.org.hibernate: ERROR
 logging.level.org.gyt.web: DEBUG
 logging:
   file: /var/opt/log/joshua/joshua.log
+
+joshua:
+  dir:
+    gallery: /var/opt/joshua/gallery/
