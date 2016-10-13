@@ -13,21 +13,18 @@
 
 <div class="ui admin layout root">
     <div th:replace="adminFragment/admin-layout :: header(${subtitle}, '文章管理')">布局标题</div>
+    <div th:replace="adminFragment/admin-article :: toolbar"></div>
 
     <div th:if="${type == 'MINE'}">
-        <a class="ui primary button" th:href="@{/admin/article/new}">新建文章</a>
         <div th:replace="adminFragment/admin-article :: table-mine(${items})"></div>
     </div>
     <div th:if="${(type == 'RAW') or (type == 'REJECT')}">
-        <a class="ui primary button" th:href="@{/admin/article/new}">新建文章</a>
         <div th:replace="adminFragment/admin-article :: table-normal(${items})"></div>
     </div>
     <div th:if="${type == 'AUDIT'}">
-        <a class="ui primary button" th:href="@{/admin/article/new}">新建文章</a>
         <div th:replace="adminFragment/admin-article :: table-audit(${items})"></div>
     </div>
     <div th:if="${type == 'PUBLISH'}">
-        <a class="ui primary button" th:href="@{/admin/article/new}">新建文章</a>
         <div th:replace="adminFragment/admin-article :: table-publish(${items})"></div>
     </div>
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">

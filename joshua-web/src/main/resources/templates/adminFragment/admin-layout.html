@@ -13,7 +13,7 @@
 <!-- 标题组件 -->
 <div th:fragment="header (title, subtitle)" class="ui admin layout header">
     <h1 class="ui center aligned orange header" th:utext="${title}">二级导航名称</h1>
-    <div class="ui horizontal divider" th:utext="${#strings.isEmpty(subtitle)} ? '光音堂后台' : subtitle">一级导航名称</div>
+    <div class="ui horizontal divider" th:utext="${#strings.isEmpty(subtitle)} ? '光音堂后台' : ${subtitle}">一级导航名称</div>
 </div>
 
 <script src="../../websrc/js/lib-001-jquery.js"></script>
