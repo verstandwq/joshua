@@ -2,6 +2,7 @@ package org.gyt.web.controller;
 
 import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.service.FellowshipService;
+import org.gyt.web.api.service.HomePageService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.Message;
@@ -11,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 静态页面路由器
@@ -29,18 +27,16 @@ public class StaticPageController {
     private FellowshipService fellowshipService;
 
     @Autowired
+    private HomePageService homePageService;
+
+    @Autowired
     private ModelAndViewUtils modelAndViewUtils;
 
     @RequestMapping("/")
     public ModelAndView getHomePage() {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("index");
         modelAndView.addObject("articles", articleService.getLatestArticles());
-        List<String> images = new ArrayList<>();
-        images.add("/assets/images/gallery/ig1.jpg");
-        images.add("/assets/images/gallery/ig2.jpg");
-        images.add("/assets/images/gallery/ig3.jpg");
-        images.add("/assets/images/gallery/ig4.jpg");
-        modelAndView.addObject("imageGallery", images);
+        modelAndView.addObject("imageGallery", homePageService.getPictures());
         return modelAndView;
     }
 
