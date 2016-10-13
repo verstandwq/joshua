@@ -22,7 +22,7 @@
 
 <!-- 用户分流组件 -->
 <section th:fragment="section2" id="section2" class="ui grid">
-    <div class="centered row">
+    <div class="centered row" data-aos="zoom-in">
         <div th:replace="fragment/layout :: circular-picture('/newcomer', '/assets/images/homePage/ss1.jpg')"></div>
         <div th:replace="fragment/layout :: circular-picture('/worship', '/assets/images/homePage/ss2.jpg')"></div>
         <div th:replace="fragment/layout :: circular-picture('/fellowship', '/assets/images/homePage/ss3.png')"></div>
@@ -44,12 +44,12 @@
         </div>
         <div class="ten wide column">
             <div class="ui three column doubling grid">
-                <div class="centered row">
+                <div class="centered row" data-aos="fade-left">
                     <div th:replace="fragment/layout :: joshua-picture('/believe', '/assets/images/homePage/s1.jpg')"></div>
                     <div th:replace="fragment/layout :: joshua-picture('/sunday', '/assets/images/homePage/s2.jpg')"></div>
                     <div th:replace="fragment/layout :: joshua-picture('/service', '/assets/images/homePage/s3.jpg')"></div>
                 </div>
-                <div class="centered row">
+                <div class="centered row" data-aos="fade-left">
                     <div th:replace="fragment/layout :: joshua-picture('/suffrage', '/assets/images/homePage/s4.jpg')"></div>
                     <div th:replace="fragment/layout :: joshua-picture('/testimony', '/assets/images/homePage/s5.jpg')"></div>
                     <div th:replace="fragment/layout :: joshua-picture('/public', '/assets/images/homePage/s6.jpg')"></div>
@@ -60,7 +60,7 @@
 </section>
 
 <!-- 最新消息组件 -->
-<section th:fragment="section4" id="section4">
+<section th:fragment="section4" id="section4" data-aos="zoom-out">
     <div class="ui grid container">
         <div class="eight wide column">
             <h2>教堂资讯</h2>

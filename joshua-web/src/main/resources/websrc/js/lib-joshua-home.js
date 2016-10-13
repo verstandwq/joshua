@@ -12,6 +12,8 @@ $(document).ready(function () {
         slider.addBulletNav();
         slider.start();
     }
+
+    AOS.init();
 });
 
 
