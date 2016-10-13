@@ -51,6 +51,13 @@
 </tr>
 </tfoot>
 
+<div th:fragment="getArticleCover (article)">
+    <img th:if="${article.cover == null}" th:src="@{/assets/images/placeholder.png}"
+         id="cover-picture" class="ui rounded fluid image"/>
+    <img th:if="${article.cover != null}" th:src="@{'/cover/' + ${article.id}}"
+         id="cover-picture" class="ui rounded fluid image"/>
+</div>
+
 <!--
     我的文章表格组件
 -->

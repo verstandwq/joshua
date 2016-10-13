@@ -53011,6 +53011,11 @@ var saveArticle = function (quill) {
         return;
     }
 
+    if (quill.getLength() == 1) {
+        new Dialog("保存文章", "文章内容不能为空").message();
+        return;
+    }
+
     showDimmer();
 
     var formData = new FormData();
@@ -53032,7 +53037,7 @@ var saveArticle = function (quill) {
         processData: false,
         contentType: false,
         success: function (status) {
-            if (status) {
+            if (parseInt(status)) {
                 window.location = '/admin/article/' + status + '/edit';
             } else {
                 new Dialog("保存文章", "保存失败，原因：" + status, function () {

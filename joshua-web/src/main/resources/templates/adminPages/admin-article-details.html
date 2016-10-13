@@ -12,11 +12,33 @@
 <div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="adminFragment/admin-layout :: header(${title}, ${subtitle})">布局标题</div>
+    <div th:replace="adminFragment/admin-layout :: header(${subtitle}, '文章预览')">布局标题</div>
+    <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
+
     <div class="ui grid">
         <div class="row">
             <div class="column">
-                <div th:replace="fragment/layout :: header (${item.title})">文章标题</div>
+                <div class="ui items">
+                    <div class="item">
+                        <a class="ui tiny image">
+                            <img th:if="${item.cover == null}" th:src="@{/assets/images/placeholder.png}"/>
+                            <img th:if="${item.cover != null}" th:src="@{'/cover/' + ${item.id}}"/>
+                        </a>
+                        <div class="content">
+                            <a class="header" th:utext="${item.title}">文章标题</a>
+                            <div class="meta" th:utext="${item.description}">文章描述</div>
+                            <div class="extra">
+                            <span> <i class="calendar icon"></i>
+                                <span th:utext="${#dates.format(item.createdDate, 'yyyy-MM-dd')}">创建日期</span>
+                            </span>
+                                <span>
+                                <i class="user icon"></i> <span
+                                        th:utext="${item.pageView} ? ${item.pageView} : 0">0</span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -39,7 +61,7 @@
         </div>
         <div class="row">
             <div class="column">
-                <div th:replace="adminFragment/editor :: article-reader(${item})">文章阅读器</div>
+                <div th:replace="fragment/article-editor :: article-reader(${item})">文章阅读器</div>
             </div>
         </div>
     </div>

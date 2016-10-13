@@ -54,16 +54,16 @@
 /*
     按钮边框定义
 */
-button, .ui.button {
+.ui.button {
     border: 3px double transparent !important;
 }
 
-button, .ui.button:hover {
+.ui.button:hover {
     border: 3px double rgb(70, 83, 102) !important;
 
 }
 
-button, .ui.button:active {
+.ui.button:active {
     border: 3px double rgb(70, 83, 102) !important;
     background-clip: padding-box;
 }

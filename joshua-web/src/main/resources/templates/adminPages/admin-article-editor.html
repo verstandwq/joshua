@@ -12,24 +12,21 @@
 <div th:replace="adminFragment/admin-nav :: primary">导航栏</div>
 
 <div class="ui admin layout root">
-    <div th:replace="adminFragment/admin-layout :: header(${title}, '光音堂文章编辑器')">布局标题</div>
+    <div th:replace="adminFragment/admin-layout :: header(${subtitle}, '文章编辑')">布局标题</div>
     <div th:if="${error}" class="ui error message" th:utext="${error}">没有找到文章</div>
 
     <div th:if="${#strings.isEmpty(error)}" class="ui grid article-editor">
-        <div class="eight wide column">
+        <div class="twelve wide column">
             <div class="ui horizontal divider">文章基本信息</div>
 
             <div class="ui grid">
                 <div class="six wide column">
-                    <label for="file" class="ui icon button fluid">
-                        <i class="file icon"></i> 请选择文章封面</label>
-                    <input type="file" id="file" name="file" style="display:none" onchange="selectCover(this)"/>
-                    <div class="ui dividing header"></div>
-
-                    <img th:if="${item.cover == null}" th:src="@{/assets/images/placeholder.png}" id="cover-picture"
-                         class="ui rounded fluid image"/>
-                    <img th:if="${item.cover != null}" th:src="@{'/cover/' + ${item.id}}" id="cover-picture"
-                         class="ui rounded fluid image"/>
+                    <div class="ui segment">
+                        <label for="file" class="ui icon button fluid"> <i class="file icon"></i> 请选择文章封面</label>
+                        <input type="file" id="file" name="file" style="display:none" onchange="selectCover(this)"/>
+                        <div class="ui dividing header" style="margin-top: 1rem"></div>
+                        <div th:replace="adminFragment/admin-article :: getArticleCover(${item})"></div>
+                    </div>
                 </div>
                 <div class="ten wide column">
                     <div class="ui labeled fluid input">
@@ -58,18 +55,16 @@
                 </div>
             </div>
         </div>
-        <div class="eight wide column">
+        <div class="four wide column">
             <div class="ui horizontal divider">操作</div>
-            <div class="ui buttons">
-                <button class="ui save positive button">保存</button>
-                <button th:if="${edit}" class="ui audit primary button">申请发布</button>
-                <button class="ui delete negative button" th:attr="data-id=${item.id}">删除</button>
-            </div>
+            <button class="ui save button">保存</button>
+            <button th:if="${edit}" class="ui audit button">申请发布</button>
+            <button th:if="${edit}" class="ui delete button" th:attr="data-id=${item.id}">删除</button>
         </div>
         <div class="sixteen wide column">
             <div class="ui horizontal divider">文章正文</div>
-            <div th:replace="adminFragment/editor :: article-editor(${item})">文章编辑器</div>
-            <div th:replace="adminFragment/editor :: dimmer('正在处理文章')"></div>
+            <div th:replace="fragment/article-editor :: article-editor(${item})">文章编辑器</div>
+            <div th:replace="fragment/article-editor :: dimmer('正在处理文章')"></div>
         </div>
     </div>
 

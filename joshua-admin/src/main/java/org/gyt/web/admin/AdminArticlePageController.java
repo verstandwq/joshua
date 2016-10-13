@@ -102,11 +102,10 @@ public class AdminArticlePageController {
         Article article = articleService.get(Long.valueOf(id));
 
         if (null == article) {
-            modelAndView.setViewName("404");
-            modelAndView.addObject("message", String.format("找不到文章：%s", id));
+            modelAndView.addObject("error", "文章不存在");
         } else {
-            modelAndView.addObject("title", article.getTitle());
-            modelAndView.addObject("subtitle", "文章预览");
+            modelAndView.addObject("title", String.format("光音堂后台 - 文章预览 - %s", article.getTitle()));
+            modelAndView.addObject("subtitle", article.getTitle());
             modelAndView.addObject("item", article);
             modelAndView.addObject("user", user);
         }
@@ -129,6 +128,8 @@ public class AdminArticlePageController {
         } else if (!article.getAuthor().getUsername().equals(user.getUsername())) {
             modelAndView.addObject("error", "只能编辑自己的文章");
         } else {
+            modelAndView.addObject("title", String.format("光音堂后台 - 文章编辑 - %s", article.getTitle()));
+            modelAndView.addObject("subtitle", article.getTitle());
             modelAndView.addObject("item", article);
             modelAndView.addObject("edit", true);
             Set<Fellowship> fellowshipSet = new HashSet<>();
@@ -153,6 +154,8 @@ public class AdminArticlePageController {
         if (article == null) {
             modelAndView.addObject("error", "文章不存在");
         } else {
+            modelAndView.addObject("title", String.format("光音堂后台 - 文章审核 - %s", article.getTitle()));
+            modelAndView.addObject("subtitle", article.getTitle());
             modelAndView.addObject("item", article);
         }
 
@@ -170,7 +173,8 @@ public class AdminArticlePageController {
             return modelAndView;
         }
 
-        modelAndView.addObject("title", "新建文章");
+        modelAndView.addObject("title", "光音堂后台 - 新建文章");
+        modelAndView.addObject("subtitle", "新建文章");
         modelAndView.addObject("item", new Article());
 
         Set<Fellowship> fellowshipSet = new HashSet<>();
