@@ -64,11 +64,11 @@
     <div class="ui grid container">
         <div class="eight wide column">
             <h2>教堂资讯</h2>
-            <div th:replace="fragment/article :: table(${articles})"></div>
+            <div th:replace="fragment/article :: table(${churchArticles})"></div>
         </div>
         <div class="eight wide column">
             <h2>团契文章</h2>
-            <div th:replace="fragment/article :: table(${articles})"></div>
+            <div th:replace="fragment/article :: table(${fellowshipArticles})"></div>
         </div>
     </div>
 </section>

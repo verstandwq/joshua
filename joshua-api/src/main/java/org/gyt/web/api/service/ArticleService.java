@@ -56,7 +56,22 @@ public interface ArticleService {
      *
      * @return 最新发布的文章
      */
+    @Deprecated
     List<Article> getLatestArticles();
+
+    /**
+     * 获取最新的教堂咨询
+     *
+     * @return 组合最新的教堂咨询文章列表
+     */
+    List<Article> getChurchArticles();
+
+    /**
+     * 获取最新的团契文章
+     *
+     * @return 组合最新的教堂咨询文章列表
+     */
+    List<Article> getFellowshipArticles();
 
     /**
      * 获取所有文章

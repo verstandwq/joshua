@@ -15,9 +15,7 @@ var enableArticle = function (id) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("激活文章", "激活成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("激活文章", "激活失败，原因：" + status, function () {
                     }).error();
@@ -45,9 +43,7 @@ var disableArticle = function (id) {
             contentType: false,
             success: function (status) {
                 if ("success" == status) {
-                    new Dialog("禁用文章", "禁用成功", function () {
-                        window.location.reload();
-                    }).message();
+                    window.location.reload();
                 } else {
                     new Dialog("禁用文章", "禁用失败，原因：" + status, function () {
                     }).error();
