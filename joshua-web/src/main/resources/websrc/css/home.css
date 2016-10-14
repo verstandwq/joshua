@@ -8,15 +8,12 @@
     background: linear-gradient(rgb(212, 153, 60), rgb(140, 52, 30));
 }
 
-#section2 .joshua.picture {
-    width: 256px;
-    height: 256px;
-    margin: 20px;
+#section2 .item .header {
+    color: white;
 }
 
-#section2 .joshua.picture img {
-    width: 256px;
-    height: 256px;
+#section2 .item .description {
+    color: white;
 }
 
 #section3 {

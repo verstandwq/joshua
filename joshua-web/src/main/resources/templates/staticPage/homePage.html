@@ -22,10 +22,18 @@
 
 <!-- 用户分流组件 -->
 <section th:fragment="section2" id="section2" class="ui grid">
-    <div class="centered row" data-aos="zoom-in">
-        <div th:replace="fragment/layout :: circular-picture('/newcomer', '/assets/images/homePage/ss1.jpg')"></div>
-        <div th:replace="fragment/layout :: circular-picture('/worship', '/assets/images/homePage/ss2.jpg')"></div>
-        <div th:replace="fragment/layout :: circular-picture('/fellowship', '/assets/images/homePage/ss3.png')"></div>
+    <div class="row" data-aos="zoom-in">
+        <div class="ui equal width grid container">
+            <div class="column">
+                <div th:replace="staticPage/homePage :: section2-item('新人', '如果你第一次来到光音堂，请访问这里', '/assets/images/homePage/ss1.jpg', '/newcomer')"></div>
+            </div>
+            <div class="column">
+                <div th:replace="staticPage/homePage :: section2-item('主日崇拜', '每周主日消息更新，就在这里。每周日9:00-10:30 10:45-12:00', '/assets/images/homePage/ss2.jpg', '/worship')"></div>
+            </div>
+            <div class="column">
+                <div th:replace="staticPage/homePage :: section2-item('团契生活', '找到你所在的团契小组，参与其中', '/assets/images/homePage/ss3.jpg', '/fellowship')"></div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -73,67 +81,24 @@
     </div>
 </section>
 
-<!-- 媒体资源组件 -->
-<section th:fragment="section5" id="section5">
-    <div class="ui grid container">
-        <div class="row">
-            <div class="column">
-                <div class="ui horizontal divider">媒体资源</div>
-            </div>
+<!--
+    分流单个组件
+-->
+<div th:fragment="section2-item (title, description, picture, link)" class="ui items">
+    <div class="item">
+        <div class="ui small circular image joshua picture">
+            <a th:href="@{${link}}">
+                <img th:src="@{${picture}}"/>
+            </a>
         </div>
-        <div class="ui centered green card">
-            <div class="content">
-                <img class="right floated ui image" src="../../public/assets/images/placeholder.png"
-                     th:src="@{/assets/images/placeholder.png}"/>
-                <div class="header">荣耀的帮助者</div>
-                <div class="meta"><i class="user icon"></i> <span>作者：（美）珀尔</span></div>
-                <div class="description">
-                    明白尊重和荣耀丈夫便是荣耀上帝，从而享受奇妙美好的婚姻。
-                </div>
-                <div class="ui horizontal hidden divider"></div>
-                <div class="extra content">
-                    <div class="ui green button fluid">在线阅读</div>
-                </div>
-            </div>
-        </div>
-        <div class="ui centered orange card">
-            <div class="content">
-                <img class="right floated ui image" src="../../public/assets/images/placeholder.png"
-                     th:src="@{/assets/images/placeholder.png}"/>
-                <div class="header">你真配得赞美</div>
-                <div class="meta"><i class="user icon"></i> <span>歌手：	小羊诗歌</span></div>
-                <div class="description">
-                    太阳不足彰颢祢光辉
-                    蓝天装不下祢的意念
-                    繁星数不尽祢的恩典
-                    群山无以表明祢威严
-                </div>
-                <div class="ui horizontal hidden divider"></div>
-                <div class="extra content">
-                    <div class="ui orange button fluid">在线试听</div>
-                </div>
-            </div>
-        </div>
-        <div class="ui centered orange card">
-            <div class="content">
-                <img class="right floated ui image" src="../../public/assets/images/placeholder.png"
-                     th:src="@{/assets/images/placeholder.png}"/>
-                <div class="header">如鹰展翅上腾</div>
-                <div class="meta"><i class="user icon"></i> <span>歌手：	生命河灵粮堂</span></div>
-                <div class="description">
-                    神已听见我的呼求
-                    祂也明白我的渴望
-                    放下重担 脱去一切缠累
-                    恢复神造我的荣美形象
-                </div>
-                <div class="ui horizontal hidden divider"></div>
-                <div class="extra content">
-                    <div class="ui orange button fluid">在线试听</div>
-                </div>
+        <div class="content">
+            <a class="header" th:href="@{${link}}" th:utext="${title}">标题</a>
+            <div class="description">
+                <p th:utext="${description}">描述</p>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <!--/* 引用页脚组件 */-->
 <div th:replace="fragment/footer :: footer">页脚</div>
