@@ -26,6 +26,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .headers()
+                    .contentTypeOptions().disable()
+                .and()
                 .authorizeRequests()
                 /* 首页开放所有权限 */
                 .antMatchers("/", "/index", "/home").permitAll()
