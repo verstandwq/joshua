@@ -24,12 +24,11 @@ HTML 页脚基本组件，用于每个页面的末尾引用
                     <div class="item"><span>邮编：</span> 610041</div>
                 </div>
             </div>
-            <div class="three wide column">
+            <div class="seven wide column">
             </div>
-            <div class="seven wide right floated column">
+            <div class="three wide right floated column">
                 <h4 class="ui inverted header">微信公众号</h4>
-                <img src="../../public/assets/images/SQCode.jpg" th:src="@{/assets/images/SQCode.jpg}"
-                     style="width: 128px;height: 128px"/>
+                <div th:replace="fragment/common-tools :: SQCode"></div>
             </div>
         </div>
         <div class="ui inverted section divider"></div>
