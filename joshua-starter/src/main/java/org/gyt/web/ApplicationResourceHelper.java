@@ -129,6 +129,7 @@ class ApplicationResourceHelper {
         createFellowship(applicationContext, "tmttq", "提摩太团契");
         createFellowship(applicationContext, "ygtq", "雅歌团契");
         createFellowship(applicationContext, "zztq", "长者团契");
+        createFellowship(applicationContext, "sunday", "主日学");
 
         /* 创建主内服侍 */
         createFellowship(applicationContext, "abz", "安保组");

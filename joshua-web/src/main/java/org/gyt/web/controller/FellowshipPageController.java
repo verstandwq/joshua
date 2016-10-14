@@ -1,6 +1,5 @@
 package org.gyt.web.controller;
 
-import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Fellowship;
@@ -28,9 +27,30 @@ public class FellowshipPageController {
     public ModelAndView getFellowshipHomePage(@PathVariable String name) {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/fellowship/" + name);
 
+        filterSpecialPage(modelAndView, name);
+
         Fellowship fellowship = fellowshipService.get(name);
+        modelAndView.addObject("title", String.format("基督教光音堂 - %s", fellowship.getDisplayName()));
         modelAndView.addObject("items", fellowship.getArticles());
 
         return modelAndView;
+    }
+
+    private void filterSpecialPage(ModelAndView modelAndView, String name) {
+        if (name.equalsIgnoreCase("worship")) {
+            modelAndView.setViewName("staticPage/worshipPage");
+        } else if (name.equalsIgnoreCase("testimony")) {
+            modelAndView.setViewName("staticPage/testimonyPage");
+        } else if (name.equalsIgnoreCase("report")) {
+            modelAndView.setViewName("staticPage/reportPage");
+        } else if (name.equalsIgnoreCase("public")) {
+            modelAndView.setViewName("staticPage/publicPage");
+        } else if (name.equalsIgnoreCase("suffrage")) {
+            modelAndView.setViewName("staticPage/suffragePage");
+        } else if (name.equalsIgnoreCase("recommend")) {
+            modelAndView.setViewName("staticPage/recommendPage");
+        } else if (name.equalsIgnoreCase("sunday")) {
+            modelAndView.setViewName("staticPage/sundaySchoolPage");
+        }
     }
 }

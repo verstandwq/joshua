@@ -1,0 +1,25 @@
+<!--
+    公共工具组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+<body>
+
+<!--
+    教堂地图
+-->
+<img th:fragment="map" th:src="@{/assets/images/map.png}" style="width: 256px;height: 256px"/>
+
+<!--
+    教堂二维码
+-->
+<img th:fragment="SQCode" th:src="@{/assets/images/SQCode.jpg}" style="width: 128px;height: 128px"/>
+
+<script src="../../public/assets/js/joshua.min.js"></script>
+</body>
+</html>
