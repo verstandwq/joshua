@@ -22,10 +22,11 @@
     文章状态标签转换
 -->
 <div th:fragment="covertToStatusLabel (article)">
-    <label th:if="${article.status.name() == 'RAW'}" class="ui grey  center aligned fluid label">未发布</label>
-    <label th:if="${article.status.name() == 'AUDITING'}" class="ui orange  center aligned fluid label">审核中</label>
-    <label th:if="${article.status.name() == 'PUBLISHED'}" class="ui green  center aligned fluid label">已发布</label>
-    <label th:if="${article.status.name() == 'REJECTED'}" class="ui red  center aligned fluid label">被驳回</label>
+    <label th:if="${article.isDisable()}" class="ui red center aligned fluid label">被禁用</label>
+    <label th:if="${not article.isDisable() and article.status.name() == 'RAW'}" class="ui grey  center aligned fluid label">未发布</label>
+    <label th:if="${not article.isDisable() and article.status.name() == 'AUDITING'}" class="ui orange  center aligned fluid label">审核中</label>
+    <label th:if="${not article.isDisable() and article.status.name() == 'PUBLISHED'}" class="ui green  center aligned fluid label">已发布</label>
+    <label th:if="${not article.isDisable() and article.status.name() == 'REJECTED'}" class="ui red  center aligned fluid label">被驳回</label>
 </div>
 
 <!--
