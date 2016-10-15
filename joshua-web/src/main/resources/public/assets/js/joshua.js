@@ -53974,6 +53974,11 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
+    $("input.login").popup({
+        on: "focus"
+    });
+});
+$(document).ready(function () {
     $(".ui.message.form .ui.radio.checkbox").checkbox();
 });
 
