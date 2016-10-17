@@ -53036,6 +53036,19 @@ var saveArticle = function (quill) {
         data: formData,
         processData: false,
         contentType: false,
+        xhr: function () {
+            var myXhr = $.ajaxSettings.xhr();
+
+            if (myXhr.upload) {
+                myXhr.upload.addEventListener("progress", function (e) {
+                    if (e.lengthComputable) {
+                        console.log("上传数据：" + e.loaded + " - " + e.total);
+                    }
+                }, false);
+            }
+
+            return myXhr;
+        },
         success: function (status) {
             if (parseInt(status)) {
                 window.location = '/admin/article/' + status + '/edit';
