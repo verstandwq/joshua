@@ -75,7 +75,7 @@
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(articles)}">
-        <td>当前还没有内容</td>
+        <td colspan="6">当前还没有内容</td>
     </tr>
     <tr th:each="article : ${articles}">
         <td th:utext="${article.id}"></td>
@@ -109,7 +109,7 @@
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(articles)}">
-        <td>当前还没有内容</td>
+        <td colspan="4">当前还没有内容</td>
     </tr>
     <tr th:each="article : ${articles}">
         <td th:utext="${article.id}"></td>
@@ -139,7 +139,7 @@
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(articles)}">
-        <td>当前还没有内容</td>
+        <td colspan="5">当前还没有内容</td>
     </tr>
     <tr th:each="article : ${articles}">
         <td th:utext="${article.id}"></td>
@@ -172,7 +172,7 @@
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(articles)}">
-        <td>当前还没有内容</td>
+        <td colspan="6">当前还没有内容</td>
     </tr>
     <tr th:each="article : ${articles}">
         <td th:utext="${article.id}"></td>

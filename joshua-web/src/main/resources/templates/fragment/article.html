@@ -34,7 +34,7 @@
             <div class="extra">
                 <span>
                 <i class="calendar icon"></i> <span
-                        th:utext="${#dates.format(article.createdDate, 'yyyy-MM-dd')}">创建日期</span>
+                        th:utext="${@displayDateUtils.getDisplayDate(article.createdDate)}">创建日期</span>
                 </span>
                 <span>
                 <i class="user icon"></i> <span th:utext="${article.pageView} ? ${article.pageView} : 0">0</span>

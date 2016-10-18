@@ -20,6 +20,7 @@
     color: white;
     padding: 20px;
     background: rgba(55, 60, 61, 1);
+    background: radial-gradient(at center center, rgb(134, 146, 153) 0%, rgb(55, 60, 61) 100%);
 }
 
 #section4 {
