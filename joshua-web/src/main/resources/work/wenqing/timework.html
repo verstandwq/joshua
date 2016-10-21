@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星座测试</title>
+</head>
+<body>
+<script>
+//    function getDisplayDate(date) {
+//        var nowDate = new Date();
+//        var hisDate = nowDate.getTime();
+//        var disDate =hisDate - date;
+//        var s = disDate/1000/60;
+//        if (s<5){
+//            console.log("刚刚")
+//        }else if (s>=5 && a<60){
+//            console.log(Math.ceil(s) + "分钟之前")
+//        }
+//        var h = s/60;
+//        if(h<24){
+//            console.log(Math.ceil(h) +"小时之前")
+//        }
+//        var d = h/24;
+//        if (s<7){
+//            console.log(Math.ceil(d)+"天之前")
+//        }
+//        var w = d/7;
+//        if (Math.ceil(w)<2){
+//            console.log("一周前")
+//        }else{
+//            console.log(getDisplayDate(date))
+//        }
+//    }
+//    getDisplayDate("2016-10-18 20:32:00");
+//    getDisplayDate("2016-10-18 20:12:00");
+//    getDisplayDate("2016-10-18 19:32:00");
+//    getDisplayDate("2016-10-17 20:32:00");
+//    getDisplayDate("2016-10-10 20:32:00");
+
+
+    function getAstro(m,d) {
+        if (m == 1 && d >=20 || m == 2 && d <=18) {console.log("水瓶座") }
+        if (m == 2 && d >=19 || m == 3 && d <=20) {console.log("双鱼座") }
+        if (m == 3 && d >=21 || m == 4 && d <=19) {console.log("白羊座") }
+        if (m == 4 && d >=20 || m == 5 && d <=20) {console.log("金牛座") }
+        if (m == 5 && d >=21 || m == 6 && d <=21) {console.log("双子座") }
+        if (m == 6 && d >=22 || m == 7 && d <=22) {console.log("巨蟹座") }
+        if (m == 7 && d >=23 || m == 8 && d <=22) {console.log("狮子座") }
+        if (m == 8 && d >=23 || m == 9 && d <=22) {console.log("处女座") }
+        if (m == 9 && d >=23 || m == 10 && d <=23) {console.log("天秤座") }
+        if (m == 10 && d >=24 || m == 11 && d <=22) {console.log("天蝎座") }
+        if (m == 11 && d >=23 || m == 12 && d <=21) {console.log("射手座") }
+        if (m == 12 && d >=22 || m == 1 && d <=19) {console.log("摩羯座") }
+        if (m > 12 || d > 31){console.log("请输入正确的日期！")}
+    }
+    getAstro(6,1);
+    getAstro(6,56);
+    getAstro(9,21);
+    getAstro(3,16);
+    getAstro(7,12);
+</script>
+</body>
+</html>
