@@ -13,13 +13,12 @@ import java.io.IOException;
  * Created by Administrator on 2016/9/18.
  */
 @RestController
-@RequestMapping("/api/gallery")
 public class SlidePictureWebServiceAPI {
 
     @Autowired
     private SlidePictureService slidePictureService;
 
-    @RequestMapping(value = "/static/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/gallery/static/add", method = RequestMethod.POST)
     public String add(@RequestParam MultipartFile file, @RequestParam String link) {
         SlidePicture slidePicture = new SlidePicture();
 
@@ -38,7 +37,7 @@ public class SlidePictureWebServiceAPI {
         }
     }
 
-    @RequestMapping(value = "/static/remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/gallery/static/remove", method = RequestMethod.POST)
     public String remove(@RequestParam Long id) {
         if (slidePictureService.remove(id)) {
             return "success";
@@ -47,7 +46,7 @@ public class SlidePictureWebServiceAPI {
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/gallery/{id}", method = RequestMethod.GET)
     public byte[] get(@PathVariable Long id) {
         SlidePicture slidePicture = slidePictureService.get(id);
         return slidePicture == null ? null : slidePicture.getContent();

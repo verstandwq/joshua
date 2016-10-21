@@ -67,6 +67,11 @@ HTML 布局基本组件
     </div>
 </div>
 
+<!-- 变暗组件 -->
+<div th:fragment="dimmer (text)" class="ui inverted active dimmer">
+    <div class="ui text loader" th:utext="${text}"></div>
+</div>
+
 <script src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>

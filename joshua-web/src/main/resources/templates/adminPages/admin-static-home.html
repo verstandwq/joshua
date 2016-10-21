@@ -42,8 +42,8 @@
                 <tbody>
                 <tr th:each="image : ${imageGallery}">
                     <td>
-                        <img th:src="@{'/api/gallery/' + ${image.id}}"
-                             th:attr="data-src=@{'/api/gallery/' + ${image.id}}, data-id=${image.id}"
+                        <img th:src="@{'/gallery/' + ${image.id}}"
+                             th:attr="data-src=@{'/gallery/' + ${image.id}}, data-id=${image.id}"
                              style="width: 240px;height: 60px"/>
                     </td>
                     <td>
@@ -57,8 +57,8 @@
             <div class="column">
                 <div class="ui horizontal divider">点击下面图片预览效果</div>
                 <div id="lightGallery" class="ui small images">
-                    <a th:each="image : ${imageGallery}" th:href="@{'/api/gallery/' + ${image.id}}">
-                        <img th:src="@{'/api/gallery/' + ${image.id}}" th:attr="data-src=@{'/api/gallery/' + ${image.id}}, data-id=${image.id}"/>
+                    <a th:each="image : ${imageGallery}" th:href="@{'/gallery/' + ${image.id}}">
+                        <img th:src="@{'/gallery/' + ${image.id}}" th:attr="data-src=@{'/gallery/' + ${image.id}}, data-id=${image.id}"/>
                     </a>
                 </div>
             </div>

@@ -15,7 +15,7 @@
 <section th:fragment="section1" id="section1">
     <div id="slider">
         <a th:each="image : ${imageGallery}" th:href="@{${image.link}}">
-            <img th:src="@{'/api/gallery/' + ${image.id}}"/>
+            <img th:src="@{'/gallery/' + ${image.id}}"/>
         </a>
     </div>
 </section>

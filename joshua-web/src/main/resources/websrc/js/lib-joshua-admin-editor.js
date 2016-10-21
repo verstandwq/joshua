@@ -259,6 +259,8 @@ $(document).ready(function () {
 
         var delta = JSON.parse($(".article-reader .article-content").text());
         quill.setContents(delta.ops);
+        $(".article-reader").removeAttr("style");
+        $(".article-reader + .ui.dimmer").removeClass("active");
     }
 });
 
