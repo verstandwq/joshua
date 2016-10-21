@@ -67,3 +67,22 @@
     border: 3px double rgb(70, 83, 102) !important;
     background-clip: padding-box;
 }
+
+/*
+    二级页面标题定义
+*/
+.ui.layout.header .dividing.header {
+    margin-top: 1rem;
+}
+
+/*
+    页脚定义
+*/
+.ui.footer {
+    padding: 4em 0 4em 0;
+}
+
+/* 导航栏定义 */
+.joshua.menu span {
+    font-size: 1.25em;
+}

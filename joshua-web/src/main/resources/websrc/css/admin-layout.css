@@ -1,0 +1,16 @@
+/*
+    后端布局样式定义
+*/
+
+/* 后端根容器定义 */
+.ui.admin.layout.root {
+    margin-left: 15rem;
+    padding: 1rem;
+}
+
+/* 左侧菜单定义 */
+.ui.admin.sticky.menu {
+    width: 15rem;
+    height: 100%;
+    overflow-y: auto;
+}

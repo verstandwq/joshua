@@ -1,7 +1,17 @@
+/*
+    首页样式定义
+*/
+
+/*
+    活动大图定义
+*/
 #section1 {
     height: 450px;
 }
 
+/*
+    分流导航定义
+*/
 #section2 {
     padding: 20px;
     background: rgba(207, 124, 56, 1);
@@ -16,6 +26,9 @@
     color: white;
 }
 
+/*
+    教堂简介定义
+*/
 #section3 {
     color: white;
     padding: 20px;
@@ -23,6 +36,9 @@
     background: radial-gradient(at center center, rgb(134, 146, 153) 0%, rgb(55, 60, 61) 100%);
 }
 
+/*
+    教堂咨询定义
+*/
 #section4 {
     color: white;
     padding: 20px;
