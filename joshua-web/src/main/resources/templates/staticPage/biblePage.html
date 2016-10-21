@@ -14,12 +14,21 @@
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='在线圣经')"></div>
             <div th:replace="fragment/layout :: picture (src='staticPage/biblePage.jpg')"></div>
+            <div th:replace="fragment/layout :: verse ('圣经都是　神所默示的（或作“凡　神所默示的圣经”），于教训、督责、使人归正、教导人学义都是有益的，', '提后3: 16')"></div>
+            <div th:replace="fragment/layout :: divider ('我们推荐的在线读经网站')"></div>
+
+            <div class="ui centered cards">
+                <div th:replace="fragment/layout :: recommend-link ('基督教圣经在线阅读', '最全的圣经在线阅读网站，涵盖常见的各个版本', 'http://www.godcom.net')"></div>
+                <div th:replace="fragment/layout :: recommend-link ('圣经金句网', '经文分享，背经，寻找神的话语在这里', 'http://www.xueyi.org')"></div>
+                <div th:replace="fragment/layout :: recommend-link ('约拿的家', '在线圣经阅读，带部分解经资料', 'http://www.jonahome.net/bible/index.htm')"></div>
+            </div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
         </div>
     </div>
 </div>
+
 <div th:replace="fragment/footer :: footer">页脚</div>
 <script th:replace="fragment/header :: script" src="../../public/assets/js/joshua.min.js"></script>
 </body>
