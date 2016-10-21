@@ -2,7 +2,7 @@ package org.gyt.web.controller;
 
 import org.gyt.web.api.service.ArticleService;
 import org.gyt.web.api.service.FellowshipService;
-import org.gyt.web.api.service.HomePageService;
+import org.gyt.web.api.service.SlidePictureService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.Message;
@@ -27,7 +27,7 @@ public class StaticPageController {
     private FellowshipService fellowshipService;
 
     @Autowired
-    private HomePageService homePageService;
+    private SlidePictureService slidePictureService;
 
     @Autowired
     private ModelAndViewUtils modelAndViewUtils;
@@ -37,7 +37,7 @@ public class StaticPageController {
         ModelAndView modelAndView = modelAndViewUtils.newModelAndView("index");
         modelAndView.addObject("churchArticles", articleService.getChurchArticles());
         modelAndView.addObject("fellowshipArticles", articleService.getFellowshipArticles());
-        modelAndView.addObject("imageGallery", homePageService.getPictures());
+        modelAndView.addObject("imageGallery", slidePictureService.list());
         return modelAndView;
     }
 

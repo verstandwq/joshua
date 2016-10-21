@@ -53222,6 +53222,8 @@ $(document).ready(function () {
 
         var delta = JSON.parse($(".article-reader .article-content").text());
         quill.setContents(delta.ops);
+        $(".article-reader").removeAttr("style");
+        $(".article-reader + .ui.dimmer").removeClass("active");
     }
 });
 
@@ -53568,15 +53570,23 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $(".ui.add.slide.picture.button").on("click", function () {
+        var link = $("#link").val();
         var file = $("#file")[0].files[0];
+
+        if (!link) {
+            new Dialog("添加大图", "请输入大图链接").message();
+
+            return;
+        }
 
         if (file) {
             var formData = new FormData();
             formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
             formData.append("file", file);
+            formData.append("link", link);
 
             $.ajax({
-                url: "/api/static/gallery",
+                url: "/api/gallery/static/add",
                 type: "post",
                 data: formData,
                 processData: false,
@@ -53600,14 +53610,14 @@ $(document).ready(function () {
     });
 
     $(".ui.delete.slide.picture.button").on("click", function () {
-        var filename = $(this).data("filename");
+        var id = $(this).data("id");
 
         var formData = new FormData();
         formData.append("_csrf", $(".ui.admin.user.form input[name='_csrf']").val());
-        formData.append("filename", filename);
+        formData.append("id", id);
 
         $.ajax({
-            url: "/api/static/gallery/delete",
+            url: "/api/gallery/static/remove",
             type: "post",
             data: formData,
             processData: false,

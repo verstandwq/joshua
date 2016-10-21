@@ -36,6 +36,7 @@
         <div class="row">
             <div class="column">
                 <div th:replace="fragment/article-editor :: article-reader(${item})">文章阅读器</div>
+                <div th:replace="fragment/layout :: dimmer('正在飞一般地加载文章')"></div>
             </div>
         </div>
     </div>
