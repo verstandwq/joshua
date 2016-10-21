@@ -13,7 +13,7 @@
     <div th:replace="adminFragment/admin-layout :: header('首页大图管理', '静态页面管理')">布局标题</div>
 
     <div class="ui grid">
-        <div class="six wide column">
+        <div class="five wide column">
             <div class="ui segment">
                 <label for="file" class="ui icon button fluid">
                     <i class="file icon"></i> 添加大图</label>
@@ -25,7 +25,13 @@
                 <button class="ui add slide picture button fluid">确定添加</button>
             </div>
         </div>
-        <div class="ten wide column">
+        <div class="five wide column">
+            <div class="ui labeled fluid input">
+                <div class="ui label">大图链接</div>
+                <input type="text" id="link" name="link" placeholder="请输入大图链接"/>
+            </div>
+        </div>
+        <div class="six wide column">
             <table class="ui table">
                 <thead>
                 <tr>
@@ -36,11 +42,12 @@
                 <tbody>
                 <tr th:each="image : ${imageGallery}">
                     <td>
-                        <img th:src="@{${image}}" th:attr="data-src=@{${image}}"
+                        <img th:src="@{'/api/gallery/' + ${image.id}}"
+                             th:attr="data-src=@{'/api/gallery/' + ${image.id}}, data-id=${image.id}"
                              style="width: 240px;height: 60px"/>
                     </td>
                     <td>
-                        <button class="ui delete slide picture button" th:attr="data-filename=${image}">删除</button>
+                        <button class="ui delete slide picture button" th:attr="data-id=${image.id}">删除</button>
                     </td>
                 </tr>
                 </tbody>
@@ -50,8 +57,8 @@
             <div class="column">
                 <div class="ui horizontal divider">点击下面图片预览效果</div>
                 <div id="lightGallery" class="ui small images">
-                    <a th:each="image : ${imageGallery}" th:href="@{${image}}">
-                        <img th:src="@{${image}}" th:attr="data-src=@{${image}}"/>
+                    <a th:each="image : ${imageGallery}" th:href="@{'/api/gallery/' + ${image.id}}">
+                        <img th:src="@{'/api/gallery/' + ${image.id}}" th:attr="data-src=@{'/api/gallery/' + ${image.id}}, data-id=${image.id}"/>
                     </a>
                 </div>
             </div>
