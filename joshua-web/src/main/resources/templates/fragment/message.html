@@ -15,7 +15,7 @@
 
 <div th:fragment="primary">
     <div class="ui warning message" sec:authorize="not hasRole('ROLE_SEND_MESSAGE')">
-        <div class="content">您还没有登录，请先登录以后再发布</div>
+        <div class="content">您还没有登录，请先登录以后再发布 <a th:href="@{/login}">点我登录</a></div>
     </div>
     <div class="ui success message" th:if="${publishSuccess}">
         <div class="content">发布留言成功</div>
@@ -51,7 +51,7 @@
             <input type="text" placeholder="输入您的联系方式，如果有必要我们会与您联系，可以是电话、邮箱" th:field="*{contact}" required="required"/>
         </div>
         <div class="field">
-            <textarea rows="10" placeholder="请输入留言信息，最多500个字" th:maxlength="500" th:field="*{content}"
+            <textarea rows="10" placeholder="请输入留言信息，最多1000个字" th:maxlength="1000" th:field="*{content}"
                       required="required"></textarea>
         </div>
         <button class="ui primary button" type="submit">提交</button>
