@@ -21,6 +21,8 @@ HTML 布局基本组件
     <img src="#" th:src="@{'/assets/images/' + ${src}}"/>
 </div>
 
+<div th:fragment="divider (title)" class="ui horizontal divider" th:utext="${title}"></div>
+
 <!-- 圣经经句组件 -->
 <div th:fragment="verse (content, location)" class="ui raised padded black segment">
     <p th:utext="${content}">神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。</p>
@@ -47,6 +49,22 @@ HTML 布局基本组件
     <a th:href="@{${url}}">
         <img class="ui medium circular image" th:src="@{${picture}}"/>
     </a>
+</div>
+
+<!-- 推荐链接组件 -->
+<div th:fragment="recommend-link (title, description, link)" class="ui card">
+    <div class="content">
+        <div class="header" th:utext="${title}"></div>
+        <div class="description" th:utext="${description}"></div>
+    </div>
+    <div class="extra content">
+        <a class="ui animated fluid button" href="#" th:href="@{${link}}">
+            <div class="visible content">开始阅读</div>
+            <div class="hidden content">
+                <i class="right arrow icon"></i>
+            </div>
+        </a>
+    </div>
 </div>
 
 <script src="../../public/assets/js/joshua.min.js"></script>
