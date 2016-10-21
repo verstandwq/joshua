@@ -1,12 +1,5 @@
 /*
-    页面容器定义
-*/
-.joshua.main {
-    margin: 2em 0 2em 0;
-}
-
-/*
-    页面导航容器定义
+    导航栏定义
 */
 .joshua.menu.background {
     position: absolute;
@@ -19,17 +12,8 @@
     opacity: .84;
 }
 
-/*
-    背景定义
-*/
-.joshua.wood.background {
-    background: url("../images/background-1.png");
-    opacity: .87;
-}
-
-.joshua.stone.background {
-    background: url("../images/background-2.png");
-    opacity: .84;
+.joshua.menu span {
+    font-size: 1.25em;
 }
 
 /*
@@ -40,11 +24,11 @@
     height: auto;
     margin: 12px;
 
-    transition: all 0.5s ease;
+    transition: all 0.2s ease;
 }
 
 .joshua.picture:hover {
-    transform: rotate(20deg);
+    transform: scale(1.2, 1.2);
 }
 
 .joshua.normal.picture img {
@@ -66,4 +50,11 @@
 .ui.button:active {
     border: 3px double rgb(70, 83, 102) !important;
     background-clip: padding-box;
+}
+
+/*
+    页脚定义
+*/
+.ui.footer {
+    padding: 4em 0 4em 0;
 }

@@ -91,6 +91,7 @@
                     <div class="ui vertical menu">
                         <a class="item" th:href="@{/info}">我的信息</a>
                         <a class="item" th:href="@{/password}">更改密码</a>
+                        <a class="item" th:href="@{/admin/article/new}" sec:authorize="hasRole('ROLE_ADMIN_ACCESS')">发布文章</a>
                         <a class="item user logout"> 退出
                             <form th:action="@{/logout}" method="post">
                             </form>

@@ -15,26 +15,38 @@ HTML 页脚基本组件，用于每个页面的末尾引用
 <footer th:fragment="footer" class="ui black inverted vertical segment footer">
     <div class="ui center aligned container">
         <div class="ui stackable inverted grid">
+            <div class="three wide right floated column">
+                <h4 class="ui inverted header">微信公众号</h4>
+                <div th:replace="fragment/common-tools :: SQCode"></div>
+            </div>
             <div class="six wide left aligned column">
                 <h4 class="ui inverted header">联系我们</h4>
                 <div class="ui inverted link list">
-                    <div class="item"><span>地址：</span><span>成都市高新区天府一街886号</span></div>
+                    <a class="item" th:href="@{/contact}">我要留言</a>
+                    <div class="item"></div>
+                    <div class="item"><span>地址：</span> 成都市高新区天府一街886号</div>
                     <div class="item"><span>电话：</span> 028-85179217</div>
                     <div class="item"><span>邮箱：</span> cdgyt2013@sina.com</div>
                     <div class="item"><span>邮编：</span> 610041</div>
                 </div>
             </div>
-            <div class="seven wide column">
-            </div>
-            <div class="three wide right floated column">
-                <h4 class="ui inverted header">微信公众号</h4>
-                <div th:replace="fragment/common-tools :: SQCode"></div>
+            <div class="seven wide left aligned column">
             </div>
         </div>
         <div class="ui inverted section divider"></div>
         <div class="ui horizontal inverted small divided link list">
             <span class="item">基督教光音堂</span>
             <span class="item">蜀ICP备16027709号</span>
+        </div>
+        <div class="ui horizontal inverted small divided link list" style="margin: 0;display: block">
+            <span class="item">关于我们</span>
+            <a class="item" th:href="@{/about}">教堂简介</a>
+            <a class="item" th:href="@{/worship}">主日崇拜</a>
+            <a class="item" th:href="@{/testimony}">见证分享</a>
+            <a class="item" th:href="@{/report}">事工报告</a>
+            <a class="item" th:href="@{/public}">公益活动</a>
+            <a class="item" th:href="@{/suffrage}">教会代祷</a>
+            <a class="item" th:href="@{/devotion}">奉献捐赠</a>
         </div>
         <div class="ui horizontal inverted small divided link list" style="margin: 0;display: block">
             <span class="item">友情链接</span>
