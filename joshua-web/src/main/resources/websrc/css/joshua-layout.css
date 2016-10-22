@@ -46,7 +46,7 @@
 .joshua.picture {
     width: 192px;
     height: auto;
-    margin: 12px;
+    padding: 12px;
 
     transition: all 0.2s ease;
 }
