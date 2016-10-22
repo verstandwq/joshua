@@ -54044,6 +54044,10 @@ $(document).ready(function () {
                 }
             });
         }).confirm();
+    });
+
+    $(".joshua.menu.open").on("click", function () {
+        $(".joshua.mobile.menu").toggle();
     })
 });
 

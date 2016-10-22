@@ -16,6 +16,30 @@
     font-size: 1.25em;
 }
 
+.joshua.side.menu {
+    margin: auto;
+}
+
+.joshua.navigation.grid {
+    margin: 0;
+}
+
+.joshua.navigation.grid .row {
+    padding: 0;
+}
+
+.joshua.navigation .ui.secondary.menu.bar {
+    margin: 0;
+    width: 100%;
+    background: url("../images/background-2.png"), rgb(240, 240, 240);
+}
+
+.joshua.navigation .ui.joshua.mobile.menu {
+    width: 100%;
+    background: url("../images/background-2.png"), rgb(240, 240, 240);
+    border: none;
+}
+
 /*
     图片显示框架定义
 */

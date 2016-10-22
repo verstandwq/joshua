@@ -23,7 +23,7 @@ Html编辑器组件
     <input class="input id" th:value="${item.id}" type="hidden"/>
 </div>
 
-<div th:fragment="article-reader (item)" class="article-reader" style="height: 500px;">
+<div th:fragment="article-reader (item)" class="article-reader" style="height: 200px;">
     <div class="container"></div>
     <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
 </div>
