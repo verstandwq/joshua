@@ -31,6 +31,9 @@ public class Fellowship {
     @OneToMany(mappedBy = "fellowship")
     private List<Article> articles = new ArrayList<>();
 
+    @OneToMany(mappedBy = "fellowship")
+    private List<Message> messages = new ArrayList<>();
+
     public Fellowship() {
     }
 
@@ -88,5 +91,13 @@ public class Fellowship {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }

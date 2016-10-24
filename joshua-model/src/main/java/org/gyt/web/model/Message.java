@@ -16,6 +16,10 @@ public class Message {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    @JoinColumn
+    private Fellowship fellowship;
+
     @OneToOne
     private User owner;
 
@@ -41,6 +45,14 @@ public class Message {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Fellowship getFellowship() {
+        return fellowship;
+    }
+
+    public void setFellowship(Fellowship fellowship) {
+        this.fellowship = fellowship;
     }
 
     public User getOwner() {
