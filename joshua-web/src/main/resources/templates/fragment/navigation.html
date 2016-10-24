@@ -115,6 +115,30 @@
                     </a>
                 </div>
 
+                <div sec:authorize="not isAuthenticated()" class="item"
+                     style="margin: 0.25em;padding-left: 0.25em;padding-right: 0.25em">
+                    <a class="ui button" th:href="@{/login}">登录</a>
+                </div>
+
+                <div sec:authorize="isAuthenticated()" class="item"
+                     style="margin: 0.25em;padding-left: 0.25em;padding-right: 0.25em">
+                    <div class="ui icon username button">
+                        <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
+                    </div>
+                    <div class="ui popup">
+                        <div class="ui vertical menu">
+                            <a class="item" th:href="@{/info}">我的信息</a>
+                            <a class="item" th:href="@{/password}">更改密码</a>
+                            <a class="item" th:href="@{/admin/article/new}"
+                               sec:authorize="hasRole('ROLE_ADMIN_ACCESS')">发布文章</a>
+                            <a class="item user logout"> 退出
+                                <form th:action="@{/logout}" method="post">
+                                </form>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="joshua right menu open">
                     <div class="menu item">
                         <i class="list icon"></i>

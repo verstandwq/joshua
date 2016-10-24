@@ -1,8 +1,10 @@
 package org.gyt.web.api.service.impl;
 
 import org.gyt.web.api.service.LogService;
+import org.gyt.web.api.utils.NetworkUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 public class LogServiceImpl implements LogService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LogServiceImpl.class);
+
+    @Autowired
+    private NetworkUtils networkUtils;
 
     @Override
     public void debug(HttpServletRequest request, String content) {
@@ -94,7 +99,7 @@ public class LogServiceImpl implements LogService {
 
     private String getHttpLogFormat(HttpServletRequest request) {
         String username = request.getRemoteUser() == null ? "匿名" : request.getRemoteUser();
-        String address = request.getRemoteHost();
+        String address = networkUtils.getRemoteIpAddress(request);
         String url = request.getRequestURL().toString();
         return String.format("用户[%s]从[%s]访问URL[%s]", username, address, url);
     }
