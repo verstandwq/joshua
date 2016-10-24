@@ -7,10 +7,7 @@ import org.gyt.web.api.utils.PaginationComponent;
 import org.gyt.web.model.Message;
 import org.gyt.web.model.MessageType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -65,4 +62,21 @@ public class AdminMessagePageController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/message/{id}", method = RequestMethod.GET)
+    public ModelAndView detailsPage(@PathVariable Long id) {
+        ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-message-details");
+
+        Message message = messageService.get(id);
+
+        if (message == null) {
+            modelAndView.setViewName("404");
+            modelAndView.addObject("message", "没有找到指定的消息");
+        } else {
+            modelAndView.addObject("message", message);
+        }
+
+        return modelAndView;
+    }
+
 }

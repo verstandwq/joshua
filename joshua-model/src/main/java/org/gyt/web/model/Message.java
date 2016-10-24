@@ -29,6 +29,7 @@ public class Message {
 
     private MessageType type;
 
+    @Lob
     private String content;
 
     /**
