@@ -46,10 +46,27 @@
                 </div>
             </div>
         </div>
-        <div class="field">
+        <div class="inline field">
+            <label>所属团契</label>
+
+            <div class="ui fellowship search selection dropdown">
+                <input type="hidden" th:field="*{fellowship}" required="required"/>
+                <i class="dropdown icon"></i>
+                <div class="default text">所属团契</div>
+                <div class="menu">
+                    <div th:each="value : ${fellowships}" class="item" th:attr="data-value=${value.name}"
+                         th:utext="${value.displayName}">
+                        团契名称
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inline field">
             <label>联系方式</label>
             <input type="text" placeholder="输入您的联系方式，如果有必要我们会与您联系，可以是电话、邮箱" th:field="*{contact}" required="required"/>
         </div>
+
         <div class="field">
             <textarea rows="10" placeholder="请输入留言信息，最多1000个字" th:maxlength="1000" th:field="*{content}"
                       required="required"></textarea>

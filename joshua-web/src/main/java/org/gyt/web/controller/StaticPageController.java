@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.stream.Collectors;
+
 /**
  * 静态页面路由器
  * Created by y27chen on 2016/7/12.
@@ -78,6 +80,15 @@ public class StaticPageController {
         message.setType(MessageType.SUFFRAGE);
         modelAndView.addObject("title", "联系我们");
         modelAndView.addObject("message", message);
+        modelAndView.addObject("fellowships", fellowshipService.getAll().stream().filter(fellowship ->
+                fellowship.isEnable() &&
+                        !fellowship.getName().equals("worship") &&
+                        !fellowship.getName().equals("testimony") &&
+                        !fellowship.getName().equals("report") &&
+                        !fellowship.getName().equals("public") &&
+                        !fellowship.getName().equals("suffrage") &&
+                        !fellowship.getName().equals("recommend")
+        ).collect(Collectors.toList()));
         modelAndView.addObject("publishSuccess", publishSuccess);
         modelAndView.addObject("publishFailed", publishFailed);
         return modelAndView;
