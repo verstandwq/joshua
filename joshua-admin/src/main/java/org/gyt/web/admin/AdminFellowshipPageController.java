@@ -5,6 +5,7 @@ import org.gyt.web.api.utils.ModelAndViewUtils;
 import org.gyt.web.model.Fellowship;
 import org.gyt.web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,15 +55,20 @@ public class AdminFellowshipPageController {
             @PathVariable String name
     ) {
         ModelAndView modelAndView = modelAndViewUtils.newAdminModelAndView("adminPages/admin-fellowship-details");
-
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Fellowship fellowship = fellowshipService.get(name);
 
         if (null == fellowship) {
             modelAndView.setViewName("404");
             modelAndView.addObject("message", String.format("找不到团契：%s", name));
-        } else {
+        } else if (user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MANAGE_FELLOWSHIP"))
+                || fellowship.getOwner().equals(user)
+                || fellowship.getAdmins().contains(user)) {
             modelAndView.addObject("item", fellowship);
             modelAndView.addObject("subtitle", fellowship.getDisplayName());
+        } else {
+            modelAndView.setViewName("403");
+            modelAndView.addObject("message", "您没有权限访问该团契");
         }
 
         return modelAndView;
