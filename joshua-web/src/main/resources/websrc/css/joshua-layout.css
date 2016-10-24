@@ -82,3 +82,17 @@
 .ui.footer {
     padding: 4em 0 4em 0;
 }
+
+/*
+    文章列表定义
+*/
+.ui.articles.items .image {
+    width: 72px !important;
+    height: 72px !important;
+}
+
+.ui.articles.items .image img {
+    width: 72px !important;;
+    height: 72px !important;;
+    border-radius: 12px !important;;
+}

@@ -25144,52 +25144,44 @@ a.ui.card:hover,
   width: 175px;
 }
 
-/* Tablet Only */
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* Tablet Only
+@media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
   .ui.items > .item {
-    margin: 1em 0em;
+    margin: @tabletItemSpacing 0em;
   }
-
   .ui.items > .item > .image:not(.ui) {
-    width: 150px;
+    width: @tabletImageWidth;
   }
-
   .ui.items > .item > .image + .content {
     display: block;
-    padding: 0em 0em 0em 1em;
+    padding: 0em 0em 0em @tabletContentImageDistance;
   }
-}
 
-/* Mobile Only */
+}*/
 
-@media only screen and (max-width: 767px) {
+/* Mobile Only
+@media only screen and (max-width: @largestMobileScreen) {
   .ui.items > .item {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
-    margin: 2em 0em;
+    margin: @mobileItemSpacing 0em;
   }
-
   .ui.items > .item > .image {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-
   .ui.items > .item > .image,
   .ui.items > .item > .image > img {
     max-width: 100% !important;
-    width: auto !important;
-    max-height: 250px !important;
+    width: @mobileImageWidth !important;
+    max-height: @mobileImageMaxHeight !important;
   }
-
   .ui.items > .item > .image + .content {
     display: block;
-    padding: 1.5em 0em 0em;
+    padding: @mobileContentImageDistance 0em 0em;
   }
-}
+
+}*/
 
 /*******************************
            Variations

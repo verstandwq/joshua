@@ -22,17 +22,18 @@
 
 <!-- 用户分流组件 -->
 <section th:fragment="section2" id="section2">
-    <div class="ui stackable grid"></div>
-    <div class="row" data-aos="zoom-in">
-        <div class="ui equal width grid container">
-            <div class="column">
-                <div th:replace="staticPage/homePage :: section2-item('基督信仰', '如果你第一次接触福音，请访问这里', '/assets/images/homePage/ss1.jpg', '/believe')"></div>
-            </div>
-            <div class="column">
-                <div th:replace="staticPage/homePage :: section2-item('主日崇拜', '每周主日消息更新，就在这里。每周日9:00-10:30 10:45-12:00', '/assets/images/homePage/ss2.jpg', '/worship')"></div>
-            </div>
-            <div class="column">
-                <div th:replace="staticPage/homePage :: section2-item('团契生活', '找到你所在的团契小组，参与其中', '/assets/images/homePage/ss3.jpg', '/fellowship')"></div>
+    <div class="ui stackable grid">
+        <div class="row" data-aos="zoom-in">
+            <div class="ui equal width stackable grid container">
+                <div class="column">
+                    <div th:replace="staticPage/homePage :: section2-item('基督信仰', '如果你第一次接触福音，请访问这里', '/assets/images/homePage/ss1.jpg', '/believe')"></div>
+                </div>
+                <div class="column">
+                    <div th:replace="staticPage/homePage :: section2-item('主日崇拜', '每周主日消息更新，就在这里。每周日9:00-10:30 10:45-12:00', '/assets/images/homePage/ss2.jpg', '/worship')"></div>
+                </div>
+                <div class="column">
+                    <div th:replace="staticPage/homePage :: section2-item('团契生活', '找到你所在的团契小组，参与其中', '/assets/images/homePage/ss3.jpg', '/fellowship')"></div>
+                </div>
             </div>
         </div>
     </div>

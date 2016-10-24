@@ -17,7 +17,7 @@
 </div>
 
 <!-- 前端文章列表组件 -->
-<div th:fragment="table (items)" class="ui divided items">
+<div th:fragment="table (items)" class="ui articles divided items">
     <h4 th:if="${#lists.isEmpty(items)}" class="ui header">暂时还没有消息</h4>
     <div th:each="article : ${items}" th:if="${not article.isDisable() and article.status.name() == 'PUBLISHED'}"
          class="item">
