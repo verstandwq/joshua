@@ -259,8 +259,19 @@ $(document).ready(function () {
 
         var delta = JSON.parse($(".article-reader .article-content").text());
         quill.setContents(delta.ops);
-        $(".article-reader").removeAttr("style");
+
+        var reader = $(".article-reader");
+
+        reader.find("img").each(function () {
+            var imgSrc = $(this).attr("src");
+            $(this).attr("data-src", imgSrc);
+        });
+
+        reader.removeAttr("style");
         $(".article-reader + .ui.dimmer").removeClass("active");
+        reader.lightGallery({
+            selector: 'img'
+        });
     }
 });
 
