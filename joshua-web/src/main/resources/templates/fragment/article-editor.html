@@ -13,19 +13,19 @@ Html编辑器组件
 
 <div th:fragment="article-editor (item)">
     <div class="container"></div>
-    <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+    <div class="article-content" th:utext="${item.id}" style="display: none"></div>
     <input class="input id" th:value="${item.id}" type="hidden"/>
 </div>
 
 <div th:fragment="article-audit (item)">
     <div class="container"></div>
-    <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+    <div class="article-content" th:utext="${item.id}" style="display: none"></div>
     <input class="input id" th:value="${item.id}" type="hidden"/>
 </div>
 
 <div th:fragment="article-reader (item)" class="article-reader" style="height: 200px;">
     <div class="container"></div>
-    <div class="article-content" th:utext="${item.getContent()}" style="display: none"></div>
+    <div class="article-content" th:utext="${item.id}" style="display: none"></div>
 </div>
 
 <div th:fragment="dimmer (content)" class="ui dimmer">
