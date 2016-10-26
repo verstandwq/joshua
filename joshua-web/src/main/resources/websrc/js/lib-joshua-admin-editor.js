@@ -103,6 +103,25 @@ var saveArticle = function (quill) {
     });
 };
 
+var loadArticleContent = function (editor, id, onSuccess) {
+    $.ajax({
+        url: "/article/content/" + id,
+        type: "get",
+        processData: false,
+        contentType: false,
+        success: function (content) {
+            if (content) {
+                var articleContent = JSON.parse(content);
+                editor.setContents(articleContent);
+
+                if (onSuccess) {
+                    onSuccess.apply(editor);
+                }
+            }
+        }
+    });
+};
+
 
 var deleteArticle = function (id) {
     var formData = new FormData();
@@ -174,12 +193,8 @@ $(document).ready(function () {
             theme: 'snow'
         });
 
-        var content = $(".article-editor .article-content").text();
-
-        if (content) {
-            var delta = JSON.parse(content);
-            quill.setContents(delta.ops);
-        }
+        var id = $(".article-editor .article-content").text();
+        loadArticleContent(quill, id);
     }
 
     /**
@@ -257,20 +272,21 @@ $(document).ready(function () {
             readOnly: true
         });
 
-        var delta = JSON.parse($(".article-reader .article-content").text());
-        quill.setContents(delta.ops);
+        var id = JSON.parse($(".article-reader .article-content").text());
+        loadArticleContent(quill, id, function () {
+            var reader = $(".article-reader");
 
-        var reader = $(".article-reader");
+            reader.find("img").each(function () {
+                var imgSrc = $(this).attr("src");
+                $(this).attr("data-src", imgSrc);
+            });
 
-        reader.find("img").each(function () {
-            var imgSrc = $(this).attr("src");
-            $(this).attr("data-src", imgSrc);
-        });
+            reader.lightGallery({
+                selector: 'img'
+            });
 
-        reader.removeAttr("style");
-        $(".article-reader + .ui.dimmer").removeClass("active");
-        reader.lightGallery({
-            selector: 'img'
+            reader.removeAttr("style");
+            $(".article-reader + .ui.dimmer").removeClass("active");
         });
     }
 });
