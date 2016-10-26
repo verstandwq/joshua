@@ -9,15 +9,15 @@
 <div th:replace="fragment/navigation :: primary">导航栏</div>
 
 <div class="ui joshua main container">
-    <div class="ui grid">
+    <div class="ui stackable grid">
         <div class="row">
             <div class="column">
                 <div th:replace="fragment/layout :: header (${item.title})">文章标题</div>
             </div>
         </div>
         <div class="row">
-            <div class="column">
-                <a class="ui icon label" th:href="@{'/fellowship/' + ${item.fellowship.name}}">
+            <div class="eight wide column">
+                <a class="ui icon green label" th:href="@{'/fellowship/' + ${item.fellowship.name}}">
                     <i class="home icon"></i>
                     <span th:utext="${item.fellowship.displayName}">所属团契</span>
                 </a>
@@ -31,6 +31,15 @@
                     <i class="eye icon"></i>
                     <span th:utext="${item.pageView} ? ${item.pageView} : 0">0</span>
                 </label>
+            </div>
+            <div class="eight wide right aligned column">
+                <label class="ui label">分享文章</label>
+
+                <i class="ui wechat link circular icon qr"></i>
+                <div class="ui popup">
+                    <div class="ui horizontal divider">扫描二维码分享文章</div>
+                    <div id="qr-address" style="text-align: center"></div>
+                </div>
             </div>
         </div>
         <div class="row">
