@@ -1,11 +1,13 @@
 package org.gyt.web;
 
-import org.gyt.web.api.service.MailService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 
-import javax.mail.MessagingException;
 import java.util.Locale;
 
 /**
@@ -14,6 +16,20 @@ import java.util.Locale;
  */
 @SpringBootApplication
 public class Application {
+
+    @Bean
+    EmbeddedServletContainerCustomizer containerCustomizer() throws Exception {
+        return (ConfigurableEmbeddedServletContainer container) -> {
+            if (container instanceof TomcatEmbeddedServletContainerFactory) {
+                TomcatEmbeddedServletContainerFactory tomcat = (TomcatEmbeddedServletContainerFactory) container;
+                tomcat.addConnectorCustomizers(
+                        (connector) -> {
+                            connector.setMaxPostSize(20000000); // 20 MB
+                        }
+                );
+            }
+        };
+    }
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
