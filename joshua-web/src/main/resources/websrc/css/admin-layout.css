@@ -14,3 +14,11 @@
     height: 100%;
     overflow-y: auto;
 }
+
+.article-editor .ql-container {
+    border: 1px solid #ccc;
+}
+
+.article-editor .ql-container .ql-editor {
+    min-height: 500px;
+}
