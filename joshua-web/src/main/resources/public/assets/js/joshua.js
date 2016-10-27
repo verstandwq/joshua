@@ -52712,7 +52712,9 @@ $(document).ready(function () {
         });
 
         var id = $(".article-editor .article-content").text();
-        loadArticleContent(quill, id);
+        if (id) {
+            loadArticleContent(quill, id);
+        }
     }
 
     /**
