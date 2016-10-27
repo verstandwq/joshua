@@ -307,7 +307,7 @@ $(document).ready(function () {
             readOnly: true
         });
 
-        var id = $(".article-editor .article-content").text();
+        var id = $(".article-audit .article-content").text();
         loadArticleContent(quill, id);
     }
 

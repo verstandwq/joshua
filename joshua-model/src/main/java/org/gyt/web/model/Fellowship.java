@@ -25,7 +25,7 @@ public class Fellowship {
     @ManyToOne
     private User owner;
 
-    @OneToMany
+    @ManyToMany
     private List<User> admins = new ArrayList<>();
 
     @OneToMany(mappedBy = "fellowship")
