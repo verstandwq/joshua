@@ -307,8 +307,8 @@ $(document).ready(function () {
             readOnly: true
         });
 
-        var delta = JSON.parse($(".article-audit .article-content").text());
-        quill.setContents(delta.ops);
+        var id = $(".article-audit .article-content").text();
+        loadArticleContent(quill, id);
     }
 
     $(".article-audit .publish.button").on("click", function () {
