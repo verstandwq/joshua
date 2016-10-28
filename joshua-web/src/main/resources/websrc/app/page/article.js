@@ -3,10 +3,15 @@
  * Created by y27chen on 2016/10/29.
  */
 
-import "../common";
+import BasePage from "../joshua-base-page";
 
-import Navigation from '../component/navigation';
+class ArticlePage extends BasePage {
+    constructor() {
+        super();
+        console.log("Article Page");
+    }
+}
 
 $(document).ready(() => {
-    var navigation = new Navigation();
+    new ArticlePage();
 });

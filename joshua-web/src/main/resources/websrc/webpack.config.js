@@ -2,6 +2,8 @@ module.exports = {
     devtool: "source-map",
 
     entry: {
+        normal: "./app/page/normal.js",
+        home: "./app/page/home.js",
         article: "./app/page/article.js"
     },
     output: {
