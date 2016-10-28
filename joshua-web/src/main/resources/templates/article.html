@@ -53,6 +53,7 @@
 
 <!--/* 引用页脚组件 */-->
 <div th:replace="fragment/footer :: footer">页脚</div>
-<script th:replace="fragment/header :: script" src="../public/assets/js/joshua.min.js"></script>
+<!--<script th:replace="fragment/header :: script" src="../public/assets/js/joshua.min.js"></script>-->
+<script th:src="@{/assets/js/article.js}"></script>
 </body>
 </html>

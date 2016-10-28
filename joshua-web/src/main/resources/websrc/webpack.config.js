@@ -1,0 +1,27 @@
+module.exports = {
+    devtool: "source-map",
+
+    entry: {
+        article: "./js/page/article.js"
+    },
+    output: {
+        path: "../public/assets/js",
+        filename: "[name].js"
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    presets: ["es2015"]
+                }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style!css'
+            }
+        ]
+    }
+};

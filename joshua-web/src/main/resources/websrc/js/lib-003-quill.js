@@ -3605,7 +3605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.scroll.batch = true;
 	      delta = normalizeDelta(delta);
 	      delta.ops.reduce(function (index, op) {
-	        var length = op.retain || op.delete || op.insert.length || 1;
+	        var length = op.retain || op.delete || (op.insert ? op.insert.length : false) || 1;
 	        var attributes = op.attributes || {};
 	        if (op.insert != null) {
 	          if (typeof op.insert === 'string') {

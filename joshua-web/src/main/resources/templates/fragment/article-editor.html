@@ -14,6 +14,7 @@ Html编辑器组件
 <div th:fragment="article-editor (item)">
     <div class="container"></div>
     <input id="article-id" th:value="${item.id}" type="hidden"/>
+    <input id="article-image" type="file" accept="image/*" style="display: none"/>
 </div>
 
 <div th:fragment="article-audit (item)">

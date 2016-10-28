@@ -164,6 +164,21 @@ var QuillEditor = {
                 });
             }
         }
+    },
+
+    onAddImage: function (quill, file) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var range = quill.getSelection(true);
+            quill.updateContents({
+                ops: [
+                    {retain: range.index},
+                    {delete: range.length},
+                    {insert: {image: e.target.result}}
+                ]
+            }, "user");
+        };
+        reader.readAsDataURL(file);
     }
 };
 
@@ -175,6 +190,20 @@ $(document).ready(function () {
                 toolbar: QuillEditor.toolbar
             },
             theme: QuillEditor.theme
+        });
+
+
+        var fileInput = $("#article-image");
+
+        fileInput.on("change", function (e) {
+            if (e.target.files != null && e.target.files[0] != null) {
+                QuillEditor.onAddImage(quill, e.target.files[0]);
+            }
+        });
+
+        quill.getModule("toolbar").addHandler("image", function () {
+
+            fileInput.click();
         });
 
         loadArticleContent(quill, $("#article-id").val());
