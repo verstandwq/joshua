@@ -36,7 +36,7 @@ public class ArticleWebServiceAPI {
             e.printStackTrace();
         }
 
-        if (article.getId() == null) {
+        if (article.getId() == null || article.getId() <= 0) {
             article.setAuthor(user);
             article.setCreatedDate(new Date());
         } else {
