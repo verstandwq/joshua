@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         normal: "./app/page/normal.js",
         home: "./app/page/home.js",
+        animation: "./app/page/animation.js",
         article: "./app/page/article.js"
     },
     output: {

@@ -2,12 +2,11 @@
  * 首页
  * Created by y27chen on 2016/10/29.
  */
-import BasePage from "../joshua-base-page";
+import AnimationPage from "../joshua-animation-page";
 import IdealImageSlider from "../lib/ideal-image-slider";
-import AOS from "aos";
 import "../lib/ideal-image-slider-bullet-nav";
 
-class HomePage extends BasePage {
+class HomePage extends AnimationPage {
     constructor() {
         super();
     }
@@ -22,14 +21,9 @@ class HomePage extends BasePage {
         slider.addBulletNav();
         slider.start();
     }
-
-    loadAnimation() {
-        AOS.init();
-    }
 }
 
 $(document).ready(() => {
     var page = new HomePage();
-    page.loadAnimation();
     page.loadSlider();
 });
