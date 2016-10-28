@@ -2,11 +2,14 @@ module.exports = {
     devtool: "source-map",
 
     entry: {
+        animation: "./app/page/animation.js",
         normal: "./app/page/normal.js",
         home: "./app/page/home.js",
-        animation: "./app/page/animation.js",
         article: "./app/page/article.js",
-        contact: "./app/page/contact.js"
+        contact: "./app/page/contact.js",
+        logon: "./app/page/logon.js",
+        forget: "./app/page/forget.js",
+        userinfo: "./app/page/user-info.js"
     },
     output: {
         path: "../public/assets/js",

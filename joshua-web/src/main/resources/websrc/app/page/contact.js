@@ -6,10 +6,6 @@
 import BasePage from "../joshua-base-page";
 
 class ContactPage extends BasePage {
-    constructor() {
-        super()
-    }
-
     init() {
         $(".ui.fellowship.dropdown").dropdown();
         $(".ui.message.form .ui.radio.checkbox").checkbox();

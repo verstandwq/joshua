@@ -7,10 +7,6 @@ import IdealImageSlider from "../lib/ideal-image-slider";
 import "../lib/ideal-image-slider-bullet-nav";
 
 class HomePage extends AnimationPage {
-    constructor() {
-        super();
-    }
-
     loadSlider() {
         var slider = new IdealImageSlider.Slider({
             selector: '#slider',
