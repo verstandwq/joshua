@@ -5,7 +5,8 @@ module.exports = {
         normal: "./app/page/normal.js",
         home: "./app/page/home.js",
         animation: "./app/page/animation.js",
-        article: "./app/page/article.js"
+        article: "./app/page/article.js",
+        contact: "./app/page/contact.js"
     },
     output: {
         path: "../public/assets/js",
