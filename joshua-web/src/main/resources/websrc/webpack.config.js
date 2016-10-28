@@ -2,7 +2,7 @@ module.exports = {
     devtool: "source-map",
 
     entry: {
-        article: "./js/page/article.js"
+        article: "./app/page/article.js"
     },
     output: {
         path: "../public/assets/js",

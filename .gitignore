@@ -4,4 +4,4 @@ target/
 node_modules/
 tasks/
 dist/
-assets/js/**
+js/
