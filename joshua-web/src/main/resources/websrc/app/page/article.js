@@ -4,14 +4,33 @@
  */
 
 import BasePage from "../joshua-base-page";
+import Editor from "../component/editor";
+import "../lib/qrcode";
 
 class ArticlePage extends BasePage {
     constructor() {
         super();
-        console.log("Article Page");
+        this.editor = new Editor();
+    }
+
+    initQRCode() {
+        $("#qr-address").qrcode({
+            width: 196,
+            height: 196,
+            text: encodeURI(window.location.href)
+        });
+
+        $('.ui.qr.icon').popup({
+            position: "bottom center",
+            inline: true,
+            on: "click"
+        });
     }
 }
 
 $(document).ready(() => {
-    new ArticlePage();
+    var page = new ArticlePage();
+    page.editor.loadAsReader();
+    page.editor.loadContent($("#article-id").val(), page.editor.initContent);
+    page.initQRCode();
 });
