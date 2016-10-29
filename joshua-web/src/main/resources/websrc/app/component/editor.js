@@ -7,6 +7,7 @@ import "../lib/quill-core";
 import "lightgallery";
 
 const EDITOR_CONFIG = {
+    PLACEHOLDER: "请输入文章内容，文章大小最多为20M，超过以后会保存失败",
     TOOLBAR: [
         /* 基本控件 */
         [{'header': [1, 2, 3, 4, 5, 6, false]}],
@@ -33,6 +34,16 @@ export default class Editor {
         this.editor = null;
     }
 
+    loadAsEditor() {
+        this.editor = new Quill(".article-editor .container", {
+            placeholder: EDITOR_CONFIG.PLACEHOLDER,
+            modules: {
+                toolbar: EDITOR_CONFIG.TOOLBAR
+            },
+            theme: EDITOR_CONFIG.THEME
+        });
+    }
+
     loadAsReader() {
         this.editor = new Quill(".article-reader .container", {
             modules: {
@@ -44,23 +55,25 @@ export default class Editor {
     }
 
     loadContent(id, onSuccess) {
-        var editor = this.editor;
-        $.ajax({
-            url: "/article/content/" + id,
-            type: "get",
-            processData: false,
-            contentType: false,
-            success: (content) => {
-                if (content) {
-                    var articleContent = JSON.parse(content);
-                    editor.setContents(articleContent);
+        let editor = this.editor;
+        if (id) {
+            $.ajax({
+                url: "/article/content/" + id,
+                type: "get",
+                processData: false,
+                contentType: false,
+                success: (content) => {
+                    if (content) {
+                        var articleContent = JSON.parse(content);
+                        editor.setContents(articleContent);
 
-                    if (onSuccess) {
-                        onSuccess.apply(editor);
+                        if (onSuccess) {
+                            onSuccess.apply(editor);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 
     initContent() {

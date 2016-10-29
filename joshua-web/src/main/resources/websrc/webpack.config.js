@@ -11,7 +11,9 @@ module.exports = {
         forget: "./app/page/forget.js",
         userinfo: "./app/page/user-info.js",
         adminHome: "./app/page/admin/admin-home.js",
-        adminArticleTable: "./app/page/admin/admin-article-table.js"
+        adminArticleTable: "./app/page/admin/admin-article-table.js",
+        adminArticleReader: "./app/page/admin/admin-article-reader.js",
+        adminArticleEditor: "./app/page/admin/admin-article-editor.js"
     },
     output: {
         path: "../public/assets/js",
