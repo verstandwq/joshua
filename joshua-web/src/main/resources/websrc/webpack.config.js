@@ -13,7 +13,8 @@ module.exports = {
         adminHome: "./app/page/admin/admin-home.js",
         adminArticleTable: "./app/page/admin/admin-article-table.js",
         adminArticleReader: "./app/page/admin/admin-article-reader.js",
-        adminArticleEditor: "./app/page/admin/admin-article-editor.js"
+        adminArticleEditor: "./app/page/admin/admin-article-editor.js",
+        adminArticleAuditor: "./app/page/admin/admin-article-auditor.js"
     },
     output: {
         path: "../public/assets/js",

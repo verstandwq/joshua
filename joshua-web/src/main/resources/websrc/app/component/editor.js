@@ -54,6 +54,16 @@ export default class Editor {
         });
     }
 
+    loadAsAuditor() {
+        this.editor = new Quill(".article-audit .container", {
+            modules: {
+                toolbar: false
+            },
+            theme: EDITOR_CONFIG.THEME,
+            readOnly: true
+        });
+    }
+
     loadContent(id, onSuccess) {
         let editor = this.editor;
         if (id) {

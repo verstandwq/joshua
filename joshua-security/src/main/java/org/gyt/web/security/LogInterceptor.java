@@ -21,7 +21,7 @@ public class LogInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        logService.info(httpServletRequest, "访问日志");
+        logService.debug(httpServletRequest, "访问日志");
         return true;
     }
 
