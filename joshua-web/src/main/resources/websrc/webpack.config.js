@@ -15,7 +15,8 @@ module.exports = {
         adminArticleAuditor: "./app/page/admin/admin-article-auditor.js",
         adminFellowshipTable: "./app/page/admin/admin-fellowship-table.js",
         adminFellowshipDetails: "./app/page/admin/admin-fellowship-details.js",
-        adminMessageTable: "./app/page/admin/admin-message-table.js"
+        adminMessageTable: "./app/page/admin/admin-message-table.js",
+        adminStaticHome: "./app/page/admin/admin-static-home.js"
     },
     output: {
         path: "../public/assets/js",
