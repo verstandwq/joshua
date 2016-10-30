@@ -101,7 +101,7 @@ public class LogServiceImpl implements LogService {
         String username = request.getRemoteUser() == null ? "匿名" : request.getRemoteUser();
         String address = networkUtils.getRemoteIpAddress(request);
         String url = request.getRequestURL().toString();
-        return String.format("用户[%s]从[%s]访问URL[%s]", username, address, url);
+        return String.format("[%s - %s - %s]", username, address, url);
     }
 
     private void log(String content, String level) {
