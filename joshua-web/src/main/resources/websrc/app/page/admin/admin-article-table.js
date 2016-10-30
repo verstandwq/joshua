@@ -9,7 +9,7 @@ class AdminArticleTablePage extends AdminBasePage {
     init() {
         let articleTable = this;
 
-        $(".ui.admin.article.enable.button").on("click", function () {
+        $(".ui.admin.article.enable.button").on("   click", function () {
             articleTable.enable($(this).data("id"));
         });
 

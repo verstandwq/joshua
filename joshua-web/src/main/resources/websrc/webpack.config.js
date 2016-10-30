@@ -1,6 +1,4 @@
 module.exports = {
-    devtool: "source-map",
-
     entry: {
         animation: "./app/page/animation.js",
         normal: "./app/page/normal.js",
@@ -14,7 +12,9 @@ module.exports = {
         adminArticleTable: "./app/page/admin/admin-article-table.js",
         adminArticleReader: "./app/page/admin/admin-article-reader.js",
         adminArticleEditor: "./app/page/admin/admin-article-editor.js",
-        adminArticleAuditor: "./app/page/admin/admin-article-auditor.js"
+        adminArticleAuditor: "./app/page/admin/admin-article-auditor.js",
+        adminFellowshipTable: "./app/page/admin/admin-fellowship-table.js",
+        adminFellowshipDetails: "./app/page/admin/admin-fellowship-details.js"
     },
     output: {
         path: "../public/assets/js",
