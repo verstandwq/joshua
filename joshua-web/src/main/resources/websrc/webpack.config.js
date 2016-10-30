@@ -17,7 +17,8 @@ module.exports = {
         adminFellowshipDetails: "./app/page/admin/admin-fellowship-details.js",
         adminMessageTable: "./app/page/admin/admin-message-table.js",
         adminStaticHome: "./app/page/admin/admin-static-home.js",
-        adminUserTable: "./app/page/admin/admin-user-table.js"
+        adminUserTable: "./app/page/admin/admin-user-table.js",
+        adminUserDetails: "./app/page/admin/admin-user-details.js"
     },
     output: {
         path: "../public/assets/js",
