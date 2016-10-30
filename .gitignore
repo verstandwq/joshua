@@ -4,4 +4,3 @@ target/
 node_modules/
 tasks/
 dist/
-js/
