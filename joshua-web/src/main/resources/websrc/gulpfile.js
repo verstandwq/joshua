@@ -8,12 +8,6 @@ var jshint = require('gulp-jshint');
 var babel = require('gulp-babel');
 var del = require('del');
 
-gulp.task('clean', function () {
-    return del([
-        'build/'
-    ]);
-});
-
 gulp.task('css', function () {
     return gulp.src('css/*.css')
         .pipe(concatCss("joshua.min.css"))
@@ -21,12 +15,5 @@ gulp.task('css', function () {
             console.log(details.name + ': ' + details.stats.originalSize);
             console.log(details.name + ': ' + details.stats.minifiedSize);
         }))
-        .pipe(gulp.dest('build/css'));
-});
-
-gulp.task("js", function () {
-    return gulp.src("js/joshua.js")
-        .pipe(print())
-        .pipe(babel({presets: ["es2015"]}))
-        .pipe(gulp.dest("build"))
+        .pipe(gulp.dest('../public/assets/css'));
 });

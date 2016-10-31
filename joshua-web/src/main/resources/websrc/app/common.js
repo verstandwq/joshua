@@ -9,5 +9,3 @@ window.$ = $;
 window.jQuery = jQuery;
 
 require("../node_modules/semantic-ui/dist/semantic");
-
-
