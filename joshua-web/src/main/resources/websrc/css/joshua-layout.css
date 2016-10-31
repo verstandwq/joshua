@@ -94,5 +94,18 @@
 .ui.articles.items .image img {
     width: 72px !important;;
     height: 72px !important;;
-    border-radius: 12px !important;;
+    border-radius: 12px !important;
+}
+
+/*
+    团契卡片定义
+*/
+.ui.fellowship.card .image {
+    padding: 1rem !important;
+    background: white !important;
+}
+
+.ui.fellowship.card .image img {
+    height: 180px;
+    border-radius: 12px;
 }
