@@ -8,6 +8,6 @@ import jQuery from "jquery";
 window.$ = $;
 window.jQuery = jQuery;
 
-require("../semantic/dist/semantic");
+require("../node_modules/semantic-ui/dist/semantic");
 
 
