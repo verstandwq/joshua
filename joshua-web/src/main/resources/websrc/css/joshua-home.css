@@ -32,8 +32,8 @@
 #section3 {
     color: white;
     padding: 20px;
-    background: rgba(55, 60, 61, 1);
-    background: radial-gradient(at center center, rgb(134, 146, 153) 0%, rgb(55, 60, 61) 100%);
+    background: rgba(18, 26, 32, 1);
+    background: radial-gradient(at center center, rgb(70, 83, 102) 0%, rgb(18, 26, 32) 100%);
 }
 
 /*

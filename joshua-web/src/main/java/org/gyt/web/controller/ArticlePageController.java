@@ -36,7 +36,7 @@ public class ArticlePageController {
             modelAndView.addObject("message", "文章不存在或者未发布");
             modelAndView.addObject("articles", articleService.getChurchArticles());
         } else {
-            modelAndView.addObject("title", String.format("基督教光音堂 - %s", article.getTitle()));
+            modelAndView.addObject("title", article.getTitle());
             modelAndView.addObject("item", article);
             modelAndView.addObject("user", article.getAuthor());
 
