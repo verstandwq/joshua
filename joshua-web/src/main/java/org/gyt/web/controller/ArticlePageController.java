@@ -32,23 +32,20 @@ public class ArticlePageController {
         Article article = articleService.get(Long.valueOf(id));
 
         if (null == article || article.isDisable() || !article.getStatus().equals(ArticleStatus.PUBLISHED)) {
-            modelAndView.setViewName("404");
-            modelAndView.addObject("message", "文章不存在或者未发布");
-            modelAndView.addObject("articles", articleService.getChurchArticles());
+            modelAndViewUtils.convertTo404(modelAndView, "文章不存在或者未发布");
         } else {
-            modelAndView.addObject("title", article.getTitle());
-            modelAndView.addObject("description", String.format("基督教光音堂文章 - %s", article.getTitle()));
-            modelAndView.addObject("item", article);
-            modelAndView.addObject("user", article.getAuthor());
-
-            if (null == article.getPageView()) {
-                article.setPageView(0L);
-            } else {
-                article.setPageView(article.getPageView() + 1);
-            }
-            articleService.createOrUpdate(article);
+            assembleModal(modelAndView, article);
         }
 
         return modelAndView;
+    }
+
+    private void assembleModal(ModelAndView modelAndView, Article article) {
+        modelAndView.addObject("title", article.getTitle());
+        modelAndView.addObject("description", String.format("基督教光音堂文章 - %s", article.getTitle()));
+        modelAndView.addObject("item", article);
+        modelAndView.addObject("user", article.getAuthor());
+
+        articleService.increasePageView(article);
     }
 }

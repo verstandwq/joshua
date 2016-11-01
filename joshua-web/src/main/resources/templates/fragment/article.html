@@ -45,6 +45,33 @@
     </div>
 </div>
 
+<!-- 前端文章页面 - 状态栏组件 -->
+<div th:fragment="article-status (article)" class="ui stackable grid">
+    <div class="eight wide column">
+        <div th:replace="fragment/widget :: icon-link (${article.fellowship.displayName}, 'home', ${'/fellowship/' + article.fellowship.name})"></div>
+        <div th:replace="fragment/widget :: icon-label (${@displayDateUtils.getDisplayDate(article.lastModifiedTime)}, 'calendar')"></div>
+        <div th:replace="fragment/widget :: icon-label (${article.pageView} ? ${article.pageView} : 0, 'eye')"></div>
+    </div>
+    <div class="eight wide right aligned computer only tablet only column">
+        <div th:replace="fragment/widget :: icon-label ('分享文章', 'share')"></div>
+
+        <i class="ui wechat link circular icon qr"></i>
+        <div class="ui popup">
+            <div class="ui horizontal divider">扫描二维码分享文章</div>
+            <div id="qr-address" style="text-align: center"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 文章阅读器 -->
+<div th:fragment="article-reader (article)">
+    <div class="article-reader" style="height: 200px;">
+        <div class="container"></div>
+        <input id="article-id" th:value="${article.id}" type="hidden"/>
+    </div>
+    <div th:replace="fragment/widget :: text-loader('正在飞一般地加载文章')"></div>
+</div>
+
 <script src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>
