@@ -15,6 +15,7 @@ import java.util.List;
  * - 激活、禁用文章
  * - 申请审核文章
  * - 发布文章
+ * - 增加文章浏览次数
  * Created by y27chen on 2016/9/18.
  */
 public interface ArticleService {
@@ -56,7 +57,6 @@ public interface ArticleService {
      *
      * @return 最新发布的文章
      */
-    @Deprecated
     List<Article> getLatestArticles();
 
     /**
@@ -127,4 +127,20 @@ public interface ArticleService {
      * @return 如果文章存在，并且状态被修改为已发布返回true，否则返回false
      */
     boolean publish(Long id);
+
+    /**
+     * 增加文章浏览次数
+     *
+     * @param article 目标文章
+     * @return 增加次数以后的文章
+     */
+    Article increasePageView(Article article);
+
+    /**
+     * 增加文章浏览次数
+     *
+     * @param id 目标文章id
+     * @return 增加次数以后的文章
+     */
+    Article increasePageView(Long id);
 }

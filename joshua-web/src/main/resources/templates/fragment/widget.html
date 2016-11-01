@@ -1,0 +1,31 @@
+<!--
+    公用小组件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>基督教光音堂</title>
+    <link rel="stylesheet" href="../../public/assets/css/joshua.min.css"/>
+</head>
+<body>
+
+<!-- 图标标签 -->
+<label th:fragment="icon-label (text, icon)" class="ui icon basic label">
+    <i th:class="${icon} + ' icon'" class="user icon"></i>
+    <span th:utext="${text}">标签文本</span>
+</label>
+
+<!-- 图标链接 -->
+<a th:fragment="icon-link (text, icon, link)" class="ui icon basic label" th:href="@{${link}}">
+    <i th:class="${icon} + ' icon'" class="user icon"></i>
+    <span th:utext="${text}">标签文本</span>
+</a>
+
+<!-- 加载动画 - 文本 -->
+<div th:fragment="text-loader (text)" class="ui inverted active dimmer">
+    <div class="ui text loader" th:utext="${text}"></div>
+</div>
+
+</body>
+</html>
