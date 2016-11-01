@@ -42,6 +42,27 @@
     </div>
 </div>
 
+<!-- 前端文章列表 - 列表项 -->
+<div th:fragment="list-item (article)" class="item">
+    <div th:replace="fragment/article :: cover (${article})"></div>
+    <div class="content">
+        <a class="header" th:utext="${article.title}" th:href="@{'/article/' + ${article.id}}"
+           target="_blank">文章标题</a>
+        <div th:replace="fragment/article :: list-desc (${article})"></div>
+        <div class="extra">
+            <label th:title="${#dates.format(article.lastModifiedTime, 'yyyy-MM-dd')}">
+                <i class="calendar icon"></i>
+                <span th:utext="${@displayDateUtils.getDisplayDate(article.lastModifiedTime)}"></span>
+            </label>
+
+            <label>
+                <i class="eye icon"></i>
+                <span th:utext="${article.pageView} ? ${article.pageView} : 0"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
 <!-- 前端文章列表 - 文章封面组件 -->
 <a th:fragment="cover (article)" class="ui tiny image" th:href="@{'/article/' + ${article.id}}" target="_blank">
     <img th:if="${article.cover == null}" th:src="@{/assets/images/article-cover.jpg}"/>
