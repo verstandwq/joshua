@@ -37,6 +37,7 @@ public class ArticlePageController {
             modelAndView.addObject("articles", articleService.getChurchArticles());
         } else {
             modelAndView.addObject("title", article.getTitle());
+            modelAndView.addObject("description", String.format("基督教光音堂文章 - %s", article.getTitle()));
             modelAndView.addObject("item", article);
             modelAndView.addObject("user", article.getAuthor());
 
