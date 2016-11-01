@@ -36,7 +36,7 @@ public class ModelAndViewUtils {
     }
 
     public void convertTo404(ModelAndView modelAndView) {
-        convertTo404(modelAndView, "页面未找到");
+        convertTo404(modelAndView, "您访问的资源不存在，或者已经被移到别处");
     }
 
     public void convertTo404(ModelAndView modelAndView, String message) {

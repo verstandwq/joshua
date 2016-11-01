@@ -11,7 +11,9 @@
 
 <body>
 
+<!-- 带标题的文章列表组件 -->
 <div th:fragment="group-table (title, items)">
+    <div class="ui hidden divider"></div>
     <div class="ui horizontal divider" th:utext="${title}"></div>
     <div th:replace="fragment/article :: table(${items})"></div>
 </div>
@@ -72,6 +74,5 @@
     <div th:replace="fragment/widget :: text-loader('正在飞一般地加载文章')"></div>
 </div>
 
-<script src="../../public/assets/js/joshua.min.js"></script>
 </body>
 </html>

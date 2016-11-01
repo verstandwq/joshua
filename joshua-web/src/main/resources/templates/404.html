@@ -11,15 +11,9 @@
 
 <div class="ui joshua main container">
     <h1 class="ui center aligned header">404</h1>
-    <h4 class="ui center aligned header"
-        th:utext="${#strings.isEmpty(message) ? '抱歉，您访问的资源不存在，或者已经被移到别处' : message}"></h4>
+    <h4 class="ui center aligned header" th:utext="${#strings.isEmpty(message) ? '您访问的资源不存在，或者已经被移到别处' : message}"></h4>
 
-    <div class="ui hidden divider"></div>
-    <div class="ui horizontal divider">看看我们的最新消息吧</div>
-
-    <div>
-        <div th:replace="fragment/article :: table(${articles})"></div>
-    </div>
+    <div th:replace="fragment/article :: group-table('看看我们的最新消息吧', ${articles})"></div>
 </div>
 
 <div th:replace="fragment/footer :: footer">页脚</div>
