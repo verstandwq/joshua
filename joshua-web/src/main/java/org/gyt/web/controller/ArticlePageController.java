@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 后台页面路由器
+ * 前端文章页面路由器
  * Created by Administrator on 2016/9/16.
  */
 @RestController
