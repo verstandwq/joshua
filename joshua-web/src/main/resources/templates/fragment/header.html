@@ -11,6 +11,12 @@ HTML 头部基本组件，用于每个页面的头部引用
     <meta charset="UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description"
+          th:content="${#strings.isEmpty(description)} ? '光音堂,基督教,基督教堂,成都基督教,成都基督教堂,教堂' : ${description}"/>
+    <meta name="keywords" content="光音堂,基督教,基督教堂,成都基督教,成都基督教堂,教堂"/>
+    <meta name="author" content="基督教光音堂"/>
+
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <!--/* 定义页面标题，如果页面为定义标题，则使用默认标题 */-->
