@@ -15,6 +15,14 @@
             <div th:replace="fragment/layout :: header (title='见证分享')"></div>
             <div th:replace="fragment/layout :: picture (src='staticPage/testimonyPage.jpg')"></div>
 
+            <div th:replace="fragment/layout :: verse ('“耶稣进前来、对他们说、天上地下所有的权柄、都赐给我了。所以你们要去、使万民作我的门徒、奉父子圣灵的名、给他们施洗。”', '马太福音28：8—19')"></div>
+
+            <div class="joshua content">
+                <p>
+                    基督教是爱的宗教，“爱”就要懂得分享，把自己得到的好处和身边的人分享，因此“见证分享”是我们教会信徒向神感恩，向人传福音的方式，我们每个月第四周的礼拜五晚上都有见证分享会，欢迎你来向我们分享你的喜乐，也来分享我们的喜乐
+                </p>
+            </div>
+
             <div th:replace="fragment/article :: group-table('近期见证分享', ${items})"></div>
         </div>
         <div class="four wide column">
