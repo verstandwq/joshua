@@ -135,12 +135,12 @@ public class StaticPageController {
     }
 
     /* 新人 */
-    @RequestMapping("/newcomer")
-    public ModelAndView newComerPage() {
-        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/newComerPage");
-        modelAndView.addObject("title", "新人");
-        return modelAndView;
-    }
+//    @RequestMapping("/newcomer")
+//    public ModelAndView newComerPage() {
+//        ModelAndView modelAndView = modelAndViewUtils.newModelAndView("staticPage/newComerPage");
+//        modelAndView.addObject("title", "新人");
+//        return modelAndView;
+//    }
 
     /* 主任牧师 */
     @RequestMapping("/pastor")
