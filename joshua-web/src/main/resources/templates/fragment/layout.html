@@ -18,7 +18,7 @@ HTML 布局基本组件
 
 <!-- 大图组件 -->
 <div th:fragment="picture (src)" class="ui rounded fluid image">
-    <img src="#" th:src="@{'/assets/images/' + ${src}}"/>
+    <img src="#" th:src="@{'/assets/images/' + ${src}}" alt="成都基督教光音堂"/>
 </div>
 
 <div th:fragment="divider (title)" class="ui horizontal divider" th:utext="${title}"></div>
@@ -40,21 +40,21 @@ HTML 布局基本组件
 <!-- 图片效果图组件 -->
 <div th:fragment="joshua-picture (url, picture)" class="joshua normal picture">
     <a th:href="@{${url}}">
-        <img class="ui medium image" th:src="@{${picture}}"/>
+        <img class="ui medium image" th:src="@{${picture}}" alt="成都基督教光音堂"/>
     </a>
 </div>
 
 <!-- 图片效果图组件 -->
 <div th:fragment="joshua-picture-mobile (url, picture)" class="joshua normal picture" style="width: 33.3%">
     <a th:href="@{${url}}">
-        <img class="ui medium image" th:src="@{${picture}}"/>
+        <img class="ui medium image" th:src="@{${picture}}" alt="成都基督教光音堂"/>
     </a>
 </div>
 
 <!-- 图片效果图组件 -->
 <div th:fragment="circular-picture (url, picture)" class="joshua circular picture">
     <a th:href="@{${url}}">
-        <img class="ui medium circular image" th:src="@{${picture}}"/>
+        <img class="ui medium circular image" th:src="@{${picture}}" alt="成都基督教光音堂"/>
     </a>
 </div>
 

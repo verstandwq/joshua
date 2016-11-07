@@ -7,20 +7,19 @@ HTML 头部基本组件，用于每个页面的头部引用
 <!-- 基本组件标识 -->
 <head th:fragment="head">
 
+    <!--/* 定义页面标题，如果页面为定义标题，则使用默认标题 */-->
+    <title th:text="${#strings.isEmpty(title)} ? '成都基督教光音堂' : ${title}"></title>
+
     <!--/* 定义默认字符编码 */-->
     <meta charset="UTF-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description"
-          th:content="${#strings.isEmpty(description)} ? '光音堂,基督教,基督教堂,成都基督教,成都基督教堂,教堂' : ${description}"/>
-    <meta name="keywords" content="光音堂,基督教,基督教堂,成都基督教,成都基督教堂,教堂"/>
-    <meta name="author" content="基督教光音堂"/>
+          th:content="${#strings.isEmpty(description)} ? '基督教光音堂位于成都市高新区天府一街886号（天府一街剑南大道口），是由芬兰设计师设计，典型的北欧简约建筑风格。' : ${description}"/>
+    <meta name="author" content="成都基督教光音堂"/>
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
-    <!--/* 定义页面标题，如果页面为定义标题，则使用默认标题 */-->
-    <title th:text="${#strings.isEmpty(title)} ? '基督教光音堂' : ${title}"></title>
 
     <!--/* 页面图标 */-->
     <link th:href="@{/assets/images/favicon.gif}" rel="icon"/>
