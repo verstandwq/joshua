@@ -15,7 +15,7 @@
 <section th:fragment="section1" id="section1">
     <div id="slider">
         <a th:each="image : ${imageGallery}" th:href="@{${image.link}}">
-            <img th:src="@{'/gallery/' + ${image.id}}" style="display: none"/>
+            <img th:src="@{'/gallery/' + ${image.id}}" alt="成都基督教光音堂" style="display: none"/>
         </a>
     </div>
 </section>
@@ -100,7 +100,7 @@
     <div class="item">
         <div class="ui small circular image joshua picture">
             <a th:href="@{${link}}">
-                <img th:src="@{${picture}}"/>
+                <img th:src="@{${picture}}" th:alt="${title}"/>
             </a>
         </div>
         <div class="content">
