@@ -26,6 +26,18 @@ HTML 头部基本组件，用于每个页面的头部引用
 
     <!--/* 统一CSS样式引用 */-->
     <link th:href="@{/assets/css/joshua.min.css}" rel="stylesheet"/>
+
+    <!--/* 百度统计 */-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?71971448905937c0321fcdd9d081714a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 </head>
 
 <script th:fragment="script" th:src="@{/assets/js/joshua.js}" charset="UTF-8"></script>
