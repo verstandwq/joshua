@@ -13,94 +13,181 @@
 
 <!-- 主要导航栏，用于页面最顶部的导航栏 -->
 <div th:fragment="primary">
-    <div class="joshua menu background"></div>
-    <nav id="menu" class="ui joshua secondary container menu">
-        <!--/* 教堂LOGO */-->
-        <div class="item">
-            <a href="/" th:href="@{/}">
-                <img src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"
-                     style="width: 96px;height: 96px"/>
-            </a>
-        </div>
-
-        <!--/* 光音堂导航 */-->
-        <div class="ui dropdown item">
-            <span>光音堂</span>
-            <div class="menu">
-                <a class="item" th:href="@{/about}">教堂简介</a>
-                <a class="item" th:href="@{/pastor}">主任牧师</a>
-            </div>
-        </div>
-
-        <!--/* 认识基督导航 */-->
-        <div class="ui dropdown item">
-            <span>认识基督</span>
-            <div class="menu">
-                <a class="item" th:href="@{/bible}">在线圣经</a>
-                <a class="item" th:href="@{/believe}">基督信仰</a>
-                <a class="item" th:href="@{/newcomer}">初信栽培</a>
-                <a class="item" th:href="@{/testimony}">见证分享</a>
-                <a class="item" th:href="@{/recommend}">好文推荐</a>
-                <a class="item" th:href="@{/media}">媒体资源</a>
-            </div>
-        </div>
-
-        <!--/* 信仰生活导航 */-->
-        <div class="ui dropdown item">
-            <span>信仰生活</span>
-            <div class="menu">
-                <a class="item" th:href="@{/worship}">主日崇拜</a>
-                <a class="item" th:href="@{/sunday}">主日学</a>
-                <a class="item" th:href="@{/fellowship}">团契生活</a>
-                <a class="item" th:href="@{/service}">主内服侍</a>
-            </div>
-        </div>
-
-        <!--/* 家事园地导航 */-->
-        <div class="ui dropdown item">
-            <span>家事园地</span>
-            <div class="menu">
-                <a class="item" th:href="@{/report}">事工报告</a>
-                <a class="item" th:href="@{/wedding}">教堂婚礼</a>
-                <a class="item" th:href="@{/public}">公益活动</a>
-                <a class="item" th:href="@{/suffrage}">教会代祷</a>
-                <a class="item" th:href="@{/devotion}">奉献捐赠</a>
-                <a class="item" th:href="@{/contact}">联系我们</a>
-            </div>
-        </div>
-
-        <!--/* 右侧菜单 */-->
-        <div class="right menu">
-            <!--/* 搜索
-            <div class="item">
-                <div class="ui input focus icon">
-                    <input class="search" type="text" th:placeholder="搜索"/>
-                    <i class="circular search link icon"></i>
+    <div class="ui joshua navigation grid">
+        <div class="computer only tablet only row">
+            <div class="joshua menu background"></div>
+            <nav id="menu" class="ui joshua secondary container menu">
+                <!--/* 教堂LOGO */-->
+                <div class="item">
+                    <a href="/" th:href="@{/}">
+                        <img src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"
+                             style="width: 96px;height: 96px"/>
+                    </a>
                 </div>
-            </div>*/-->
 
-            <div sec:authorize="not isAuthenticated()" class="item">
-                <a class="ui button" th:href="@{/login}">登录</a>
-            </div>
-
-            <div sec:authorize="isAuthenticated()" class="item">
-                <div class="ui icon username button">
-                    <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
+                <!--/* 光音堂导航 */-->
+                <div class="ui dropdown item">
+                    <span>光音堂</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/about}">教堂简介</a>
+                        <a class="item" th:href="@{/pastor}">主任牧师</a>
+                    </div>
                 </div>
-                <div class="ui popup">
-                    <div class="ui vertical menu">
-                        <a class="item" th:href="@{/info}">我的信息</a>
-                        <a class="item" th:href="@{/password}">更改密码</a>
-                        <a class="item" th:href="@{/admin/article/new}" sec:authorize="hasRole('ROLE_ADMIN_ACCESS')">发布文章</a>
-                        <a class="item user logout"> 退出
-                            <form th:action="@{/logout}" method="post">
-                            </form>
-                        </a>
+
+                <!--/* 认识基督导航 */-->
+                <div class="ui dropdown item">
+                    <span>认识基督</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/bible}">在线圣经</a>
+                        <a class="item" th:href="@{/believe}">基督信仰</a>
+                        <!--<a class="item" th:href="@{/newcomer}">初信栽培</a>-->
+                        <a class="item" th:href="@{/testimony}">见证分享</a>
+                        <a class="item" th:href="@{/recommend}">好文推荐</a>
+                        <a class="item" th:href="@{/media}">媒体资源</a>
+                    </div>
+                </div>
+
+                <!--/* 信仰生活导航 */-->
+                <div class="ui dropdown item">
+                    <span>信仰生活</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/worship}">主日崇拜</a>
+                        <a class="item" th:href="@{/sunday}">主日学</a>
+                        <a class="item" th:href="@{/fellowship}">团契生活</a>
+                        <a class="item" th:href="@{/service}">主内服侍</a>
+                    </div>
+                </div>
+
+                <!--/* 家事园地导航 */-->
+                <div class="ui dropdown item">
+                    <span>家事园地</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/report}">事工报告</a>
+                        <a class="item" th:href="@{/wedding}">教堂婚礼</a>
+                        <a class="item" th:href="@{/public}">公益活动</a>
+                        <a class="item" th:href="@{/suffrage}">教会代祷</a>
+                        <a class="item" th:href="@{/devotion}">奉献捐赠</a>
+                        <a class="item" th:href="@{/contact}">联系我们</a>
+                    </div>
+                </div>
+
+                <!--/* 右侧菜单 */-->
+                <div class="right menu">
+                    <!--/* 搜索
+                    <div class="item">
+                        <div class="ui input focus icon">
+                            <input class="search" type="text" th:placeholder="搜索"/>
+                            <i class="circular search link icon"></i>
+                        </div>
+                    </div>*/-->
+
+                    <div sec:authorize="not isAuthenticated()" class="item">
+                        <a class="ui button" th:href="@{/login}">登录</a>
+                    </div>
+
+                    <div sec:authorize="isAuthenticated()" class="item">
+                        <div class="ui icon username button">
+                            <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
+                        </div>
+                        <div class="ui popup">
+                            <div class="ui vertical menu">
+                                <a class="item" th:href="@{/info}">我的信息</a>
+                                <a class="item" th:href="@{/password}">更改密码</a>
+                                <a class="item" th:href="@{/admin/article/new}"
+                                   sec:authorize="hasRole('ROLE_ADMIN_ACCESS')">发布文章</a>
+                                <a class="item user logout"> 退出
+                                    <form th:action="@{/logout}" method="post">
+                                    </form>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile only row">
+            <nav class="ui secondary menu bar">
+                <!--/* 教堂LOGO */-->
+                <div class="item">
+                    <a href="/" th:href="@{/}">
+                        <img src="../../public/assets/images/logo.gif" th:src="@{/assets/images/logo.gif}"
+                             style="width: 32px;height: 32px"/>
+                    </a>
+                </div>
+
+                <div sec:authorize="not isAuthenticated()" class="item"
+                     style="margin: 0.25em;padding-left: 0.25em;padding-right: 0.25em">
+                    <a class="ui button" th:href="@{/login}">登录</a>
+                </div>
+
+                <div sec:authorize="isAuthenticated()" class="item"
+                     style="margin: 0.25em;padding-left: 0.25em;padding-right: 0.25em">
+                    <div class="ui icon username button">
+                        <i class="user icon"></i> <span sec:authentication="principal.nickname"></span>
+                    </div>
+                    <div class="ui popup">
+                        <div class="ui vertical menu">
+                            <a class="item" th:href="@{/info}">我的信息</a>
+                            <a class="item" th:href="@{/password}">更改密码</a>
+                            <a class="item" th:href="@{/admin/article/new}"
+                               sec:authorize="hasRole('ROLE_ADMIN_ACCESS')">发布文章</a>
+                            <a class="item user logout"> 退出
+                                <form th:action="@{/logout}" method="post">
+                                </form>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="joshua right menu open">
+                    <div class="menu item">
+                        <i class="list icon"></i>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="ui vertical joshua mobile menu" style="display: none">
+                <div class="item">
+                    <span>光音堂</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/about}">教堂简介</a>
+                        <a class="item" th:href="@{/pastor}">主任牧师</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <span>认识基督</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/bible}">在线圣经</a>
+                        <a class="item" th:href="@{/believe}">基督信仰</a>
+                        <!--<a class="item" th:href="@{/newcomer}">初信栽培</a>-->
+                        <a class="item" th:href="@{/testimony}">见证分享</a>
+                        <a class="item" th:href="@{/recommend}">好文推荐</a>
+                        <a class="item" th:href="@{/media}">媒体资源</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <span>信仰生活</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/worship}">主日崇拜</a>
+                        <a class="item" th:href="@{/sunday}">主日学</a>
+                        <a class="item" th:href="@{/fellowship}">团契生活</a>
+                        <a class="item" th:href="@{/service}">主内服侍</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <span>家事园地</span>
+                    <div class="menu">
+                        <a class="item" th:href="@{/report}">事工报告</a>
+                        <a class="item" th:href="@{/wedding}">教堂婚礼</a>
+                        <a class="item" th:href="@{/public}">公益活动</a>
+                        <a class="item" th:href="@{/suffrage}">教会代祷</a>
+                        <a class="item" th:href="@{/devotion}">奉献捐赠</a>
+                        <a class="item" th:href="@{/contact}">联系我们</a>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
 </div>
 
 <!-- 次要导航栏，用于二级页面侧边导航栏 -->
@@ -118,7 +205,7 @@
             <div class="menu">
                 <a class="item" th:href="@{/bible}">在线圣经</a>
                 <a class="item" th:href="@{/believe}">基督信仰</a>
-                <a class="item" th:href="@{/newcomer}">初信栽培</a>
+                <!--<a class="item" th:href="@{/newcomer}">初信栽培</a>-->
                 <a class="item" th:href="@{/testimony}">见证分享</a>
                 <a class="item" th:href="@{/recommend}">好文推荐</a>
                 <a class="item" th:href="@{/media}">媒体资源</a>

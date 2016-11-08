@@ -37,16 +37,17 @@ spring:
       strategy:
         content:
           enabled: true
+
   mail:
     host: smtp.sina.com
     port: 25
     username: cdgyt2013@sina.com
     password: gyt20131013
 
-
 multipart:
   max-file-size: 20MB
   max-request-size: 20MB
+
 #
 # loggin configuration
 #

@@ -10,10 +10,14 @@
 
 <div class="ui admin layout root">
     <div th:replace="adminFragment/admin-layout :: header('留言详细信息', ${subtitle})">布局标题</div>
+
+
+    <div th:replace="adminFragment/admin-message :: details(${message})"></div>
+
     <form class="ui admin user form" th:action="@{/}" th:object="${users}" method="post" style="display: none">
     </form>
 </div>
 
-<script th:replace="fragment/header :: script"></script>
+<script th:src="@{/assets/js/adminHome.js}"></script>
 </body>
 </html>

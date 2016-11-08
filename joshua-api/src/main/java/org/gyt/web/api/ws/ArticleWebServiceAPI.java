@@ -36,14 +36,17 @@ public class ArticleWebServiceAPI {
             e.printStackTrace();
         }
 
-        if (article.getId() == null) {
+        if (article.getId() == null || article.getId() <= 0) {
             article.setAuthor(user);
             article.setCreatedDate(new Date());
         } else {
             Article src = articleService.get(article.getId());
             article.setAuthor(src.getAuthor());
             article.setCreatedDate(src.getCreatedDate());
-            article.setCover(src.getCover());
+
+            if (article.getCover() == null && src.getCover() != null) {
+                article.setCover(src.getCover());
+            }
 
             if (src.getStatus().equals(ArticleStatus.AUDITING)) {
                 return "该文章已经在审核中，不能修改在审核中的文章";

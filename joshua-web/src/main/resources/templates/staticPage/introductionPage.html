@@ -10,7 +10,7 @@
 <div th:replace="fragment/navigation :: primary">导航栏</div>
 
 <div class="ui joshua main container">
-    <div class="ui grid">
+    <div class="ui stackable grid">
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='教堂简介')"></div>
             <div th:replace="fragment/layout :: picture (src='staticPage/introductionPage.jpg')"></div>
@@ -37,6 +37,12 @@
                 光音堂以“光”和“声音”为创作理念，层次分明的木质外墙墙体，线条错落有致，让光线以一种优美的方式流动进入，以此来提醒“光”的珍贵。教堂采用北欧质朴的建筑风格，传达出谦卑又庄严的环境氛围。大门设计也独具匠心，阿拉伯数字“7”的造型诠释《圣经》中“7”代表完全，来寓意上帝救恩的完全；教堂两个大门框架按照汉字“阿门”设计，寓意凡进入教堂的人都当诚心诚意；教堂内部竹质地板、石材墙体、竹制长凳表达教堂倡导环保的理念；“创造之光”“森林之光”艺术墙体，不仅能全方位体现环保理念，同时也将光线与声音充分融合，创造一种亲近的黑暗环境，象征着生命，也传达出上帝对众生的重要性。整个教堂由“光之教堂”和“天使之音”两部分组成，“光之教堂”四壁和屋顶都用黑色墙体，使教堂显得庄严而神圣，教堂内正面墙上一副宽9米，高7米的写意画被称为“创造之光”，由北欧当代最重要的油画家之一Nina
                 Roos构思创作，将上帝在起初从空虚混沌渊面黑暗中创造出光与自然、生命的大能尽显出来。教堂大门右侧墙上是充分运用光的原理而设计建造的“森林之光”，当太阳光打在玻璃墙上时，户外大树与铸铁管的映像耀然其上，使人仿佛置身于大自然，吮吸大自然的气息和雨露，使人有心旷神怡之感……！</p>
 
+            <h2>宣传片</h2>
+            <div class="ui segment">
+                <embed src='http://player.youku.com/player.php/sid/XMTc4MjcyNjA0OA==/v.swf' allowFullScreen='true'
+                       quality='high' width='100%' height='500' align='middle' allowScriptAccess='always'
+                       type='application/x-shockwave-flash'></embed>
+            </div>
         </div>
         <div class="four wide column">
             <div th:replace="fragment/navigation :: secondary"></div>
@@ -44,6 +50,6 @@
     </div>
 </div>
 <div th:replace="fragment/footer :: footer">页脚</div>
-<script th:replace="fragment/header :: script" src="../../public/assets/js/joshua.min.js"></script>
+<script th:src="@{/assets/js/normal.js}"></script>
 </body>
 </html>

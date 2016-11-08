@@ -10,10 +10,20 @@
 <div th:replace="fragment/navigation :: primary">导航栏</div>
 
 <div class="ui joshua main container">
-    <div class="ui grid">
+    <div class="ui stackable grid">
         <div class="twelve wide column">
             <div th:replace="fragment/layout :: header (title='主日崇拜')"></div>
             <div th:replace="fragment/layout :: picture (src='staticPage/worshipPage.jpg')"></div>
+
+            <div class="joshua content">
+                <div class="ui hidden divider"></div>
+                <p>
+                    本堂信徒均相信耶稣基督是在礼拜天死而复活，成就了神的救赎大功，所以我们在礼拜天举行崇拜聚会活动。
+                </p>
+                <p>
+                    本堂主日崇拜的时间为：第一堂 9:00—10:15 第二堂10:45—12:00
+                </p>
+            </div>
 
             <div th:replace="fragment/article :: group-table('近期主日崇拜', ${items})"></div>
         </div>
@@ -23,6 +33,6 @@
     </div>
 </div>
 <div th:replace="fragment/footer :: footer">页脚</div>
-<script th:replace="fragment/header :: script" src="../../public/assets/js/joshua.min.js"></script>
+<script th:src="@{/assets/js/normal.js}"></script>
 </body>
 </html>

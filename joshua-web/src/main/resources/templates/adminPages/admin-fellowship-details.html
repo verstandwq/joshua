@@ -12,13 +12,20 @@
     <div th:replace="adminFragment/admin-layout :: header('团契详细信息', ${subtitle})">布局标题</div>
 
     <div class="ui grid">
-        <div class="six wide column">
+        <div class="four wide column">
             <div class="ui horizontal divider">团契基本信息</div>
             <div th:replace="adminFragment/admin-fellowship-details :: details(${item})"></div>
             <div class="ui horizontal divider">团契管理员</div>
             <div th:replace="adminFragment/admin-fellowship-details :: admin-table(${item.admins})"></div>
         </div>
-        <div class="tex wide column"></div>
+        <div class="six wide column">
+            <div class="ui horizontal divider">团契留言信息</div>
+            <div th:replace="adminFragment/admin-message :: table2(${item.messages})"></div>
+        </div>
+        <div class="six wide column">
+            <div class="ui horizontal divider">团契已发布文章</div>
+            <div th:replace="fragment/article :: table(${item.articles})"></div>
+        </div>
     </div>
 
     <div th:replace="adminFragment/admin-fellowship-details :: transfer-modal(${item})">更改所有者对话框</div>
@@ -28,6 +35,6 @@
     </form>
 </div>
 
-<script th:replace="fragment/header :: script"></script>
+<script th:src="@{/assets/js/adminFellowshipDetails.js}"></script>
 </body>
 </html>

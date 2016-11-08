@@ -5,9 +5,66 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>扫雷</title>
+    <style>
+        .row{
+            width:30px;
+            height:30px;
+            display: inline-block;
+        }
+        .cell{
+            width:30px;
+            height:30px;
+            border: 1px solid black;
+        }
+        #panel{
+            width:600px;
+            height:auto;
+            margin:40px auto;
+        }
+    </style>
 </head>
 <body>
+    <div id="panel"></div>
+    <script src="../keduo/js/jquery.js"></script>
+    <script>
 
+        var mineHeight = 5;
+        var mineWidth = 5;
+        var lei = 5;
+        //创建棋盘
+        function minePan() {
+            for (var i = 0;i<mineHeight;i++){
+                var  row = $("<div></div>");
+                row.addClass("row");
+                for (var j = 0;j<mineWidth;j++){
+                    var column = $("<div></div>");
+                    column.addClass("cell");
+                    //column.attr("id",i+j);
+                    column.appendTo(row);
+                }
+                row.appendTo(panel);
+            }
+        }
+        //创建雷
+        function mineLei() {
+            var date= [];
+            for (var i=0;i<mineWidth * mineHeight;i++){
+                date.push(0);
+            }
+            for (i =0; i < lei;i++ ){
+                date[i] = 1;
+            }
+            date.sort(function () {
+                return 0.5 -Math.random()
+            })
+        }
+
+        $(document).ready(function () {
+            var panel = $("#panel");
+            minePan(panel);
+            mineLei(panel);
+        });
+    </script>
 </body>
 </html>

@@ -10,26 +10,28 @@
 </head>
 <body>
 
-<table th:fragment="table (items)" class="ui celled selectable sortable table">
+<table th:fragment="table1 (items)" class="ui celled selectable sortable table">
     <thead>
     <tr>
         <th class="one wide">留言ID</th>
         <th class="two wide">创建日期</th>
         <th class="two wide">创建者</th>
+        <th class="two wide">所属团契</th>
         <th class="one wide">类型</th>
-        <th class="eight wide">内容</th>
+        <th class="six wide">内容</th>
         <th class="two wide">操作</th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${#lists.isEmpty(items)}">
-        <td th:colspan="6">当前还没有内容</td>
+        <td th:colspan="7">当前还没有内容</td>
     </tr>
 
     <tr th:each="item : ${items}">
         <td th:utext="${item.id}"></td>
         <td th:utext="${#dates.format(item.createdDate,'yyyy-MM-dd')}"></td>
         <td th:utext="${item.owner.username}"></td>
+        <td th:utext="${item.fellowship == null ? '未知' : item.fellowship.displayName}"></td>
         <td th:utext="${item.type.name() == 'SUFFRAGE' ? '代祷' : (item.type.name() == 'QUESTION' ? '咨询' : '建议')}"></td>
         <td th:utext="${item.content}"></td>
         <td>
@@ -46,12 +48,77 @@
     </tbody>
     <tfoot>
     <tr>
-        <th class="center aligned" colspan="6">
+        <th class="center aligned" colspan="7">
             <div th:replace="fragment/pagination :: basic"></div>
         </th>
     </tr>
     </tfoot>
 </table>
 
+<table th:fragment="table2 (messages)" class="ui celled selectable sortable table">
+    <thead>
+    <tr>
+        <th class="two wide">序号</th>
+        <th class="six wide">创建者</th>
+        <th class="two wide">类型</th>
+        <th class="six wide">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(messages)}">
+        <td th:colspan="4">当前还没有内容</td>
+    </tr>
+
+    <tr th:each="item : ${messages}">
+        <td><a th:href="@{'/admin/message/'+${item.id}}" th:utext="${item.id}" target="_blank"></a></td>
+        <td th:utext="${item.owner.username}"></td>
+        <td th:utext="${item.type.name() == 'SUFFRAGE' ? '代祷' : (item.type.name() == 'QUESTION' ? '咨询' : '建议')}"></td>
+        <td>
+            <button th:if="${not item.isRead()}"
+                    th:attr="data-id=${item.id}"
+                    class="ui admin mark read tiny button">标记为已读
+            </button>
+            <button th:if="${item.isRead()}"
+                    th:attr="data-id=${item.id}"
+                    class="ui admin mark unread tiny button">标记为未读
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<table th:fragment="details (item)" class="ui celled table">
+    <tbody>
+    <tr>
+        <td class="four wide">消息ID</td>
+        <td class="twelve wide" th:utext="${item.id}">团契ID</td>
+    </tr>
+    <tr>
+        <td>所属团契</td>
+        <td th:utext="${item.fellowship == null ? '未知' : item.fellowship.displayName}">团契名称</td>
+    </tr>
+    <tr>
+        <td>发布人</td>
+        <td th:utext="${item.owner.getDisplayName()}">创建日期</td>
+    </tr>
+    <tr>
+        <td>发布日期</td>
+        <td th:utext="${#dates.format(item.createdDate,'yyyy-MM-dd')}">创建日期</td>
+    </tr>
+    <tr>
+        <td>消息类型</td>
+        <td th:utext="${item.type.name() == 'SUFFRAGE' ? '代祷' : (item.type.name() == 'QUESTION' ? '咨询' : '建议')}"></td>
+    </tr>
+    <tr>
+        <td>联系方式</td>
+        <td id="fellowship-id" th:utext="${item.contact}">团契ID</td>
+    </tr>
+    <tr>
+        <td>消息内容</td>
+        <td id="fellowship-id" th:utext="${item.content}">团契ID</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

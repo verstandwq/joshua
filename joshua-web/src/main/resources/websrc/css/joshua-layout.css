@@ -16,13 +16,37 @@
     font-size: 1.25em;
 }
 
+.joshua.side.menu {
+    margin: auto;
+}
+
+.joshua.navigation.grid {
+    margin: 0;
+}
+
+.joshua.navigation.grid .row {
+    padding: 0;
+}
+
+.joshua.navigation .ui.secondary.menu.bar {
+    margin: 0;
+    width: 100%;
+    background: url("../images/background-2.png"), rgb(240, 240, 240);
+}
+
+.joshua.navigation .ui.joshua.mobile.menu {
+    width: 100%;
+    background: url("../images/background-2.png"), rgb(240, 240, 240);
+    border: none;
+}
+
 /*
     图片显示框架定义
 */
 .joshua.picture {
     width: 192px;
     height: auto;
-    margin: 12px;
+    padding: 12px;
 
     transition: all 0.2s ease;
 }
@@ -57,4 +81,31 @@
 */
 .ui.footer {
     padding: 4em 0 4em 0;
+}
+
+/*
+    文章列表定义
+*/
+.ui.articles.items .image {
+    width: 72px !important;
+    height: 72px !important;
+}
+
+.ui.articles.items .image img {
+    width: 72px !important;;
+    height: 72px !important;;
+    border-radius: 12px !important;
+}
+
+/*
+    团契卡片定义
+*/
+.ui.fellowship.card .image {
+    padding: 1rem !important;
+    background: white !important;
+}
+
+.ui.fellowship.card .image img {
+    height: 180px;
+    border-radius: 12px;
 }

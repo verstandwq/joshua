@@ -43,8 +43,8 @@ public class ArticleServiceImpl implements ArticleService {
         List<Article> articleList = articleRepository.findAll().stream().filter(article -> !article.isDisable() && article.getStatus().equals(ArticleStatus.PUBLISHED)).collect(Collectors.toList());
         articleList.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
 
-        if (articleList.size() > MAX_HOMEPAGE_ARTICLE_SIZE) {
-            return articleList.subList(0, MAX_HOMEPAGE_ARTICLE_SIZE);
+        if (articleList.size() > MAX_HOMEPAGE_ARTICLE_SIZE * 2) {
+            return articleList.subList(0, MAX_HOMEPAGE_ARTICLE_SIZE * 2);
         }
 
         return articleList;
@@ -157,5 +157,21 @@ public class ArticleServiceImpl implements ArticleService {
         }
 
         return false;
+    }
+
+    @Override
+    public Article increasePageView(Article article) {
+        if (article.getPageView() == null) {
+            article.setPageView(1L);
+        } else {
+            article.setPageView(article.getPageView() + 1);
+        }
+        return createOrUpdate(article);
+    }
+
+    @Override
+    public Article increasePageView(Long id) {
+        Article article = get(id);
+        return article == null ? null : increasePageView(article);
     }
 }
