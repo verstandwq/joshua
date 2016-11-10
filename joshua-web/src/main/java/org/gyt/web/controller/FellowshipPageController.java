@@ -2,12 +2,15 @@ package org.gyt.web.controller;
 
 import org.gyt.web.api.service.FellowshipService;
 import org.gyt.web.api.utils.ModelAndViewUtils;
+import org.gyt.web.model.Article;
 import org.gyt.web.model.Fellowship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * 团契页面路由器
@@ -31,7 +34,10 @@ public class FellowshipPageController {
 
         Fellowship fellowship = fellowshipService.get(name);
         modelAndView.addObject("title", String.format("基督教光音堂 - %s", fellowship.getDisplayName()));
-        modelAndView.addObject("items", fellowship.getArticles());
+
+        List<Article> articles = fellowship.getArticles();
+        articles.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
+        modelAndView.addObject("items", articles);
 
         return modelAndView;
     }
