@@ -117,7 +117,7 @@
 
                 <div sec:authorize="not isAuthenticated()" class="item"
                      style="margin: 0.25em;padding-left: 0.25em;padding-right: 0.25em">
-                    <a class="ui button" th:href="@{/login}">登录</a>
+                    <a class="ui button" th:href="@{/}" style="padding: .5em">成都基督教光音堂</a>
                 </div>
 
                 <div sec:authorize="isAuthenticated()" class="item"
@@ -147,6 +147,9 @@
             </nav>
 
             <div class="ui vertical joshua mobile menu" style="display: none">
+                <div sec:authorize="not isAuthenticated()" class="item">
+                    <a class="ui fluid button" th:href="@{/login}" style="padding: .5em">登录 | 注册</a>
+                </div>
                 <div class="item">
                     <span>光音堂</span>
                     <div class="menu">
