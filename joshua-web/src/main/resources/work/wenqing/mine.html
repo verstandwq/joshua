@@ -18,20 +18,26 @@
             border: 1px solid black;
         }
         #panel{
-            width:600px;
+            width:1000px;
             height:auto;
             margin:40px auto;
+        }
+        .active{
+            background: red;
+        }
+        .normal{
+            background: orange;
         }
     </style>
 </head>
 <body>
     <div id="panel"></div>
-    <script src="../keduo/js/jquery.js"></script>
+    <script src="jquery.js"></script>
     <script>
 
-        var mineHeight = 5;
-        var mineWidth = 5;
-        var lei = 5;
+        var mineHeight = 30;
+        var mineWidth = 20;
+        var lei = 99;
         //创建棋盘
         function minePan() {
             for (var i = 0;i<mineHeight;i++){
@@ -40,7 +46,7 @@
                 for (var j = 0;j<mineWidth;j++){
                     var column = $("<div></div>");
                     column.addClass("cell");
-                    //column.attr("id",i+j);
+                    column.attr("id",i + "-" + j);
                     column.appendTo(row);
                 }
                 row.appendTo(panel);
@@ -57,13 +63,35 @@
             }
             date.sort(function () {
                 return 0.5 -Math.random()
-            })
+            });
+            console.log(date);
+            for (i = 0; i<= date.length; i++){
+                var row =Math.floor(i/mineWidth);
+                var column =i % mineWidth;
+                var cell =$("#" + row + "-" + column);
+//                if (date[i]){
+//                    cell.addClass("active");
+//                }else{
+//                    cell.addClass("normal");
+//                }
+//                console.log(cell);
+            }
         }
-
+        function onClick() {
+            var id = $(this).attr("id");
+            var row= Number.parseInt(id.split("-")[0]);
+            var column = Number.parseInt(id.split("-")[1]);
+            var index = (row - 1)*mineWidth + column - 1;
+            if (date[index]){
+                    $(this).addClass("active");
+                }else{
+                    $(this).addClass("normal");
+                }
+        }
         $(document).ready(function () {
             var panel = $("#panel");
             minePan(panel);
-            mineLei(panel);
+            mineLei();
         });
     </script>
 </body>
