@@ -36,7 +36,7 @@ public class FellowshipPageController {
         modelAndView.addObject("title", String.format("基督教光音堂 - %s", fellowship.getDisplayName()));
 
         List<Article> articles = fellowship.getArticles();
-        articles.sort((o1, o2) -> o1.getLastModifiedTime().compareTo(o2.getLastModifiedTime()));
+        articles.sort((o1, o2) -> o2.getLastModifiedTime().compareTo(o1.getLastModifiedTime()));
         modelAndView.addObject("items", articles);
 
         return modelAndView;
