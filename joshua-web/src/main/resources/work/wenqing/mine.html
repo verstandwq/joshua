@@ -32,7 +32,7 @@
 </head>
 <body>
     <div id="panel"></div>
-    <script src="jquery.js"></script>
+    <script src="jquery-3.1.1.min.js"></script>
     <script>
 
         var mineHeight = 30;
@@ -69,30 +69,31 @@
                 var row =Math.floor(i/mineWidth);
                 var column =i % mineWidth;
                 var cell =$("#" + row + "-" + column);
-//                if (date[i]){
-//                    cell.addClass("active");
-//                }else{
-//                    cell.addClass("normal");
-//                }
-//                console.log(cell);
+                 if (date[i]){
+                     cell.addClass("active");
+                }else{
+                    cell.addClass("normal");
+                }
+                 console.log(cell);
             }
         }
-        function onClick() {
-            var id = $(this).attr("id");
-            var row= Number.parseInt(id.split("-")[0]);
-            var column = Number.parseInt(id.split("-")[1]);
-            var index = (row - 1)*mineWidth + column - 1;
-            if (date[index]){
+
+        $(document).ready(function () {
+            var panel = $("#panel");
+            minePan(panel);
+            mineLei(panel);
+            panel.click(function() {
+                var id = $(this).attr("id");
+                var row= Number.parseInt(id.split("-")[0]);
+                var column = Number.parseInt(id.split("-")[1]);
+                var index = (row - 1)*mineWidth + column - 1;
+                if (i=0){
                     $(this).addClass("active");
                 }else{
                     $(this).addClass("normal");
                 }
-        }
-        $(document).ready(function () {
-            var panel = $("#panel");
-            minePan(panel);
-            mineLei();
-        });
+            })
+        })
     </script>
 </body>
 </html>
